@@ -11,7 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('accompagnateurs', function (Blueprint $table) {
+            $table->id();
+            $table->string('nom');
+            $table->string('pseudo');
+            $table->string('mdp');
+            $table->boolean('is_admin')->default(false);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('accompagnateurs');
     }
 };
