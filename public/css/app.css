@@ -1,3 +1,11 @@
+:root {
+  --text: #15020e;
+  --background: #fff3fa;
+  --primary: #E40184;
+  --secondary: #f2c87e;
+  --accent: #f5e44b;
+}
+
 .search_bar {
     margin-left: 70%;
   }
