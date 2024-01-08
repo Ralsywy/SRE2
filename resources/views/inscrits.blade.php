@@ -35,6 +35,6 @@
         </div>
       </nav>
 
-      <h1>Accueil</h1>
+      <h1>Inscrits</h1>
     </body>
 </html>
