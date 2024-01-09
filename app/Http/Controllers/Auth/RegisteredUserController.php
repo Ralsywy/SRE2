@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -32,13 +33,11 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
@@ -47,5 +46,46 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+    public function register_acc (Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'password' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        try {
+            //création du nom de login
+            $nom = $request['name'];
+            $compteur = 0;
+            $max=strlen($nom);
+            $lenom = "";
+            $i=0;
+            
+            while($nom[$i] != " ")
+            {
+                $i++;
+                $compteur = $compteur + 1;
+            }
+            for($s=0; $s < $compteur; $s++)
+            {
+                $lenom = $lenom . $nom[$s];
+            }
+            $compteur = $compteur + 1;
+            $pseudo = strtolower($nom[$compteur].$lenom);
+
+            $user= new User();
+            $user->name= $request['name'];
+            $user->password= $request['password'];
+            $user->pseudo= $pseudo;
+            $user->save();
+            return redirect()->route('show-comptes')->with("success","L'accompagnateur a été crée");
+        } 
+		catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
     }
 }
