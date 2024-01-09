@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InscritsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('/');
+
+Route::get('inscrits',[InscritsController::class, 'show_inscrits'])->name('show-inscrits');
+Route::get('comptes',[InscritsController::class, 'show_comptes'])->name('show-comptes');
