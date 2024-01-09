@@ -14,8 +14,7 @@ body{
     box-sizing: border-box;
     font-family:'Poppins';
     background: url(../img/fond.png) no-repeat;
-    background-position: center;
-    background-size:auto;
+    background-size:cover;
 }
 
 /********* NAVBAR *********/
