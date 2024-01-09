@@ -5,6 +5,12 @@
     --secondary: #f2c87e;
     --accent: #f5e44b;
   }
+
+  body{
+    padding: 0;
+    margin: 0;
+    font-family:'Poppins'
+  }
   
   .search_bar {
       margin-left: 65%;
