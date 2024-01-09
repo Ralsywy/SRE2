@@ -6,12 +6,15 @@
     --accent: #f5e44b;
   }
 
-  body{
+  *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     font-family:'Poppins'
   }
-
+  body{
+    background-color: var(--background);
+  }
 
 .logout {
     margin-left: 170%;
@@ -47,3 +50,4 @@ nav {
 nav {
       background-color: var(--primary);
 }
+

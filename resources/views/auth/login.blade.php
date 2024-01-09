@@ -3,7 +3,7 @@
 @section('content')
 <x-guest-layout>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-auth-session-status class="" :status="session('status')" />
 
     <div class="wrapper">
     <form method="POST" action="{{ route('login') }}">
@@ -11,18 +11,20 @@
 
         <!-- Email Address -->
         <div class="input-box">
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-text-input id="email" class="" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="" />
+                <i class="bx bxs-user"></i>
         </div>
 
         <!-- Password -->
         <div class="input-box">
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-text-input id="password" class=""
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')" class="" />
+                <i class="bx bxs-lock-alt"></i>
         </div>
 
         <!-- Remember Me -->
