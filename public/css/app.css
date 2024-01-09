@@ -9,7 +9,9 @@
 body{
     padding: 0;
     margin: 0;
-    font-family:'Poppins'
+    box-sizing: border-box;
+    font-family:'Poppins';
+    background: var(--background);
 }
 
 /********* NAVBAR *********/
@@ -54,4 +56,24 @@ body{
 
 .page-acc label{
     font-weight: 500;
+    width: 100vh;
+}
+
+/********* Formulaire de connexion *********/
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 8vh;
+    padding: 2rem;
+    background: purple;
+    color: #fff;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+    
 }
