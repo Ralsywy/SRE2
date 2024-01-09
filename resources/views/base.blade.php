@@ -20,7 +20,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route('/') }}"><strong>Accueil</strong></a>
+                <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}"><strong>Accueil</strong></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('show-inscrits') }}"><strong>Inscrits</strong></a>
@@ -28,7 +28,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('show-comptes') }}"><strong>Comptes</strong></a>
               </li>
-              @auth
               <div class="logout">
             <form method="POST" action="{{ route('logout') }}">
               @csrf
@@ -40,9 +39,9 @@
               </x-dropdown-link>
           </form>
                </li>
-               @endauth
+              </div>
             </ul>
-          </div>
+          
             <div class="search_bar">
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
