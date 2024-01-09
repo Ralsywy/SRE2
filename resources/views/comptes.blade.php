@@ -1,7 +1,7 @@
 @extends('base')
 @section('content')
 <div class="page-acc">
-    <section id="creer-acc">
+    <div class="creer-acc">
         <h1>Créer un accompagnateur</h1>
         <form action="">
             <div class="input-box">
@@ -16,6 +16,6 @@
                 <button type="submit" class="btn_creer">Créer</button>
             </div>
         </form>
-    </section>
+    </div>
 </div>
 @endsection
