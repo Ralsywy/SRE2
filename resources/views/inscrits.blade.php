@@ -165,37 +165,129 @@
                 <!--- Fin --->
                 <div class="field">
                     <div class="label">Inscrit à France travail</div>
-                    <input type="radio" name="inscrit_pole_emploi" value="oui" id="oui_pole_emplois">
+                    <input type="radio" name="is_france_travail" value="oui" id="oui_pole_emplois">
                     <label class="label" for="oui_pole_emplois">Oui</label>
-                    <input type="radio" name="inscrit_pole_emploi" value="non" id="non_pole_emplois">
+                    <input type="radio" name="is_france_travail" value="non" id="non_pole_emplois">
                     <label class="label" for="non_pole_emplois">Non</label>
                 </div>
                 <!--- Si oui --->
                 <div class="field">
                     <div class="label">Date d'inscription à France travail</div>
-                    <input type="date" name="dte_inscription">
+                    <input type="date" name="france_dte_inscription">
                 </div>
                 <div class="field">
                     <div class="label">Nom référent</div>
-                    <input type="date" name="nom_referent">
+                    <input type="text" name="france_nom_ref">
                 </div>
                 <!--- Fin --->
                 <div class="field">
                     <div class="label">Inscrit à Soélis</div>
-                    <input type="radio" name="inscrit_pole_emploi" value="oui" id="oui_pole_emplois">
-                    <label class="label" for="oui_pole_emplois">Oui</label>
-                    <input type="radio" name="inscrit_pole_emploi" value="non" id="non_pole_emplois">
-                    <label class="label" for="non_pole_emplois">Non</label>
+                    <input type="radio" name="is_soelis" value="oui" id="oui_soelis">
+                    <label class="label" for="oui_soelis">Oui</label>
+                    <input type="radio" name="is_soelis" value="non" id="non_soelis">
+                    <label class="label" for="non_soelis">Non</label>
                 </div>
                 <!--- Si oui --->
                 <div class="field">
                     <div class="label">Date d'inscription à Soélis</div>
-                    <input type="date" name="dte_inscription">
+                    <input type="date" name="soelis_dte_inscription">
                 </div>
                 <div class="field">
                     <div class="label">Nom référent</div>
-                    <input type="date" name="nom_referent">
+                    <input type="text" name="soelis_nom_ref">
                 </div>
+                <!--- Fin --->
+                <div class="field">
+                    <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
+                    <input type="radio" name="is_cma" value="oui" id="oui_cma">
+                    <label class="label" for="oui_cma">Oui</label>
+                    <input type="radio" name="is_cma" value="non" id="non_cma">
+                    <label class="label" for="non_cma">Non</label>
+                </div>
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
+                    <input type="date" name="cma_dte_inscription">
+                </div>
+                <div class="field">
+                    <div class="label">Nom référent</div>
+                    <input type="text" name="cma_nom_ref">
+                </div>
+                <!--- Fin --->
+                <div class="field">
+                    <div class="label">Inscrit à la Mission locale</div>
+                    <input type="radio" name="is_mission_locale" value="oui" id="oui_mission_locale">
+                    <label class="label" for="oui_mission_locale">Oui</label>
+                    <input type="radio" name="is_mission_locale" value="non" id="non_mission_locale">
+                    <label class="label" for="non_mission_locale">Non</label>
+                </div>
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Date d'inscription à la Mission locale</div>
+                    <input type="date" name="mission_dte_inscription">
+                </div>
+                <div class="field">
+                    <div class="label">Nom référent</div>
+                    <input type="text" name="mission_nom_ref">
+                </div>
+                <!--- Fin --->
+                <div class="field">
+                    <div class="label">Inscrit à CAP emplois</div>
+                    <input type="radio" name="is_cap_emploi" value="oui" id="oui_cap_emploi">
+                    <label class="label" for="oui_cap_emploi">Oui</label>
+                    <input type="radio" name="is_cap_emploi" value="non" id="non_cap_emploi">
+                    <label class="label" for="non_cap_emploi">Non</label>
+                </div>
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Date d'inscription CAP emplois</div>
+                    <input type="date" name="cap_dte_inscription">
+                </div>
+                <div class="field">
+                    <div class="label">Nom référent</div>
+                    <input type="text" name="cap_nom_ref">
+                </div>
+                <!--- Fin --->
+                <div class="field">
+                    <div class="label">CV disponible</div>
+                    <input type="radio" name="is_cv" value="oui" id="oui_cv">
+                    <label class="label" for="oui_cv">Oui</label>
+                    <input type="radio" name="is_cv" value="non" id="non_cv">
+                    <label class="label" for="non_cv">Non</label>
+                </div>
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Insérer le cv scanné (format PDF uniquement)</div>
+                    <input type="file" name="cv_nom">
+                </div>
+                <!--- Si non --->
+                <div class="field">
+                    <div class="label">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
+                    <input type="date" name="dte_travailler">
+                </div>
+                <!--- Fin --->
+                <div class="field">
+                    <div class="label">A le Permis</div>
+                    <input type="radio" name="is_permis" value="oui" id="oui_permis">
+                    <label class="label" for="oui_permis">Oui</label>
+                    <input type="radio" name="is_permis" value="non" id="non_permis">
+                    <label class="label" for="non_permis">Non</label>
+                </div>
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Combien de permis</div>
+                    <input type="number" name="nb_permis">
+                </div>
+                <!--- Si oui un/plusieurs --->
+                <div class="label">Permis</div>
+                <select name="nature_revenus">
+                    <option value="Aucun">Choisir un permis</option>
+                    <option value="salaire">Permis autos</option>
+                    <option value="rsa">Permis motos</option>
+                    <option value="are">Permis marchandises ou de personnes</option>
+                </select>
+                <!--- Si non --->
+
                 <!--- Fin --->
                 <div class="field btns">
                     <button class="next-2 next">Suivant</button>
