@@ -4,50 +4,26 @@
     --primary: #f05bb2;
     --secondary: #f2c87e;
     --accent: #f5e44b;
-  }
+}
 
-  *{
+body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family:'Poppins'
-  }
-  body{
-    background-color: var(--background);
-  }
-
-.logout {
-    margin-left: 170%;
-}
-  
-.search_bar {
-      margin-left: 55%;
-}
-  
-.search_bar input {
-      width: 200px;
-}
-  
-.search_bar button {
-      background-color: #767676;
-}
-  
-  
-nav {
-      color: var(--primary);
-}
-  
-.navbar-nav {
-      margin-left: 5%;
-}
-  
-.nav-item {
-      margin-left: 0%;
-      margin-right: 25%;
-      font-style:bold;
-}
-  
-nav {
-      background-color: var(--primary);
 }
 
+/********* NAVBAR *********/
+.navbar{
+    background-color: #f05bb2;
+}
+
+.nav-link{
+    font-weight: 600;
+}
+
+/********* ACCOMPAGNATEURS *********/
+#creer-acc{
+    background-color: var(--secondary);
+    width: 100vh;
+}
