@@ -18,15 +18,15 @@
             <img src="img\rdc.png" alt="RDC" width="50" height="50">
           </a>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
+                <a class="nav-link {{ (request()->is('welcome')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('show-inscrits') }}">Liste des inscrits</a>
+                <a class="nav-link {{ (request()->is('inscrits')) ? 'active' : '' }}" href="{{ route('show-inscrits') }}">Liste des inscrits</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('show-comptes') }}">Accompagnateurs</a>
+                <a class="nav-link {{ (request()->is('comptes')) ? 'active' : '' }}" href="{{ route('show-comptes') }}">Accompagnateurs</a>
               </li>
               @auth
               <li>
@@ -35,7 +35,7 @@
                 <x-dropdown-link :href="route('logout')" class="nav-link"
                         onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                    <strong>Déconnexion</strong>
+                    Déconnexion
                 </x-dropdown-link>
                 </form>
               </li>
