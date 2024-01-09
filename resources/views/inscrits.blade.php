@@ -24,6 +24,20 @@
                 <input type="radio" name="is_rdc" value="0" id="non_rdc">
                 <label class="label" for="non_rdc">Non</label>
             </div>
+            <!--- Si oui --->
+            <div class="field">
+                <div class="label">N°</div>
+                <input type="text" name="numero">
+            </div>
+            <div class="field">
+                <div class="label">Centre</div>
+                <input type="text" name="centre">
+            </div>
+            <div class="field">
+                <div class="label">Jour</div>
+                <input type="text" name="jour">
+            </div>
+            <!--- Fin --->
             <div class="field">
                 <div class="label">Bénévole aux restos du coeur</div>
                 <input type="radio" name="is_benevole" value="1" id="oui_benevole">
@@ -159,6 +173,23 @@
                 <!--- Si oui --->
                 <div class="field">
                     <div class="label">Date d'inscription à France travail</div>
+                    <input type="date" name="dte_inscription">
+                </div>
+                <div class="field">
+                    <div class="label">Nom référent</div>
+                    <input type="date" name="nom_referent">
+                </div>
+                <!--- Fin --->
+                <div class="field">
+                    <div class="label">Inscrit à Soélis</div>
+                    <input type="radio" name="inscrit_pole_emploi" value="oui" id="oui_pole_emplois">
+                    <label class="label" for="oui_pole_emplois">Oui</label>
+                    <input type="radio" name="inscrit_pole_emploi" value="non" id="non_pole_emplois">
+                    <label class="label" for="non_pole_emplois">Non</label>
+                </div>
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Date d'inscription à Soélis</div>
                     <input type="date" name="dte_inscription">
                 </div>
                 <div class="field">
