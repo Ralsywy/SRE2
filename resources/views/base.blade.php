@@ -25,7 +25,21 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('show-comptes') }}"><strong>Comptes</strong></a>
               </li>
+              @auth
+              <div class="logout">
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+                <li>
+              <x-dropdown-link :href="route('logout')" class="nav-link"
+                      onclick="event.preventDefault();
+                                  this.closest('form').submit();">
+                  <strong>Déconnexion</strong>
+              </x-dropdown-link>
+          </form>
+               </li>
+               @endauth
             </ul>
+          </div>
             <div class="search_bar">
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

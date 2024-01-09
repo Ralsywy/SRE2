@@ -6,8 +6,12 @@
   --accent: #f5e44b;
 }
 
+.logout {
+    margin-left: 230%;
+}
+
 .search_bar {
-    margin-left: 65%;
+    margin-left: 60%;
   }
 
 .search_bar input {
