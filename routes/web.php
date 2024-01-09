@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 })->name('/');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('welcome', function () {
+    return view('/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
