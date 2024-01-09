@@ -17,13 +17,13 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"><strong>Accueil</strong></a>
+                <a class="nav-link active" aria-current="page" href="{{ route('/') }}"><strong>Accueil</strong></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><strong>Inscrits</strong></a>
+                <a class="nav-link" href="{{ route('show-inscrits') }}"><strong>Inscrits</strong></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><strong>Comptes</strong></a>
+                <a class="nav-link" href="{{ route('show-comptes') }}"><strong>Comptes</strong></a>
               </li>
             </ul>
             <div class="search_bar">
@@ -34,7 +34,6 @@
           </div>
         </div>
       </nav>
-
-      <h1>Accueil</h1>
+      @yield('content')
     </body>
 </html>
