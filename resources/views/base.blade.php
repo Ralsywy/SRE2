@@ -44,6 +44,20 @@
           </div>
         </div>
       </nav>
+      @if(Session::has('success'))
+      <div class="alert alert-success" role="alert">
+        {{Session::get('success')}}
+      </div>
+      @endif
+
+      @if ($errors->any())
+      <div class="alert alert-warning" role="alert">
+        Erreur(s):
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </div>
+      @endif
       @yield('content')
     </body>
 </html>
