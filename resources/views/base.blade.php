@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img src="img\rdc.png" alt="RDC" width="50" height="50">
@@ -29,7 +29,6 @@
               </li>
               @auth
               <li>
-                <div class="logout">
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-dropdown-link :href="route('logout')" class="nav-link"
@@ -38,7 +37,6 @@
                     <strong>Déconnexion</strong>
                 </x-dropdown-link>
                 </form>
-                </div>
               </li>
               @endauth
             </ul>
