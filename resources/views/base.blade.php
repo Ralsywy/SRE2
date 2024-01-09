@@ -18,7 +18,7 @@
             <img src="img\rdc.png" alt="RDC" width="50" height="50">
           </a>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <a class="nav-link {{ (request()->is('welcome')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
               </li>
@@ -30,16 +30,14 @@
               </li>
               @auth
               <li>
-                <div class="btn_deco">
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-dropdown-link :href="route('logout')" class="nav-link"
                         onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                    <strong>Déconnexion</strong>
+                    Déconnexion
                 </x-dropdown-link>
                 </form>
-                </div>
               </li>
               @endauth
             </ul>
