@@ -26,21 +26,24 @@
                 <a class="nav-link" href="{{ route('show-inscrits') }}"><strong>Inscrits</strong></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('show-comptes') }}"><strong>Comptes</strong></a>
+                <a class="nav-link" href="{{ route('show-comptes') }}"><strong>Accompagnateurs</strong></a>
               </li>
+              <li>
               @auth
               <div class="logout">
-            <form method="POST" action="{{ route('logout') }}">
+              <form method="POST" action="{{ route('logout') }}">
               @csrf
-                <li>
               <x-dropdown-link :href="route('logout')" class="nav-link"
                       onclick="event.preventDefault();
                                   this.closest('form').submit();">
                   <strong>Déconnexion</strong>
               </x-dropdown-link>
-          </form>
+              </form>
+              @endauth
                </li>
-               @endauth
+              <li>
+                
+              </li>
             </ul>
           </div>
             <div class="search_bar">
@@ -48,7 +51,7 @@
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-secondary" type="submit">Search</button></div>
             </form>
-          </div>
+            </div>
         </div>
       </nav>
       @yield('content')

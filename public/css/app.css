@@ -47,3 +47,9 @@ nav {
 nav {
       background-color: var(--primary);
 }
+
+/********* ACCOMPAGNATEURS *********/
+#creer-acc{
+    background-color: var(--secondary);
+    width: 100vh;
+}
