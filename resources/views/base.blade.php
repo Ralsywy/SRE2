@@ -19,6 +19,7 @@
           </a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
+              @auth
               <li class="nav-item">
                 <a class="nav-link {{ (request()->is('welcome')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
               </li>
@@ -28,7 +29,6 @@
               <li class="nav-item">
                 <a class="nav-link {{ (request()->is('show-acc')) ? 'active' : '' }}" href="{{ route('show-acc') }}">Accompagnateurs</a>
               </li>
-              @auth
               <li>
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
