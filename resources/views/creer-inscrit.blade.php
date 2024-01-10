@@ -28,12 +28,33 @@
             </div>
             <div class="check fas fa-check"></div>
         </div>
+        <div class="step">
+            <p>étape</p>
+            <div class="bullet">
+                <span>4</span>
+            </div>
+            <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+            <p>étape</p>
+            <div class="bullet">
+                <span>5</span>
+            </div>
+            <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+            <p>étape</p>
+            <div class="bullet">
+                <span>6</span>
+            </div>
+            <div class="check fas fa-check"></div>
+        </div>
     </div>
 <div class="form-outer">
     <form action="#">
             <!---  Page 1 : INFORMATIONS PERSONNELLES  --->
         <div class="page">
-            <div class="title">Informations personnelles :</div>
+            <div class="title hidden">Informations personnelles :</div>
             <div class="field">
                 <div class="label">Date de contact</div>
                 <input type="date" name="dte_contact">
@@ -42,14 +63,15 @@
                 <div class="label">Origine du contact</div>
                 <input type="text" name="origine_contact">
             </div>
-            
+        
                 <div class="label">Inscrit aux restos du coeur</div>
-                <input type="radio" name="is_rdc" value="1" id="oui_rdc">
+                <input type="radio" name="is_rdc" value="1" onclick="hideshowrdc(1)" id="oui_rdc">
                 <label class="label" for="oui_rdc">Oui</label>
-                <input type="radio" name="is_rdc" value="0" id="non_rdc">
+                <input type="radio" name="is_rdc" value="0" onclick="hideshowrdc(2)" id="non_rdc">
                 <label class="label" for="non_rdc">Non</label>
             
             <!--- Si oui --->
+            <div id="div_rdc" class="hidden">
             <div class="field">
                 <div class="label">N°</div>
                 <input type="text" name="numero">
@@ -61,6 +83,7 @@
             <div class="field">
                 <div class="label">Jour</div>
                 <input type="text" name="jour">
+            </div>
             </div>
             <!--- Fin --->
             
@@ -371,16 +394,278 @@
                     <button class="prev-2 prev">Précédent</button>
                 </div>
             </div>
-            <!---  Page 4 : NIVEAU DE FORMATION  --->
+            <!---  Page 4 : FORMATION  --->
+        <div class="page">
+                <div class="title">Formations :</div>
+                <div class="field">
+                <div class="label">Diplôme(s) obtenus</div>
+                <input type="number" name="nb_diplome">
+                </div>
+                <!--- Si 1 ou plus --->
+                <div class="field">
+                 <div class="label">Type de diplôme</div>
+                 <select name="nom_diplome">
+                    <option value="aucun">Choisir un diplôme</option>
+                    <option value="brevet">Brevet</option>
+                    <option value="cap">CAP</option>
+                    <option value="bep">BEP</option>
+                    <option value="bac">BAC</option>
+                    <option value="bac+2">BAC+2</option>
+                    <option value="licence">Licence</option>
+                    <option value="master1">Master 1</option>
+                    <option value="master2">Master 2</option>
+                    <option value="autre">Autre</option>
+                    <option value="formation continue">Formation continue</option>
+                 </select>
+                </div>
+                <!--- Si Brevet (rien) --->
+                <!--- Si CAP --->
+                <div class="field">
+                    <div class="labe">Renseigner le type de métier</div>
+                    <input type="text" name="niveau_cap">
+                </div>
+                <!--- Si BEP --->
+                <div class="field">
+                    <div class="labe">Renseigner la spécialité</div>
+                    <input type="text" name="niveau_bep">
+                </div>
+                <!--- Si BAC --->
+                <div class="field">
+                    <div class="labe">Renseigner la spécialité</div>
+                    <input type="text" name="niveau_bac">
+                </div>
+                <!--- Si BAC+2 --->
+                <div class="field">
+                    <div class="labe">Renseigner la spécialité</div>
+                    <input type="text" name="niveau_bac+2">
+                </div>
+                <!--- Si Licence --->
+                <div class="field">
+                    <div class="labe">Renseigner la spécialité</div>
+                    <input type="text" name="niveau_licence">
+                </div>
+                <!--- Si Master 1 --->
+                <div class="field">
+                    <div class="labe">Renseigner la spécialité</div>
+                    <input type="text" name="niveau_master1">
+                </div>
+                <!--- Si Master 2 --->
+                <div class="field">
+                    <div class="labe">Renseigner la spécialité</div>
+                    <input type="text" name="niveau_master2">
+                </div>
+                <!--- Si Autre --->
+                <div class="field">
+                    <div class="labe">Renseigner le diplôme</div>
+                    <input type="text" name="niveau_autre">
+                </div>
+                <!--- Si Formation continue --->
+                    <div class="label">Reconversion professionnelle</div>
+                    <input type="radio" name="is_reconv_pro" value="oui" id="oui_reconv">
+                    <label class="label" for="oui_reconv">Oui</label>
+                    <input type="radio" name="is_reconv_pro" value="non" id="non_reconv">
+                    <label class="label" for="non_reconv">Non</label>
+                <!--- Si non (rien) --->
+                <!--- Si oui --->
+                <div class="label">Formations prévues</div>
+                <input type="radio" name="is_form_prevue" value="oui" id="oui_prevue">
+                <label class="label" for="oui_prevue">Oui</label>
+                <input type="radio" name="is_form_prevue" value="non" id="non_prevue">
+                <label class="label" for="non_prevue">Non</label>
+                <!--- Si non (rien) --->
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Renseigner le nom : </div>
+                    <input type="text" name="reconv_nom">
+                </div>
+                <div class="field">
+                    <div class="label">Renseigner la date : </div>
+                    <input type="date" name="reconv_date">
+                </div>
+                <div class="field">
+                    <div class="label">Renseigner la durée : </div>
+                    <input type="text" name="reconv_duree">
+                </div>
+               <!--- Fin --->
+                <div class="label">Reprise d'étude</div>
+                <input type="radio" name="is_reprise_etudes" value="oui" id="oui_reprise">
+                <label class="label" for="oui_reprise">Oui</label>
+                <input type="radio" name="is_reprise_etudes" value="non" id="non_reprise">
+                <label class="label" for="non_reprise">Non</label>
+                <!--- Si non (rien) --->
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Diplôme préparé</div>
+                    <input type="text" name="nom_diplome_reprise">
+                </div>
+                <!--- Si fin --->
+                <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
+                <input type="radio" name="is_formation_pro" value="oui" id="oui_form_pro">
+                <label class="label" for="oui_form_pro">Oui</label>
+                <input type="radio" name="is_formation_pro" value="non" id="non_form_pro">
+                <label class="label" for="non_form_pro">Non</label>
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Type de formation</div>
+                    <select name="type_formation_pro">
+                        <option value="qualifiante">Qualifiante</option>
+                        <option value="diplomante">Diplômante</option>
+                    </select>
+                </div>
+                <!--- Si diplomante --->
+                <div class="field">
+                    <div class="label">Nom de la formation diplômante</div>
+                    <input type="text" name="diplome_formation_pro">
+                </div>
+                <!--- Si qualifiante --->
+                <div class="field">
+                    <div class="label">Nom de la formation qualifiante</div>
+                    <input type="text" name="qualifiante_formation_pro">
+                </div>
+                <!--- Fin --->
+                <div class="field">
+                    <div class="label">Métier souhaité</div>
+                    <input type="text" name="nom_metier">
+                </div>
+                <div class="field">
+                    <div class="label">Secteur d'activité</div>
+                    <input type="text" name="secteur_act">
+                </div>
+                <div class="field">
+                    <div class="label">Secteur géographique</div>
+                    <input type="text" name="secteur_geo">
+                </div>
+                <div class="label">Horaire de travail souhaité</div>
+                <input type="checkbox" name="nb_horaire" value="Travail de nuit" id="nuit">
+                <label class="label" for="nuit">Travail de nuit</label>
+                <input type="checkbox" name="nb_horaire" value="Travail la journee" id="journee">
+                <label class="label" for="journee">Travail la journée</label>
+                <input type="checkbox" name="nb_horaire" value="Travail le matin" id="matin">
+                <label class="label" for="matin">Travail le matin</label>
+                <input type="checkbox" name="nb_horaire" value="Travail en cyble 2x8" id="2x8">
+                <label class="label" for="2x8">Travail en cycle 2x8</label>
+                <input type="checkbox" name="nb_horaire" value="Travail en cycle 3x8" id="3x8">
+                <label class="label" for="3x8">Travail en cycle 3x8</label>
+                <input type="checkbox" name="nb_horaire" value="Travail en cycle 5x8" id="5x8">
+                <label class="label" for="5x8">Travail en cycle 5x8</label>
+                <input type="checkbox" name="nb_horaire" value="Travail en VSD" id="VSD">
+                <label class="label" for="VSD">Travail en VSD</label>
+                <input type="checkbox" name="nb_horaire" value="Travail en SD" id="SD">
+                <label class="label" for="journee">Travail en SD</label>
 
+                <div class="field btns">
+                    <button class="next-3 next">Suivant</button>
+                    <button class="prev-3 prev">Précédent</button>
+                </div>
+        </div>
             <!---  Page 5 : LANGUES  --->
-
-            <!---  Page 6 : PLAN D'ACTION  --->
-
-            <!---  Page 7 : RENDEZ-VOUS  --->
-
-            <!---  Page 8 : INFORMATIONS COMPLEMENTAIRES  --->
-
+            <div class="page">
+                <div class="title">Langues</div>
+                <div class="label">Inscrit aux ateliers de français</div>
+                <input type="radio" name="is_atelier" value="oui" id="oui_fr">
+                <label class="label" for="oui_fr">Oui</label>
+                <input type="radio" name="is_atelier" value="non" id="non_fr">
+                <label class="label" for="non_fr">Non</label>
+                <div class="field">
+                    <div class="label">Connaissance en français écrit</div>
+                    <select name="fr_ecrit">
+                       <option value="aucun">Choisir un niveau</option>
+                       <option value="1">A1</option>
+                       <option value="2">A2</option>
+                       <option value="3">B1</option>
+                       <option value="4">B2</option>
+                       <option value="5">C1</option>
+                       <option value="6">C2</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <div class="label">Connaissance en français parlé</div>
+                    <select name="fr_parle">
+                       <option value="aucun">Choisir un niveau</option>
+                       <option value="1">A1</option>
+                       <option value="2">A2</option>
+                       <option value="3">B1</option>
+                       <option value="4">B2</option>
+                       <option value="5">C1</option>
+                       <option value="6">C2</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <div class="label">Connaissance en français lu</div>
+                    <select name="fr_lu">
+                       <option value="aucun">Choisir un niveau</option>
+                       <option value="1">A1</option>
+                       <option value="2">A2</option>
+                       <option value="3">B1</option>
+                       <option value="4">B2</option>
+                       <option value="5">C1</option>
+                       <option value="6">C2</option>
+                    </select>
+                </div>
+                <div class="title">Anglais</div>
+                <div class="field">
+                    <div class="label">Connaissance en anglais écrit</div>
+                    <select name="en_ecrit">
+                       <option value="aucun">Choisir un niveau</option>
+                       <option value="1">A1</option>
+                       <option value="2">A2</option>
+                       <option value="3">B1</option>
+                       <option value="4">B2</option>
+                       <option value="5">C1</option>
+                       <option value="6">C2</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <div class="label">Connaissance en anglais parlé</div>
+                    <select name="en_parle">
+                       <option value="aucun">Choisir un niveau</option>
+                       <option value="1">A1</option>
+                       <option value="2">A2</option>
+                       <option value="3">B1</option>
+                       <option value="4">B2</option>
+                       <option value="5">C1</option>
+                       <option value="6">C2</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <div class="label">Connaissance en anglais lu</div>
+                    <select name="en_lu">
+                       <option value="aucun">Choisir un niveau</option>
+                       <option value="1">A1</option>
+                       <option value="2">A2</option>
+                       <option value="3">B1</option>
+                       <option value="4">B2</option>
+                       <option value="5">C1</option>
+                       <option value="6">C2</option>
+                    </select>
+                </div>
+                <div class="label">Autre(s) langue(s) parlée(s)</div>
+                <input type="radio" name="is_autre" value="oui" id="oui_autre">
+                <label class="label" for="oui_autre">Oui</label>
+                <input type="radio" name="is_autre" value="non" id="non_autre">
+                <label class="label" for="non_autre">Non</label>
+                <!--- Si oui --->
+                <div class="field">
+                    <div class="label">Langue(s)</div>
+                    <input type="text" name="autre_langue">
+                </div>
+                <div class="field btns">
+                    <button class="next-4 next">Suivant</button>
+                    <button class="prev-4 prev">Précédent</button>
+                </div>
+            </div>
+            <!---  Page 6 : INFORMATIONS COMPLEMENTAIRES  --->
+            <div class="page">
+                <div class="title">Informations complémentaires</div>
+                <div class="field">
+                    <div class="label">Notes</div>
+                    <textarea type="text" name="infos_comp"></textarea>
+                </div>
+                <div class="field btns">
+                    <button class="next-5 next">Suivant</button>
+                    <button class="prev-5 prev">Précédent</button>
+                </div>
+            </div>
     </form>
 </div>
 </div>
