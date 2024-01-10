@@ -17,6 +17,10 @@ body{
     background-size:cover;
 }
 
+button:hover{
+    transform: scale(1.1);
+}
+
 /********* NAVBAR *********/
 .navbar{
     background-color: #0000002a;
@@ -41,8 +45,9 @@ body{
     padding: 3rem;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
-.creer-acc{
+.page-acc .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,6 +56,11 @@ body{
     border-radius: .5rem;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    width: fit-content;
+}
+
+.page-acc .container:nth-child(1){
+    margin-bottom: 4rem;
 }
 
 .page-acc h1{
@@ -85,6 +95,37 @@ body{
     background-color: var(--accent);
     padding: 10px 20px;
     margin-top: 10px;
+    transition: .3s;
+}
+
+.un_acc{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 1rem;
+}
+
+.box_list{
+    width: 100%;
+    outline: none;
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.6rem;
+    text-align: start;
+}
+
+.btn_supp{
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff3f3f;
+    padding: 10px 20px;
+    transition: .3s;
+}
+.un_acc .btn_supp{
+    margin-left: 1rem;
 }
 
 /********* Formulaire de connexion *********/

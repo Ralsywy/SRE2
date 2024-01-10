@@ -1,7 +1,7 @@
 @extends('base')
 @section('content')
 <div class="page-acc">
-    <div class="creer-acc">
+    <div class="container">
         <h1>Créer un accompagnateur</h1>
         <form method="POST" action="{{ route('register-acc') }}">
             @csrf
@@ -18,6 +18,21 @@
                 <button type="submit" class="btn_creer">Créer</button>
             </div>
         </form>
+    </div>
+    <div class="container">
+        <h1>Liste des accompagnateurs</h1>
+        @foreach($accompagnateurs as $ligne)
+        <div class="un_acc">
+            <div class="box_list">
+                <label class="nom_acc">{{$ligne->name}}</label>
+            </div>
+            <form method="post" action="{{ route('supp-acc',[$ligne->id])}}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn_supp">Supprimer</button>
+            </form>
+        </div>
+        @endforeach
     </div>
 </div>
 @endsection

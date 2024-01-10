@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class InscritsController extends Controller
@@ -13,11 +14,7 @@ class InscritsController extends Controller
    
 }
 
-   public function show_comptes() {
-    
-    return view('comptes');
    
-}
 
 
 }

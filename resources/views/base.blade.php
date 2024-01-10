@@ -26,7 +26,7 @@
                 <a class="nav-link {{ (request()->is('inscrits')) ? 'active' : '' }}" href="{{ route('show-inscrits') }}">Liste des inscrits</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ (request()->is('comptes')) ? 'active' : '' }}" href="{{ route('show-comptes') }}">Accompagnateurs</a>
+                <a class="nav-link {{ (request()->is('show-acc')) ? 'active' : '' }}" href="{{ route('show-acc') }}">Accompagnateurs</a>
               </li>
               @auth
               <li>
