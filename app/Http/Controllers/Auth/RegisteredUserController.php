@@ -50,7 +50,8 @@ class RegisteredUserController extends Controller
     public function register_acc (Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:3',
+            'name' => 'required|min:2',
+            'prenom' => 'required|min:2',
             'password' => 'required',
         ]);
         if ($validator->fails()) {
@@ -60,25 +61,12 @@ class RegisteredUserController extends Controller
         try {
             //création du nom de login
             $nom = $request['name'];
-            $compteur = 0;
-            $max=strlen($nom);
-            $lenom = "";
-            $i=0;
-            
-            while($nom[$i] != " ")
-            {
-                $i++;
-                $compteur = $compteur + 1;
-            }
-            for($s=0; $s < $compteur; $s++)
-            {
-                $lenom = $lenom . $nom[$s];
-            }
-            $compteur = $compteur + 1;
-            $pseudo = strtolower($nom[$compteur].$lenom);
+            $prenom = $request['prenom'];
+            $pseudo=strtolower($prenom[0].$nom);
+            $fullName = $nom . " " . $prenom;
 
             $user= new User();
-            $user->name= $request['name'];
+            $user->name= $fullName;
             $user->password= $request['password'];
             $user->pseudo= $pseudo;
             $user->save();

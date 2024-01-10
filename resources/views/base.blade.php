@@ -26,7 +26,7 @@
                 <a class="nav-link {{ (request()->is('welcome')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ (request()->is('inscrits')) ? 'active' : '' }}" href="{{ route('show-inscrits') }}">Liste des inscrits</a>
+                <a class="nav-link {{ (request()->is('inscrits')) ? 'active' : '' }}" href="{{ route('creer-inscrit') }}">Créer un inscrit</a>
               </li>
               @if(auth()->user()->is_admin == 1)
               <li class="nav-item">

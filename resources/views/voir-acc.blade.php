@@ -6,7 +6,10 @@
         <form method="POST" action="{{ route('register-acc') }}">
             @csrf
             <div class="input-box hidden">
-                <input type="text" id="name" type="text" name="name" placeholder="NOM Prénom">
+                <input type="text" id="name" name="name" placeholder="NOM">
+            </div>
+            <div class="input-box hidden">
+                <input type="text" id="prenom" name="prenom" placeholder="Prénom" oninput="capitalizeFirstLetter()">
             </div>
             <div class="input-box hidden">
                 <input id="password" type="password" name="password" placeholder="Mot de passe">
@@ -29,7 +32,7 @@
             <form method="post" action="{{ route('supp-acc',[$ligne->id])}}">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn_supp">Supprimer</button>
+                <button type="submit" class="btn_supp" onclick='return check_del()'>Supprimer</button>
             </form>
         </div>
         @endforeach

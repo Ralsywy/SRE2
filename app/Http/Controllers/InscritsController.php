@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class InscritsController extends Controller
 {
 
-   public function show_inscrits() {
+   public function creer_inscrit() {
     
-    return view('inscrits');
+    return view('creer-inscrit');
    
 }
 
