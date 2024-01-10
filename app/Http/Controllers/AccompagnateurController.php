@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class AccompagnateurController extends Controller
 {
-    public function show_acc() {
+    public function voir_acc() {
     
         try {
             $accompagnateurs=User::all();
-            return view('show-acc',compact('accompagnateurs'));
+            return view('voir-acc',compact('accompagnateurs'));
         } 
         catch (\Exception $e) {
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
@@ -22,6 +22,6 @@ class AccompagnateurController extends Controller
     public function supp_acc($id){
         $accompagnateur = User::find($id);
         $accompagnateur->delete();
-        return redirect()->route('comptes')->with("success","L'accompagnateur a été supprimée");
+        return redirect()->route('voir-acc')->with("success","L'accompagnateur a été supprimée");
     }
 }

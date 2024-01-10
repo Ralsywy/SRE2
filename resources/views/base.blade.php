@@ -26,10 +26,12 @@
               <li class="nav-item">
                 <a class="nav-link {{ (request()->is('inscrits')) ? 'active' : '' }}" href="{{ route('show-inscrits') }}">Liste des inscrits</a>
               </li>
+              @if(auth()->user()->is_admin == 1)
               <li class="nav-item">
-                <a class="nav-link {{ (request()->is('show-acc')) ? 'active' : '' }}" href="{{ route('show-acc') }}">Accompagnateurs</a>
+                <a class="nav-link {{ (request()->is('voir-acc')) ? 'active' : '' }}" href="{{ route('voir-acc') }}">Gérer les accompagnateurs</a>
               </li>
               <li>
+              @endif
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-dropdown-link :href="route('logout')" class="nav-link"
