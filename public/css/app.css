@@ -250,7 +250,7 @@ button:hover{
     height: calc(100% + 5px);
     margin-top: -20px;
     border: none;
-    background: #d43f8d;
+    background: var(--secondary);
     border-radius: 5px;
     color: #fff;
     font-size: 18px;
