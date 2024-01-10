@@ -17,24 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-})->name('/');
 
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/', function () {
+        return view('auth.login');
+    })->name('/');
+});
+
+
 
 Route::middleware('auth')->group(function () {
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-Route::get('inscrits', [InscritsController::class, 'show_inscrits'])->name('show-inscrits');
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('inscrits', [InscritsController::class, 'show_inscrits'])->name('show-inscrits');
 
-Route::get('show-acc', [AccompagnateurController::class, 'show_acc'])->name('show-acc');
-Route::post('register-acc', [RegisteredUserController::class, 'register_acc'])->name('register-acc');
-Route::delete('supp-acc/{id}', [AccompagnateurController::class, 'supp_acc'])->name('supp-acc');
+    Route::get('show-acc', [AccompagnateurController::class, 'show_acc'])->name('show-acc');
+    Route::post('register-acc', [RegisteredUserController::class, 'register_acc'])->name('register-acc');
+    Route::delete('supp-acc/{id}', [AccompagnateurController::class, 'supp_acc'])->name('supp-acc');
 });
 
 require __DIR__.'/auth.php';
