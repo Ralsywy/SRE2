@@ -8,6 +8,10 @@
 
 }
 
+html{
+    scroll-behavior: smooth;
+  }
+
 body{
     padding: 0;
     margin: 0;
@@ -21,6 +25,19 @@ button:hover{
     transform: scale(1.1);
 }
 
+.hidden{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(-30%);
+    transition: all .5s;
+  }
+  .show{
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0%);
+    transition: all .5s;
+  }
+  
 /********* NAVBAR *********/
 .navbar{
     background-color: #0000002a;
@@ -145,7 +162,7 @@ button:hover{
     flex-direction: column;
     justify-content: center;
     background-color: transparent;
-    padding: 1rem;
+    padding: 2rem 3rem;
     border-radius: .3rem;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
@@ -355,15 +372,16 @@ form .page .btns button .next {
     border: 2px solid rgba(255,255,255,.2);
     border-radius: 40px;
     padding: 0.5rem 1.5rem;
+    color: var(--background);
 }
 
 .page-login .input-box i{
     position: absolute;
-    right: 14%;
-    margin-top: 4%;
+    right: 20%;
+    margin-top: 3%;
 }
 
-.page-login .remember-forgot input{
+.page-login.remember-forgot input{
     width: 100%;
     height: 100%;
     background: transparent;
@@ -380,6 +398,16 @@ form .page .btns button .next {
     resize: none;
 }
 
+
+.btn_login{
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--primary);
+    padding: 10px 20px;
+    margin-top: 1rem;
+    transition: .3s;
+}
 /*** Element invisible par défaut ***/
 
 #div_rdc {

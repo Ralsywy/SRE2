@@ -4,7 +4,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="" :status="session('status')" />
     <div class="page-login">
-        <div class="container">
+        <div class="container hidden">
             <h1>Connexion</h1>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -27,14 +27,8 @@
                         <i class="bx bxs-lock-alt"></i>
                 </div>
 
-                <!-- Remember Me -->
-                <div class="remember-forgot">
-                    <label for="remember_me" class="">
-                        <input id="remember_me" type="checkbox" class="" name="remember">
-                        <span class="">Se souvenir</span>
-                    </label>
-                </div>
-                    <button type="submit" class="btn1">
+
+                    <button type="submit" class="btn_login">
                         Se connecter
                     </button>
                 </div>

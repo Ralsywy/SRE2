@@ -3,7 +3,7 @@
 
 @section('content')
 <br>
-<div class="body">
+<div class="body hidden">
 <div class="container">
     <Header>Création d'un suivis</Header>
     <div class="progress-bar">
