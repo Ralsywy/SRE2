@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body>
+      @auth
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -20,17 +21,19 @@
           </a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
+              
               <li class="nav-item">
                 <a class="nav-link {{ (request()->is('welcome')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {{ (request()->is('inscrits')) ? 'active' : '' }}" href="{{ route('show-inscrits') }}">Liste des inscrits</a>
               </li>
+              @if(auth()->user()->is_admin == 1)
               <li class="nav-item">
-                <a class="nav-link {{ (request()->is('comptes')) ? 'active' : '' }}" href="{{ route('show-comptes') }}">Accompagnateurs</a>
+                <a class="nav-link {{ (request()->is('voir-acc')) ? 'active' : '' }}" href="{{ route('voir-acc') }}">Gérer les accompagnateurs</a>
               </li>
-              @auth
               <li>
+              @endif
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-dropdown-link :href="route('logout')" class="nav-link"
@@ -40,11 +43,12 @@
                 </x-dropdown-link>
                 </form>
               </li>
-              @endauth
+              
             </ul>
           </div>
         </div>
       </nav>
+      @endauth
       @if(Session::has('success'))
       <div class="alert alert-success" role="alert">
         {{Session::get('success')}}

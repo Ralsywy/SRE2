@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccompagnateurController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InscritsController;
@@ -16,23 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-})->name('/');
 
 
-Route::get('welcome', function () {
-    return view('/dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/', function () {
+        return view('auth.login');
+    })->name('/');
+});
+
+
 
 Route::middleware('auth')->group(function () {
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-Route::get('inscrits', [InscritsController::class, 'show_inscrits'])->name('show-inscrits');
-Route::get('comptes', [InscritsController::class, 'show_comptes'])->name('show-comptes');
-
-Route::post('register-acc', [RegisteredUserController::class, 'register_acc'])->name('register-acc');
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('inscrits', [InscritsController::class, 'show_inscrits'])->name('show-inscrits');
+    
+    Route::get('voir-acc', [AccompagnateurController::class, 'voir_acc'])->name('voir-acc');
+    Route::post('register-acc', [RegisteredUserController::class, 'register_acc'])->name('register-acc');
+    Route::delete('supp-acc/{id}', [AccompagnateurController::class, 'supp_acc'])->name('supp-acc');
 });
 
 require __DIR__.'/auth.php';
