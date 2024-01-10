@@ -4,7 +4,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="" :status="session('status')" />
     <div class="page-login">
-        <div class="container">
+        <div class="container hidden">
             <h1>Connexion</h1>
             <form method="POST" action="{{ route('login') }}">
                 @csrf

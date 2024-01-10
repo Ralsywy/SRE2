@@ -64,5 +64,6 @@
       </div>
       @endif
       @yield('content')
+      <script src="{{asset('javascript/script.js')}}"></script>
     </body>
 </html>

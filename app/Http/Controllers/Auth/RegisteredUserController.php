@@ -82,7 +82,7 @@ class RegisteredUserController extends Controller
             $user->password= $request['password'];
             $user->pseudo= $pseudo;
             $user->save();
-            return redirect()->route('show-comptes')->with("success","L'accompagnateur a été crée");
+            return redirect()->route('voir-acc')->with("success","L'accompagnateur a été crée");
         } 
 		catch (\Exception $e) {
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
