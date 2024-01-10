@@ -27,14 +27,8 @@
                         <i class="bx bxs-lock-alt"></i>
                 </div>
 
-                <!-- Remember Me -->
-                <div class="remember-forgot">
-                    <label for="remember_me" class="">
-                        <input id="remember_me" type="checkbox" class="" name="remember">
-                        <span class="">Se souvenir</span>
-                    </label>
-                </div>
-                    <button type="submit" class="btn1">
+
+                    <button type="submit" class="btn_login">
                         Se connecter
                     </button>
                 </div>
