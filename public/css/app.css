@@ -186,7 +186,7 @@ button:hover{
 
 .container .form-outer {
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .form-outer form {
@@ -275,6 +275,7 @@ form .page .btns button .next {
 }
 
 .container .progress-bar .step {
+    position: relative;
     text-align: center;
     width: 100%;
 }
@@ -296,17 +297,17 @@ form .page .btns button .next {
     position: absolute;
     content: '';
     bottom: 11px;
-    right: -51px;
+    right: -38px;
     height: 3px;
-    width: 44px;
+    width: 37px;
     background: #262626;
 }
 
-.progress-bar .step:last-child .bullet:after {
+.progress-bar .step .bullet:after {
     background: #d43f8d;
     transform: scaleX(0);
     transform-origin: left;
-    animation: animate 0.3s linear infinite;
+    animation: animate 0.3s linear forwards;
 }
 
 @keyframes animate {
@@ -333,6 +334,11 @@ form .page .btns button .next {
 }
 
 .progress-bar .step .check {
+    display: absolute;
+    left: 50%;
+    top: 70%;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
     display: none;
 }
 .page-login .input-box{
@@ -366,4 +372,16 @@ form .page .btns button .next {
     border: 2px solid rgba(255,255,255,.2);
     border-radius: 40px;
     padding: 0.5rem 1.5rem;
+}
+
+.field textarea {
+    width: 310px;
+    height: 100px;
+    resize: none;
+}
+
+/*** Element invisible par défaut ***/
+
+#div_rdc {
+    display: none;
 }
