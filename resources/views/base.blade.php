@@ -23,10 +23,13 @@
             <ul class="navbar-nav mx-auto">
               
               <li class="nav-item">
-                <a class="nav-link {{ (request()->is('welcome')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
+                <a class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ (request()->is('inscrits')) ? 'active' : '' }}" href="{{ route('creer-inscrit') }}">Créer un inscrit</a>
+                <a class="nav-link {{ (request()->is('voir-inscrits')) ? 'active' : '' }}" href="{{ route('voir-inscrits') }}">Liste des inscrits</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ (request()->is('creer-inscrit')) ? 'active' : '' }}" href="{{ route('creer-inscrit') }}">Créer un inscrit</a>
               </li>
               @if(auth()->user()->is_admin == 1)
               <li class="nav-item">
