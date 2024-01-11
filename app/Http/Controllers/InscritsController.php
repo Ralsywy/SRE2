@@ -17,7 +17,7 @@ class InscritsController extends Controller
 public function voir_inscrits() {
     
     try {
-        $inscrits=Inscrit::with("capEmploi")->get();;
+        $inscrits=Inscrit::all();
         return view('voir-inscrits',compact('inscrits'));
     } 
     catch (\Exception $e) {
