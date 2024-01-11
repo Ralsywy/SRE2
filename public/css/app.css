@@ -203,7 +203,7 @@ button:hover{
 
 .container .form-outer {
     width: 100%;
-    overflow: visible;
+    overflow:unset;
 }
 
 .form-outer form {
@@ -214,6 +214,7 @@ button:hover{
 
 .form-outer form .page {
     width: 25%;
+    transition: margin-left 0.3s ease-in-out;
 }
 
 .form-outer form .page .title {
@@ -250,7 +251,7 @@ button:hover{
     height: calc(100% + 5px);
     margin-top: -20px;
     border: none;
-    background: #d43f8d;
+    background: var(--secondary);
     border-radius: 5px;
     color: #fff;
     font-size: 18px;
@@ -411,5 +412,129 @@ form .page .btns button .next {
 /*** Element invisible par défaut ***/
 
 #div_rdc {
+    display: none;
+}
+
+#div_enfant {
+    display: none;
+}
+
+#preciser {
+    display: none;
+}
+
+#div_france {
+    display: none;
+}
+
+#div_soelis {
+    display: none;
+}
+
+#div_cma {
+    display: none;
+}
+
+#div_mission {
+    display: none;
+}
+
+#div_cap {
+    display: none;
+}
+
+#div_cv_oui {
+    display: none;
+}
+
+#div_cv_non {
+    display: none;
+}
+
+#div_permis {
+    display: none;
+}
+
+#autos {
+    display: none;
+}
+
+#motos {
+    display: none;
+}
+
+#marchandises {
+    display: none;
+}
+
+#div_vehicule_dispo {
+    display: none;
+}
+
+#div_vehicule_prevu {
+    display: none;
+}
+
+#BEP {
+    display: none;
+}
+
+#CAP {
+    display: none;
+}
+
+#BAC {
+    display: none;
+}
+
+#BAC2 {
+    display: none;
+}
+
+#licence {
+    display: none;
+}
+
+#master1 {
+    display: none;
+}
+
+#master2 {
+    display: none;
+}
+
+#autre_diplome {
+    display: none;
+}
+
+#formation_continue {
+    display: none;
+}
+
+#div_reconv {
+    display: none;
+}
+
+#div_form_prevu {
+    display: none;
+}
+
+#div_reprise {
+    display: none;
+}
+
+#div_form_pro {
+    display: none;
+}
+
+#qualifiante {
+    display: none;
+}
+
+#diplomante {
+    display: none;
+}
+
+#div_langue {
     display: none;
 }
