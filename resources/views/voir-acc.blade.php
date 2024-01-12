@@ -18,7 +18,7 @@
                 <input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirmer mot de passe">
             </div>
             <div class="input-box hidden">
-                <button type="submit" class="btn_creer">Créer</button>
+                <button type="submit" class="btn_creer zoom">Créer</button>
             </div>
         </form>
     </div>
@@ -32,7 +32,7 @@
             <form method="post" action="{{ route('supp-acc',[$ligne->id])}}">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn_supp" onclick='return check_del()'>Supprimer</button>
+                <button type="submit" class="btn_supp zoom" onclick='return check_del()'>Supprimer</button>
             </form>
         </div>
         @endforeach
