@@ -12,6 +12,7 @@
         <title>SRE</title>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
       @auth

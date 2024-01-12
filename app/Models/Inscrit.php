@@ -23,9 +23,8 @@ class Inscrit extends Model
     {
         return $this->hasOne(Cv::class);
     }
-    public function user(): HasOne
-    {
-        return $this->hasOne(User::class);
+    public function user() {
+        return $this->belongsTo(User::class);
     }
     public function formationPro(): HasOne
     {

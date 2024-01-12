@@ -17,13 +17,18 @@ class InscritsController extends Controller
 public function voir_inscrits() {
     
     try {
-        $inscrits=Inscrit::with("capEmploi","enfants")->get();
+        $inscrits=Inscrit::with("user")->get();
         return view('voir-inscrits',compact('inscrits'));
     } 
     catch (\Exception $e) {
         return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
     }
    
+}
+public function modifier_inscrit($id){
+    $users=User::all();
+    $inscrit = Inscrit::find($id);
+    return view('modifier-inscrit',compact('inscrit'),compact('users'));
 }
 
    
