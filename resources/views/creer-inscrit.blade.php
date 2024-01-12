@@ -2,7 +2,6 @@
 
 
 @section('content')
-<br>
 <div class="body hidden">
 <div class="container">
     <Header>Création d'un suivis</Header>
@@ -53,7 +52,7 @@
 <div class="form-outer">
     <form action="#">
             <!---  Page 1 : INFORMATIONS PERSONNELLES  --->
-        <div class="page slidepage">
+        <div class="page 1 slidepage" id="page1">
             <div class="title hidden">Informations personnelles :</div>
             <div class="field">
                 <div class="label">Date de contact</div>
@@ -100,11 +99,11 @@
                 </select>
             </div>
             <div class="field nextBtn">
-                <button>Suivant</button>
+                <a>Suivant</a>
             </div>
         </div>
             <!---  Page 2 : COORDONNEES  --->
-            <div class="page">
+            <div class="page 2" id="page2">
                 <div class="title">Coordonnées :</div>
                 <div class="field">
                     <div class="label">Civilité</div>
@@ -165,12 +164,12 @@
                     </select>
                 </div>
                 <div class="field btns">
-                    <button class="next-1 next">Suivant</button>
-                    <button class="prev-1 prev">Précédent</button>
+                    <a class="prev-1 prev">Précédent</a>
+                    <a class="next-1 next">Suivant</a>
                 </div>
             </div>
             <!---  Page 3 : SITUATION PERSONNELLE  --->
-            <div class="page">
+            <div class="page 3" id="page3">
                 <div class="title">Situation personnelle :</div>
                 
                     <div class="label">Enfant à charge</div>
@@ -427,12 +426,12 @@
                 </div>
                 <!--- Si non (rien) --->
                 <div class="field btns">
-                    <button class="next-2 next">Suivant</button>
-                    <button class="prev-2 prev">Précédent</button>
+                    <a class="prev-2 prev">Précédent</a>
+                    <a class="next-2 next">Suivant</a>
                 </div>
             </div>
             <!---  Page 4 : FORMATION  --->
-        <div class="page">
+        <div class="page 4" id="page4">
                 <div class="title">Formations :</div>
                 <div class="field">
                 <div class="label">Diplôme(s) obtenus</div>
@@ -627,12 +626,12 @@
                 <label class="label" for="journee">Travail en SD</label>
 
                 <div class="field btns">
-                    <button class="next-3 next">Suivant</button>
-                    <button class="prev-3 prev">Précédent</button>
+                    <a class="prev-3 prev">Précédent</a>
+                    <a class="next-3 next">Suivant</a>
                 </div>
         </div>
             <!---  Page 5 : LANGUES  --->
-            <div class="page">
+            <div class="page 5" id="page5">
                 <div class="title">Langues</div>
                 <div class="label">Inscrit aux ateliers de français</div>
                 <input type="radio" name="is_atelier" value="oui" id="oui_fr">
@@ -726,20 +725,22 @@
                 </div>
                 <!--- Fin --->
                 <div class="field btns">
-                    <button class="next-4 next">Suivant</button>
-                    <button class="prev-4 prev">Précédent</button>
+                    <a class="prev-4 prev">Précédent</a>
+                    <a class="next-4 next">Suivant</a>
                 </div>
             </div>
             <!---  Page 6 : INFORMATIONS COMPLEMENTAIRES  --->
-            <div class="page">
+            <div class="page 6" id="page6">
                 <div class="title">Informations complémentaires</div>
                 <div class="field">
                     <div class="label">Notes</div>
                     <textarea type="text" name="infos_comp"></textarea>
                 </div>
+                <br>
                 <div class="field btns">
-                    <button class="submit next">Confirmer</button>
-                    <button class="prev-5 prev">Précédent</button>
+                    <a class="prev-5 prev">Précédent</a>
+                    <button class="submit next">Confirmer</button9>
+
                 </div>
             </div>
     </form>
@@ -759,21 +760,82 @@
     const nextBtnFive = document.querySelector('.next-4');
     const prevBtnSix = document.querySelector('.prev-5');
     const submitBtn = document.querySelector('.submit');
+    const progressText = document.querySelectorAll('.step p');
+    const progressCheck = document.querySelectorAll('.step .check');
+    const bullet = document.querySelectorAll('.step .bullet');
+    let max = 6;
+    let current = 1;
     
     firstNextBtn.addEventListener("click", function() {
         slidePage.style.marginLeft = "-25%";
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        current +=1;
+        document.getElementById('page2').style.display = 'block';
     });
     nextBtnSec.addEventListener("click", function() {
         slidePage.style.marginLeft = "-50%";
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        current +=1;
+        document.getElementById('page3').style.display = 'block';
     });
     nextBtnThird.addEventListener("click", function() {
         slidePage.style.marginLeft = "-75%";
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        current +=1;
+        document.getElementById('page4').style.display = 'block';
     });
     nextBtnFourth.addEventListener("click", function() {
         slidePage.style.marginLeft = "-100%";
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        current +=1;
+        document.getElementById('page5').style.display = 'block';
     });
     nextBtnFive.addEventListener("click", function() {
         slidePage.style.marginLeft = "-125%";
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        current +=1;
+        document.getElementById('page6').style.display = 'block';
+    });
+
+    prevBtnSec.addEventListener("click", function() {
+        slidePage.style.marginLeft = "0%";
+        bullet[current - 1].classList.remove("active");
+        progressCheck[current - 1].classList.remove("active");
+        current -=1;
+        document.getElementById('page2').style.display = 'none';
+    });
+    prevBtnThird.addEventListener("click", function() {
+        slidePage.style.marginLeft = "-25%";
+        bullet[current - 2].classList.remove("active");
+        progressCheck[current - 2].classList.remove("active");
+        current -=1;
+        document.getElementById('page3').style.display = 'none';
+    });
+    prevBtnFourth.addEventListener("click", function() {
+        slidePage.style.marginLeft = "-50%";
+        bullet[current - 2].classList.remove("active");
+        progressCheck[current - 2].classList.remove("active");
+        current -=1;
+        document.getElementById('page4').style.display = 'none';
+    });
+    prevBtnFive.addEventListener("click", function() {
+        slidePage.style.marginLeft = "-75%";
+        bullet[current - 2].classList.remove("active");
+        progressCheck[current - 2].classList.remove("active");
+        current -=1;
+        document.getElementById('page5').style.display = 'none';
+    });
+    prevBtnSix.addEventListener("click", function() {
+        slidePage.style.marginLeft = "-100%";
+        bullet[current - 2].classList.remove("active");
+        progressCheck[current - 2].classList.remove("active");
+        current -=1;
+        document.getElementById('page6').style.display = 'none';
     });
                 </script>
 @endsection
