@@ -21,6 +21,10 @@ class AccompagnateurController extends Controller
     
     public function supp_acc($id){
         $accompagnateur = User::find($id);
+        foreach($accompagnateur->inscrits as $ligne){
+            $ligne->user_id=null;
+            $ligne->save();
+        }
         $accompagnateur->delete();
         return redirect()->route('voir-acc')->with("success","L'accompagnateur a été supprimée");
     }
