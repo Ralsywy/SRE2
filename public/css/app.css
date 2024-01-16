@@ -463,6 +463,27 @@ form .page .btns button.next {
     margin-top: 1rem;
     transition: .3s;
 }
+
+.field2 select {
+    height: 100%;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 18px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.field3 input {
+    height: 100%;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 18px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
 /*** Element invisible par défaut ***/
 
 #div_rdc {

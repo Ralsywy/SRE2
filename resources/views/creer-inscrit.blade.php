@@ -7,42 +7,42 @@
     <Header>Création d'un suivis</Header>
     <div class="progress-bar">
         <div class="step">
-            <p>étape</p>
+            <p>1</p>
             <div class="bullet">
                 <span>1</span>
             </div>
             <div class="check fas fa-check"></div>
         </div>
         <div class="step">
-            <p>étape</p>
+            <p>2</p>
             <div class="bullet">
                 <span>2</span>
             </div>
             <div class="check fas fa-check"></div>
         </div>
         <div class="step">
-            <p>étape</p>
+            <p>3</p>
             <div class="bullet">
                 <span>3</span>
             </div>
             <div class="check fas fa-check"></div>
         </div>
         <div class="step">
-            <p>étape</p>
+            <p>4</p>
             <div class="bullet">
                 <span>4</span>
             </div>
             <div class="check fas fa-check"></div>
         </div>
         <div class="step">
-            <p>étape</p>
+            <p>5</p>
             <div class="bullet">
                 <span>5</span>
             </div>
             <div class="check fas fa-check"></div>
         </div>
         <div class="step">
-            <p>étape</p>
+            <p>6</p>
             <div class="bullet">
                 <span>6</span>
             </div>
@@ -182,18 +182,72 @@
                 <div id="div_enfant" class="hidden">
                 <div class="field">
                     <div class="label">Nombre d'enfants </div>
-                    <input type="number" name="nb_enfant">
+                    <input type="number" name="nb_enfant" id="nombre_enfant">
                 </div>
+    <!--- Pour chaque enfant --->
+    <div id="boite" class="field3"></div>
+</div>
 
-                <div class="field">
-                    <div class="label">Nom de l'enfant </div>
-                    <input type="text" name="nom">
-                </div>
-                <div class="field">
-                    <div class="label">Date de naissance de l'enfant </div>
-                    <input type="text" name="dte_naissance">
-                </div>
-                </div>
+<script>
+    // Récupérer la référence de l'input nombre_enfant
+    const inputNombreEnfant = document.getElementById('nombre_enfant');
+    
+    // Écouter l'événement de modification de l'input
+    inputNombreEnfant.addEventListener('change', () => {
+      // Récupérer le nombre d'enfants à partir de la valeur de l'input
+      const nombreEnfant = parseInt(inputNombreEnfant.value);
+    
+      // Référence à l'élément parent où les divs doivent être ajoutés
+      const parentElement = document.getElementById('boite');
+    
+      // Vider le contenu précédent
+      parentElement.innerHTML = '';
+    
+      // Créer et ajouter les divs en fonction du nombre d'enfants
+      for (let i = 0; i < nombreEnfant; i++) {
+        // Créer un élément div
+        const div = document.createElement('div');
+        div.id = 'boite';
+        const div2 = document.createElement('div');
+        div2.id = 'boite2';
+    
+        // Créer un élément label pour le nom de l'enfant
+        const labelNomEnfant = document.createElement('label');
+        labelNomEnfant.htmlFor = `nom_enfant`;
+        labelNomEnfant.textContent = `Nom prénom de l'enfant ${i + 1} : `;
+    
+        // Créer un élément input pour le nom de l'enfant
+        const inputNomEnfant = document.createElement('input');
+        inputNomEnfant.type = 'text';
+        inputNomEnfant.name = `nom_enfant${i + 1}`; // Ajout d'un name différent
+        inputNomEnfant.classList.add('nom_enfant');
+    
+        // Créer un élément label pour la date de naissance de l'enfant
+        const labelDateNaissance = document.createElement('label');
+        labelDateNaissance.htmlFor = 'dte_naissance_enfant';
+        labelDateNaissance.textContent = `Date de naissance de l'enfant ${i + 1} : `;
+        labelDateNaissance.classList.add('dte_naissance_enfant');
+    
+    
+        // Créer un élément input pour la date de naissance de l'enfant
+        const inputDateNaissance = document.createElement('input');
+        inputDateNaissance.type = 'date';
+        inputDateNaissance.name = `dte_naissance${i + 1}`; // Ajout d'un name différent
+        inputDateNaissance.classList.add('dte_naissance_enfant');
+    
+        // Ajouter les éléments créés au div parent
+        div.appendChild(labelNomEnfant);
+        div.appendChild(inputNomEnfant);
+        div2.appendChild(labelDateNaissance);
+        div2.appendChild(inputDateNaissance);
+    
+        // Ajouter le div parent à l'élément parent
+        parentElement.appendChild(div);
+        parentElement.appendChild(div2);
+      }
+    });
+    
+            </script>
                 <!--- Fin --->
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>
@@ -435,89 +489,152 @@
                 <div class="title">Formations :</div>
                 <div class="field">
                 <div class="label">Diplôme(s) obtenus</div>
-                <input type="number" name="nb_diplome">
+                <input type="number" name="nb_diplome" class="nb_diplome">
                 </div>
-                <!--- Si 1 ou plus --->
-                <div class="field">
-                 <div class="label">Type de diplôme</div>
-                 <select name="nom_diplome" onchange="hideshowdiplome()" id="diplome">
-                    <option value="aucun">Choisir un diplôme</option>
-                    <option value="brevet">Brevet</option>
-                    <option value="cap">CAP</option>
-                    <option value="bep">BEP</option>
-                    <option value="bac">BAC</option>
-                    <option value="bac+2">BAC+2</option>
-                    <option value="licence">Licence</option>
-                    <option value="master1">Master 1</option>
-                    <option value="master2">Master 2</option>
-                    <option value="autre">Autre</option>
-                    <option value="form_continue">Formation continue</option>
-                 </select>
+                <div id="diplomes_container" class="field2">
                 </div>
-                <!--- Si Brevet (rien) --->
-                <!--- Si CAP --->
-                <div id="CAP" class="hidden">
-                <div class="field">
-                    <div class="labe">Renseigner le type de métier</div>
-                    <input type="text" name="niveau_cap">
-                </div>
-                </div>
-                <!--- Si BEP --->
-                <div id="BEP" class="hidden">
-                <div class="field">
-                    <div class="labe">Renseigner la spécialité</div>
-                    <input type="text" name="niveau_bep">
-                </div>
-                </div>
-                <!--- Si BAC --->
-                <div id="BAC" class="hidden">
-                <div class="field">
-                    <div class="labe">Renseigner la spécialité</div>
-                    <input type="text" name="niveau_bac">
-                </div>
-                </div>
-                <!--- Si BAC+2 --->
-                <div id="BAC2" class="hidden">
-                <div class="field">
-                    <div class="labe">Renseigner la spécialité</div>
-                    <input type="text" name="niveau_bac+2">
-                </div>
-                </div>
-                <!--- Si Licence --->
-                <div id="licence" class="hidden">
-                <div class="field">
-                    <div class="labe">Renseigner la spécialité</div>
-                    <input type="text" name="niveau_licence">
-                </div>
-                </div>
-                <!--- Si Master 1 --->
-                <div id="master1" class="hidden">
-                <div class="field">
-                    <div class="labe">Renseigner la spécialité</div>
-                    <input type="text" name="niveau_master1">
-                </div>
-                </div>
-                <!--- Si Master 2 --->
-                <div id="master2" class="hidden">
-                <div class="field">
-                    <div class="labe">Renseigner la spécialité</div>
-                    <input type="text" name="niveau_master2">
-                </div>
-                </div>
-                <!--- Si Formation continue --->
-                <div id="formation_continue" class="hidden">
-                    <div class="field">
-                        <div class="label">Renseigner la formation</div>
-                        <input type="text" name="niveau_formation_continue">
-                    </div>
-                </div>
-                <!--- Si Autre --->
-                <div id="autre_diplome" class="hidden">
-                <div class="field">
-                    <div class="labe">Renseigner le diplôme</div>
-                    <input type="text" name="niveau_autre">
-                </div>
-                </div>
+                <div id="responses_container"></div>
+                <script>// Écouter les changements dans le nombre de diplômes obtenus
+                    document.querySelector('.nb_diplome').addEventListener('change', function () {
+                        var nbDiplomes = parseInt(this.value, 10);
+                        var diplomesContainer = document.getElementById("diplomes_container");
+                    
+                        // Réinitialiser les champs à chaque changement du nombre de diplômes
+                        diplomesContainer.innerHTML = '';
+                    
+                        // Créer les champs "Type de diplôme" en fonction du nombre de diplômes
+                        for (var i = 0; i < nbDiplomes; i++) {
+                            var newDiplomeDiv = document.createElement('div');
+                            newDiplomeDiv.className = 'diplome';
+                    
+                            var label = document.createElement('div');
+                            label.className = 'label';
+                            label.innerHTML = 'Type de Diplôme ' + (i + 1);
+                            newDiplomeDiv.appendChild(label);
+                    
+                            var select = document.createElement('select');
+                            select.name = 'nom_diplome_' + i;
+                            select.id = 'diplome_' + i;
+                            
+                            // Ajouter les options au select
+                            var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master 1", "Master 2", "Autre", "Formation continue"];
+                            for (var j = 0; j < options.length; j++) {
+                                var option = document.createElement('option');
+                                option.value = options[j].toLowerCase();
+                                option.text = options[j];
+                                select.appendChild(option);
+                            }
+                    
+                            newDiplomeDiv.appendChild(select);
+                            diplomesContainer.appendChild(newDiplomeDiv);
+                        }
+                    });
+                    </script>
+
+                    
+
+                    <script>// Fonction pour créer les champs de réponse en fonction du type de diplôme sélectionné
+                        function createResponseFields(diplomeIndex, selectedDiplome) {
+                            var responseContainer = document.getElementById("responses_container_" + diplomeIndex);
+                            
+                            // Supprimer les champs existants
+                            responseContainer.innerHTML = '';
+                        
+                            // Créer les champs en fonction du type de diplôme
+                            switch (selectedDiplome) {
+                                case 'cap':
+                                    createTextField(responseContainer, 'Renseigner le type de métier', 'niveau_cap_' + diplomeIndex);
+                                    break;
+                                case 'bep':
+                                    createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_bep_' + diplomeIndex);
+                                    break;
+                                case 'bac':
+                                case 'bac+2':
+                                case 'licence':
+                                case 'master 1':
+                                case 'master 2':
+                                    createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_' + selectedDiplome + '_' + diplomeIndex);
+                                    break;
+                                case 'formation continue':
+                                    createTextField(responseContainer, 'Renseigner la formation', 'niveau_formation_continue_' + diplomeIndex);
+                                    break;
+                                case 'autre':
+                                    createTextField(responseContainer, 'Renseigner le diplôme', 'niveau_autre_' + diplomeIndex);
+                                    break;
+                                default:
+                                    // Aucune action pour les autres cas
+                                    break;
+                            }
+                        }
+                        
+                        // Fonction pour créer un champ de texte
+                        function createTextField(container, label, name) {
+                            var fieldDiv = document.createElement('div');
+                            fieldDiv.className = 'field';
+                        
+                            var labelDiv = document.createElement('div');
+                            labelDiv.className = 'label';
+                            labelDiv.innerHTML = label;
+                            fieldDiv.appendChild(labelDiv);
+                        
+                            var input = document.createElement('input');
+                            input.type = 'text';
+                            input.name = name;
+                            fieldDiv.appendChild(input);
+                        
+                            container.appendChild(fieldDiv);
+                        }
+                        
+                        // Écouter les changements dans le nombre de diplômes obtenus
+                        document.querySelector('input[name="nb_diplome"]').addEventListener('change', function () {
+                            var nbDiplomes = parseInt(this.value, 10);
+                            var diplomesContainer = document.getElementById("diplomes_container");
+                        
+                            // Réinitialiser les champs à chaque changement du nombre de diplômes
+                            diplomesContainer.innerHTML = '';
+                        
+                            // Créer les champs "Type de diplôme" en fonction du nombre de diplômes
+                            for (var i = 0; i < nbDiplomes; i++) {
+                                var newDiplomeDiv = document.createElement('div');
+                                newDiplomeDiv.className = 'diplome';
+                        
+                                var label = document.createElement('div');
+                                label.className = 'label';
+                                label.innerHTML = 'Diplôme ' + (i + 1);
+                                newDiplomeDiv.appendChild(label);
+                        
+                                var select = document.createElement('select');
+                                select.name = 'nom_diplome_' + i;
+                                select.id = 'diplome_' + i;
+                        
+                                // Ajouter les options au select
+                                var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master 1", "Master 2", "Autre", "Formation continue"];
+                                for (var j = 0; j < options.length; j++) {
+                                    var option = document.createElement('option');
+                                    option.value = options[j].toLowerCase();
+                                    option.text = options[j];
+                                    select.appendChild(option);
+                                }
+                        
+                                newDiplomeDiv.appendChild(select);
+                        
+                                // Créer le conteneur pour les réponses
+                                var responseContainer = document.createElement('div');
+                                responseContainer.id = 'responses_container_' + i;
+                                newDiplomeDiv.appendChild(responseContainer);
+                        
+                                diplomesContainer.appendChild(newDiplomeDiv);
+                        
+                                // Ajouter un écouteur d'événements sur le changement de type de diplôme
+                                select.addEventListener('change', function () {
+                                    var diplomeIndex = parseInt(this.id.split('_')[1], 10);
+                                    var selectedDiplome = this.value;
+                                    createResponseFields(diplomeIndex, selectedDiplome);
+                                });
+                            }
+                        });
+                        
+                        </script>
                 <!--- Si Formation continue --->
                     <div class="label">Reconversion professionnelle</div>
                     <input type="radio" name="is_reconv_pro" value="oui" onclick="hideshowreconv(1)" id="oui_reconv">
@@ -739,7 +856,7 @@
                 <br>
                 <div class="field btns">
                     <a class="prev-5 prev">Précédent</a>
-                    <button class="submit next">Confirmer</button9>
+                    <button class="submit next">Confirmer</button>
 
                 </div>
             </div>
