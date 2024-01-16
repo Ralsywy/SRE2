@@ -1,4 +1,4 @@
-<option value="aucune">Choisir une nationalité</option>
+<option value="Aucune">Choisir une nationalité</option>
 <option value="afghanistan">Afghanistan</option>
         <option value="afrique-du-sud">Afrique du Sud</option>
         <option value="albanie">Albanie</option>

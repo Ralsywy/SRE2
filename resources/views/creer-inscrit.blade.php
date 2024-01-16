@@ -50,7 +50,7 @@
         </div>
     </div>
 <div class="form-outer">
-    <form method="POST" action="{{ route('creer-inscription') }}">
+    <form method="POST" action="{{ route('creer-inscription') }}" enctype="multipart/form-data">
         @csrf
             <!---  Page 1 : INFORMATIONS PERSONNELLES  --->
         <div class="page 1 slidepage" id="page1">
@@ -67,7 +67,7 @@
                 <div class="label">Inscrit aux restos du coeur</div>
                 <input type="radio" name="is_rdc" value="1" onclick="hideshowrdc(1)" id="oui_rdc">
                 <label class="label" for="oui_rdc">Oui</label>
-                <input type="radio" name="is_rdc" value="0" onclick="hideshowrdc(2)" id="non_rdc">
+                <input type="radio" name="is_rdc" value="0" onclick="hideshowrdc(2)" id="non_rdc" checked>
                 <label class="label" for="non_rdc">Non</label>
             
             <!--- Si oui --->
@@ -90,7 +90,7 @@
                 <div class="label">Bénévole aux restos du coeur</div>
                 <input type="radio" name="is_benevole" value="1" id="oui_benevole">
                 <label class="label" for="oui_benevole">Oui</label>
-                <input type="radio" name="is_benevole" value="0" id="non_benevole">
+                <input type="radio" name="is_benevole" value="0" id="non_benevole" checked>
                 <label class="label" for="non_benevole">Non</label>
             
             <div class="field">
@@ -122,11 +122,11 @@
                 </div>
                 <div class="field">
                     <div class="label">Nom</div>
-                    <input type="text" name="nom">
+                    <input type="text" name="nom" id="name">
                 </div>
                 <div class="field">
                     <div class="label">Prénom</div>
-                    <input type="text" name="prenom">
+                    <input type="text" name="prenom" oninput="capitalizeFirstLetter()" id="prenom">
                 </div>
                 <div class="field">
                     <div class="label">Date de naissance</div>
@@ -162,11 +162,11 @@
                     <div class="label">Situation personnelle</div>
                     <select name="situation_perso">
                         <option value="Aucune">Choisir une situation personnelle</option>
-                        <option value="celibataire">Célibataire</option>
-                        <option value="marie">Marié(e)</option>
-                        <option value="divorce">Divorcé(e)</option>
-                        <option value="veuf">Veuf(ve)</option>
-                        <option value="pacse">Pacsé(e)</option>
+                        <option value="Célibataire">Célibataire</option>
+                        <option value="Marié(e)">Marié(e)</option>
+                        <option value="Divorcé(e)">Divorcé(e)</option>
+                        <option value="Veuf(ve)">Veuf(ve)</option>
+                        <option value="Pacsé(e)">Pacsé(e)</option>
                     </select>
                 </div>
                 <div class="field btns">
@@ -181,7 +181,7 @@
                     <div class="label">Enfant à charge</div>
                     <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant">
                     <label class="label" for="oui_enfant">Oui</label>
-                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant">
+                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" checked>
                     <label class="label" for="non_enfant">Non</label>
                 
                 <!--- Si oui --->
@@ -259,12 +259,12 @@
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
                         <option value="Aucun">Choisir un revenus</option>
-                        <option value="salaire">Salaire</option>
-                        <option value="rsa">RSA</option>
-                        <option value="are">ARE</option>
-                        <option value="aah">AAH</option>
-                        <option value="retraite">Pension de retraite</option>
-                        <option value="autre">Autre</option>
+                        <option value="Salaire">Salaire</option>
+                        <option value="RSA">RSA</option>
+                        <option value="ARE">ARE</option>
+                        <option value="AAH">AAH</option>
+                        <option value="Pension de retraite">Pension de retraite</option>
+                        <option value="Autre">Autre</option>
                         <option value="Aucun">Aucune</option>
                     </select>
                 </div>
@@ -278,9 +278,9 @@
                 <!--- Fin --->
                 
                     <div class="label">Inscrit à France travail</div>
-                    <input type="radio" name="is_france_travail" value="oui" onclick="hideshowfrance(1)" id="oui_pole_emplois">
+                    <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois">
                     <label class="label" for="oui_pole_emplois">Oui</label>
-                    <input type="radio" name="is_france_travail" value="non" onclick="hideshowfrance(2)" id="non_pole_emplois">
+                    <input type="radio" name="is_france_travail" value="0" onclick="hideshowfrance(2)" id="non_pole_emplois"checked>
                     <label class="label" for="non_pole_emplois">Non</label>
                 
                 <!--- Si oui --->
@@ -297,9 +297,9 @@
                 <!--- Fin --->
                 
                     <div class="label">Inscrit à Soélis</div>
-                    <input type="radio" name="is_soelis" value="oui" onclick="hideshowsoelis(1)" id="oui_soelis">
+                    <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis">
                     <label class="label" for="oui_soelis">Oui</label>
-                    <input type="radio" name="is_soelis" value="non" onclick="hideshowsoelis(2)" id="non_soelis">
+                    <input type="radio" name="is_soelis" value="0" onclick="hideshowsoelis(2)" id="non_soelis"checked>
                     <label class="label" for="non_soelis">Non</label>
                 
                 <!--- Si oui --->
@@ -316,9 +316,9 @@
                 <!--- Fin --->
                 
                     <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
-                    <input type="radio" name="is_cma" value="oui" onclick="hideshowcma(1)" id="oui_cma">
+                    <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma">
                     <label class="label" for="oui_cma">Oui</label>
-                    <input type="radio" name="is_cma" value="non" onclick="hideshowcma(2)" id="non_cma">
+                    <input type="radio" name="is_cma" value="0" onclick="hideshowcma(2)" id="non_cma"checked>
                     <label class="label" for="non_cma">Non</label>
                 
                 <!--- Si oui --->
@@ -335,9 +335,9 @@
                 <!--- Fin --->
                 
                     <div class="label">Inscrit à la Mission locale</div>
-                    <input type="radio" name="is_mission_locale" value="oui" onclick="hideshowmission(1)" id="oui_mission_locale">
+                    <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale">
                     <label class="label" for="oui_mission_locale">Oui</label>
-                    <input type="radio" name="is_mission_locale" value="non" onclick="hideshowmission(2)" id="non_mission_locale">
+                    <input type="radio" name="is_mission_locale" value="0" onclick="hideshowmission(2)" id="non_mission_locale"checked>
                     <label class="label" for="non_mission_locale">Non</label>
                 
                 <!--- Si oui --->
@@ -353,10 +353,10 @@
                 </div>
                 <!--- Fin --->
                 
-                    <div class="label">Inscrit à CAP emplois</div>
-                    <input type="radio" name="is_cap_emploi" value="oui" onclick="hideshowcap(1)" id="oui_cap_emploi">
+                    <div class="label">Inscrit à CAP emploi</div>
+                    <input type="radio" name="is_cap_emploi" value="1" onclick="hideshowcap(1)" id="oui_cap_emploi">
                     <label class="label" for="oui_cap_emploi">Oui</label>
-                    <input type="radio" name="is_cap_emploi" value="non" onclick="hideshowcap(2)" id="non_cap_emploi">
+                    <input type="radio" name="is_cap_emploi" value="0" onclick="hideshowcap(2)" id="non_cap_emploi"checked>
                     <label class="label" for="non_cap_emploi">Non</label>
                 
                 <!--- Si oui --->
@@ -373,16 +373,16 @@
                 <!--- Fin --->
                 
                     <div class="label">CV disponible</div>
-                    <input type="radio" name="is_cv" value="oui" onclick="hideshowcv(1)" id="oui_cv">
+                    <input type="radio" name="is_cv" value="1" onclick="hideshowcv(1)" id="oui_cv">
                     <label class="label" for="oui_cv">Oui</label>
-                    <input type="radio" name="is_cv" value="non" onclick="hideshowcv(2)" id="non_cv">
+                    <input type="radio" name="is_cv" value="0" onclick="hideshowcv(2)" id="non_cv"checked>
                     <label class="label" for="non_cv">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_cv_oui">
                 <div class="field">
                     <div class="label">Insérer le cv scanné (format PDF uniquement)</div>
-                    <input type="file" name="cv_nom">
+                    <input type="file" name="cv_nom" id="cv_nom">
                 </div>
                 </div>
                 <!--- Si non --->
@@ -395,9 +395,9 @@
                 <!--- Fin --->
                 
                     <div class="label">A le Permis</div>
-                    <input type="radio" name="is_permis" value="oui" onclick="hideshowpermis(1)" id="oui_permis">
+                    <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis">
                     <label class="label" for="oui_permis">Oui</label>
-                    <input type="radio" name="is_permis" value="non" onclick="hideshowpermis(2)" id="non_permis">
+                    <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis"checked>
                     <label class="label" for="non_permis">Non</label>
                 
                 <!--- Si oui --->
@@ -463,18 +463,18 @@
                 <!--- Fin --->
                 
                     <div class="label">Véhicule disponible</div>
-                    <input type="radio" name="vehicule_dispo" value="oui" onclick="hideshowvehiculedispo(1)" id="oui_vehicule">
+                    <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(2)" id="oui_vehicule">
                     <label class="label" for="oui_vehicule">Oui</label>
-                    <input type="radio" name="vehicule_dispo" value="non" onclick="hideshowvehiculedispo(2)" id="non_vehicule">
+                    <input type="radio" name="vehicule_dispo" value="0" onclick="hideshowvehiculedispo(1)" id="non_vehicule"checked>
                     <label class="label" for="non_vehicule">Non</label>
                 
                 <!--- Si oui (rien) --->
                 <!--- Si non --->
                 <div id="div_vehicule_dispo" class="hidden">
                     <div class="label">Achat prévu d'un véhicule</div>
-                    <input type="radio" name="prevu_vehicule" value="oui" onclick="hideshowvehiculeprevu(1)" id="oui_achat">
+                    <input type="radio" name="prevu_vehicule" value="1" onclick="hideshowvehiculeprevu(1)" id="oui_achat">
                     <label class="label" for="oui_achat">Oui</label>
-                    <input type="radio" name="prevu_vehicule" value="non" onclick="hideshowvehiculeprevu(2)" id="non_achat">
+                    <input type="radio" name="prevu_vehicule" value="0" onclick="hideshowvehiculeprevu(2)" id="non_achat"checked>
                     <label class="label" for="non_achat">Non</label>
                 </div>
                 <!--- Si oui --->
