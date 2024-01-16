@@ -26,6 +26,6 @@ class AccompagnateurController extends Controller
             $ligne->save();
         }
         $accompagnateur->delete();
-        return redirect()->route('voir-acc')->with("success","L'accompagnateur a été supprimée");
+        return redirect()->route('voir-acc')->with("success","L'accompagnateur a été supprimé");
     }
 }
