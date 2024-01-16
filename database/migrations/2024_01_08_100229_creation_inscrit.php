@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('inscrits', function (Blueprint $table) {
             $table->id();
             $table->boolean('statut')->default(true);
-            $table->string('dte_contact')->nullable();
+            $table->date('dte_contact')->nullable();
             $table->string('origine_contact')->nullable();
             $table->boolean('is_rdc')->default(false);
             $table->boolean('is_benevole')->default(false);

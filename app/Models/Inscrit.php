@@ -15,6 +15,10 @@ class Inscrit extends Model
     {
         return $this->hasOne(CapEmploi::class);
     }
+    public function rdc(): HasOne
+    {
+        return $this->hasOne(Rdc::class);
+    }
     public function cma(): HasOne
     {
         return $this->hasOne(Cma::class);
@@ -60,7 +64,7 @@ class Inscrit extends Model
     }
     public function diplomes(): HasMany
     {
-        return $this->hasMany(Diplomes::class);
+        return $this->hasMany(Diplome::class);
     }
     public function enfants(): HasMany
     {
