@@ -1,6 +1,4 @@
-<select class="form-control" name="nationalite" id="nationalite">
-    <optgroup label="A">
-<option value="rien">-- Veuillez choisir une nationalité --</option>
+<option value="aucune">Choisir une nationalité</option>
 <option value="afghanistan">Afghanistan</option>
         <option value="afrique-du-sud">Afrique du Sud</option>
         <option value="albanie">Albanie</option>
@@ -289,5 +287,3 @@
     <optgroup label="Z">
 <option value="zambie">Zambie</option>
         <option value="zimbabwe">Zimbabwe</option>
-    </optgroup>
-</select>

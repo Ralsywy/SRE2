@@ -135,7 +135,7 @@
                 <div class="field">
                     <div class="label">Nationalité</div>
                     <select name="nationalite">
-                        <option value="Aucune">Choisir une nationalité</option>
+                        @include('pays')
                     </select>
                 </div>
                 <div class="field">
@@ -159,9 +159,9 @@
                     <input type="mail" name="email">
                 </div>
                 <div class="field">
-                    <div class="label">Statue</div>
-                    <select name="statue">
-                        <option value="Aucune">Choisir un statue</option>
+                    <div class="label">Situation personnelle</div>
+                    <select name="situation_perso">
+                        <option value="Aucune">Choisir une situation personnelle</option>
                         <option value="celibataire">Célibataire</option>
                         <option value="marie">Marié(e)</option>
                         <option value="divorce">Divorcé(e)</option>

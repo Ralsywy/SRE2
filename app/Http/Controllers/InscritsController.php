@@ -55,6 +55,13 @@ class InscritsController extends Controller
                 $inscrit->nom= $request['nom'];
                 $inscrit->prenom= $request['prenom'];
                 $inscrit->dte_naissance= $request['dte_naissance'];
+                $inscrit->nationalite= $request['nationalite'];
+                $inscrit->adresse= $request['adresse'];
+                $inscrit->code_postal= $request['code_postal'];
+                $inscrit->ville= $request['ville'];
+                $inscrit->telephone= $request['telephone'];
+                $inscrit->email= $request['email'];
+                $inscrit->situation_perso= $request['situation_perso'];
                 $inscrit->save();
                 if($request['is_rdc']=1){
                     $rdc=new Rdc();
