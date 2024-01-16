@@ -50,7 +50,8 @@
         </div>
     </div>
 <div class="form-outer">
-    <form action="#">
+    <form method="POST" action="{{ route('creer-inscription') }}">
+        @csrf
             <!---  Page 1 : INFORMATIONS PERSONNELLES  --->
         <div class="page 1 slidepage" id="page1">
             <div class="title hidden">Informations personnelles :</div>
@@ -94,8 +95,13 @@
             
             <div class="field">
                 <div class="label">Accompagnateur SRE</div>
-                <select name="pseudo">
-                    <option value="pseudo">Choisir un accompagnateur</option>
+                <select name="user_id">
+                    <option value="1">Choisir un accompagnateur</option>
+                    @foreach($accompagnateurs as $ligne)
+                    @if($ligne->id!=1)
+                    <option value={{$ligne->id}}>{{$ligne->name}}</option>
+                    @endif
+                    @endforeach
                 </select>
             </div>
             <div class="field nextBtn">

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Diplomes extends Model
+class Rdc extends Model
 {
     use HasFactory;
     public function inscrit(): BelongsTo
