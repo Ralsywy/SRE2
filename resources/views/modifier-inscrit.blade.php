@@ -665,17 +665,17 @@
                             </script>
                     <!--- Si Formation continue --->
                         <div class="label">Reconversion professionnelle</div>
-                        <input type="radio" name="is_reconv_pro" value="oui" onclick="hideshowreconv(1)" id="oui_reconv">
+                        <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv" @if ($inscrit->is_reconv_pro == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_reconv">Oui</label>
-                        <input type="radio" name="is_reconv_pro" value="non" onclick="hideshowreconv(2)" id="non_reconv">
+                        <input type="radio" name="is_reconv_pro" value="0" onclick="hideshowreconv(2)" id="non_reconv" @if ($inscrit->is_reconv_pro == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_reconv">Non</label>
                     <!--- Si non (rien) --->
                     <!--- Si oui --->
                     <div id="div_reconv" class="hidden">
                     <div class="label">Formations prévues</div>
-                    <input type="radio" name="is_form_prevue" value="oui" onclick="hideshowformprevu(1)" id="oui_prevue">
+                    <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue" @if ($inscrit->reconvPro->is_form_prevue == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_prevue">Oui</label>
-                    <input type="radio" name="is_form_prevue" value="non" onclick="hideshowformprevu(2)" id="non_prevue">
+                    <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue" @if ($inscrit->reconvPro->is_form_prevue == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_prevue">Non</label>
                     </div>
                     <!--- Si non (rien) --->
@@ -683,45 +683,45 @@
                     <div id="div_form_prevu">
                     <div class="field">
                         <div class="label">Renseigner le nom : </div>
-                        <input type="text" name="reconv_nom">
+                        <input type="text" name="reconv_nom" value="{{$inscrit->reconvPro->nom}}">
                     </div>
                     <div class="field">
                         <div class="label">Renseigner la date : </div>
-                        <input type="date" name="reconv_date">
+                        <input type="date" name="reconv_date" value="{{$inscrit->reconvPro->date}}">
                     </div>
                     <div class="field">
                         <div class="label">Renseigner la durée : </div>
-                        <input type="text" name="reconv_duree">
+                        <input type="text" name="reconv_duree" value="{{$inscrit->reconvPro->duree}}">
                     </div>
                     </div>
                    <!--- Fin --->
                     <div class="label">Reprise d'étude</div>
-                    <input type="radio" name="is_reprise_etudes" value="oui" onclick="hideshowreprise(1)" id="oui_reprise">
+                    <input type="radio" name="is_reprise_etudes" value="1" onclick="hideshowreprise(1)" id="oui_reprise" @if ($inscrit->is_reprise_etudes == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_reprise">Oui</label>
-                    <input type="radio" name="is_reprise_etudes" value="non" onclick="hideshowreprise(2)" id="non_reprise">
+                    <input type="radio" name="is_reprise_etudes" value="0" onclick="hideshowreprise(2)" id="non_reprise" @if ($inscrit->is_reprise_etudes == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_reprise">Non</label>
                     <!--- Si non (rien) --->
                     <!--- Si oui --->
                     <div id="div_reprise" class="hidden">
                     <div class="field">
                         <div class="label">Diplôme préparé</div>
-                        <input type="text" name="nom_diplome_reprise">
+                        <input type="text" name="nom_diplome_reprise" value="{{$inscrit->repriseEtudes->nom_diplome}}">
                     </div>
                     </div>
                     <!--- Si fin --->
                     <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
-                    <input type="radio" name="is_formation_pro" value="oui" onclick="hideshowformpro(1)" id="oui_form_pro">
-                    <label class="label" for="oui_form_pro">Oui</label>
-                    <input type="radio" name="is_formation_pro" value="non" onclick="hideshowformpro(2)" id="non_form_pro">
+                    <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro" @if ($inscrit->is_formation_pro == 1) @checked(true) @else @checked(false) @endif>
+                    <label class="label" for="oui_form_pro">Oui</label>formation_pro
+                    <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro" @if ($inscrit->is_formation_pro == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_form_pro">Non</label>
                     <!--- Si oui --->
                     <div id="div_form_pro" class="hidden">
                     <div class="field">
                         <div class="label">Type de formation</div>
                         <select name="type_formation_pro" onchange="hideshowtypeform()" id="type_form">
-                            <option value="aucun">Choisir un type de formation</option>
-                            <option value="qualifiante">Qualifiante</option>
-                            <option value="diplomante">Diplômante</option>
+                            <option value="aucun" @if ($inscrit->formationPro->type == "aucun") @selected(true) @endif>Choisir un type de formation</option>
+                            <option value="qualifiante" @if ($inscrit->formationPro->type == "qualifiante") @selected(true) @endif>Qualifiante</option>
+                            <option value="diplomante" @if ($inscrit->formationPro->type == "diplomante") @selected(true) @endif>Diplômante</option>
                         </select>
                     </div>
                     </div>
@@ -729,45 +729,45 @@
                     <div id="diplomante">
                     <div class="field">
                         <div class="label">Nom de la formation diplômante</div>
-                        <input type="text" name="diplome_formation_pro">
+                        <input type="text" name="diplome_formation_pro" value="{{$inscrit->formationPro->nom}}">
                     </div>
                     </div>
                     <!--- Si qualifiante --->
                     <div id="qualifiante">
                     <div class="field">
                         <div class="label">Nom de la formation qualifiante</div>
-                        <input type="text" name="qualifiante_formation_pro">
+                        <input type="text" name="qualifiante_formation_pro" value="{{$inscrit->formationPro->nom}}">
                     </div>
                     </div>
                     <!--- Fin --->
                     <div class="field">
                         <div class="label">Métier souhaité</div>
-                        <input type="text" name="nom_metier">
+                        <input type="text" name="nom_metier" value="{{$inscrit->metierSouhaites->nom}}">
                     </div>
                     <div class="field">
                         <div class="label">Secteur d'activité</div>
-                        <input type="text" name="secteur_act">
+                        <input type="text" name="secteur_act" value="{{$inscrit->metierSouhaites->secteur_act}}">
                     </div>
                     <div class="field">
                         <div class="label">Secteur géographique</div>
-                        <input type="text" name="secteur_geo">
+                        <input type="text" name="secteur_geo" value="{{$inscrit->metierSouhaites->secteur_geo}}">
                     </div>
                     <div class="label">Horaire de travail souhaité</div>
-                    <input type="checkbox" name="nb_horaire" value="Travail de nuit" id="nuit">
+                    <input type="checkbox" name="nb_horaire" value="Travail de nuit" id="nuit" @if ($inscrit->horaire->type == "Travail de nuit") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="nuit">Travail de nuit</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail la journee" id="journee">
+                    <input type="checkbox" name="nb_horaire" value="Travail la journee" id="journee" @if ($inscrit->horaire->type == "Travail la journee") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="journee">Travail la journée</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail le matin" id="matin">
+                    <input type="checkbox" name="nb_horaire" value="Travail le matin" id="matin" @if ($inscrit->horaire->type == "Travail le matin") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="matin">Travail le matin</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en cyble 2x8" id="2x8">
+                    <input type="checkbox" name="nb_horaire" value="Travail en cyble 2x8" id="2x8" @if ($inscrit->horaire->type == "Travail en cyble 2x8") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="2x8">Travail en cycle 2x8</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en cycle 3x8" id="3x8">
+                    <input type="checkbox" name="nb_horaire" value="Travail en cycle 3x8" id="3x8" @if ($inscrit->horaire->type == "Travail en cycle 3x8") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="3x8">Travail en cycle 3x8</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en cycle 5x8" id="5x8">
+                    <input type="checkbox" name="nb_horaire" value="Travail en cycle 5x8" id="5x8" @if ($inscrit->horaire->type == "Travail en cycle 5x8") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="5x8">Travail en cycle 5x8</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en VSD" id="VSD">
+                    <input type="checkbox" name="nb_horaire" value="Travail en VSD" id="VSD" @if ($inscrit->horaire->type == "Travail en VSD") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="VSD">Travail en VSD</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en SD" id="SD">
+                    <input type="checkbox" name="nb_horaire" value="Travail en SD" id="SD" @if ($inscrit->horaire->type == "Travail en SD") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="journee">Travail en SD</label>
     
                     <div class="field btns">
