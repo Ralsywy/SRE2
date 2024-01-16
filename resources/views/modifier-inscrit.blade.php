@@ -156,7 +156,7 @@
                     <div class="field">
                         <div class="label">Situation personnelle</div>
                         <select name="statue">
-                            <option value="Aucune" @if ($inscrit->statue == "Aucune") @selected(true) @endif>Choisir un statue</option>
+                            <option value="Aucune" @if ($inscrit->statue == "Aucune") @selected(true) @endif>Choisir une situation personnel</option>
                             <option value="celibataire" @if ($inscrit->statue == "celibataire") @selected(true) @endif>Célibataire</option>
                             <option value="marie" @if ($inscrit->statue == "marie") @selected(true) @endif>Marié(e)</option>
                             <option value="divorce" @if ($inscrit->statue == "divorce") @selected(true) @endif>Divorcé(e)</option>
@@ -253,151 +253,151 @@
                     <div class="field hidden">
                         <div class="label">Nature des revenus</div>
                         <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
-                            <option value="Aucun">Choisir un revenus</option>
-                            <option value="salaire">Salaire</option>
-                            <option value="rsa">RSA</option>
-                            <option value="are">ARE</option>
-                            <option value="aah">AAH</option>
-                            <option value="retraite">Pension de retraite</option>
-                            <option value="autre">Autre</option>
-                            <option value="Aucun">Aucune</option>
+                            <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Choisir un revenus</option>
+                            <option value="salaire" @if ($inscrit->nature_revenus == "salaire") @selected(true) @endif>Salaire</option>
+                            <option value="rsa" @if ($inscrit->nature_revenus == "rsa") @selected(true) @endif>RSA</option>
+                            <option value="are" @if ($inscrit->nature_revenus == "are") @selected(true) @endif>ARE</option>
+                            <option value="aah" @if ($inscrit->nature_revenus == "aah") @selected(true) @endif>AAH</option>
+                            <option value="retraite" @if ($inscrit->nature_revenus == "retraite") @selected(true) @endif>Pension de retraite</option>
+                            <option value="autre" @if ($inscrit->nature_revenus == "autre") @selected(true) @endif>Autre</option>
+                            <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Aucune</option>
                         </select>
                     </div>
                     <!--- Si autre --->
                     <div id="preciser">
                     <div class="field">
                         <div class="label">Préciser le type de revenus</div>
-                        <input type="text" name="autre_revenus">
+                        <input type="text" name="autre_revenus" value="{{$inscrit->autre_revenus}}">
                     </div>
                     </div>
                     <!--- Fin --->
                     
                     <div class="label">Demandeur d'asile</div>
-                    <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile">
+                    <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile" @if ($inscrit->is_demande_asile == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_demande_asile">Oui</label>
-                    <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile">
+                    <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_demande_asile">Non</label>
                 <!--- Si oui --->
                 <div id="div_asile">
                 <div class="field">
                     <div class="label">Date d'arrivé en france</div>
-                    <input type="date" name="dte_arrivee_fr">
+                    <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
                 </div>
                 </div>
                 <!--- Fin --->                    
                     <div class="label">Réfugié politique</div>
-                    <input type="radio" name="is_refugie_politique" value="oui" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
+                    <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique" @if ($inscrit->is_refugie_politique == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_refugie_politique">Oui</label>
-                    <input type="radio" name="is_refugie_politique" value="non" onclick="hideshowpolitique(2)" id="non_refugie_politique">
+                    <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique" @if ($inscrit->is_refugie_politique == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">
                     <div class="field">
                         <div class="label">Date d'arrivé en france</div>
-                        <input type="date" name="dte_arrivee_fr">
+                        <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
                     </div>
                     </div>
                     <!--- Fin ---> 
                     
                         <div class="label">Inscrit à France travail</div>
-                        <input type="radio" name="is_france_travail" value="oui" onclick="hideshowfrance(1)" id="oui_pole_emplois">
+                        <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois" @if ($inscrit->is_france_travail == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_pole_emplois">Oui</label>
-                        <input type="radio" name="is_france_travail" value="non" onclick="hideshowfrance(2)" id="non_pole_emplois">
+                        <input type="radio" name="is_france_travail" value="0" onclick="hideshowfrance(2)" id="non_pole_emplois" @if ($inscrit->is_france_travail == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_pole_emplois">Non</label>
                     
                     <!--- Si oui --->
                     <div id="div_france" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription à France travail</div>
-                        <input type="date" name="france_dte_inscription">
+                        <input type="date" name="france_dte_inscription" value="{{$inscrit->franceTravail->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="france_nom_ref">
+                        <input type="text" name="france_nom_ref" value="{{$inscrit->franceTravail->nom_ref}}">
                     </div>
                     </div>
                     <!--- Fin --->
                     
                         <div class="label">Inscrit à Soélis</div>
-                        <input type="radio" name="is_soelis" value="oui" onclick="hideshowsoelis(1)" id="oui_soelis">
+                        <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis" @if ($inscrit->is_soelis == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_soelis">Oui</label>
-                        <input type="radio" name="is_soelis" value="non" onclick="hideshowsoelis(2)" id="non_soelis">
+                        <input type="radio" name="is_soelis" value="0" onclick="hideshowsoelis(2)" id="non_soelis" @if ($inscrit->is_soelis == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_soelis">Non</label>
                     
                     <!--- Si oui --->
                     <div id="div_soelis" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription à Soélis</div>
-                        <input type="date" name="soelis_dte_inscription">
+                        <input type="date" name="soelis_dte_inscription" value="{{$inscrit->soelis->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="soelis_nom_ref">
+                        <input type="text" name="soelis_nom_ref" value="{{$inscrit->soelis->nom_ref}}">
                     </div>
                     </div>
                     <!--- Fin --->
                     
                         <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
-                        <input type="radio" name="is_cma" value="oui" onclick="hideshowcma(1)" id="oui_cma">
+                        <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma" @if ($inscrit->is_cma == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_cma">Oui</label>
-                        <input type="radio" name="is_cma" value="non" onclick="hideshowcma(2)" id="non_cma">
+                        <input type="radio" name="is_cma" value="0" onclick="hideshowcma(2)" id="non_cma" @if ($inscrit->is_cma == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_cma">Non</label>
                     
                     <!--- Si oui --->
                     <div id="div_cma" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
-                        <input type="date" name="cma_dte_inscription">
+                        <input type="date" name="cma_dte_inscription" value="{{$inscrit->cma->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="cma_nom_ref">
+                        <input type="text" name="cma_nom_ref" value="{{$inscrit->cma->nom_ref}}">
                     </div>
                     </div>
                     <!--- Fin --->
                     
                         <div class="label">Inscrit à la Mission locale</div>
-                        <input type="radio" name="is_mission_locale" value="oui" onclick="hideshowmission(1)" id="oui_mission_locale">
+                        <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale" @if ($inscrit->is_mission_locale == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_mission_locale">Oui</label>
-                        <input type="radio" name="is_mission_locale" value="non" onclick="hideshowmission(2)" id="non_mission_locale">
+                        <input type="radio" name="is_mission_locale" value="0" onclick="hideshowmission(2)" id="non_mission_locale" @if ($inscrit->is_mission_locale == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_mission_locale">Non</label>
                     
                     <!--- Si oui --->
                     <div id="div_mission" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription à la Mission locale</div>
-                        <input type="date" name="mission_dte_inscription">
+                        <input type="date" name="mission_dte_inscription" value="{{$inscrit->missionLocale->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="mission_nom_ref">
+                        <input type="text" name="mission_nom_ref" value="{{$inscrit->missionLocale->nom_ref}}">
                     </div>
                     </div>
                     <!--- Fin --->
                     
                         <div class="label">Inscrit à CAP emplois</div>
-                        <input type="radio" name="is_cap_emploi" value="oui" onclick="hideshowcap(1)" id="oui_cap_emploi">
+                        <input type="radio" name="is_cap_emploi" value="1" onclick="hideshowcap(1)" id="oui_cap_emploi" @if ($inscrit->is_cap_emploi == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_cap_emploi">Oui</label>
-                        <input type="radio" name="is_cap_emploi" value="non" onclick="hideshowcap(2)" id="non_cap_emploi">
+                        <input type="radio" name="is_cap_emploi" value="0" onclick="hideshowcap(2)" id="non_cap_emploi" @if ($inscrit->is_cap_emploi == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_cap_emploi">Non</label>
                     
                     <!--- Si oui --->
                     <div id="div_cap" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription CAP emplois</div>
-                        <input type="date" name="cap_dte_inscription">
+                        <input type="date" name="cap_dte_inscription" value="{{$inscrit->cap->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="cap_nom_ref">
+                        <input type="text" name="cap_nom_ref" value="{{$inscrit->cap->nom_ref}}">
                     </div>
                     </div>
                     <!--- Fin --->
                     
                         <div class="label">CV disponible</div>
-                        <input type="radio" name="is_cv" value="oui" onclick="hideshowcv(1)" id="oui_cv">
+                        <input type="radio" name="is_cv" value="1" onclick="hideshowcv(1)" id="oui_cv" @if ($inscrit->is_cv == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_cv">Oui</label>
-                        <input type="radio" name="is_cv" value="non" onclick="hideshowcv(2)" id="non_cv">
+                        <input type="radio" name="is_cv" value="0" onclick="hideshowcv(2)" id="non_cv" @if ($inscrit->is_cv == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_cv">Non</label>
                     
                     <!--- Si oui --->
@@ -417,16 +417,16 @@
                     <!--- Fin --->
                     
                         <div class="label">A le Permis</div>
-                        <input type="radio" name="is_permis" value="oui" onclick="hideshowpermis(1)" id="oui_permis">
+                        <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis" @if ($inscrit->is_permis == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_permis">Oui</label>
-                        <input type="radio" name="is_permis" value="non" onclick="hideshowpermis(2)" id="non_permis">
+                        <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis" @if ($inscrit->is_permis == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_permis">Non</label>
                     
                     <!--- Si oui --->
                     <div id="div_permis" class="hidden">
                     <div class="field">
                         <div class="label">Combien de permis</div>
-                        <input type="number" name="nb_permis">
+                        <input type="number" name="nb_permis" value="{{$inscrit->nb_permis}}">
                     </div>
                     <!--- Si oui un/plusieurs --->
                     <div class="field">
@@ -485,25 +485,25 @@
                     <!--- Fin --->
                     
                         <div class="label">Véhicule disponible</div>
-                        <input type="radio" name="vehicule_dispo" value="oui" onclick="hideshowvehiculedispo(1)" id="oui_vehicule">
+                        <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(1)" id="oui_vehicule" @if ($inscrit->vehicule_dispo == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_vehicule">Oui</label>
-                        <input type="radio" name="vehicule_dispo" value="non" onclick="hideshowvehiculedispo(2)" id="non_vehicule">
+                        <input type="radio" name="vehicule_dispo" value="0" onclick="hideshowvehiculedispo(2)" id="non_vehicule" @if ($inscrit->vehicule_dispo == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_vehicule">Non</label>
                     
                     <!--- Si oui (rien) --->
                     <!--- Si non --->
                     <div id="div_vehicule_dispo" class="hidden">
                         <div class="label">Achat prévu d'un véhicule</div>
-                        <input type="radio" name="prevu_vehicule" value="oui" onclick="hideshowvehiculeprevu(1)" id="oui_achat">
+                        <input type="radio" name="prevu_vehicule" value="1" onclick="hideshowvehiculeprevu(1)" id="oui_achat" @if ($inscrit->prevu_vehicule == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_achat">Oui</label>
-                        <input type="radio" name="prevu_vehicule" value="non" onclick="hideshowvehiculeprevu(2)" id="non_achat">
+                        <input type="radio" name="prevu_vehicule" value="0" onclick="hideshowvehiculeprevu(2)" id="non_achat" @if ($inscrit->prevu_vehicule == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_achat">Non</label>
                     </div>
                     <!--- Si oui --->
                     <div id="div_vehicule_prevu" class="hidden">
                     <div class="field">
                         <div class="label">Date d'achat prévue</div>
-                        <input type="date" name="dte_achat">
+                        <input type="date" name="dte_achat" value="{{$inscrit->dte_achat}}">
                     </div>
                     </div>
                     <!--- Si non (rien) --->
@@ -665,17 +665,17 @@
                             </script>
                     <!--- Si Formation continue --->
                         <div class="label">Reconversion professionnelle</div>
-                        <input type="radio" name="is_reconv_pro" value="oui" onclick="hideshowreconv(1)" id="oui_reconv">
+                        <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv" @if ($inscrit->is_reconv_pro == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_reconv">Oui</label>
-                        <input type="radio" name="is_reconv_pro" value="non" onclick="hideshowreconv(2)" id="non_reconv">
+                        <input type="radio" name="is_reconv_pro" value="0" onclick="hideshowreconv(2)" id="non_reconv" @if ($inscrit->is_reconv_pro == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_reconv">Non</label>
                     <!--- Si non (rien) --->
                     <!--- Si oui --->
                     <div id="div_reconv" class="hidden">
                     <div class="label">Formations prévues</div>
-                    <input type="radio" name="is_form_prevue" value="oui" onclick="hideshowformprevu(1)" id="oui_prevue">
+                    <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue" @if ($inscrit->reconvPro->is_form_prevue == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_prevue">Oui</label>
-                    <input type="radio" name="is_form_prevue" value="non" onclick="hideshowformprevu(2)" id="non_prevue">
+                    <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue" @if ($inscrit->reconvPro->is_form_prevue == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_prevue">Non</label>
                     </div>
                     <!--- Si non (rien) --->
@@ -683,45 +683,45 @@
                     <div id="div_form_prevu">
                     <div class="field">
                         <div class="label">Renseigner le nom : </div>
-                        <input type="text" name="reconv_nom">
+                        <input type="text" name="reconv_nom" value="{{$inscrit->reconvPro->nom}}">
                     </div>
                     <div class="field">
                         <div class="label">Renseigner la date : </div>
-                        <input type="date" name="reconv_date">
+                        <input type="date" name="reconv_date" value="{{$inscrit->reconvPro->date}}">
                     </div>
                     <div class="field">
                         <div class="label">Renseigner la durée : </div>
-                        <input type="text" name="reconv_duree">
+                        <input type="text" name="reconv_duree" value="{{$inscrit->reconvPro->duree}}">
                     </div>
                     </div>
                    <!--- Fin --->
                     <div class="label">Reprise d'étude</div>
-                    <input type="radio" name="is_reprise_etudes" value="oui" onclick="hideshowreprise(1)" id="oui_reprise">
+                    <input type="radio" name="is_reprise_etudes" value="1" onclick="hideshowreprise(1)" id="oui_reprise" @if ($inscrit->is_reprise_etudes == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_reprise">Oui</label>
-                    <input type="radio" name="is_reprise_etudes" value="non" onclick="hideshowreprise(2)" id="non_reprise">
+                    <input type="radio" name="is_reprise_etudes" value="0" onclick="hideshowreprise(2)" id="non_reprise" @if ($inscrit->is_reprise_etudes == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_reprise">Non</label>
                     <!--- Si non (rien) --->
                     <!--- Si oui --->
                     <div id="div_reprise" class="hidden">
                     <div class="field">
                         <div class="label">Diplôme préparé</div>
-                        <input type="text" name="nom_diplome_reprise">
+                        <input type="text" name="nom_diplome_reprise" value="{{$inscrit->repriseEtudes->nom_diplome}}">
                     </div>
                     </div>
                     <!--- Si fin --->
                     <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
-                    <input type="radio" name="is_formation_pro" value="oui" onclick="hideshowformpro(1)" id="oui_form_pro">
-                    <label class="label" for="oui_form_pro">Oui</label>
-                    <input type="radio" name="is_formation_pro" value="non" onclick="hideshowformpro(2)" id="non_form_pro">
+                    <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro" @if ($inscrit->is_formation_pro == 1) @checked(true) @else @checked(false) @endif>
+                    <label class="label" for="oui_form_pro">Oui</label>formation_pro
+                    <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro" @if ($inscrit->is_formation_pro == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_form_pro">Non</label>
                     <!--- Si oui --->
                     <div id="div_form_pro" class="hidden">
                     <div class="field">
                         <div class="label">Type de formation</div>
                         <select name="type_formation_pro" onchange="hideshowtypeform()" id="type_form">
-                            <option value="aucun">Choisir un type de formation</option>
-                            <option value="qualifiante">Qualifiante</option>
-                            <option value="diplomante">Diplômante</option>
+                            <option value="aucun" @if ($inscrit->formationPro->type == "aucun") @selected(true) @endif>Choisir un type de formation</option>
+                            <option value="qualifiante" @if ($inscrit->formationPro->type == "qualifiante") @selected(true) @endif>Qualifiante</option>
+                            <option value="diplomante" @if ($inscrit->formationPro->type == "diplomante") @selected(true) @endif>Diplômante</option>
                         </select>
                     </div>
                     </div>
@@ -729,45 +729,45 @@
                     <div id="diplomante">
                     <div class="field">
                         <div class="label">Nom de la formation diplômante</div>
-                        <input type="text" name="diplome_formation_pro">
+                        <input type="text" name="diplome_formation_pro" value="{{$inscrit->formationPro->nom}}">
                     </div>
                     </div>
                     <!--- Si qualifiante --->
                     <div id="qualifiante">
                     <div class="field">
                         <div class="label">Nom de la formation qualifiante</div>
-                        <input type="text" name="qualifiante_formation_pro">
+                        <input type="text" name="qualifiante_formation_pro" value="{{$inscrit->formationPro->nom}}">
                     </div>
                     </div>
                     <!--- Fin --->
                     <div class="field">
                         <div class="label">Métier souhaité</div>
-                        <input type="text" name="nom_metier">
+                        <input type="text" name="nom_metier" value="{{$inscrit->metierSouhaites->nom}}">
                     </div>
                     <div class="field">
                         <div class="label">Secteur d'activité</div>
-                        <input type="text" name="secteur_act">
+                        <input type="text" name="secteur_act" value="{{$inscrit->metierSouhaites->secteur_act}}">
                     </div>
                     <div class="field">
                         <div class="label">Secteur géographique</div>
-                        <input type="text" name="secteur_geo">
+                        <input type="text" name="secteur_geo" value="{{$inscrit->metierSouhaites->secteur_geo}}">
                     </div>
                     <div class="label">Horaire de travail souhaité</div>
-                    <input type="checkbox" name="nb_horaire" value="Travail de nuit" id="nuit">
+                    <input type="checkbox" name="nb_horaire" value="Travail de nuit" id="nuit" @if ($inscrit->horaire->type == "Travail de nuit") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="nuit">Travail de nuit</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail la journee" id="journee">
+                    <input type="checkbox" name="nb_horaire" value="Travail la journee" id="journee" @if ($inscrit->horaire->type == "Travail la journee") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="journee">Travail la journée</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail le matin" id="matin">
+                    <input type="checkbox" name="nb_horaire" value="Travail le matin" id="matin" @if ($inscrit->horaire->type == "Travail le matin") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="matin">Travail le matin</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en cyble 2x8" id="2x8">
+                    <input type="checkbox" name="nb_horaire" value="Travail en cyble 2x8" id="2x8" @if ($inscrit->horaire->type == "Travail en cyble 2x8") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="2x8">Travail en cycle 2x8</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en cycle 3x8" id="3x8">
+                    <input type="checkbox" name="nb_horaire" value="Travail en cycle 3x8" id="3x8" @if ($inscrit->horaire->type == "Travail en cycle 3x8") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="3x8">Travail en cycle 3x8</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en cycle 5x8" id="5x8">
+                    <input type="checkbox" name="nb_horaire" value="Travail en cycle 5x8" id="5x8" @if ($inscrit->horaire->type == "Travail en cycle 5x8") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="5x8">Travail en cycle 5x8</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en VSD" id="VSD">
+                    <input type="checkbox" name="nb_horaire" value="Travail en VSD" id="VSD" @if ($inscrit->horaire->type == "Travail en VSD") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="VSD">Travail en VSD</label>
-                    <input type="checkbox" name="nb_horaire" value="Travail en SD" id="SD">
+                    <input type="checkbox" name="nb_horaire" value="Travail en SD" id="SD" @if ($inscrit->horaire->type == "Travail en SD") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="journee">Travail en SD</label>
     
                     <div class="field btns">
