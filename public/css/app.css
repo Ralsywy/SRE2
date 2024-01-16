@@ -503,6 +503,14 @@ form .page .btns button.next {
     display: none;
 }
 
+#div_asile {
+    display: none;
+}
+
+#div_politique {
+    display: none;
+}
+
 #div_soelis {
     display: none;
 }
