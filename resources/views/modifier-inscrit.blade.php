@@ -74,23 +74,23 @@
                 <div id="div_rdc" class="hidden">
                 <div class="field">
                     <div class="label">N°</div>
-                    <input type="text" name="numero" value="{{$inscrit->origine_contact}}">
+                    <input type="text" name="numero" value="{{$inscrit->numero}}">
                 </div>
                 <div class="field">
                     <div class="label">Centre</div>
-                    <input type="text" name="centre">
+                    <input type="text" name="centre" value="{{$inscrit->centre}}">
                 </div>
                 <div class="field">
                     <div class="label">Jour</div>
-                    <input type="text" name="jour">
+                    <input type="text" name="jour" value="{{$inscrit->jour}}">
                 </div>
                 </div>
                 <!--- Fin --->
                 
                     <div class="label">Bénévole aux restos du coeur</div>
-                    <input type="radio" name="is_benevole" value="1" id="oui_benevole">
+                    <input type="radio" name="is_benevole" value="1" id="oui_benevole" @if ($inscrit->is_benevole == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_benevole">Oui</label>
-                    <input type="radio" name="is_benevole" value="0" id="non_benevole">
+                    <input type="radio" name="is_benevole" value="0" id="non_benevole" @if ($inscrit->is_benevole == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_benevole">Non</label>
                 
                 <div class="field">
