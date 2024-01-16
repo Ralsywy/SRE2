@@ -78,11 +78,11 @@ class Inscrit extends Model
     {
         return $this->hasMany(Permis::class);
     }
-    public function plansAction(): HasMany
+    public function planActions(): HasMany
     {
         return $this->hasMany(PlanAction::class);
     }
-    public function rdv(): HasMany
+    public function rdvs(): HasMany
     {
         return $this->hasMany(Rdv::class);
     }
