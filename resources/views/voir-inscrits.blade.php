@@ -20,7 +20,12 @@
                 <td>{{$ligne->user->name}}</td>
                 <td>{{$ligne->nb_rdv}}</td>
                 <td>
-                    <a href="{{ route('modifier-inscrit',[$ligne["id"]]) }}" class="a-modif">Modifier</a>
+                    <a href="{{ route('modifier-inscrit',[$ligne["id"]]) }}" class="a-modif">Ajouter</a>
+                    <form method="post" action="{{ route('supp-inscrit',[$ligne->id])}}" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn_supp" onclick='return check_del()'>Supprimer</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

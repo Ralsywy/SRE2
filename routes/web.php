@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('creer-inscrit', [InscritsController::class, 'creer_inscrit'])->name('creer-inscrit');
     Route::get('voir-inscrits', [InscritsController::class, 'voir_inscrits'])->name('voir-inscrits');
     Route::get('modifier-inscrit/{id}', [InscritsController::class, 'modifier_inscrit'])->name('modifier-inscrit');
+    Route::delete('supp-inscrit/{id}', [InscritsController::class, 'supp_inscrit'])->name('supp-inscrit');
     
     Route::get('voir-acc', [AccompagnateurController::class, 'voir_acc'])->name('voir-acc');
     Route::post('register-acc', [RegisteredUserController::class, 'register_acc'])->name('register-acc');

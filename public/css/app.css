@@ -48,6 +48,7 @@ button:hover.zoom{
     font-weight: 400;
     color: var(--background);
     margin: 0 30px;
+    font-size: 18px;
 }
 
 .nav-link.active{
@@ -693,4 +694,9 @@ tbody tr:last-child td:last-child{
     outline: none;
     border: none;
     margin: 1.5rem;
+}
+
+.page-inscrit .btn_supp:hover{
+    background-color: var(--text);
+    color: var(--background);
 }

@@ -12,37 +12,37 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('cap_emplois', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('cmas', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('cvs', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('formation_pros', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('france_travails', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('langues', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('metier_souhaites', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('mission_locales', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('reconv_pros', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('reprise_etudes', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
         Schema::table('soelis', function($table) {
-            $table->foreignId('inscrit_id')->constrained('inscrits')->nullable();
+            $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade')->nullable();
         });
     }
 

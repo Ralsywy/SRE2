@@ -25,7 +25,8 @@
     <div class="container hidden">
         <h1 class="hidden">Liste des accompagnateurs</h1>
         @foreach($accompagnateurs as $ligne)
-        <div class="un_acc hidden">
+        @if($ligne->id!=1)
+            <div class="un_acc hidden">
             <div class="box_list">
                 <label class="nom_acc">{{$ligne->name}}</label>
             </div>
@@ -34,7 +35,8 @@
                 @method('DELETE')
                 <button type="submit" class="btn_supp zoom" onclick='return check_del()'>Supprimer</button>
             </form>
-        </div>
+            </div>
+        @endif
         @endforeach
     </div>
 </div>

@@ -31,6 +31,12 @@ public function modifier_inscrit($id){
     return view('modifier-inscrit',compact('inscrit'),compact('users'));
 }
 
+public function supp_inscrit($id){
+    $inscrit = Inscrit::find($id);
+    $inscrit->delete();
+    return redirect()->route('voir-inscrits')->with("success","L'inscrit a été supprimé");
+}
+
    
 
 
