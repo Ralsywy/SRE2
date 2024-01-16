@@ -6,11 +6,15 @@ use App\Models\CapEmploi;
 use App\Models\Cma;
 use App\Models\Cv;
 use App\Models\Enfant;
+use App\Models\FormationPro;
 use App\Models\FranceTravail;
 use App\Models\Inscrit;
+use App\Models\MetierSouhaite;
 use App\Models\MissionLocale;
 use App\Models\Permis;
 use App\Models\Rdc;
+use App\Models\ReconvPro;
+use App\Models\RepriseEtude;
 use App\Models\Soelis;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -94,8 +98,53 @@ class InscritsController extends Controller
                         $inscrit->dte_achat= $request['dte_achat'];
                     }
                 }
-
+                //page 4
+                $inscrit->is_reconv_pro= $request['is_reconv_pro'];
+                $inscrit->is_reprise_etudes= $request['is_reprise_etudes'];
+                $inscrit->is_formation_pro= $request['is_formation_pro'];
                 $inscrit->save();
+
+                if($request['nom_metier']!=null || $request['secteur_act']!=null || $request['secteur_geo']!=null){
+                    $metier_souhaite=new MetierSouhaite();
+                    $metier_souhaite->nom= $request['nom_metier'];
+                    $metier_souhaite->secteur_act= $request['secteur_act'];
+                    $metier_souhaite->secteur_geo= $request['secteur_geo'];
+                    $metier_souhaite->inscrit_id=$inscrit->id;
+                    $metier_souhaite->save();
+                }
+
+                //formation pro
+                if($request['is_formation_pro']=1){
+                    $formation_pro=new FormationPro();
+                    $formation_pro->type= $request['type_formation_pro'];
+                    if($request['type_formation_pro']="Qualifiante"){
+                        $formation_pro->nom= $request['qualifiante_formation_pro'];
+                    }
+                    else{
+                        $formation_pro->nom= $request['diplome_formation_pro'];
+                    }
+                    $formation_pro->inscrit_id=$inscrit->id;
+                    $formation_pro->save();
+                }
+                //reprise
+                if($request['is_reprise_etudes']=1){
+                    $reprise_etudes=new RepriseEtude();
+                    $reprise_etudes->nom_diplome= $request['nom_diplome'];
+                    $reprise_etudes->inscrit_id=$inscrit->id;
+                    $reprise_etudes->save();
+                }
+                //reconv pro
+                if($request['is_reconv_pro']=1){
+                    $reconv_pro=new ReconvPro();
+                    $reconv_pro->is_form_prevue= $request['is_form_prevue'];
+                    if($request['is_form_prevue']=1){
+                        $reconv_pro->nom= $request['reconv_nom'];
+                        $reconv_pro->date= $request['reconv_date'];
+                        $reconv_pro->duree= $request['reconv_duree'];
+                    }
+                    $reconv_pro->inscrit_id=$inscrit->id;
+                    $reconv_pro->save();
+                }
                 //nb permis
                 if($request['is_permis']=1 && $request['nb_permis']!=0){
                     for($i = 1; $i <= $request['nb_permis']; ++$i) {

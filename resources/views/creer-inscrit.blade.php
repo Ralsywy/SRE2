@@ -669,17 +669,17 @@
                         </script>
                 <!--- Si Formation continue --->
                     <div class="label">Reconversion professionnelle</div>
-                    <input type="radio" name="is_reconv_pro" value="oui" onclick="hideshowreconv(1)" id="oui_reconv">
+                    <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv">
                     <label class="label" for="oui_reconv">Oui</label>
-                    <input type="radio" name="is_reconv_pro" value="non" onclick="hideshowreconv(2)" id="non_reconv">
+                    <input type="radio" name="is_reconv_pro" value="0" onclick="hideshowreconv(2)" id="non_reconv">
                     <label class="label" for="non_reconv">Non</label>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
                 <div id="div_reconv" class="hidden">
                 <div class="label">Formations prévues</div>
-                <input type="radio" name="is_form_prevue" value="oui" onclick="hideshowformprevu(1)" id="oui_prevue">
+                <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue">
                 <label class="label" for="oui_prevue">Oui</label>
-                <input type="radio" name="is_form_prevue" value="non" onclick="hideshowformprevu(2)" id="non_prevue">
+                <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue">
                 <label class="label" for="non_prevue">Non</label>
                 </div>
                 <!--- Si non (rien) --->
@@ -700,32 +700,32 @@
                 </div>
                <!--- Fin --->
                 <div class="label">Reprise d'étude</div>
-                <input type="radio" name="is_reprise_etudes" value="oui" onclick="hideshowreprise(1)" id="oui_reprise">
+                <input type="radio" name="is_reprise_etudes" value="1" onclick="hideshowreprise(1)" id="oui_reprise">
                 <label class="label" for="oui_reprise">Oui</label>
-                <input type="radio" name="is_reprise_etudes" value="non" onclick="hideshowreprise(2)" id="non_reprise">
+                <input type="radio" name="is_reprise_etudes" value="0" onclick="hideshowreprise(2)" id="non_reprise">
                 <label class="label" for="non_reprise">Non</label>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
                 <div id="div_reprise" class="hidden">
                 <div class="field">
                     <div class="label">Diplôme préparé</div>
-                    <input type="text" name="nom_diplome_reprise">
+                    <input type="text" name="nom_diplome">
                 </div>
                 </div>
                 <!--- Si fin --->
                 <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
-                <input type="radio" name="is_formation_pro" value="oui" onclick="hideshowformpro(1)" id="oui_form_pro">
+                <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro">
                 <label class="label" for="oui_form_pro">Oui</label>
-                <input type="radio" name="is_formation_pro" value="non" onclick="hideshowformpro(2)" id="non_form_pro">
+                <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro">
                 <label class="label" for="non_form_pro">Non</label>
                 <!--- Si oui --->
                 <div id="div_form_pro" class="hidden">
                 <div class="field">
                     <div class="label">Type de formation</div>
                     <select name="type_formation_pro" onchange="hideshowtypeform()" id="type_form">
-                        <option value="aucun">Choisir un type de formation</option>
-                        <option value="qualifiante">Qualifiante</option>
-                        <option value="diplomante">Diplômante</option>
+                        <option value="Aucune">Choisir un type de formation</option>
+                        <option value="Qualifiante">Qualifiante</option>
+                        <option value="Diplomante">Diplômante</option>
                     </select>
                 </div>
                 </div>
