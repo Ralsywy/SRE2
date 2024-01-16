@@ -2,10 +2,10 @@
 
 
 @section('content')
-<h1>Modifier {{$inscrit->prenom}}</h1>
 <div class="body hidden">
     <div class="container">
-        <Header>Création d'un suivis</Header>
+        <Header>Modification d'un suivis</Header>
+        <header>{{$inscrit->prenom}} {{$inscrit->nom}}</header>
         <div class="progress-bar">
             <div class="step">
                 <p>1</p>
@@ -74,15 +74,15 @@
                 <div id="div_rdc" class="hidden">
                 <div class="field">
                     <div class="label">N°</div>
-                    <input type="text" name="numero" value="{{$inscrit->numero}}">
+                    <input type="text" name="numero" value="{{$inscrit->rdc->numero}}">
                 </div>
                 <div class="field">
                     <div class="label">Centre</div>
-                    <input type="text" name="centre" value="{{$inscrit->centre}}">
+                    <input type="text" name="centre" value="{{$inscrit->rdc->centre}}">
                 </div>
                 <div class="field">
                     <div class="label">Jour</div>
-                    <input type="text" name="jour" value="{{$inscrit->jour}}">
+                    <input type="text" name="jour" value="{{$inscrit->rdc->jour}}">
                 </div>
                 </div>
                 <!--- Fin --->
@@ -109,23 +109,23 @@
                     <div class="field">
                         <div class="label">Civilité</div>
                         <select name="civilite">
-                            <option value="Aucune">Choisir une civilité</option>
-                            <option value="Madame">Madame</option>
-                            <option value="Mademoiselle">Mademoiselle</option>
-                            <option value="Monsieur">Monsieur</option>
+                            <option value="Aucune" @if ($inscrit->civilite == "Aucune") @selected(true) @endif>Choisir une civilité</option>
+                            <option value="Madame" @if ($inscrit->civilite == "Madame") @selected(true) @endif>Madame</option>
+                            <option value="Mademoiselle" @if ($inscrit->civilite == "Mademoiselle") @selected(true) @endif>Mademoiselle</option>
+                            <option value="Monsieur" @if ($inscrit->civilite == "Monsieur") @selected(true) @endif>Monsieur</option>
                         </select>
                     </div>
                     <div class="field">
                         <div class="label">Nom</div>
-                        <input type="text" name="nom">
+                        <input type="text" name="nom" value="{{$inscrit->nom}}">
                     </div>
                     <div class="field">
                         <div class="label">Prénom</div>
-                        <input type="text" name="prenom">
+                        <input type="text" name="prenom" value="{{$inscrit->prenom}}">
                     </div>
                     <div class="field">
                         <div class="label">Date de naissance</div>
-                        <input type="date" name="dte_naissance">
+                        <input type="date" name="dte_naissance" value="{{$inscrit->dte_naissance}}">
                     </div>
                     <div class="field">
                         <div class="label">Nationalité</div>
@@ -135,33 +135,33 @@
                     </div>
                     <div class="field">
                         <div class="label">Adresse</div>
-                        <input type="text" name="adresse">
+                        <input type="text" name="adresse" value="{{$inscrit->adresse}}">
                     </div>
                     <div class="field">
                         <div class="label">Code Postal</div>
-                        <input type="text" name="code_postal">
+                        <input type="text" name="code_postal" value="{{$inscrit->code_postal}}">
                     </div>
                     <div class="field">
                         <div class="label">Ville</div>
-                        <input type="text" name="ville">
+                        <input type="text" name="ville" value="{{$inscrit->ville}}">
                     </div>
                     <div class="field">
                         <div class="label">Téléphone</div>
-                        <input type="number" name="telephone">
+                        <input type="number" name="telephone" value="{{$inscrit->telephone}}">
                     </div>
                     <div class="field">
                         <div class="label">E-mail</div>
-                        <input type="mail" name="email">
+                        <input type="mail" name="email" value="{{$inscrit->email}}">
                     </div>
                     <div class="field">
-                        <div class="label">Statue</div>
+                        <div class="label">Situation personnelle</div>
                         <select name="statue">
-                            <option value="Aucune">Choisir un statue</option>
-                            <option value="celibataire">Célibataire</option>
-                            <option value="marie">Marié(e)</option>
-                            <option value="divorce">Divorcé(e)</option>
-                            <option value="veuf">Veuf(ve)</option>
-                            <option value="pacse">Pacsé(e)</option>
+                            <option value="Aucune" @if ($inscrit->statue == "Aucune") @selected(true) @endif>Choisir un statue</option>
+                            <option value="celibataire" @if ($inscrit->statue == "celibataire") @selected(true) @endif>Célibataire</option>
+                            <option value="marie" @if ($inscrit->statue == "marie") @selected(true) @endif>Marié(e)</option>
+                            <option value="divorce" @if ($inscrit->statue == "divorce") @selected(true) @endif>Divorcé(e)</option>
+                            <option value="veuf" @if ($inscrit->statue == "veuf") @selected(true) @endif>Veuf(ve)</option>
+                            <option value="pacse" @if ($inscrit->statue == "pacse") @selected(true) @endif>Pacsé(e)</option>
                         </select>
                     </div>
                     <div class="field btns">
@@ -174,9 +174,9 @@
                     <div class="title">Situation personnelle :</div>
                     
                         <div class="label">Enfant à charge</div>
-                        <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant">
+                        <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant" @if ($inscrit->is_enfant == 1) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="oui_enfant">Oui</label>
-                        <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant">
+                        <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" @if ($inscrit->is_enfant == 0) @checked(true) @else @checked(false) @endif>
                         <label class="label" for="non_enfant">Non</label>
                     
                     <!--- Si oui --->
@@ -271,6 +271,33 @@
                     </div>
                     </div>
                     <!--- Fin --->
+                    
+                    <div class="label">Demandeur d'asile</div>
+                    <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile">
+                    <label class="label" for="oui_demande_asile">Oui</label>
+                    <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile">
+                    <label class="label" for="non_demande_asile">Non</label>
+                <!--- Si oui --->
+                <div id="div_asile">
+                <div class="field">
+                    <div class="label">Date d'arrivé en france</div>
+                    <input type="date" name="dte_arrivee_fr">
+                </div>
+                </div>
+                <!--- Fin --->                    
+                    <div class="label">Réfugié politique</div>
+                    <input type="radio" name="is_refugie_politique" value="oui" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
+                    <label class="label" for="oui_refugie_politique">Oui</label>
+                    <input type="radio" name="is_refugie_politique" value="non" onclick="hideshowpolitique(2)" id="non_refugie_politique">
+                    <label class="label" for="non_refugie_politique">Non</label>
+                <!--- Si oui --->
+                <div id="div_politique">
+                    <div class="field">
+                        <div class="label">Date d'arrivé en france</div>
+                        <input type="date" name="dte_arrivee_fr">
+                    </div>
+                    </div>
+                    <!--- Fin ---> 
                     
                         <div class="label">Inscrit à France travail</div>
                         <input type="radio" name="is_france_travail" value="oui" onclick="hideshowfrance(1)" id="oui_pole_emplois">

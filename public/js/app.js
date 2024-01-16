@@ -34,6 +34,24 @@ function hideshowrevenus() {
     }
 }
 
+function hideshowasile(val) {
+    if (val == 1) {
+        document.getElementById('div_asile').style.display = 'block';
+    }
+    if (val == 2) {
+        document.getElementById('div_asile').style.display = 'none';
+    }
+}
+
+function hideshowpolitique(val) {
+    if (val == 1) {
+        document.getElementById('div_politique').style.display = 'block';
+    }
+    if (val == 2) {
+        document.getElementById('div_politique').style.display = 'none';
+    }
+}
+
 function hideshowsoelis(val) {
     if (val == 1) {
         document.getElementById('div_soelis').style.display = 'block';

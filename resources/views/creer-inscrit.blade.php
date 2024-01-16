@@ -159,7 +159,7 @@
                     <input type="mail" name="email">
                 </div>
                 <div class="field">
-                    <div class="label">Situation personnelle</div>
+                    <div class="label">Situation personpolitique</div>
                     <select name="situation_perso">
                         <option value="Aucune">Choisir une situation personnelle</option>
                         <option value="Célibataire">Célibataire</option>
@@ -276,7 +276,33 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+
+                    <div class="label">Demandeur d'asile</div>
+                    <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile">
+                    <label class="label" for="oui_demande_asile">Oui</label>
+                    <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile">
+                    <label class="label" for="non_demande_asile">Non</label>
+                <!--- Si oui --->
+                <div id="div_asile">
+                <div class="field">
+                    <div class="label">Date d'arrivé en france</div>
+                    <input type="date" name="dte_arrivee_fr">
+                </div>
+                </div>
+                <!--- Fin --->                    
+                    <div class="label">Réfugié politique</div>
+                    <input type="radio" name="is_refugie_politique" value="oui" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
+                    <label class="label" for="oui_refugie_politique">Oui</label>
+                    <input type="radio" name="is_refugie_politique" value="non" onclick="hideshowpolitique(2)" id="non_refugie_politique">
+                    <label class="label" for="non_refugie_politique">Non</label>
+                <!--- Si oui --->
+                <div id="div_politique">
+                    <div class="field">
+                        <div class="label">Date d'arrivé en france</div>
+                        <input type="date" name="dte_arrivee_fr">
+                    </div>
+                    </div>
+                    <!--- Fin --->  
                     <div class="label">Inscrit à France travail</div>
                     <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois">
                     <label class="label" for="oui_pole_emplois">Oui</label>
