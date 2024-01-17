@@ -81,6 +81,8 @@ class InscritsController extends Controller
                 $inscrit->nb_enfant= $request['nb_enfant'];
                 $inscrit->nature_revenus= $request['nature_revenus'];
                 $inscrit->autre_revenus= $request['autre_revenus'];
+                $inscrit->is_demande_asile= $request['is_demande_asile'];
+                $inscrit->is_refugie_politique= $request['is_refugie_politique'];
                 $inscrit->is_france_travail= $request['is_france_travail'];
                 $inscrit->is_soelis= $request['is_soelis'];
                 $inscrit->is_cma= $request['is_cma'];
