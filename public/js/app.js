@@ -115,18 +115,22 @@ function hideshowpermischoix() {
     var permis = document.getElementById("choix_permis").value;
     if (permis == "autos") {
         document.getElementById('autos').style.display = 'block';
+        document.getElementById('autre_permis').style.display = 'block';
         document.getElementById('marchandises').style.display = 'none';
         document.getElementById('motos').style.display = 'none';
     } if (permis == "motos") {
+        document.getElementById('autre_permis').style.display = 'block';
         document.getElementById('autos').style.display = 'none';
         document.getElementById('marchandises').style.display = 'none';
         document.getElementById('motos').style.display = 'block';
     } if (permis == "marchandises") {
+        document.getElementById('autre_permis').style.display = 'block';
         document.getElementById('autos').style.display = 'none';
         document.getElementById('marchandises').style.display = 'block';
         document.getElementById('motos').style.display = 'none';
     } if (permis == "aucun") {
         document.getElementById('autos').style.display = 'none';
+        document.getElementById('autre_permis').style.display = 'none';
         document.getElementById('marchandises').style.display = 'none';
         document.getElementById('motos').style.display = 'none';
       }
