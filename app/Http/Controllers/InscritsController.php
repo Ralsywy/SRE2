@@ -57,7 +57,6 @@ class InscritsController extends Controller
         return redirect()->route('voir-inscrits')->with("success","L'inscrit a été supprimé");
     }
     public function creer_inscription (Request $request){
-            try {
                 //page 1
                 $inscrit= new Inscrit();
                 $inscrit->dte_contact= $request['dte_contact'];
@@ -90,7 +89,6 @@ class InscritsController extends Controller
                 $inscrit->is_cv= $request['is_cv'];
                 //permis
                 $inscrit->is_permis= $request['is_permis'];
-                $inscrit->nb_permis= $request['nb_permis'];
 
                 $inscrit->vehicule_dispo= $request['vehicule_dispo'];
                 if($request['vehicule_dispo']=0){
@@ -152,8 +150,14 @@ class InscritsController extends Controller
                         $reconv_pro->date= $request['reconv_date'];
                         $reconv_pro->duree= $request['reconv_duree'];
                     }
+                    else{
+                        //
+                    }
                     $reconv_pro->inscrit_id=$inscrit->id;
                     $reconv_pro->save();
+                }
+                else{
+                    //
                 }
                 //nb permis
                 if($request['is_permis']=1){
@@ -242,10 +246,6 @@ class InscritsController extends Controller
                     $rdc->save();
                 }
                 return redirect()->route('voir-inscrits')->with("success","L'inscrit a été crée");
-            } 
-            catch (\Exception $e) {
-                return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
-            }
     }
    
 
