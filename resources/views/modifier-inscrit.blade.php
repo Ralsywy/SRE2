@@ -482,6 +482,11 @@
                     </select>
                     </div>
                     </div>
+                    <!--- Autres permis --->
+                <div class="field hidden" id="autre_permis">
+                    <div class="label">Autres permis</div>
+                    <input type="text" name="autre_permis">
+                </div>
                     <!--- Fin --->
                     
                         <div class="label">Véhicule disponible</div>
@@ -522,6 +527,45 @@
                     <div id="diplomes_container" class="field2">
                     </div>
                     <div id="responses_container"></div>
+                    <div id="other_fields_container"></div>
+                    <script>
+                                        // Écouter les changements dans le nombre de diplômes obtenus
+                    document.querySelector('input[name="nb_diplome"]').addEventListener('change', function () {
+                        var nbDiplomes = parseInt(this.value, 10);
+                        var otherFieldsContainer = document.getElementById("other_fields_container");
+    
+                        // Réinitialiser les champs à chaque changement du nombre de diplômes
+                        otherFieldsContainer.innerHTML = '';
+    
+                        // Afficher les champs de texte pour nb_annee et type lorsque nb_diplome atteint 0
+                        if (nbDiplomes === 0) {
+                            // Champ de texte pour le nombre d'années d'étude
+                            createTextField(otherFieldsContainer, 'Nombre d\'années d\'étude', 'nb_annee');
+    
+                            // Champ de texte pour le niveau
+                            createTextField(otherFieldsContainer, 'Renseigner le niveau', 'type');
+                        }
+                    });
+    
+                    // Fonction pour créer un champ de texte
+                    function createTextField(container, label, name) {
+                        var fieldDiv = document.createElement('div');
+                        fieldDiv.className = 'field';
+    
+                        var labelDiv = document.createElement('div');
+                        labelDiv.className = 'label';
+                        labelDiv.innerHTML = label;
+                        fieldDiv.appendChild(labelDiv);
+    
+                        var input = document.createElement('input');
+                        input.type = 'text';
+                        input.name = name;
+                        fieldDiv.appendChild(input);
+    
+                        container.appendChild(fieldDiv);
+                    }
+    
+                    </script>
                     <script>// Écouter les changements dans le nombre de diplômes obtenus
                         document.querySelector('.nb_diplome').addEventListener('change', function () {
                             var nbDiplomes = parseInt(this.value, 10);
@@ -779,93 +823,93 @@
                 <div class="page 5" id="page5">
                     <div class="title">Langues</div>
                     <div class="label">Inscrit aux ateliers de français</div>
-                    <input type="radio" name="is_atelier" value="oui" id="oui_fr">
+                    <input type="radio" name="is_atelier" value="1" id="oui_fr" @if ($inscrit->langues->is_atelier == "1") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_fr">Oui</label>
-                    <input type="radio" name="is_atelier" value="non" id="non_fr">
+                    <input type="radio" name="is_atelier" value="0" id="non_fr" @if ($inscrit->langues->is_atelier == "0") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_fr">Non</label>
                     <div class="field">
                         <div class="label">Connaissance en français écrit</div>
                         <select name="fr_ecrit">
-                           <option value="aucun">Choisir un niveau</option>
-                           <option value="1">A1</option>
-                           <option value="2">A2</option>
-                           <option value="3">B1</option>
-                           <option value="4">B2</option>
-                           <option value="5">C1</option>
-                           <option value="6">C2</option>
+                           <option value="aucun" @if ($inscrit->langues->fr_ecrit == "aucun") @selected(true) @endif>Choisir un niveau</option>
+                           <option value="A1" @if ($inscrit->langues->fr_ecrit == "A1") @selected(true) @endif>A1</option>
+                           <option value="A2" @if ($inscrit->langues->fr_ecrit == "A2") @selected(true) @endif>A2</option>
+                           <option value="B1" @if ($inscrit->langues->fr_ecrit == "B1") @selected(true) @endif>B1</option>
+                           <option value="B2" @if ($inscrit->langues->fr_ecrit == "B2") @selected(true) @endif>B2</option>
+                           <option value="C1" @if ($inscrit->langues->fr_ecrit == "C1") @selected(true) @endif>C1</option>
+                           <option value="C2" @if ($inscrit->langues->fr_ecrit == "C2") @selected(true) @endif>C2</option>
                         </select>
                     </div>
                     <div class="field">
                         <div class="label">Connaissance en français parlé</div>
                         <select name="fr_parle">
-                           <option value="aucun">Choisir un niveau</option>
-                           <option value="1">A1</option>
-                           <option value="2">A2</option>
-                           <option value="3">B1</option>
-                           <option value="4">B2</option>
-                           <option value="5">C1</option>
-                           <option value="6">C2</option>
+                           <option value="aucun" @if ($inscrit->langues->fr_parler == "aucun") @selected(true) @endif>Choisir un niveau</option>
+                           <option value="A1" @if ($inscrit->langues->fr_parle == "A1") @selected(true) @endif>A1</option>
+                           <option value="A2" @if ($inscrit->langues->fr_parle == "A2") @selected(true) @endif>A2</option>
+                           <option value="B1" @if ($inscrit->langues->fr_parle == "B1") @selected(true) @endif>B1</option>
+                           <option value="B2" @if ($inscrit->langues->fr_parle == "B2") @selected(true) @endif>B2</option>
+                           <option value="C1" @if ($inscrit->langues->fr_parle == "C1") @selected(true) @endif>C1</option>
+                           <option value="C2" @if ($inscrit->langues->fr_parle == "C2") @selected(true) @endif>C2</option>
                         </select>
                     </div>
                     <div class="field">
                         <div class="label">Connaissance en français lu</div>
                         <select name="fr_lu">
-                           <option value="aucun">Choisir un niveau</option>
-                           <option value="1">A1</option>
-                           <option value="2">A2</option>
-                           <option value="3">B1</option>
-                           <option value="4">B2</option>
-                           <option value="5">C1</option>
-                           <option value="6">C2</option>
+                           <option value="aucun" @if ($inscrit->langues->fr_lu == "aucun") @selected(true) @endif>Choisir un niveau</option>
+                           <option value="A1" @if ($inscrit->langues->fr_lu == "A1") @selected(true) @endif>A1</option>
+                           <option value="A2" @if ($inscrit->langues->fr_lu == "A2") @selected(true) @endif>A2</option>
+                           <option value="B1" @if ($inscrit->langues->fr_lu == "B1") @selected(true) @endif>B1</option>
+                           <option value="B2" @if ($inscrit->langues->fr_lu == "B2") @selected(true) @endif>B2</option>
+                           <option value="C1" @if ($inscrit->langues->fr_lu == "C1") @selected(true) @endif>C1</option>
+                           <option value="C2" @if ($inscrit->langues->fr_lu == "C2") @selected(true) @endif>C2</option>
                         </select>
                     </div>
                     <div class="title">Anglais</div>
                     <div class="field">
                         <div class="label">Connaissance en anglais écrit</div>
                         <select name="en_ecrit">
-                           <option value="aucun">Choisir un niveau</option>
-                           <option value="1">A1</option>
-                           <option value="2">A2</option>
-                           <option value="3">B1</option>
-                           <option value="4">B2</option>
-                           <option value="5">C1</option>
-                           <option value="6">C2</option>
+                           <option value="aucun" @if ($inscrit->langues->en_ecrit == "aucun") @selected(true) @endif>Choisir un niveau</option>
+                           <option value="A1" @if ($inscrit->langues->en_ecrit == "A1") @selected(true) @endif>A1</option>
+                           <option value="A2" @if ($inscrit->langues->en_ecrit == "A2") @selected(true) @endif>A2</option>
+                           <option value="B1" @if ($inscrit->langues->en_ecrit == "B1") @selected(true) @endif>B1</option>
+                           <option value="B2" @if ($inscrit->langues->en_ecrit == "B2") @selected(true) @endif>B2</option>
+                           <option value="C1" @if ($inscrit->langues->en_ecrit == "C1") @selected(true) @endif>C1</option>
+                           <option value="C2" @if ($inscrit->langues->en_ecrit == "C2") @selected(true) @endif>C2</option>
                         </select>
                     </div>
                     <div class="field">
                         <div class="label">Connaissance en anglais parlé</div>
                         <select name="en_parle">
-                           <option value="aucun">Choisir un niveau</option>
-                           <option value="1">A1</option>
-                           <option value="2">A2</option>
-                           <option value="3">B1</option>
-                           <option value="4">B2</option>
-                           <option value="5">C1</option>
-                           <option value="6">C2</option>
+                           <option value="aucun" @if ($inscrit->langues->en_parle == "aucun") @selected(true) @endif>Choisir un niveau</option>
+                           <option value="A1" @if ($inscrit->langues->en_parle == "A1") @selected(true) @endif>A1</option>
+                           <option value="A2" @if ($inscrit->langues->en_parle == "A2") @selected(true) @endif>A2</option>
+                           <option value="B1" @if ($inscrit->langues->en_parle == "B1") @selected(true) @endif>B1</option>
+                           <option value="B2" @if ($inscrit->langues->en_parle == "B2") @selected(true) @endif>B2</option>
+                           <option value="C1" @if ($inscrit->langues->en_parle == "C1") @selected(true) @endif>C1</option>
+                           <option value="C2" @if ($inscrit->langues->en_parle == "C2") @selected(true) @endif>C2</option>
                         </select>
                     </div>
                     <div class="field">
                         <div class="label">Connaissance en anglais lu</div>
                         <select name="en_lu">
-                           <option value="aucun">Choisir un niveau</option>
-                           <option value="1">A1</option>
-                           <option value="2">A2</option>
-                           <option value="3">B1</option>
-                           <option value="4">B2</option>
-                           <option value="5">C1</option>
-                           <option value="6">C2</option>
+                           <option value="aucun" @if ($inscrit->langues->en_lu == "aucun") @selected(true) @endif>Choisir un niveau</option>
+                           <option value="A1" @if ($inscrit->langues->en_lu == "A1") @selected(true) @endif>A1</option>
+                           <option value="A2" @if ($inscrit->langues->en_lu == "A2") @selected(true) @endif>A2</option>
+                           <option value="B1" @if ($inscrit->langues->en_lu == "B1") @selected(true) @endif>B1</option>
+                           <option value="B2" @if ($inscrit->langues->en_lu == "B2") @selected(true) @endif>B2</option>
+                           <option value="C1" @if ($inscrit->langues->en_lu == "C1") @selected(true) @endif>C1</option>
+                           <option value="C2" @if ($inscrit->langues->en_lu == "C2") @selected(true) @endif>C2</option>
                         </select>
                     </div>
                     <div class="label">Autre(s) langue(s) parlée(s)</div>
-                    <input type="radio" name="is_autre" value="oui" onclick="hideshowlangue(1)" id="oui_autre">
+                    <input type="radio" name="is_autre" value="1" onclick="hideshowlangue(1)" id="oui_autre" @if ($inscrit->langues->is_autre == "1") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_autre">Oui</label>
-                    <input type="radio" name="is_autre" value="non" onclick="hideshowlangue(2)" id="non_autre">
+                    <input type="radio" name="is_autre" value="0" onclick="hideshowlangue(2)" id="non_autre" @if ($inscrit->langues->is_autre == "0") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_autre">Non</label>
                     <!--- Si oui --->
                     <div id="div_langue" class="hidden">
                     <div class="field">
                         <div class="label">Langue(s)</div>
-                        <input type="text" name="autre_langue">
+                        <input type="text" name="autre_langue" value="{{$inscrit->langues->autre}}">
                     </div>
                     </div>
                     <!--- Fin --->

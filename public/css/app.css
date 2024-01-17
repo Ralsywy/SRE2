@@ -551,6 +551,10 @@ form .page .btns button.next {
     display: none;
 }
 
+#autre_permis {
+    display: none;
+}
+
 #div_vehicule_dispo {
     display: none;
 }
