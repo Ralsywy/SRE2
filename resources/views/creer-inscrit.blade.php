@@ -890,21 +890,21 @@
                     <input type="text" name="secteur_geo">
                 </div>
                 <div class="label">Horaire de travail souhaité</div>
-                <input type="checkbox" name="nb_horaire" value="Travail de nuit" id="nuit">
+                <input type="checkbox" name="nb_horaire1" value="Travail de nuit" id="nuit">
                 <label class="label" for="nuit">Travail de nuit</label>
-                <input type="checkbox" name="nb_horaire" value="Travail la journee" id="journee">
+                <input type="checkbox" name="nb_horaire2" value="Travail la journee" id="journee">
                 <label class="label" for="journee">Travail la journée</label>
-                <input type="checkbox" name="nb_horaire" value="Travail le matin" id="matin">
+                <input type="checkbox" name="nb_horaire3" value="Travail le matin" id="matin">
                 <label class="label" for="matin">Travail le matin</label>
-                <input type="checkbox" name="nb_horaire" value="Travail en cyble 2x8" id="2x8">
+                <input type="checkbox" name="nb_horaire4" value="Travail en cyble 2x8" id="2x8">
                 <label class="label" for="2x8">Travail en cycle 2x8</label>
-                <input type="checkbox" name="nb_horaire" value="Travail en cycle 3x8" id="3x8">
+                <input type="checkbox" name="nb_horaire5" value="Travail en cycle 3x8" id="3x8">
                 <label class="label" for="3x8">Travail en cycle 3x8</label>
-                <input type="checkbox" name="nb_horaire" value="Travail en cycle 5x8" id="5x8">
+                <input type="checkbox" name="nb_horaire6" value="Travail en cycle 5x8" id="5x8">
                 <label class="label" for="5x8">Travail en cycle 5x8</label>
-                <input type="checkbox" name="nb_horaire" value="Travail en VSD" id="VSD">
+                <input type="checkbox" name="nb_horaire7" value="Travail en VSD" id="VSD">
                 <label class="label" for="VSD">Travail en VSD</label>
-                <input type="checkbox" name="nb_horaire" value="Travail en SD" id="SD">
+                <input type="checkbox" name="nb_horaire8" value="Travail en SD" id="SD">
                 <label class="label" for="journee">Travail en SD</label>
 
                 <div class="field btns">
