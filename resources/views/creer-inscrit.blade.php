@@ -278,9 +278,9 @@
                 <!--- Fin --->
 
                     <div class="label">Demandeur d'asile</div>
-                    <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile">
+                    <input type="radio" name="is_demande_asile" value="1" onclick="hideshowasile(1)" id="oui_demande_asile">
                     <label class="label" for="oui_demande_asile">Oui</label>
-                    <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile"checked>
+                    <input type="radio" name="is_demande_asile" value="0" onclick="hideshowasile(2)" id="non_demande_asile"checked>
                     <label class="label" for="non_demande_asile">Non</label>
                 <!--- Si oui --->
                 <div id="div_asile">
@@ -291,9 +291,9 @@
                 </div>
                 <!--- Fin --->                    
                     <div class="label">Réfugié politique</div>
-                    <input type="radio" name="is_refugie_politique" value="oui" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
+                    <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
                     <label class="label" for="oui_refugie_politique">Oui</label>
-                    <input type="radio" name="is_refugie_politique" value="non" onclick="hideshowpolitique(2)" id="non_refugie_politique"checked>
+                    <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique"checked>
                     <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">
