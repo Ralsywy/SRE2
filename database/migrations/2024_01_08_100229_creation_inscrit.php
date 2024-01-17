@@ -48,7 +48,6 @@ return new class extends Migration
             $table->boolean('is_cv')->default(false);
 
             $table->boolean('is_permis')->default(false);
-            $table->integer('nb_permis')->nullable();
             $table->boolean('vehicule_dispo')->default(false);
             $table->boolean('prevu_vehicule')->default(false);
 
