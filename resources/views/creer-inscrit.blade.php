@@ -280,7 +280,7 @@
                     <div class="label">Demandeur d'asile</div>
                     <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile">
                     <label class="label" for="oui_demande_asile">Oui</label>
-                    <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile">
+                    <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile"checked>
                     <label class="label" for="non_demande_asile">Non</label>
                 <!--- Si oui --->
                 <div id="div_asile">
@@ -293,7 +293,7 @@
                     <div class="label">Réfugié politique</div>
                     <input type="radio" name="is_refugie_politique" value="oui" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
                     <label class="label" for="oui_refugie_politique">Oui</label>
-                    <input type="radio" name="is_refugie_politique" value="non" onclick="hideshowpolitique(2)" id="non_refugie_politique">
+                    <input type="radio" name="is_refugie_politique" value="non" onclick="hideshowpolitique(2)" id="non_refugie_politique"checked>
                     <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">
@@ -804,7 +804,7 @@
                     <div class="label">Reconversion professionnelle</div>
                     <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv">
                     <label class="label" for="oui_reconv">Oui</label>
-                    <input type="radio" name="is_reconv_pro" value="0" onclick="hideshowreconv(2)" id="non_reconv">
+                    <input type="radio" name="is_reconv_pro" value="0" onclick="hideshowreconv(2)" id="non_reconv"checked>
                     <label class="label" for="non_reconv">Non</label>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
@@ -812,7 +812,7 @@
                 <div class="label">Formations prévues</div>
                 <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue">
                 <label class="label" for="oui_prevue">Oui</label>
-                <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue">
+                <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue"checked>
                 <label class="label" for="non_prevue">Non</label>
                 </div>
                 <!--- Si non (rien) --->
@@ -835,7 +835,7 @@
                 <div class="label">Reprise d'étude</div>
                 <input type="radio" name="is_reprise_etudes" value="1" onclick="hideshowreprise(1)" id="oui_reprise">
                 <label class="label" for="oui_reprise">Oui</label>
-                <input type="radio" name="is_reprise_etudes" value="0" onclick="hideshowreprise(2)" id="non_reprise">
+                <input type="radio" name="is_reprise_etudes" value="0" onclick="hideshowreprise(2)" id="non_reprise"checked>
                 <label class="label" for="non_reprise">Non</label>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
@@ -849,7 +849,7 @@
                 <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
                 <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro">
                 <label class="label" for="oui_form_pro">Oui</label>
-                <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro">
+                <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro"checked>
                 <label class="label" for="non_form_pro">Non</label>
                 <!--- Si oui --->
                 <div id="div_form_pro" class="hidden">
