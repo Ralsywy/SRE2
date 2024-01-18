@@ -162,12 +162,12 @@
                 <div class="field">
                     <div class="label">Situation personnelle</div>
                     <select name="statue">
-                        <option value="Aucune" @if ($inscrit->statue == "Aucune") @selected(true) @endif>Choisir une situation personnel</option>
-                        <option value="celibataire" @if ($inscrit->statue == "celibataire") @selected(true) @endif>Célibataire</option>
-                        <option value="marie" @if ($inscrit->statue == "marie") @selected(true) @endif>Marié(e)</option>
-                        <option value="divorce" @if ($inscrit->statue == "divorce") @selected(true) @endif>Divorcé(e)</option>
-                        <option value="veuf" @if ($inscrit->statue == "veuf") @selected(true) @endif>Veuf(ve)</option>
-                        <option value="pacse" @if ($inscrit->statue == "pacse") @selected(true) @endif>Pacsé(e)</option>
+                        <option value="Aucune" @if ($inscrit->situation_perso == "Aucune") @selected(true) @endif>Choisir une situation personnel</option>
+                        <option value="celibataire" @if ($inscrit->situation_perso == "celibataire") @selected(true) @endif>Célibataire</option>
+                        <option value="marie" @if ($inscrit->situation_perso == "marie") @selected(true) @endif>Marié(e)</option>
+                        <option value="divorce" @if ($inscrit->situation_perso == "divorce") @selected(true) @endif>Divorcé(e)</option>
+                        <option value="veuf" @if ($inscrit->situation_perso == "veuf") @selected(true) @endif>Veuf(ve)</option>
+                        <option value="pacse" @if ($inscrit->situation_perso == "pacse") @selected(true) @endif>Pacsé(e)</option>
                     </select>
                 </div>
                 <div class="field btns">

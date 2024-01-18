@@ -315,14 +315,26 @@ function hideshowtypeform() {
       document.getElementById('qualifiante').style.display = 'none';
     }
     if (typeform == "diplomante") {
-        document.getElementById('diplomante').style.display = 'block';
-        document.getElementById('qualifiante').style.display = 'none';
-    }
+        document.getEl;
+      document.getElementById('qualifiante').style.display = 'none';
+      document.getElementById('diplomante').style.display = 'block';
+    } 
     if (typeform == "qualifiante") {
-        document.getElementById('diplomante').style.display = 'none';
-        document.getElementById('qualifiante').style.display = 'block';
+      document.getElementById('diplomante').style.display = 'none';
+      document.getElementById('qualifiante').style.display = 'block';
     } 
   }
+
+  function hideshowlogiciel(val) {
+    if (val == 1) {
+        document.getElementById('div_logiciel').style.display = 'block';
+    }
+    if (val == 2) {
+        document.getElementById('div_logiciel').style.display = 'none';
+}
+
+
+}
 
   function hideshowlangue(val) {
     if (val == 1) {
