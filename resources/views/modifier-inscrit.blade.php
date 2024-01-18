@@ -371,7 +371,7 @@
                     <div id="div_mission" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription à la Mission locale</div>
-                        <input type="date" name="mission_dte_inscription" value="{{$inscrit->MissionLocale->dte_inscription}}">
+                        <input type="date" name="mission_dte_inscription" value="{{$inscrit->missionLocale->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
