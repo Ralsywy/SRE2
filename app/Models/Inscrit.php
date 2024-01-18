@@ -32,7 +32,7 @@ class Inscrit extends Model
     }
     public function formationPro(): HasOne
     {
-        return $this->FormationPro(CapEmploi::class);
+        return $this->FormationPro(FormationPro::class);
     }
     public function franceTravail(): HasOne
     {
@@ -40,19 +40,19 @@ class Inscrit extends Model
     }
     public function langue(): HasOne
     {
-        return $this->Langue(CapEmploi::class);
+        return $this->Langue(Langue::class);
     }
     public function metierSouhaite(): HasOne
     {
-        return $this->MetierSouhaite(CapEmploi::class);
+        return $this->MetierSouhaite(MetierSouhaite::class);
     }
     public function missionLocale(): HasOne
     {
-        return $this->MissionLocale(CapEmploi::class);
+        return $this->MissionLocale(MissionLocale::class);
     }
     public function reconvPro(): HasOne
     {
-        return $this->ReconvPro(CapEmploi::class);
+        return $this->ReconvPro(ReconvPro::class);
     }
     public function repriseEtude(): HasOne
     {
