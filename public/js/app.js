@@ -324,15 +324,6 @@ function hideshowtypeform() {
     } 
   }
 
-  function hideshowlogiciel(val) {
-    if (val == 1) {
-        document.getElementById('div_logiciel').style.display = 'block';
-    }
-    if (val == 2) {
-        document.getElementById('div_logiciel').style.display = 'none';
-    }
-}
-
   function hideshowlangue(val) {
     if (val == 1) {
         document.getElementById('div_langue').style.display = 'block';

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CapEmploi;
 use App\Models\Cma;
 use App\Models\Cv;
+use App\Models\Diplome;
 use App\Models\Enfant;
 use App\Models\FormationPro;
 use App\Models\FranceTravail;
@@ -100,10 +101,89 @@ class InscritsController extends Controller
                     }
                 }
                 //page 4
+                $inscrit->nb_diplome= $request['nb_diplome'];
                 $inscrit->is_reconv_pro= $request['is_reconv_pro'];
                 $inscrit->is_reprise_etudes= $request['is_reprise_etudes'];
                 $inscrit->is_formation_pro= $request['is_formation_pro'];
+                $inscrit->is_logiciel= $request['is_logiciel'];
+                if($request['is_logiciel']==1){
+                    $inscrit->logiciel= $request['logiciel'];
+                }
                 $inscrit->save();
+                //diplome
+                if($request['nb_diplome']==0){
+                    $diplome=new Diplome();
+                    $diplome->nb_annee= $request['nb_annee'];
+                    $diplome->type= $request['diplome_type'];
+                    $diplome->inscrit_id=$inscrit->id;
+                    $diplome->save();
+                }
+                else{
+                    if($request['nb_diplome']>0){
+                        for($i=0;$i < $request['nb_diplome']; ++$i){
+                            $diplome=new Diplome();
+                            if($request['nom_diplome_'.$i]=="brevet"){
+                                $diplome->type= $request['nom_diplome_'.$i];
+                            }
+                            else{
+                                if($request['nom_diplome_'.$i]=="cap"){
+                                    $diplome->type= $request['nom_diplome_'.$i];
+                                    $diplome->specialite= $request['niveau_cap_'.$i];
+                                }
+                                else{
+                                    if($request['nom_diplome_'.$i]=="bep"){
+                                        $diplome->type= $request['nom_diplome_'.$i];
+                                        $diplome->specialite= $request['niveau_bep_'.$i];
+                                    }
+                                    else{
+                                        if($request['nom_diplome_'.$i]=="bac"){
+                                            $diplome->type= $request['nom_diplome_'.$i];
+                                            $diplome->specialite= $request['niveau_bac_'.$i];
+                                        }
+                                        else{
+                                            if($request['nom_diplome_'.$i]=="bac+2"){
+                                                $diplome->type= $request['nom_diplome_'.$i];
+                                                $diplome->specialite= $request['niveau_bac+2_'.$i];
+                                            }
+                                            else{
+                                                if($request['nom_diplome_'.$i]=="licence"){
+                                                    $diplome->type= $request['nom_diplome_'.$i];
+                                                    $diplome->specialite= $request['niveau_licence_'.$i];
+                                                }
+                                                else{
+                                                    if($request['nom_diplome_'.$i]=="master 1"){
+                                                        $diplome->type= $request['nom_diplome_'.$i];
+                                                        $diplome->specialite= $request['niveau_master 1_'.$i];
+                                                    }
+                                                    else{
+                                                        if($request['nom_diplome_'.$i]=="master 2"){
+                                                            $diplome->type= $request['nom_diplome_'.$i];
+                                                            $diplome->specialite= $request['niveau_master 2_'.$i];
+                                                        }
+                                                        else{
+                                                            if($request['nom_diplome_'.$i]=="autre"){
+                                                                $diplome->type= $request['nom_diplome_'.$i];
+                                                                $diplome->specialite= $request['niveau_autre_'.$i];
+                                                            }
+                                                            else{
+                                                                if($request['nom_diplome_'.$i]=="formation continue"){
+                                                                    $diplome->type= $request['nom_diplome_'.$i];
+                                                                    $diplome->specialite= $request['niveau_formation_continue_'.$i];
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            $diplome->inscrit_id=$inscrit->id;
+                            $diplome->save();
+                        }
+                    }
+                }
                 //horaires
                 for($i = 1; $i <= 8; ++$i) {
                     if(isset($request['nb_horaire'.$i])){
