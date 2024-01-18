@@ -837,6 +837,16 @@
                     <a class="next-3 next">Suivant</a>
                 </div>
         </div>
+
+        <script>  function hideshowlogiciel(val) {
+            if (val == 1) {
+                document.getElementById('div_logiciel').style.display = 'block';
+            }
+            if (val == 2) {
+                document.getElementById('div_logiciel').style.display = 'none';
+            }
+        }</script>
+
             <!---  Page 5 : LANGUES  --->
             <div class="page 5" id="page5">
                 <div class="title">Langues</div>
