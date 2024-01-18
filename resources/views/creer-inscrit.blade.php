@@ -550,7 +550,7 @@
                         createTextField(otherFieldsContainer, 'Nombre d\'années d\'étude', 'nb_annee');
 
                         // Champ de texte pour le niveau
-                        createTextField(otherFieldsContainer, 'Renseigner le niveau', 'type');
+                        createTextField(otherFieldsContainer, 'Renseigner le niveau', 'diplome_type');
                     }
                 });
 
@@ -803,6 +803,11 @@
                     <div class="label">Secteur géographique</div>
                     <input type="text" name="secteur_geo">
                 </div>
+                    <div class="label">Connaissance en bureautique ou logiciels</div>
+                    <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro">
+                    <label class="label" for="oui_form_pro">Oui</label>
+                    <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro"checked>
+                    <label class="label" for="non_form_pro">Non</label>
                 <div class="label">Horaire de travail souhaité</div>
                 <input type="checkbox" name="nb_horaire1" value="Travail de nuit" id="nuit">
                 <label class="label" for="nuit">Travail de nuit</label>
