@@ -11,6 +11,7 @@ use App\Models\FormationPro;
 use App\Models\FranceTravail;
 use App\Models\Horaire;
 use App\Models\Inscrit;
+use App\Models\Langue;
 use App\Models\MetierSouhaite;
 use App\Models\MissionLocale;
 use App\Models\Permis;
@@ -109,7 +110,23 @@ class InscritsController extends Controller
                 if($request['is_logiciel']==1){
                     $inscrit->logiciel= $request['logiciel'];
                 }
+                $inscrit->infos_comp= $request['infos_comp'];
                 $inscrit->save();
+                //page 5
+                $langue=new Langue();
+                    $langue->is_atelier= $request['is_atelier'];
+                    $langue->fr_ecrit= $request['fr_ecrit'];
+                    $langue->fr_parle= $request['fr_parle'];
+                    $langue->fr_lu= $request['fr_lu'];
+                    $langue->en_ecrit= $request['en_ecrit'];
+                    $langue->en_parle= $request['en_parle'];
+                    $langue->en_lu= $request['en_lu'];
+                    $langue->is_autre= $request['is_autre'];
+                    if($request['is_autre']==1){
+                        $langue->autre= $request['autre_langue'];
+                    }
+                    $langue->inscrit_id=$inscrit->id;
+                    $langue->save();
                 //diplome
                 if($request['nb_diplome']==0){
                     $diplome=new Diplome();
@@ -151,14 +168,14 @@ class InscritsController extends Controller
                                                     $diplome->specialite= $request['niveau_licence_'.$i];
                                                 }
                                                 else{
-                                                    if($request['nom_diplome_'.$i]=="master 1"){
+                                                    if($request['nom_diplome_'.$i]=="master1"){
                                                         $diplome->type= $request['nom_diplome_'.$i];
-                                                        $diplome->specialite= $request['niveau_master 1_'.$i];
+                                                        $diplome->specialite= $request['niveau_master1_'.$i];
                                                     }
                                                     else{
-                                                        if($request['nom_diplome_'.$i]=="master 2"){
+                                                        if($request['nom_diplome_'.$i]=="master2"){
                                                             $diplome->type= $request['nom_diplome_'.$i];
-                                                            $diplome->specialite= $request['niveau_master 2_'.$i];
+                                                            $diplome->specialite= $request['niveau_master2_'.$i];
                                                         }
                                                         else{
                                                             if($request['nom_diplome_'.$i]=="autre"){

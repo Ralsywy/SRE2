@@ -841,14 +841,14 @@
             <div class="page 5" id="page5">
                 <div class="title">Langues</div>
                 <div class="label">Inscrit aux ateliers de français</div>
-                <input type="radio" name="is_atelier" value="oui" id="oui_fr">
+                <input type="radio" name="is_atelier" value="1" id="oui_fr">
                 <label class="label" for="oui_fr">Oui</label>
-                <input type="radio" name="is_atelier" value="non" id="non_fr">
+                <input type="radio" name="is_atelier" value="0" id="non_fr"checked>
                 <label class="label" for="non_fr">Non</label>
                 <div class="field">
                     <div class="label">Connaissance en français écrit</div>
                     <select name="fr_ecrit">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -860,7 +860,7 @@
                 <div class="field">
                     <div class="label">Connaissance en français parlé</div>
                     <select name="fr_parle">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -872,7 +872,7 @@
                 <div class="field">
                     <div class="label">Connaissance en français lu</div>
                     <select name="fr_lu">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -885,7 +885,7 @@
                 <div class="field">
                     <div class="label">Connaissance en anglais écrit</div>
                     <select name="en_ecrit">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -897,7 +897,7 @@
                 <div class="field">
                     <div class="label">Connaissance en anglais parlé</div>
                     <select name="en_parle">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -909,7 +909,7 @@
                 <div class="field">
                     <div class="label">Connaissance en anglais lu</div>
                     <select name="en_lu">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -919,9 +919,9 @@
                     </select>
                 </div>
                 <div class="label">Autre(s) langue(s) parlée(s)</div>
-                <input type="radio" name="is_autre" value="oui" onclick="hideshowlangue(1)" id="oui_autre">
+                <input type="radio" name="is_autre" value="1" onclick="hideshowlangue(1)" id="oui_autre">
                 <label class="label" for="oui_autre">Oui</label>
-                <input type="radio" name="is_autre" value="non" onclick="hideshowlangue(2)" id="non_autre">
+                <input type="radio" name="is_autre" value="0" onclick="hideshowlangue(2)" id="non_autre"checked>
                 <label class="label" for="non_autre">Non</label>
                 <!--- Si oui --->
                 <div id="div_langue" class="hidden">
