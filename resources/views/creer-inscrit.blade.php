@@ -289,7 +289,8 @@
                     <input type="date" name="dte_arrivee_fr">
                 </div>
                 </div>
-                <!--- Fin --->                    
+                <!--- Fin --->     
+                <hr class="dashed">               
                     <div class="label">Réfugié politique</div>
                     <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
                     <label class="label" for="oui_refugie_politique">Oui</label>
@@ -303,6 +304,7 @@
                     </div>
                     </div>
                     <!--- Fin --->  
+                    <hr class="dashed">
                     <div class="label">Inscrit à France travail</div>
                     <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois">
                     <label class="label" for="oui_pole_emplois">Oui</label>
@@ -321,7 +323,7 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+                <hr class="dashed">
                     <div class="label">Inscrit à Soélis</div>
                     <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis">
                     <label class="label" for="oui_soelis">Oui</label>
@@ -340,7 +342,7 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+                <hr class="dashed">
                     <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
                     <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma">
                     <label class="label" for="oui_cma">Oui</label>
@@ -359,7 +361,7 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+                <hr class="dashed">
                     <div class="label">Inscrit à la Mission locale</div>
                     <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale">
                     <label class="label" for="oui_mission_locale">Oui</label>
@@ -378,7 +380,7 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+                <hr class="dashed">
                     <div class="label">Inscrit à CAP emploi</div>
                     <input type="radio" name="is_cap_emploi" value="1" onclick="hideshowcap(1)" id="oui_cap_emploi">
                     <label class="label" for="oui_cap_emploi">Oui</label>
@@ -397,7 +399,7 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+                <hr class="dashed">
                     <div class="label">CV disponible</div>
                     <input type="radio" name="is_cv" value="1" onclick="hideshowcv(1)" id="oui_cv">
                     <label class="label" for="oui_cv">Oui</label>
@@ -419,7 +421,7 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+                <hr class="dashed">
                     <div class="label">A le Permis</div>
                     <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis">
                     <label class="label" for="oui_permis">Oui</label>
@@ -715,6 +717,7 @@
                         
                         </script>
                 <!--- Si Formation continue --->
+                <hr class="dashed">
                     <div class="label">Reconversion professionnelle</div>
                     <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv">
                     <label class="label" for="oui_reconv">Oui</label>
@@ -746,6 +749,7 @@
                 </div>
                 </div>
                <!--- Fin --->
+               <hr class="dashed">
                 <div class="label">Reprise d'étude</div>
                 <input type="radio" name="is_reprise_etudes" value="1" onclick="hideshowreprise(1)" id="oui_reprise">
                 <label class="label" for="oui_reprise">Oui</label>
@@ -760,6 +764,7 @@
                 </div>
                 </div>
                 <!--- Si fin --->
+                <hr class="dashed">
                 <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
                 <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro">
                 <label class="label" for="oui_form_pro">Oui</label>
@@ -803,6 +808,7 @@
                     <div class="label">Secteur géographique</div>
                     <input type="text" name="secteur_geo">
                 </div>
+                <hr class="dashed">
                     <div class="label">Connaissance en bureautique ou logiciels</div>
                     <input type="radio" name="is_logiciel" value="1" onclick="hideshowlogiciel(1)" id="oui_logiciel">
                     <label class="label" for="oui_logiciel">Oui</label>
@@ -814,23 +820,42 @@
                             <input type="text" name="logiciel">
                         </div>
                     </div>
+                <hr class="dashed">
                 <div class="label">Horaire de travail souhaité</div>
-                <input type="checkbox" name="nb_horaire1" value="Travail de nuit" id="nuit">
-                <label class="label" for="nuit">Travail de nuit</label>
-                <input type="checkbox" name="nb_horaire2" value="Travail la journee" id="journee">
-                <label class="label" for="journee">Travail la journée</label>
-                <input type="checkbox" name="nb_horaire3" value="Travail le matin" id="matin">
-                <label class="label" for="matin">Travail le matin</label>
-                <input type="checkbox" name="nb_horaire4" value="Travail en cyble 2x8" id="2x8">
-                <label class="label" for="2x8">Travail en cycle 2x8</label>
-                <input type="checkbox" name="nb_horaire5" value="Travail en cycle 3x8" id="3x8">
-                <label class="label" for="3x8">Travail en cycle 3x8</label>
-                <input type="checkbox" name="nb_horaire6" value="Travail en cycle 5x8" id="5x8">
-                <label class="label" for="5x8">Travail en cycle 5x8</label>
-                <input type="checkbox" name="nb_horaire7" value="Travail en VSD" id="VSD">
-                <label class="label" for="VSD">Travail en VSD</label>
-                <input type="checkbox" name="nb_horaire8" value="Travail en SD" id="SD">
-                <label class="label" for="journee">Travail en SD</label>
+                <div class="horaires">
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire1" value="Travail de nuit" id="nuit">
+                        <label class="label" for="nuit">Travail de nuit</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire2" value="Travail la journee" id="journee">
+                        <label class="label" for="journee">Travail la journée</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire3" value="Travail le matin" id="matin">
+                        <label class="label" for="matin">Travail le matin</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire4" value="Travail en cyble 2x8" id="2x8">
+                        <label class="label" for="2x8">Travail en cycle 2x8</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire5" value="Travail en cycle 3x8" id="3x8">
+                        <label class="label" for="3x8">Travail en cycle 3x8</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire6" value="Travail en cycle 5x8" id="5x8">
+                        <label class="label" for="5x8">Travail en cycle 5x8</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire7" value="Travail en VSD" id="VSD">
+                        <label class="label" for="VSD">Travail en VSD</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire8" value="Travail en SD" id="SD">
+                        <label class="label" for="journee">Travail en SD</label>
+                    </div>
+                </div>
 
                 <div class="field btns">
                     <a class="prev-3 prev">Précédent</a>

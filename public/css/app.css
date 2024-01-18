@@ -646,6 +646,21 @@ form .page .btns button.next {
 #page2 {
     display: none;
 }
+.horaires{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.horaire{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.horaire input{
+    margin: 5px 10px;
+}
 /********* VOIR INSCRITS *********/
 .page-inscrit{
     display: flex;
