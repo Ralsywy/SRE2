@@ -615,6 +615,10 @@ form .page .btns button.next {
     display: none;
 }
 
+#div_logiciel {
+    display: none;
+}
+
 #qualifiante {
     display: none;
 }
