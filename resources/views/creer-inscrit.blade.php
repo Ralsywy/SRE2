@@ -596,7 +596,7 @@
                             select.id = 'diplome_' + i;
                             
                             // Ajouter les options au select
-                            var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master 1", "Master 2", "Autre", "Formation continue"];
+                            var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
                             for (var j = 0; j < options.length; j++) {
                                 var option = document.createElement('option');
                                 option.value = options[j].toLowerCase();
@@ -630,8 +630,8 @@
                                 case 'bac':
                                 case 'bac+2':
                                 case 'licence':
-                                case 'master 1':
-                                case 'master 2':
+                                case 'master1':
+                                case 'master2':
                                     createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_' + selectedDiplome + '_' + diplomeIndex);
                                     break;
                                 case 'formation continue':
