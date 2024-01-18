@@ -362,23 +362,23 @@
         <!--- Fin --->
                 
                     <div class="label">Inscrit à la Mission locale</div>
-                    <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale">
-                    <label class="label" for="oui_mission_locale">Oui</label>
-                    <input type="radio" name="is_mission_locale" value="0" onclick="hideshowmission(2)" id="non_mission_locale"checked>
-                    <label class="label" for="non_mission_locale">Non</label>
-                
-                <!--- Si oui --->
-                <div id="div_mission" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'inscription à la Mission locale</div>
-                    <input type="date" name="mission_dte_inscription">
-                </div>
-                <div class="field">
-                    <div class="label">Nom référent</div>
-                    <input type="text" name="mission_nom_ref">
-                </div>
-                </div>
-                <!--- Fin --->
+                        <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale" @if ($inscrit->is_mission_locale == 1) @checked(true) @else @checked(false) @endif>
+                        <label class="label" for="oui_mission_locale">Oui</label>
+                        <input type="radio" name="is_mission_locale" value="0" onclick="hideshowmission(2)" id="non_mission_locale" @if ($inscrit->is_mission_locale == 0) @checked(true) @else @checked(false) @endif>
+                        <label class="label" for="non_mission_locale">Non</label>
+                    
+                    <!--- Si oui --->
+                    <div id="div_mission" class="hidden">
+                    <div class="field">
+                        <div class="label">Date d'inscription à la Mission locale</div>
+                        <input type="date" name="mission_dte_inscription" value="{{$inscrit->MissionLocale->dte_inscription}}">
+                    </div>
+                    <div class="field">
+                        <div class="label">Nom référent</div>
+                        <input type="text" name="mission_nom_ref" value="{{$inscrit->missionLocale->nom_ref}}">
+                    </div>
+                    </div>
+                    <!--- Fin --->
                 
                     <div class="label">Inscrit à CAP emploi</div>
                     <input type="radio" name="is_cap_emploi" value="1" onclick="hideshowcap(1)" id="oui_cap_emploi">
