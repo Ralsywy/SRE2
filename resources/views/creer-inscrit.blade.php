@@ -162,11 +162,11 @@
                     <div class="label">Situation personpolitique</div>
                     <select name="situation_perso">
                         <option value="Aucune">Choisir une situation personnelle</option>
-                        <option value="Célibataire">Célibataire</option>
-                        <option value="Marié(e)">Marié(e)</option>
-                        <option value="Divorcé(e)">Divorcé(e)</option>
-                        <option value="Veuf(ve)">Veuf(ve)</option>
-                        <option value="Pacsé(e)">Pacsé(e)</option>
+                        <option value="celibataire">Célibataire</option>
+                        <option value="marie">Marié(e)</option>
+                        <option value="divorce">Divorcé(e)</option>
+                        <option value="veuf">Veuf(ve)</option>
+                        <option value="pacse">Pacsé(e)</option>
                     </select>
                 </div>
                 <div class="field btns">
@@ -687,7 +687,7 @@
                                 select.id = 'diplome_' + i;
                         
                                 // Ajouter les options au select
-                                var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master 1", "Master 2", "Autre", "Formation continue"];
+                                var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
                                 for (var j = 0; j < options.length; j++) {
                                     var option = document.createElement('option');
                                     option.value = options[j].toLowerCase();
