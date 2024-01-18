@@ -323,43 +323,43 @@
                     </div>
                 <!--- Fin --->
                 
-                    <div class="label">Inscrit à Soélis</div>
-                    <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis">
-                    <label class="label" for="oui_soelis">Oui</label>
-                    <input type="radio" name="is_soelis" value="0" onclick="hideshowsoelis(2)" id="non_soelis"checked>
-                    <label class="label" for="non_soelis">Non</label>
+                <div class="label">Inscrit à Soélis</div>
+                <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis" @if ($inscrit->is_soelis == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_soelis">Oui</label>
+                <input type="radio" name="is_soelis" value="0" onclick="hideshowsoelis(2)" id="non_soelis" @if ($inscrit->is_soelis == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_soelis">Non</label>
+            
+            <!--- Si oui --->
+            <div id="div_soelis" class="hidden">
+            <div class="field">
+                <div class="label">Date d'inscription à Soélis</div>
+                <input type="date" name="soelis_dte_inscription" value="{{$inscrit->soelis->dte_inscription}}">
+            </div>
+            <div class="field">
+                <div class="label">Nom référent</div>
+                <input type="text" name="soelis_nom_ref" value="{{$inscrit->soelis->nom_ref}}">
+            </div>
+            </div>
+            <!--- Fin --->
                 
-                <!--- Si oui --->
-                <div id="div_soelis" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'inscription à Soélis</div>
-                    <input type="date" name="soelis_dte_inscription">
-                </div>
-                <div class="field">
-                    <div class="label">Nom référent</div>
-                    <input type="text" name="soelis_nom_ref">
-                </div>
-                </div>
-                <!--- Fin --->
-                
-                    <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
-                    <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma">
-                    <label class="label" for="oui_cma">Oui</label>
-                    <input type="radio" name="is_cma" value="0" onclick="hideshowcma(2)" id="non_cma"checked>
-                    <label class="label" for="non_cma">Non</label>
-                
-                <!--- Si oui --->
-                <div id="div_cma" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
-                    <input type="date" name="cma_dte_inscription">
-                </div>
-                <div class="field">
-                    <div class="label">Nom référent</div>
-                    <input type="text" name="cma_nom_ref">
-                </div>
-                </div>
-                <!--- Fin --->
+            <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
+            <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma" @if ($inscrit->is_cma == 1) @checked(true) @else @checked(false) @endif>
+            <label class="label" for="oui_cma">Oui</label>
+            <input type="radio" name="is_cma" value="0" onclick="hideshowcma(2)" id="non_cma" @if ($inscrit->is_cma == 0) @checked(true) @else @checked(false) @endif>
+            <label class="label" for="non_cma">Non</label>
+        
+        <!--- Si oui --->
+        <div id="div_cma" class="hidden">
+        <div class="field">
+            <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
+            <input type="date" name="cma_dte_inscription" value="{{$inscrit->cma->dte_inscription}}">
+        </div>
+        <div class="field">
+            <div class="label">Nom référent</div>
+            <input type="text" name="cma_nom_ref" value="{{$inscrit->cma->nom_ref}}">
+        </div>
+        </div>
+        <!--- Fin --->
                 
                     <div class="label">Inscrit à la Mission locale</div>
                     <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale">
