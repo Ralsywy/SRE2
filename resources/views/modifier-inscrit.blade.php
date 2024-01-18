@@ -796,6 +796,17 @@
                         <div class="label">Secteur géographique</div>
                         <input type="text" name="secteur_geo" value="{{$inscrit->metierSouhaites->secteur_geo}}">
                     </div>
+                    <div class="label">Connaissance en bureautique ou logiciels</div>
+                    <input type="radio" name="is_logiciel" value="1" onclick="hideshowlogiciel(1)" id="oui_logiciel">
+                    <label class="label" for="oui_logiciel">Oui</label>
+                    <input type="radio" name="is_logiciel" value="0" onclick="hideshowlogiciel(2)" id="non_logiciel"checked>
+                    <label class="label" for="non_logiciel">Non</label>
+                    <div id="div_logiciel">
+                        <div class="field">
+                            <div class="label">Préciser</div>
+                            <input type="text" name="logiciel">
+                        </div>
+                    </div>
                     <div class="label">Horaire de travail souhaité</div>
                     <input type="checkbox" name="nb_horaire" value="Travail de nuit" id="nuit" @if ($inscrit->horaire->type == "Travail de nuit") @checked(true) @else @checked(false) @endif>
                     <label class="label" for="nuit">Travail de nuit</label>

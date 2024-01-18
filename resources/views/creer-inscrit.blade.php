@@ -592,8 +592,8 @@
                             newDiplomeDiv.appendChild(label);
                     
                             var select = document.createElement('select');
-                            select.name = 'nom_diplome_' + i;
-                            select.id = 'diplome_' + i;
+                            select.name = 'nom_diplome_' + i + 1;
+                            select.id = 'diplome_' + i + 1;
                             
                             // Ajouter les options au select
                             var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master 1", "Master 2", "Autre", "Formation continue"];
@@ -683,8 +683,8 @@
                                 newDiplomeDiv.appendChild(label);
                         
                                 var select = document.createElement('select');
-                                select.name = 'nom_diplome_' + i;
-                                select.id = 'diplome_' + i;
+                                select.name = 'nom_diplome_' + (i + 1);
+                                select.id = 'diplome_' + (i + 1);
                         
                                 // Ajouter les options au select
                                 var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master 1", "Master 2", "Autre", "Formation continue"];
