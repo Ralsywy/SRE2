@@ -180,16 +180,16 @@
                 <div class="title">Situation personnelle :</div>
                 
                     <div class="label">Enfant à charge</div>
-                    <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant" @if ($inscrit->is_enfant == 1) @checked(true) @else @checked(false) @endif>
+                    <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant">
                     <label class="label" for="oui_enfant">Oui</label>
-                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" @if ($inscrit->is_enfant == 0) @checked(true) @else @checked(false) @endif>
+                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" checked>
                     <label class="label" for="non_enfant">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_enfant" class="hidden">
                 <div class="field">
                     <div class="label">Nombre d'enfants </div>
-                    <input type="number" name="nb_enfant" id="nombre_enfant" value="{{$inscrit->nb_enfant}}">
+                    <input type="number" name="nb_enfant" id="nombre_enfant">
                 </div>
     <!--- Pour chaque enfant --->
     <div id="boite" class="field3"></div>
@@ -259,127 +259,129 @@
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
-                        <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Choisir un revenus</option>
-                        <option value="salaire" @if ($inscrit->nature_revenus == "salaire") @selected(true) @endif>Salaire</option>
-                        <option value="rsa" @if ($inscrit->nature_revenus == "rsa") @selected(true) @endif>RSA</option>
-                        <option value="are" @if ($inscrit->nature_revenus == "are") @selected(true) @endif>ARE</option>
-                        <option value="aah" @if ($inscrit->nature_revenus == "aah") @selected(true) @endif>AAH</option>
-                        <option value="retraite" @if ($inscrit->nature_revenus == "retraite") @selected(true) @endif>Pension de retraite</option>
-                        <option value="autre" @if ($inscrit->nature_revenus == "autre") @selected(true) @endif>Autre</option>
-                        <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Aucune</option>
+                        <option value="Aucun">Choisir un revenus</option>
+                        <option value="Salaire">Salaire</option>
+                        <option value="RSA">RSA</option>
+                        <option value="ARE">ARE</option>
+                        <option value="AAH">AAH</option>
+                        <option value="Pension de retraite">Pension de retraite</option>
+                        <option value="Autre">Autre</option>
+                        <option value="Aucun">Aucune</option>
                     </select>
                 </div>
                 <!--- Si autre --->
                 <div id="preciser">
                 <div class="field">
                     <div class="label">Préciser le type de revenus</div>
-                    <input type="text" name="autre_revenus" value="{{$inscrit->autre_revenus}}">
+                    <input type="text" name="autre_revenus">
                 </div>
                 </div>
                 <!--- Fin --->
 
-                <div class="label">Demandeur d'asile</div>
-                <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile" @if ($inscrit->is_demande_asile == 1) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="oui_demande_asile">Oui</label>
-                <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="non_demande_asile">Non</label>
-            <!--- Si oui --->
-            <div id="div_asile">
-            <div class="field">
-                <div class="label">Date d'arrivé en france</div>
-                <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
-            </div>
-            </div>
-            <!--- Fin --->                    
-                <div class="label">Réfugié politique</div>
-                <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique" @if ($inscrit->is_refugie_politique == 1) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="oui_refugie_politique">Oui</label>
-                <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique" @if ($inscrit->is_refugie_politique == 0) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="non_refugie_politique">Non</label>
-            <!--- Si oui --->
-            <div id="div_politique">
+                    <div class="label">Demandeur d'asile</div>
+                    <input type="radio" name="is_demande_asile" value="1" onclick="hideshowasile(1)" id="oui_demande_asile">
+                    <label class="label" for="oui_demande_asile">Oui</label>
+                    <input type="radio" name="is_demande_asile" value="0" onclick="hideshowasile(2)" id="non_demande_asile"checked>
+                    <label class="label" for="non_demande_asile">Non</label>
+                <!--- Si oui --->
+                <div id="div_asile">
                 <div class="field">
                     <div class="label">Date d'arrivé en france</div>
-                    <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
+                    <input type="date" name="dte_arrivee_fr">
                 </div>
                 </div>
-                <!--- Fin ---> 
-                <div class="label">Inscrit à France travail</div>
-                <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois" @if ($inscrit->is_france_travail == 1) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="oui_pole_emplois">Oui</label>
-                <input type="radio" name="is_france_travail" value="0" onclick="hideshowfrance(2)" id="non_pole_emplois" @if ($inscrit->is_france_travail == 0) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="non_pole_emplois">Non</label>
+                <!--- Fin --->     
+                <hr class="dashed">               
+                    <div class="label">Réfugié politique</div>
+                    <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
+                    <label class="label" for="oui_refugie_politique">Oui</label>
+                    <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique"checked>
+                    <label class="label" for="non_refugie_politique">Non</label>
+                <!--- Si oui --->
+                <div id="div_politique">
+                    <div class="field">
+                        <div class="label">Date d'arrivé en france</div>
+                        <input type="date" name="dte_arrivee_fr">
+                    </div>
+                    </div>
+                    <!--- Fin --->  
+                    <hr class="dashed">
+                    <div class="label">Inscrit à France travail</div>
+                    <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois">
+                    <label class="label" for="oui_pole_emplois">Oui</label>
+                    <input type="radio" name="is_france_travail" value="0" onclick="hideshowfrance(2)" id="non_pole_emplois"checked>
+                    <label class="label" for="non_pole_emplois">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_france" class="hidden">
-                    <div class="field">
-                        <div class="label">Date d'inscription à France travail</div>
-                        <input type="date" name="france_dte_inscription" value="{{$inscrit->franceTravail->dte_inscription}}">
-                    </div>
-                    <div class="field">
-                        <div class="label">Nom référent</div>
-                        <input type="text" name="france_nom_ref" value="{{$inscrit->franceTravail->nom_ref}}">
-                    </div>
-                    </div>
+                <div class="field">
+                    <div class="label">Date d'inscription à France travail</div>
+                    <input type="date" name="france_dte_inscription">
+                </div>
+                <div class="field">
+                    <div class="label">Nom référent</div>
+                    <input type="text" name="france_nom_ref">
+                </div>
+                </div>
                 <!--- Fin --->
+                <hr class="dashed">
+                    <div class="label">Inscrit à Soélis</div>
+                    <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis">
+                    <label class="label" for="oui_soelis">Oui</label>
+                    <input type="radio" name="is_soelis" value="0" onclick="hideshowsoelis(2)" id="non_soelis"checked>
+                    <label class="label" for="non_soelis">Non</label>
                 
-                <div class="label">Inscrit à Soélis</div>
-                <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis" @if ($inscrit->is_soelis == 1) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="oui_soelis">Oui</label>
-                <input type="radio" name="is_soelis" value="0" onclick="hideshowsoelis(2)" id="non_soelis" @if ($inscrit->is_soelis == 0) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="non_soelis">Non</label>
-            
-            <!--- Si oui --->
-            <div id="div_soelis" class="hidden">
-            <div class="field">
-                <div class="label">Date d'inscription à Soélis</div>
-                <input type="date" name="soelis_dte_inscription" value="{{$inscrit->soelis->dte_inscription}}">
-            </div>
-            <div class="field">
-                <div class="label">Nom référent</div>
-                <input type="text" name="soelis_nom_ref" value="{{$inscrit->soelis->nom_ref}}">
-            </div>
-            </div>
-            <!--- Fin --->
+                <!--- Si oui --->
+                <div id="div_soelis" class="hidden">
+                <div class="field">
+                    <div class="label">Date d'inscription à Soélis</div>
+                    <input type="date" name="soelis_dte_inscription">
+                </div>
+                <div class="field">
+                    <div class="label">Nom référent</div>
+                    <input type="text" name="soelis_nom_ref">
+                </div>
+                </div>
+                <!--- Fin --->
+                <hr class="dashed">
+                    <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
+                    <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma">
+                    <label class="label" for="oui_cma">Oui</label>
+                    <input type="radio" name="is_cma" value="0" onclick="hideshowcma(2)" id="non_cma"checked>
+                    <label class="label" for="non_cma">Non</label>
                 
-            <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
-            <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma" @if ($inscrit->is_cma == 1) @checked(true) @else @checked(false) @endif>
-            <label class="label" for="oui_cma">Oui</label>
-            <input type="radio" name="is_cma" value="0" onclick="hideshowcma(2)" id="non_cma" @if ($inscrit->is_cma == 0) @checked(true) @else @checked(false) @endif>
-            <label class="label" for="non_cma">Non</label>
-        
-        <!--- Si oui --->
-        <div id="div_cma" class="hidden">
-        <div class="field">
-            <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
-            <input type="date" name="cma_dte_inscription" value="{{$inscrit->cma->dte_inscription}}">
-        </div>
-        <div class="field">
-            <div class="label">Nom référent</div>
-            <input type="text" name="cma_nom_ref" value="{{$inscrit->cma->nom_ref}}">
-        </div>
-        </div>
-        <!--- Fin --->
-                
+                <!--- Si oui --->
+                <div id="div_cma" class="hidden">
+                <div class="field">
+                    <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
+                    <input type="date" name="cma_dte_inscription">
+                </div>
+                <div class="field">
+                    <div class="label">Nom référent</div>
+                    <input type="text" name="cma_nom_ref">
+                </div>
+                </div>
+                <!--- Fin --->
+                <hr class="dashed">
                     <div class="label">Inscrit à la Mission locale</div>
-                        <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale" @if ($inscrit->is_mission_locale == 1) @checked(true) @else @checked(false) @endif>
-                        <label class="label" for="oui_mission_locale">Oui</label>
-                        <input type="radio" name="is_mission_locale" value="0" onclick="hideshowmission(2)" id="non_mission_locale" @if ($inscrit->is_mission_locale == 0) @checked(true) @else @checked(false) @endif>
-                        <label class="label" for="non_mission_locale">Non</label>
-                    
-                    <!--- Si oui --->
-                    <div id="div_mission" class="hidden">
-                    <div class="field">
-                        <div class="label">Date d'inscription à la Mission locale</div>
-                        <input type="date" name="mission_dte_inscription" value="{{$inscrit->missionLocale->dte_inscription}}">
-                    </div>
-                    <div class="field">
-                        <div class="label">Nom référent</div>
-                        <input type="text" name="mission_nom_ref" value="{{$inscrit->missionLocale->nom_ref}}">
-                    </div>
-                    </div>
-                    <!--- Fin --->
+                    <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale">
+                    <label class="label" for="oui_mission_locale">Oui</label>
+                    <input type="radio" name="is_mission_locale" value="0" onclick="hideshowmission(2)" id="non_mission_locale"checked>
+                    <label class="label" for="non_mission_locale">Non</label>
                 
+                <!--- Si oui --->
+                <div id="div_mission" class="hidden">
+                <div class="field">
+                    <div class="label">Date d'inscription à la Mission locale</div>
+                    <input type="date" name="mission_dte_inscription">
+                </div>
+                <div class="field">
+                    <div class="label">Nom référent</div>
+                    <input type="text" name="mission_nom_ref">
+                </div>
+                </div>
+                <!--- Fin --->
+                <hr class="dashed">
                     <div class="label">Inscrit à CAP emploi</div>
                     <input type="radio" name="is_cap_emploi" value="1" onclick="hideshowcap(1)" id="oui_cap_emploi">
                     <label class="label" for="oui_cap_emploi">Oui</label>
@@ -398,7 +400,7 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+                <hr class="dashed">
                     <div class="label">CV disponible</div>
                     <input type="radio" name="is_cv" value="1" onclick="hideshowcv(1)" id="oui_cv">
                     <label class="label" for="oui_cv">Oui</label>
@@ -420,7 +422,7 @@
                 </div>
                 </div>
                 <!--- Fin --->
-                
+                <hr class="dashed">
                     <div class="label">A le Permis</div>
                     <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis">
                     <label class="label" for="oui_permis">Oui</label>
@@ -597,7 +599,7 @@
                             select.id = 'diplome_' + i;
                             
                             // Ajouter les options au select
-                            var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master 1", "Master 2", "Autre", "Formation continue"];
+                            var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
                             for (var j = 0; j < options.length; j++) {
                                 var option = document.createElement('option');
                                 option.value = options[j].toLowerCase();
@@ -631,8 +633,8 @@
                                 case 'bac':
                                 case 'bac+2':
                                 case 'licence':
-                                case 'master 1':
-                                case 'master 2':
+                                case 'master1':
+                                case 'master2':
                                     createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_' + selectedDiplome + '_' + diplomeIndex);
                                     break;
                                 case 'formation continue':
@@ -688,7 +690,7 @@
                                 select.id = 'diplome_' + i;
                         
                                 // Ajouter les options au select
-                                var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master 1", "Master 2", "Autre", "Formation continue"];
+                                var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
                                 for (var j = 0; j < options.length; j++) {
                                     var option = document.createElement('option');
                                     option.value = options[j].toLowerCase();
@@ -716,6 +718,7 @@
                         
                         </script>
                 <!--- Si Formation continue --->
+                <hr class="dashed">
                     <div class="label">Reconversion professionnelle</div>
                     <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv">
                     <label class="label" for="oui_reconv">Oui</label>
@@ -747,6 +750,7 @@
                 </div>
                 </div>
                <!--- Fin --->
+               <hr class="dashed">
                 <div class="label">Reprise d'étude</div>
                 <input type="radio" name="is_reprise_etudes" value="1" onclick="hideshowreprise(1)" id="oui_reprise">
                 <label class="label" for="oui_reprise">Oui</label>
@@ -761,6 +765,7 @@
                 </div>
                 </div>
                 <!--- Si fin --->
+                <hr class="dashed">
                 <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
                 <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro">
                 <label class="label" for="oui_form_pro">Oui</label>
@@ -804,6 +809,7 @@
                     <div class="label">Secteur géographique</div>
                     <input type="text" name="secteur_geo">
                 </div>
+                <hr class="dashed">
                     <div class="label">Connaissance en bureautique ou logiciels</div>
                     <input type="radio" name="is_logiciel" value="1" onclick="hideshowlogiciel(1)" id="oui_logiciel">
                     <label class="label" for="oui_logiciel">Oui</label>
@@ -815,41 +821,70 @@
                             <input type="text" name="logiciel">
                         </div>
                     </div>
+                <hr class="dashed">
                 <div class="label">Horaire de travail souhaité</div>
-                <input type="checkbox" name="nb_horaire1" value="Travail de nuit" id="nuit">
-                <label class="label" for="nuit">Travail de nuit</label>
-                <input type="checkbox" name="nb_horaire2" value="Travail la journee" id="journee">
-                <label class="label" for="journee">Travail la journée</label>
-                <input type="checkbox" name="nb_horaire3" value="Travail le matin" id="matin">
-                <label class="label" for="matin">Travail le matin</label>
-                <input type="checkbox" name="nb_horaire4" value="Travail en cyble 2x8" id="2x8">
-                <label class="label" for="2x8">Travail en cycle 2x8</label>
-                <input type="checkbox" name="nb_horaire5" value="Travail en cycle 3x8" id="3x8">
-                <label class="label" for="3x8">Travail en cycle 3x8</label>
-                <input type="checkbox" name="nb_horaire6" value="Travail en cycle 5x8" id="5x8">
-                <label class="label" for="5x8">Travail en cycle 5x8</label>
-                <input type="checkbox" name="nb_horaire7" value="Travail en VSD" id="VSD">
-                <label class="label" for="VSD">Travail en VSD</label>
-                <input type="checkbox" name="nb_horaire8" value="Travail en SD" id="SD">
-                <label class="label" for="journee">Travail en SD</label>
+                <div class="horaires">
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire1" value="Travail de nuit" id="nuit">
+                        <label class="label" for="nuit">Travail de nuit</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire2" value="Travail la journee" id="journee">
+                        <label class="label" for="journee">Travail la journée</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire3" value="Travail le matin" id="matin">
+                        <label class="label" for="matin">Travail le matin</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire4" value="Travail en cyble 2x8" id="2x8">
+                        <label class="label" for="2x8">Travail en cycle 2x8</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire5" value="Travail en cycle 3x8" id="3x8">
+                        <label class="label" for="3x8">Travail en cycle 3x8</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire6" value="Travail en cycle 5x8" id="5x8">
+                        <label class="label" for="5x8">Travail en cycle 5x8</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire7" value="Travail en VSD" id="VSD">
+                        <label class="label" for="VSD">Travail en VSD</label>
+                    </div>
+                    <div class="horaire">
+                        <input type="checkbox" name="nb_horaire8" value="Travail en SD" id="SD">
+                        <label class="label" for="journee">Travail en SD</label>
+                    </div>
+                </div>
 
                 <div class="field btns">
                     <a class="prev-3 prev">Précédent</a>
                     <a class="next-3 next">Suivant</a>
                 </div>
         </div>
+
+        <script>  function hideshowlogiciel(val) {
+            if (val == 1) {
+                document.getElementById('div_logiciel').style.display = 'block';
+            }
+            if (val == 2) {
+                document.getElementById('div_logiciel').style.display = 'none';
+            }
+        }</script>
+
             <!---  Page 5 : LANGUES  --->
             <div class="page 5" id="page5">
                 <div class="title">Langues</div>
                 <div class="label">Inscrit aux ateliers de français</div>
-                <input type="radio" name="is_atelier" value="oui" id="oui_fr">
+                <input type="radio" name="is_atelier" value="1" id="oui_fr">
                 <label class="label" for="oui_fr">Oui</label>
-                <input type="radio" name="is_atelier" value="non" id="non_fr">
+                <input type="radio" name="is_atelier" value="0" id="non_fr"checked>
                 <label class="label" for="non_fr">Non</label>
                 <div class="field">
                     <div class="label">Connaissance en français écrit</div>
                     <select name="fr_ecrit">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -861,7 +896,7 @@
                 <div class="field">
                     <div class="label">Connaissance en français parlé</div>
                     <select name="fr_parle">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -873,7 +908,7 @@
                 <div class="field">
                     <div class="label">Connaissance en français lu</div>
                     <select name="fr_lu">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -886,7 +921,7 @@
                 <div class="field">
                     <div class="label">Connaissance en anglais écrit</div>
                     <select name="en_ecrit">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -898,7 +933,7 @@
                 <div class="field">
                     <div class="label">Connaissance en anglais parlé</div>
                     <select name="en_parle">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -910,7 +945,7 @@
                 <div class="field">
                     <div class="label">Connaissance en anglais lu</div>
                     <select name="en_lu">
-                       <option value="aucun">Choisir un niveau</option>
+                       <option value="0">Choisir un niveau</option>
                        <option value="1">A1</option>
                        <option value="2">A2</option>
                        <option value="3">B1</option>
@@ -920,9 +955,9 @@
                     </select>
                 </div>
                 <div class="label">Autre(s) langue(s) parlée(s)</div>
-                <input type="radio" name="is_autre" value="oui" onclick="hideshowlangue(1)" id="oui_autre">
+                <input type="radio" name="is_autre" value="1" onclick="hideshowlangue(1)" id="oui_autre">
                 <label class="label" for="oui_autre">Oui</label>
-                <input type="radio" name="is_autre" value="non" onclick="hideshowlangue(2)" id="non_autre">
+                <input type="radio" name="is_autre" value="0" onclick="hideshowlangue(2)" id="non_autre"checked>
                 <label class="label" for="non_autre">Non</label>
                 <!--- Si oui --->
                 <div id="div_langue" class="hidden">
