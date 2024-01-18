@@ -159,7 +159,7 @@
                     <input type="mail" name="email">
                 </div>
                 <div class="field">
-                    <div class="label">Situation personpolitique</div>
+                    <div class="label">Situation personnelle</div>
                     <select name="situation_perso">
                         <option value="Aucune">Choisir une situation personnelle</option>
                         <option value="celibataire">Célibataire</option>
