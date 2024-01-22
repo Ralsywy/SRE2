@@ -19,7 +19,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="img\rdc.png" alt="RDC" width="50" height="50">
+            <img src="img/rdc.png" alt="RDC" width="50" height="50">
           </a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">

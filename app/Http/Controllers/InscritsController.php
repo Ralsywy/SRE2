@@ -15,7 +15,9 @@ use App\Models\Langue;
 use App\Models\MetierSouhaite;
 use App\Models\MissionLocale;
 use App\Models\Permis;
+use App\Models\PlanAction;
 use App\Models\Rdc;
+use App\Models\Rdv;
 use App\Models\ReconvPro;
 use App\Models\RepriseEtude;
 use App\Models\Soelis;
@@ -48,17 +50,28 @@ class InscritsController extends Controller
     
     }
     public function modifier_inscrit($id){
+        try{
         $users=User::all();
         $inscrit = Inscrit::find($id);
         return view('modifier-inscrit',compact('inscrit'),compact('users'));
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
     }
 
     public function supp_inscrit($id){
+        try{
         $inscrit = Inscrit::find($id);
         $inscrit->delete();
         return redirect()->route('voir-inscrits')->with("success","L'inscrit a été supprimé");
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
     }
     public function creer_inscription (Request $request){
+        try{
                 //page 1
                 $inscrit= new Inscrit();
                 $inscrit->dte_contact= $request['dte_contact'];
@@ -345,8 +358,66 @@ class InscritsController extends Controller
                     $rdc->save();
                 }
                 return redirect()->route('voir-inscrits')->with("success","L'inscrit a été crée");
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
     }
-   
-
-
+    public function voir_rdv($id){
+        try{
+        $inscrit = Inscrit::find($id);
+        return view('voir-rdv',compact('inscrit'));
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+    }
+    public function creer_plan (Request $request,$id){
+        try{
+            $planAction= new PlanAction();
+            $planAction->action_menee= $request['action_menee'];
+            $planAction->objectif= $request['objectif'];
+            $planAction->moyen_oeuvre= $request['moyen_oeuvre'];
+            $planAction->echeance= $request['echeance'];
+            $planAction->inscrit_id=$id;
+            $planAction->save();
+            return redirect()->route('voir-rdv',$id)->with("success","Le plan d'action a été crée");
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+    }
+    public function supp_plan($id){
+        try{
+        $plan = PlanAction::find($id);
+        $plan->delete();
+        return back()->with("success","Le plan d'action a été supprimé");
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+    }
+    public function creer_rdv (Request $request,$id){
+        try{
+            $rdv= new Rdv();
+            $rdv->contexte= $request['contexte'];
+            $rdv->date= $request['date'];
+            $rdv->inscrit_id=$id;
+            $rdv->save();
+            return redirect()->route('voir-rdv',$id)->with("success","Le rendez-vous a été crée");
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+    }
+    public function supp_rdv($id){
+        try{
+        $rdv = Rdv::find($id);
+        $rdv->delete();
+        return back()->with("success","Le rendez-vous a été supprimé");
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+    }
 }

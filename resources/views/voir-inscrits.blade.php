@@ -18,8 +18,13 @@
                 <td>{{$ligne->nom}}</td>
                 <td>{{$ligne->prenom}}</td>
                 <td>{{$ligne->user->name}}</td>
-                <td>{{$ligne->nb_rdv}}</td>
+                <td>@if($ligne->nb_rdv>1 || $ligne->nb_rdv==null)
+                    {{0}}
+                @else
+                    {{$ligne->nb_rdv}}
+                @endif</td>
                 <td>
+                    <a href="{{ route('voir-rdv',[$ligne["id"]]) }}" class="a-rdv">Rendez-vous</a>
                     <a href="{{ route('modifier-inscrit',[$ligne["id"]]) }}" class="a-modif">Ajouter</a>
                     <form method="post" action="{{ route('supp-inscrit',[$ligne->id])}}" style="display: inline;">
                         @csrf

@@ -37,8 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::get('creer-inscrit', [InscritsController::class, 'creer_inscrit'])->name('creer-inscrit');
     Route::get('voir-inscrits', [InscritsController::class, 'voir_inscrits'])->name('voir-inscrits');
     Route::get('modifier-inscrit/{id}', [InscritsController::class, 'modifier_inscrit'])->name('modifier-inscrit');
+    Route::get('voir-rdv/{id}', [InscritsController::class, 'voir_rdv'])->name('voir-rdv');
     Route::delete('supp-inscrit/{id}', [InscritsController::class, 'supp_inscrit'])->name('supp-inscrit');
     Route::post('creer-inscription', [InscritsController::class, 'creer_inscription'])->name('creer-inscription');
+    Route::post('creer-plan/{id}', [InscritsController::class, 'creer_plan'])->name('creer-plan');
+    Route::delete('supp-plan/{id}', [InscritsController::class, 'supp_plan'])->name('supp-plan');
+    Route::post('creer-rdv/{id}', [InscritsController::class, 'creer_rdv'])->name('creer-rdv');
+    Route::delete('supp-rdv/{id}', [InscritsController::class, 'supp_rdv'])->name('supp-rdv');
     
     Route::get('voir-acc', [AccompagnateurController::class, 'voir_acc'])->name('voir-acc');
     Route::post('register-acc', [RegisteredUserController::class, 'register_acc'])->name('register-acc');

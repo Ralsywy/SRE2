@@ -37,7 +37,9 @@ button:hover.zoom{
     transform: translateY(0%);
     transition: all .5s;
   }
-  
+.alert{
+    text-align: center;
+}
 /********* NAVBAR *********/
 .navbar{
     background-color: #0000002a;
@@ -730,4 +732,57 @@ tbody tr:last-child td:last-child{
 .page-inscrit .btn_supp:hover{
     background-color: var(--text);
     color: var(--background);
+}
+.a-rdv{
+    color: var(--text);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--accent);
+    padding: 10px 15px;
+    margin-top: 10px;
+    transition: .2s;
+    text-decoration: none;
+}
+
+.a-rdv:hover{
+    background-color: var(--text);
+    color: var(--background);
+}
+/************ PAGE RDV *************/
+.page-rdv{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    width: 100%;
+}
+.page-rdv table{
+    margin: 1.5rem;
+}
+.page-rdv h1{
+    font-weight: 700;
+    color: var(--background);
+}
+.page-rdv button:hover{
+    background-color: var(--text);
+    color: var(--background);
+}
+.plan-actions{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.rdv{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }

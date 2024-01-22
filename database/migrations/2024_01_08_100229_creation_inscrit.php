@@ -190,7 +190,7 @@ return new class extends Migration
         });
         Schema::create('rdv', function (Blueprint $table) {
             $table->id();
-            $table->string('context')->nullable();
+            $table->string('contexte')->nullable();
             $table->date('date')->nullable();
             $table->foreignId('inscrit_id')->constrained('inscrits')->onDelete('cascade');
             $table->timestamps();
