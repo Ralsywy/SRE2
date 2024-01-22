@@ -1,6 +1,6 @@
 :root {
     --text: #120524;
-    --background: #f9f5fe;
+    --background: #fff;
     --primary: #b474fc;
     --secondary: #ef84d9;
     --accent: #e95898;
@@ -42,24 +42,29 @@ button:hover.zoom{
 }
 /********* NAVBAR *********/
 .navbar{
-    background-color: #0000002a;
-    box-shadow: 0 0 10px rgba(92, 92, 92, 0.3);
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 0px 7rem;
+    height: 70px;
 }
 
 .nav-link{
     font-weight: 400;
-    color: var(--background);
+    color: var(--text);
     margin: 0 30px;
-    font-size: 18px;
+    font-size: 16px;
+    transition: .3s;
+}
+.nav-link:hover{
+    color: var(--accent);
 }
 
-.nav-link.active{
+.navbar-nav .nav-link.active{
     font-weight: 600;
+    color: var(--accent);
 }
-.navbar form{
-    position: absolute;
-    right: 0;
-}
+
+
 /********* ACCOMPAGNATEURS *********/
 .page-acc{
     padding: 3rem;
@@ -71,7 +76,7 @@ button:hover.zoom{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: var(--background);
     padding: 1rem;
     border-radius: .5rem;
     text-align: center;
@@ -764,7 +769,7 @@ tbody tr:last-child td:last-child{
 }
 .page-rdv h1{
     font-weight: 700;
-    color: var(--text);
+    color: var(--background);
 }
 .page-rdv button:hover{
     background-color: var(--text);
