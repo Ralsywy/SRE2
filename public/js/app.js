@@ -1,17 +1,18 @@
+
 function hideshowrdc(val) {
-    if (val == 1 || document.getElementById('oui_rdc').checked) {
+    if (val == 1) {
         document.getElementById('div_rdc').style.display = 'inline-block';
     }
-    if (val == 2 || document.getElementById('non_rdc').checked) {
+    if (val == 2) {
         document.getElementById('div_rdc').style.display = 'none';
     }
 }
 
 function hideshowenfant(val) {
-    if (val == 1 || document.getElementById('oui_enfant').checked) {
+    if (val == 1) {
         document.getElementById('div_enfant').style.display = 'block';
     }
-    if (val == 2 || document.getElementById('non_enfant').checked) {
+    if (val == 2) {
         document.getElementById('div_enfant').style.display = 'none';
     }
 }
@@ -26,19 +27,19 @@ function hideshowrevenus() {
   }
 
   function hideshowfrance(val) {
-    if (val == 1 || document.getElementById('oui_france').checked) {
+    if (val == 1) {
         document.getElementById('div_france').style.display = 'block';
     }
-    if (val == 2 || document.getElementById('oui_france').checked) {
+    if (val == 2) {
         document.getElementById('div_france').style.display = 'none';
     }
 }
 
 function hideshowasile(val) {
-    if (val == 1 || document.getElementById('oui_asile').checked) {
+    if (val == 1) {
         document.getElementById('div_asile').style.display = 'block';
     }
-    if (val == 2 || document.getElementById('oui_asile').checked) {
+    if (val == 2) {
         document.getElementById('div_asile').style.display = 'none';
     }
 }
@@ -345,3 +346,43 @@ function hideshowtypeform() {
     }
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Appel initial pour configurer l'état basé sur les radio/checkbox cochés
+    initialSetup();
+
+    // Fonction pour extraire la valeur du champ radio/checkbox avec un id commencant par "oui_" ou "non_"
+    function getValueByIdPrefix(prefix) {
+        const element = document.querySelector(`input[id^="${prefix}"]:checked`);
+        return element ? element.value : null;
+    }
+
+    // Fonction pour effectuer l'initialisation basée sur les valeurs actuelles des radio/checkbox
+    function initialSetup() {
+        // Appeler chaque fonction avec les valeurs initiales des radio/checkbox
+        hideshowrdc(getValueByIdPrefix('oui_rdc'));
+        hideshowenfant(getValueByIdPrefix('oui_enfant'));
+        hideshowasile(getValueByIdPrefix('oui_demande_asile'));
+        hideshowpolitique(getValueByIdPrefix('oui_refugie_politique'));
+        hideshowfrance(getValueByIdPrefix('oui_pole_emplois'));
+        hideshowsoelis(getValueByIdPrefix('oui_soelis'));
+        hideshowcma(getValueByIdPrefix('oui_cma'));
+        hideshowmission(getValueByIdPrefix('oui_mission_locale'));
+        hideshowcap(getValueByIdPrefix('oui_cap_emploi'));
+        hideshowcv(getValueByIdPrefix('oui_cv'));
+        hideshowpermis(getValueByIdPrefix('oui_permis'));
+        hideshowvehiculedispo(getValueByIdPrefix('oui_vehicule'));
+        hideshowvehiculeprevu(getValueByIdPrefix('oui_achat'));
+        hideshowdiplome();
+        hideshowreconv(getValueByIdPrefix('oui_reconv'));
+        hideshowformprevu(getValueByIdPrefix('oui_prevue'));
+        // ... (le reste de votre code)
+    }
+
+    // Vous pouvez également attacher la fonction initialSetup à des événements de changement
+    // des radio/checkbox au cas où l'utilisateur cocherait/décocherait ultérieurement.
+    // Par exemple, si vous avez des éléments radio/checkbox avec la classe "toggle-option":
+    const toggleOptions = document.querySelectorAll('.toggle-option');
+    toggleOptions.forEach(function(option) {
+        option.addEventListener('change', initialSetup);
+    });
+});
