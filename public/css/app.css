@@ -764,7 +764,7 @@ tbody tr:last-child td:last-child{
 }
 .page-rdv h1{
     font-weight: 700;
-    color: var(--background);
+    color: var(--text);
 }
 .page-rdv button:hover{
     background-color: var(--text);

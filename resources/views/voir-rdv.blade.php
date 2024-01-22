@@ -1,8 +1,8 @@
 @extends('base')
 @section('content')
-<div class="page-rdv">
+<div class="page-rdv hidden">
     <div class="plan-actions">
-        <h1>Plans d'action</h1>
+        <h1>Plans d'action de {{$inscrit->nom}} {{$inscrit->prenom}}</h1>
         <table>
             <thead>
                 <tr class="hidden">
@@ -17,10 +17,10 @@
                 <tr class="hidden">
                     <form method="POST" action="{{ route('creer-plan',[$inscrit->id])}}">
                         @csrf
-                        <td><input type="text" id="action_menee" name="action_menee"></td>
-                        <td><input type="text" id="objectif" name="objectif"></td>
-                        <td><input type="text" id="moyen_oeuvre" name="moyen_oeuvre"></td>
-                        <td><input type="date" id="echeance" name="echeance"></td>
+                        <td><input class="form-control" type="text" id="action_menee" name="action_menee"></td>
+                        <td><input class="form-control" type="text" id="objectif" name="objectif"></td>
+                        <td><input class="form-control" type="text" id="moyen_oeuvre" name="moyen_oeuvre"></td>
+                        <td><input class="form-control" type="date" id="echeance" name="echeance"></td>
                         <td><button type="submit" class="btn_creer">Créer</button></td>
                     </form>
                 </tr>
@@ -42,9 +42,9 @@
             </tbody>
         </table>
     </div>
-    <hr class="solid">
+    <hr class="dashed">
     <div class="rdv">
-        <h1>Rendez-vous</h1>
+        <h1>Rendez-vous de {{$inscrit->nom}} {{$inscrit->prenom}}</h1>
         <table>
             <thead>
                 <tr class="hidden">
@@ -57,8 +57,8 @@
                 <tr class="hidden">
                     <form method="POST" action="{{ route('creer-rdv',[$inscrit->id])}}">
                         @csrf
-                        <td><input type="text" id="contexte" name="contexte"></td>
-                        <td><input type="date" id="date" name="date"></td>
+                        <td><textarea class="form-control" id="contexte" name="contexte" rows="3"></textarea></td>
+                        <td><input class="form-control" type="date" id="date" name="date"></td>
                         <td><button type="submit" class="btn_creer">Créer</button></td>
                     </form>
                 </tr>
