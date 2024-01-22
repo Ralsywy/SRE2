@@ -1,17 +1,17 @@
 function hideshowrdc(val) {
-    if (val == 1) {
+    if (val == 1 || document.getElementById('oui_rdc').checked) {
         document.getElementById('div_rdc').style.display = 'inline-block';
     }
-    if (val == 2) {
+    if (val == 2 || document.getElementById('non_rdc').checked) {
         document.getElementById('div_rdc').style.display = 'none';
     }
 }
 
 function hideshowenfant(val) {
-    if (val == 1) {
+    if (val == 1 || document.getElementById('oui_enfant').checked) {
         document.getElementById('div_enfant').style.display = 'block';
     }
-    if (val == 2) {
+    if (val == 2 || document.getElementById('non_enfant').checked) {
         document.getElementById('div_enfant').style.display = 'none';
     }
 }
@@ -26,19 +26,19 @@ function hideshowrevenus() {
   }
 
   function hideshowfrance(val) {
-    if (val == 1) {
+    if (val == 1 || document.getElementById('oui_france').checked) {
         document.getElementById('div_france').style.display = 'block';
     }
-    if (val == 2) {
+    if (val == 2 || document.getElementById('oui_france').checked) {
         document.getElementById('div_france').style.display = 'none';
     }
 }
 
 function hideshowasile(val) {
-    if (val == 1) {
+    if (val == 1 || document.getElementById('oui_asile').checked) {
         document.getElementById('div_asile').style.display = 'block';
     }
-    if (val == 2) {
+    if (val == 2 || document.getElementById('oui_asile').checked) {
         document.getElementById('div_asile').style.display = 'none';
     }
 }
@@ -137,10 +137,10 @@ function hideshowpermischoix() {
   }
 
 function hideshowvehiculedispo(val) {
-    if (val == 1) {
+    if (val == 2) {
         document.getElementById('div_vehicule_dispo').style.display = 'block';
     }
-    if (val == 2) {
+    if (val == 1) {
         document.getElementById('div_vehicule_prevu').style.display = 'none';
         document.getElementById('div_vehicule_dispo').style.display = 'none';
     }

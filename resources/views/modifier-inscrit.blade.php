@@ -180,16 +180,16 @@
                 <div class="title">Situation personnelle :</div>
                 
                     <div class="label">Enfant à charge</div>
-                    <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant">
+                    <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant" @if ($inscrit->is_enfant == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_enfant">Oui</label>
-                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" checked>
+                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" @if ($inscrit->is_enfant == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_enfant">Non</label>
-                
+
                 <!--- Si oui --->
                 <div id="div_enfant" class="hidden">
                 <div class="field">
                     <div class="label">Nombre d'enfants </div>
-                    <input type="number" name="nb_enfant" id="nombre_enfant">
+                    <input type="number" name="nb_enfant" id="nombre_enfant" value="{{$inscrit->nb_enfant}}">
                 </div>
     <!--- Pour chaque enfant --->
     <div id="boite" class="field3"></div>
@@ -259,268 +259,264 @@
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
-                        <option value="Aucun">Choisir un revenus</option>
-                        <option value="Salaire">Salaire</option>
-                        <option value="RSA">RSA</option>
-                        <option value="ARE">ARE</option>
-                        <option value="AAH">AAH</option>
-                        <option value="Pension de retraite">Pension de retraite</option>
-                        <option value="Autre">Autre</option>
-                        <option value="Aucun">Aucune</option>
+                        <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Choisir un revenus</option>
+                        <option value="salaire" @if ($inscrit->nature_revenus == "salaire") @selected(true) @endif>Salaire</option>
+                        <option value="rsa" @if ($inscrit->nature_revenus == "rsa") @selected(true) @endif>RSA</option>
+                        <option value="are" @if ($inscrit->nature_revenus == "are") @selected(true) @endif>ARE</option>
+                        <option value="aah" @if ($inscrit->nature_revenus == "aah") @selected(true) @endif>AAH</option>
+                        <option value="retraite" @if ($inscrit->nature_revenus == "retraite") @selected(true) @endif>Pension de retraite</option>
+                        <option value="autre" @if ($inscrit->nature_revenus == "autre") @selected(true) @endif>Autre</option>
+                        <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Aucune</option>
                     </select>
                 </div>
                 <!--- Si autre --->
                 <div id="preciser">
-                <div class="field">
-                    <div class="label">Préciser le type de revenus</div>
-                    <input type="text" name="autre_revenus">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Préciser le type de revenus</div>
+                        <input type="text" name="autre_revenus" value="{{$inscrit->autre_revenus}}">
+                    </div>
+                    </div>
                 <!--- Fin --->
 
-                    <div class="label">Demandeur d'asile</div>
-                    <input type="radio" name="is_demande_asile" value="1" onclick="hideshowasile(1)" id="oui_demande_asile">
-                    <label class="label" for="oui_demande_asile">Oui</label>
-                    <input type="radio" name="is_demande_asile" value="0" onclick="hideshowasile(2)" id="non_demande_asile"checked>
-                    <label class="label" for="non_demande_asile">Non</label>
+                <div class="label">Demandeur d'asile</div>
+                <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile" @if ($inscrit->is_demande_asile == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_demande_asile">Oui</label>
+                <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_demande_asile">Non</label>
                 <!--- Si oui --->
                 <div id="div_asile">
-                <div class="field">
-                    <div class="label">Date d'arrivé en france</div>
-                    <input type="date" name="dte_arrivee_fr">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Date d'arrivé en france</div>
+                        <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
+                    </div>
+                    </div>
                 <!--- Fin --->     
-                <hr class="dashed">               
-                    <div class="label">Réfugié politique</div>
-                    <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
-                    <label class="label" for="oui_refugie_politique">Oui</label>
-                    <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique"checked>
-                    <label class="label" for="non_refugie_politique">Non</label>
+                <div class="label">Réfugié politique</div>
+                <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique" @if ($inscrit->is_refugie_politique == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_refugie_politique">Oui</label>
+                <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique" @if ($inscrit->is_refugie_politique == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">
                     <div class="field">
                         <div class="label">Date d'arrivé en france</div>
-                        <input type="date" name="dte_arrivee_fr">
+                        <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
                     </div>
                     </div>
                     <!--- Fin --->  
                     <hr class="dashed">
                     <div class="label">Inscrit à France travail</div>
-                    <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois">
+                    <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois" @if ($inscrit->is_france_travail == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_pole_emplois">Oui</label>
-                    <input type="radio" name="is_france_travail" value="0" onclick="hideshowfrance(2)" id="non_pole_emplois"checked>
+                    <input type="radio" name="is_france_travail" value="0" onclick="hideshowfrance(2)" id="non_pole_emplois" @if ($inscrit->is_france_travail == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_pole_emplois">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_france" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'inscription à France travail</div>
-                    <input type="date" name="france_dte_inscription">
-                </div>
-                <div class="field">
-                    <div class="label">Nom référent</div>
-                    <input type="text" name="france_nom_ref">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Date d'inscription à France travail</div>
+                        <input type="date" name="france_dte_inscription" value="{{$inscrit->franceTravail->dte_inscription}}">
+                    </div>
+                    <div class="field">
+                        <div class="label">Nom référent</div>
+                        <input type="text" name="france_nom_ref" value="{{$inscrit->franceTravail->nom_ref}}">
+                    </div>
+                    </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                    <div class="label">Inscrit à Soélis</div>
-                    <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis">
-                    <label class="label" for="oui_soelis">Oui</label>
-                    <input type="radio" name="is_soelis" value="0" onclick="hideshowsoelis(2)" id="non_soelis"checked>
-                    <label class="label" for="non_soelis">Non</label>
+                        <div class="label">Inscrit à Soélis</div>
+                        <input type="radio" name="is_soelis" value="1" onclick="hideshowsoelis(1)" id="oui_soelis" @if ($inscrit->is_soelis == 1) @checked(true) @else @checked(false) @endif>
+                        <label class="label" for="oui_soelis">Oui</label>
+                        <input type="radio" name="is_soelis" value="0" onclick="hideshowsoelis(2)" id="non_soelis" @if ($inscrit->is_soelis == 0) @checked(true) @else @checked(false) @endif>
+                        <label class="label" for="non_soelis">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_soelis" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'inscription à Soélis</div>
-                    <input type="date" name="soelis_dte_inscription">
-                </div>
-                <div class="field">
-                    <div class="label">Nom référent</div>
-                    <input type="text" name="soelis_nom_ref">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Date d'inscription à Soélis</div>
+                        <input type="date" name="soelis_dte_inscription" value="{{$inscrit->soelis->dte_inscription}}">
+                    </div>
+                    <div class="field">
+                        <div class="label">Nom référent</div>
+                        <input type="text" name="soelis_nom_ref" value="{{$inscrit->soelis->nom_ref}}">
+                    </div>
+                    </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                    <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
-                    <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma">
-                    <label class="label" for="oui_cma">Oui</label>
-                    <input type="radio" name="is_cma" value="0" onclick="hideshowcma(2)" id="non_cma"checked>
-                    <label class="label" for="non_cma">Non</label>
+                <div class="label">Inscrit à la chambre des métiers et de l'artisanat</div>
+                <input type="radio" name="is_cma" value="1" onclick="hideshowcma(1)" id="oui_cma" @if ($inscrit->is_cma == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_cma">Oui</label>
+                <input type="radio" name="is_cma" value="0" onclick="hideshowcma(2)" id="non_cma" @if ($inscrit->is_cma == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_cma">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_cma" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
-                    <input type="date" name="cma_dte_inscription">
-                </div>
-                <div class="field">
-                    <div class="label">Nom référent</div>
-                    <input type="text" name="cma_nom_ref">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
+                        <input type="date" name="cma_dte_inscription" value="{{$inscrit->cma->dte_inscription}}">
+                    </div>
+                    <div class="field">
+                        <div class="label">Nom référent</div>
+                        <input type="text" name="cma_nom_ref" value="{{$inscrit->cma->nom_ref}}">
+                    </div>
+                    </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                    <div class="label">Inscrit à la Mission locale</div>
-                    <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale">
-                    <label class="label" for="oui_mission_locale">Oui</label>
-                    <input type="radio" name="is_mission_locale" value="0" onclick="hideshowmission(2)" id="non_mission_locale"checked>
-                    <label class="label" for="non_mission_locale">Non</label>
+                <div class="label">Inscrit à la Mission locale</div>
+                <input type="radio" name="is_mission_locale" value="1" onclick="hideshowmission(1)" id="oui_mission_locale" @if ($inscrit->is_mission_locale == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_mission_locale">Oui</label>
+                <input type="radio" name="is_mission_locale" value="0" onclick="hideshowmission(2)" id="non_mission_locale" @if ($inscrit->is_mission_locale == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_mission_locale">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_mission" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'inscription à la Mission locale</div>
-                    <input type="date" name="mission_dte_inscription">
-                </div>
-                <div class="field">
-                    <div class="label">Nom référent</div>
-                    <input type="text" name="mission_nom_ref">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Date d'inscription à la Mission locale</div>
+                        <input type="date" name="mission_dte_inscription" value="{{$inscrit->missionLocale->dte_inscription}}">
+                    </div>
+                    <div class="field">
+                        <div class="label">Nom référent</div>
+                        <input type="text" name="mission_nom_ref" value="{{$inscrit->missionLocale->nom_ref}}">
+                    </div>
+                    </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                    <div class="label">Inscrit à CAP emploi</div>
-                    <input type="radio" name="is_cap_emploi" value="1" onclick="hideshowcap(1)" id="oui_cap_emploi">
-                    <label class="label" for="oui_cap_emploi">Oui</label>
-                    <input type="radio" name="is_cap_emploi" value="0" onclick="hideshowcap(2)" id="non_cap_emploi"checked>
-                    <label class="label" for="non_cap_emploi">Non</label>
+                <div class="label">Inscrit à CAP emplois</div>
+                <input type="radio" name="is_cap_emploi" value="1" onclick="hideshowcap(1)" id="oui_cap_emploi" @if ($inscrit->is_cap_emploi == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_cap_emploi">Oui</label>
+                <input type="radio" name="is_cap_emploi" value="0" onclick="hideshowcap(2)" id="non_cap_emploi" @if ($inscrit->is_cap_emploi == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_cap_emploi">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_cap" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'inscription CAP emplois</div>
-                    <input type="date" name="cap_dte_inscription">
-                </div>
-                <div class="field">
-                    <div class="label">Nom référent</div>
-                    <input type="text" name="cap_nom_ref">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Date d'inscription CAP emplois</div>
+                        <input type="date" name="cap_dte_inscription" value="{{$inscrit->capEmploi->dte_inscription}}">
+                    </div>
+                    <div class="field">
+                        <div class="label">Nom référent</div>
+                        <input type="text" name="cap_nom_ref" value="{{$inscrit->capEmploi->nom_ref}}">
+                    </div>
+                    </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                    <div class="label">CV disponible</div>
-                    <input type="radio" name="is_cv" value="1" onclick="hideshowcv(1)" id="oui_cv">
-                    <label class="label" for="oui_cv">Oui</label>
-                    <input type="radio" name="is_cv" value="0" onclick="hideshowcv(2)" id="non_cv"checked>
-                    <label class="label" for="non_cv">Non</label>
+                <div class="label">CV disponible</div>
+                <input type="radio" name="is_cv" value="1" onclick="hideshowcv(1)" id="oui_cv" @if ($inscrit->is_cv == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_cv">Oui</label>
+                <input type="radio" name="is_cv" value="0" onclick="hideshowcv(2)" id="non_cv" @if ($inscrit->is_cv == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_cv">Non</label>
                 
-                <!--- Si oui --->
-                <div id="div_cv_oui">
-                <div class="field">
-                    <div class="label">Insérer le cv scanné (format PDF uniquement)</div>
-                    <input type="file" name="cv_nom" id="cv_nom">
-                </div>
-                </div>
-                <!--- Si non --->
-                <div id="div_cv_non">
-                <div class="field">
-                    <div class="label">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
-                    <input type="date" name="dte_travailler">
-                </div>
-                </div>
+                    <!--- Si oui --->
+                    <div id="div_cv_oui">
+                    <div class="field">
+                        <div class="label">Insérer le cv scanné (format PDF uniquement)</div>
+                        <input type="file" name="cv_nom">
+                    </div>
+                    </div>
+                    <!--- Si non --->
+                    <div id="div_cv_non">
+                    <div class="field">
+                        <div class="label">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
+                        <input type="date" name="dte_travailler">
+                    </div>
+                    </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                    <div class="label">A le Permis</div>
-                    <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis">
-                    <label class="label" for="oui_permis">Oui</label>
-                    <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis"checked>
-                    <label class="label" for="non_permis">Non</label>
+                <div class="label">A le Permis</div>
+                <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis" @if ($inscrit->is_permis == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_permis">Oui</label>
+                <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis" @if ($inscrit->is_permis == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_permis">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_permis" class="hidden">
-                <div class="field">
-                    <div class="label">Combien de permis</div>
-                    <input type="number" name="nb_permis" class="nb_permis">
-                </div>
-                <!--- Si oui un/plusieurs --->
-                <div class="field">
-                <div class="label">Permis</div>
-                <select name="type" onchange="hideshowpermischoix()" id="choix_permis">
-                    <option value="aucun">Choisir un permis</option>
-                    <option value="aucun">aucun</option>
-                    <option value="autos">Permis autos</option>
-                    <option value="motos">Permis motos</option>
-                    <option value="marchandises">Permis marchandises ou de personnes</option>
-                </select>
-                </div>
-                </div>
-                <div id="permis_container"></div>
-                <div id="permisr_container"></div>
-
-                <!--- Si non (rien) --->
-                <!--- Si autos --->
-                <div id="autos" class="hidden">
-                <div class="field">
-                <div class="label">Permis autos</div>
-                <select name="autos_categorie">
-                    <option value="aucun">Choisir une catégorie</option>
-                    <option value="B">B</option>
-                    <option value="B1">B1</option>
-                    <option value="BE">BE</option>
-                </select>
-                </div>
-                </div>
-                <!--- Si motos --->
-                <div id="motos" class="hidden">
-                <div class="field">
-                <div class="label">Permis motos</div>
-                <select name="motos_categorie">
-                    <option value="aucun">Choisir une catégorie</option>
-                    <option value="B">A</option>
-                    <option value="B1">A1</option>
-                    <option value="BE">A2</option>
-                </select>
-                </div>
-                </div>
-                <!--- Si marchandises ou personnes --->
-                <div id="marchandises" class="hidden">
-                <div class="field">
-                <div class="label">Permis marchandises ou de personnes</div>
-                <select name="marchandises_categorie">
-                    <option value="aucun">Choisir une catégorie</option>
-                    <option value="C">C</option>
-                    <option value="CE">CE</option>
-                    <option value="C1">C1</option>
-                    <option value="C1E">C1E</option>
-                    <option value="D">D</option>
-                    <option value="DE">DE</option>
-                    <option value="D1">D1</option>
-                    <option value="D1E">D1E</option>
-                </select>
-                </div>
-                </div>
-                <!--- Autres permis --->
+                    <div id="div_permis" class="hidden">
+                    <div class="field">
+                        <div class="label">Combien de permis</div>
+                        <input type="number" name="nb_permis" value="{{$inscrit->nb_permis}}">
+                    </div>
+                    <!--- Si oui un/plusieurs --->
+                    <div class="field">
+                    <div class="label">Permis</div>
+                    <select name="type" onchange="hideshowpermischoix()" id="choix_permis">
+                        <option value="aucun">Choisir un permis</option>
+                        <option value="aucun">aucun</option>
+                        <option value="autos">Permis autos</option>
+                        <option value="motos">Permis motos</option>
+                        <option value="marchandises">Permis marchandises ou de personnes</option>
+                    </select>
+                    </div>
+                    </div>
+                    <!--- Si non (rien) --->
+                    <!--- Si autos --->
+                    <div id="autos" class="hidden">
+                    <div class="field">
+                    <div class="label">Permis autos</div>
+                    <select name="autos_categorie">
+                        <option value="aucun">Choisir une catégorie</option>
+                        <option value="B">B</option>
+                        <option value="B1">B1</option>
+                        <option value="BE">BE</option>
+                    </select>
+                    </div>
+                    </div>
+                    <!--- Si motos --->
+                    <div id="motos" class="hidden">
+                    <div class="field">
+                    <div class="label">Permis motos</div>
+                    <select name="motos_categorie">
+                        <option value="aucun">Choisir une catégorie</option>
+                        <option value="B">A</option>
+                        <option value="B1">A1</option>
+                        <option value="BE">A2</option>
+                    </select>
+                    </div>
+                    </div>
+                    <!--- Si marchandises ou personnes --->
+                    <div id="marchandises" class="hidden">
+                    <div class="field">
+                    <div class="label">Permis marchandises ou de personnes</div>
+                    <select name="marchandises_categorie">
+                        <option value="aucun">Choisir une catégorie</option>
+                        <option value="C">C</option>
+                        <option value="CE">CE</option>
+                        <option value="C1">C1</option>
+                        <option value="C1E">C1E</option>
+                        <option value="D">D</option>
+                        <option value="DE">DE</option>
+                        <option value="D1">D1</option>
+                        <option value="D1E">D1E</option>
+                    </select>
+                    </div>
+                    </div>
+                    <!--- Autres permis --->
                 <div class="field hidden" id="autre_permis">
                     <div class="label">Autres permis</div>
                     <input type="text" name="autre_permis">
                 </div>
                 <!--- Fin --->
                 
-                    <div class="label">Véhicule disponible</div>
-                    <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(2)" id="oui_vehicule">
-                    <label class="label" for="oui_vehicule">Oui</label>
-                    <input type="radio" name="vehicule_dispo" value="0" onclick="hideshowvehiculedispo(1)" id="non_vehicule"checked>
-                    <label class="label" for="non_vehicule">Non</label>
+                <div class="label">Véhicule disponible</div>
+                <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(1)" id="oui_vehicule" @if ($inscrit->vehicule_dispo == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_vehicule">Oui</label>
+                <input type="radio" name="vehicule_dispo" value="0" onclick="hideshowvehiculedispo(2)" id="non_vehicule" @if ($inscrit->vehicule_dispo == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_vehicule">Non</label>
                 
                 <!--- Si oui (rien) --->
                 <!--- Si non --->
                 <div id="div_vehicule_dispo" class="hidden">
                     <div class="label">Achat prévu d'un véhicule</div>
-                    <input type="radio" name="prevu_vehicule" value="1" onclick="hideshowvehiculeprevu(1)" id="oui_achat">
+                    <input type="radio" name="prevu_vehicule" value="1" onclick="hideshowvehiculeprevu(1)" id="oui_achat" @if ($inscrit->prevu_vehicule == 1) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="oui_achat">Oui</label>
-                    <input type="radio" name="prevu_vehicule" value="0" onclick="hideshowvehiculeprevu(2)" id="non_achat"checked>
+                    <input type="radio" name="prevu_vehicule" value="0" onclick="hideshowvehiculeprevu(2)" id="non_achat" @if ($inscrit->prevu_vehicule == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_achat">Non</label>
                 </div>
                 <!--- Si oui --->
                 <div id="div_vehicule_prevu" class="hidden">
-                <div class="field">
-                    <div class="label">Date d'achat prévue</div>
-                    <input type="date" name="dte_achat">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Date d'achat prévue</div>
+                        <input type="date" name="dte_achat" value="{{$inscrit->dte_achat}}">
+                    </div>
+                    </div>
                 <!--- Si non (rien) --->
                 <div class="field btns">
                     <a class="prev-2 prev">Précédent</a>
@@ -532,7 +528,7 @@
                 <div class="title">Formations :</div>
                 <div class="field">
                 <div class="label">Diplôme(s) obtenus</div>
-                <input type="number" name="nb_diplome" class="nb_diplome">
+                <input type="number" name="nb_diplome" class="nb_diplome" value="{{$inscrit->nb_diplome}}">
                 </div>
                 <div id="diplomes_container" class="field2">
                 </div>
@@ -599,7 +595,7 @@
                             select.id = 'diplome_' + i;
                             
                             // Ajouter les options au select
-                            var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
+                            var options = ["Modifier le diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
                             for (var j = 0; j < options.length; j++) {
                                 var option = document.createElement('option');
                                 option.value = options[j].toLowerCase();
@@ -625,23 +621,23 @@
                             // Créer les champs en fonction du type de diplôme
                             switch (selectedDiplome) {
                                 case 'cap':
-                                    createTextField(responseContainer, 'Renseigner le type de métier', 'niveau_cap_' + diplomeIndex);
+                                    createTextField(responseContainer, 'Modifier le type de métier', 'niveau_cap_' + diplomeIndex);
                                     break;
                                 case 'bep':
-                                    createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_bep_' + diplomeIndex);
+                                    createTextField(responseContainer, 'Modifier la spécialité', 'niveau_bep_' + diplomeIndex);
                                     break;
                                 case 'bac':
                                 case 'bac+2':
                                 case 'licence':
                                 case 'master1':
                                 case 'master2':
-                                    createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_' + selectedDiplome + '_' + diplomeIndex);
+                                    createTextField(responseContainer, 'Modifier la spécialité', 'niveau_' + selectedDiplome + '_' + diplomeIndex);
                                     break;
                                 case 'formation continue':
-                                    createTextField(responseContainer, 'Renseigner la formation', 'niveau_formation_continue_' + diplomeIndex);
+                                    createTextField(responseContainer, 'Modifier la formation', 'niveau_formation_continue_' + diplomeIndex);
                                     break;
                                 case 'autre':
-                                    createTextField(responseContainer, 'Renseigner le diplôme', 'niveau_autre_' + diplomeIndex);
+                                    createTextField(responseContainer, 'Modifier le diplôme', 'niveau_autre_' + diplomeIndex);
                                     break;
                                 default:
                                     // Aucune action pour les autres cas
@@ -690,7 +686,7 @@
                                 select.id = 'diplome_' + i;
                         
                                 // Ajouter les options au select
-                                var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
+                                var options = ["Modifier le diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
                                 for (var j = 0; j < options.length; j++) {
                                     var option = document.createElement('option');
                                     option.value = options[j].toLowerCase();
@@ -719,108 +715,108 @@
                         </script>
                 <!--- Si Formation continue --->
                 <hr class="dashed">
-                    <div class="label">Reconversion professionnelle</div>
-                    <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv">
-                    <label class="label" for="oui_reconv">Oui</label>
-                    <input type="radio" name="is_reconv_pro" value="0" onclick="hideshowreconv(2)" id="non_reconv"checked>
-                    <label class="label" for="non_reconv">Non</label>
-                <!--- Si non (rien) --->
-                <!--- Si oui --->
-                <div id="div_reconv" class="hidden">
-                <div class="label">Formations prévues</div>
-                <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue">
-                <label class="label" for="oui_prevue">Oui</label>
-                <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue"checked>
-                <label class="label" for="non_prevue">Non</label>
-                </div>
+                <div class="label">Reconversion professionnelle</div>
+                <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv" @if ($inscrit->is_reconv_pro == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_reconv">Oui</label>
+                <input type="radio" name="is_reconv_pro" value="0" onclick="hideshowreconv(2)" id="non_reconv" @if ($inscrit->is_reconv_pro == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_reconv">Non</label>
+            <!--- Si non (rien) --->
+            <!--- Si oui --->
+            <div id="div_reconv" class="hidden">
+            <div class="label">Formations prévues</div>
+            <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue" @if ($inscrit->reconvPro->is_form_prevue == 1) @checked(true) @else @checked(false) @endif>
+            <label class="label" for="oui_prevue">Oui</label>
+            <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue" @if ($inscrit->reconvPro->is_form_prevue == 0) @checked(true) @else @checked(false) @endif>
+            <label class="label" for="non_prevue">Non</label>
+            </div>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
                 <div id="div_form_prevu">
-                <div class="field">
-                    <div class="label">Renseigner le nom : </div>
-                    <input type="text" name="reconv_nom">
-                </div>
-                <div class="field">
-                    <div class="label">Renseigner la date : </div>
-                    <input type="date" name="reconv_date">
-                </div>
-                <div class="field">
-                    <div class="label">Renseigner la durée : </div>
-                    <input type="text" name="reconv_duree">
-                </div>
-                </div>
+                    <div class="field">
+                        <div class="label">Renseigner le nom : </div>
+                        <input type="text" name="reconv_nom" value="{{$inscrit->reconvPro->nom}}">
+                    </div>
+                    <div class="field">
+                        <div class="label">Renseigner la date : </div>
+                        <input type="date" name="reconv_date" value="{{$inscrit->reconvPro->date}}">
+                    </div>
+                    <div class="field">
+                        <div class="label">Renseigner la durée : </div>
+                        <input type="text" name="reconv_duree" value="{{$inscrit->reconvPro->duree}}">
+                    </div>
+                    </div>
                <!--- Fin --->
                <hr class="dashed">
-                <div class="label">Reprise d'étude</div>
-                <input type="radio" name="is_reprise_etudes" value="1" onclick="hideshowreprise(1)" id="oui_reprise">
-                <label class="label" for="oui_reprise">Oui</label>
-                <input type="radio" name="is_reprise_etudes" value="0" onclick="hideshowreprise(2)" id="non_reprise"checked>
-                <label class="label" for="non_reprise">Non</label>
-                <!--- Si non (rien) --->
-                <!--- Si oui --->
-                <div id="div_reprise" class="hidden">
-                <div class="field">
-                    <div class="label">Diplôme préparé</div>
-                    <input type="text" name="nom_diplome">
-                </div>
-                </div>
+               <div class="label">Reprise d'étude</div>
+               <input type="radio" name="is_reprise_etudes" value="1" onclick="hideshowreprise(1)" id="oui_reprise" @if ($inscrit->is_reprise_etudes == 1) @checked(true) @else @checked(false) @endif>
+               <label class="label" for="oui_reprise">Oui</label>
+               <input type="radio" name="is_reprise_etudes" value="0" onclick="hideshowreprise(2)" id="non_reprise" @if ($inscrit->is_reprise_etudes == 0) @checked(true) @else @checked(false) @endif>
+               <label class="label" for="non_reprise">Non</label>
+               <!--- Si non (rien) --->
+               <!--- Si oui --->
+               <div id="div_reprise" class="hidden">
+               <div class="field">
+                   <div class="label">Diplôme préparé</div>
+                   <input type="text" name="nom_diplome_reprise" value="{{$inscrit->repriseEtude->nom_diplome}}">
+               </div>
+               </div>
                 <!--- Si fin --->
                 <hr class="dashed">
                 <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
-                <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro">
-                <label class="label" for="oui_form_pro">Oui</label>
-                <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro"checked>
+                <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro" @if ($inscrit->is_formation_pro == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_form_pro">Oui</label>formation_pro
+                <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro" @if ($inscrit->is_formation_pro == 0) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_form_pro">Non</label>
                 <!--- Si oui --->
                 <div id="div_form_pro" class="hidden">
                 <div class="field">
                     <div class="label">Type de formation</div>
                     <select name="type_formation_pro" onchange="hideshowtypeform()" id="type_form">
-                        <option value="aucun">Choisir un type de formation</option>
-                        <option value="qualifiante">Qualifiante</option>
-                        <option value="diplomante">Diplômante</option>
+                        <option value="aucun" @if ($inscrit->formationPro->type == "aucun") @selected(true) @endif>Choisir un type de formation</option>
+                        <option value="qualifiante" @if ($inscrit->formationPro->type == "qualifiante") @selected(true) @endif>Qualifiante</option>
+                        <option value="diplomante" @if ($inscrit->formationPro->type == "diplomante") @selected(true) @endif>Diplômante</option>
                     </select>
                 </div>
                 </div>
-                <!--- Si diplomante --->
-                <div id="diplomante">
-                <div class="field">
-                    <div class="label">Nom de la formation diplômante</div>
-                    <input type="text" name="diplome_formation_pro">
-                </div>
-                </div>
-                <!--- Si qualifiante --->
-                <div id="qualifiante">
-                <div class="field">
-                    <div class="label">Nom de la formation qualifiante</div>
-                    <input type="text" name="qualifiante_formation_pro">
-                </div>
-                </div>
-                <!--- Fin --->
-                <div class="field">
-                    <div class="label">Métier souhaité</div>
-                    <input type="text" name="nom_metier">
-                </div>
-                <div class="field">
-                    <div class="label">Secteur d'activité</div>
-                    <input type="text" name="secteur_act">
-                </div>
-                <div class="field">
-                    <div class="label">Secteur géographique</div>
-                    <input type="text" name="secteur_geo">
-                </div>
-                <hr class="dashed">
-                    <div class="label">Connaissance en bureautique ou logiciels</div>
-                    <input type="radio" name="is_logiciel" value="1" onclick="hideshowlogiciel(1)" id="oui_logiciel">
-                    <label class="label" for="oui_logiciel">Oui</label>
-                    <input type="radio" name="is_logiciel" value="0" onclick="hideshowlogiciel(2)" id="non_logiciel"checked>
-                    <label class="label" for="non_logiciel">Non</label>
-                    <div id="div_logiciel">
+                    <!--- Si diplomante --->
+                    <div id="diplomante">
                         <div class="field">
-                            <div class="label">Préciser</div>
-                            <input type="text" name="logiciel">
+                            <div class="label">Nom de la formation diplômante</div>
+                            <input type="text" name="diplome_formation_pro" value="{{$inscrit->formationPro->nom}}">
                         </div>
+                        </div>
+                        <!--- Si qualifiante --->
+                        <div id="qualifiante">
+                        <div class="field">
+                            <div class="label">Nom de la formation qualifiante</div>
+                            <input type="text" name="qualifiante_formation_pro" value="{{$inscrit->formationPro->nom}}">
+                        </div>
+                        </div>
+                        <!--- Fin --->
+                        <div class="field">
+                            <div class="label">Métier souhaité</div>
+                            <input type="text" name="nom_metier" value="{{$inscrit->metierSouhaite->nom}}">
+                        </div>
+                        <div class="field">
+                            <div class="label">Secteur d'activité</div>
+                            <input type="text" name="secteur_act" value="{{$inscrit->metierSouhaite->secteur_act}}">
+                        </div>
+                        <div class="field">
+                            <div class="label">Secteur géographique</div>
+                            <input type="text" name="secteur_geo" value="{{$inscrit->metierSouhaite->secteur_geo}}">
+                        </div>
+                <hr class="dashed">
+                <div class="label">Connaissance en bureautique ou logiciels</div>
+                <input type="radio" name="is_logiciel" value="1" onclick="hideshowlogiciel(1)" id="oui_logiciel" @if ($inscrit->is_logiciel == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_logiciel">Oui</label>
+                <input type="radio" name="is_logiciel" value="0" onclick="hideshowlogiciel(2)" id="non_logiciel" @if ($inscrit->is_logiciel == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_logiciel">Non</label>
+                <div id="div_logiciel">
+                    <div class="field">
+                        <div class="label">Préciser</div>
+                        <input type="text" name="logiciel" value="{{$inscrit->logiciel}}">
                     </div>
+                </div>
                 <hr class="dashed">
                 <div class="label">Horaire de travail souhaité</div>
                 <div class="horaires">
@@ -977,7 +973,7 @@
                 <div class="title">Informations complémentaires</div>
                 <div class="field">
                     <div class="label">Notes</div>
-                    <textarea type="text" name="infos_comp"></textarea>
+                    <textarea type="text" name="infos_comp" value="{{$inscrit->infos_comp}}"></textarea>
                 </div>
                 <br>
                 <div class="field btns">
