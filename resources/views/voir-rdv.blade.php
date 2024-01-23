@@ -42,7 +42,7 @@
             </tbody>
         </table>
     </div>
-    <hr class="dashed">
+    <hr>
     <div class="rdv">
         <h1>Rendez-vous de {{$inscrit->nom}} {{$inscrit->prenom}}</h1>
         <table>
