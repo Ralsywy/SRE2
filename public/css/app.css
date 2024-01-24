@@ -4,7 +4,7 @@
     --primary: #b474fc;
     --secondary: #ef84d9;
     --accent: #e95898;
-    --box:#e6e6e6;
+    --box:#ffffff;
 
 
 }
@@ -18,8 +18,11 @@ body{
     margin: 0;
     box-sizing: border-box;
     font-family:'Poppins';
-    background: var(--background);
-    background-size:cover;
+    --color: #E1E1E1;
+  background-color: #F3F3F3;
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-size: 55px 55px;
 }
 
 button:hover{
@@ -95,8 +98,8 @@ button:hover{
 }
 
 .page-acc h1{
-    font-weight: 800;
-    font-size: 1.7rem;
+    font-weight: 600;
+    font-size: 2.5rem;
     margin: 1rem 4rem;
 }
 
@@ -711,7 +714,18 @@ form .page .btns button.next {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 10%;
+    padding: 1rem 10%;
+}
+.page-inscrit .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+}
+.page-inscrit .header h1{
+    font-weight: 600;
 }
 table{
     background-color: #fff;
@@ -720,6 +734,7 @@ table{
     border-spacing: 0;
     border-radius: 10px;
     width: 100%;
+    margin: 1rem 0;
 }
 
 table,th,td{
@@ -769,8 +784,9 @@ tbody tr:last-child td:last-child{
     border-radius: .3rem;
     outline: none;
     border: none;
-    margin: 1.5rem;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    right: 10%;
 }
 
 
@@ -797,36 +813,33 @@ tbody tr:last-child td:last-child{
     text-align: center;
     flex-direction: column;
     align-items: center;
-    padding: 2rem 10%;
+    padding: 2rem;
+    width: 100%;
 }
 .page-rdv table{
     margin: 1.5rem;
+    min-width: 100%;
 }
 .page-rdv h1{
-    font-weight: 800;
-    font-size: 30px;
+    font-weight: 600;
+    font-size: 2.5rem;
     color: var(--text);
 }
-
-.plan-actions{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 1.5rem;
-    box-shadow: 0 0 1px rgb(0, 0, 0);
-    background-color: var(--box);
+section#plans-action, section#rdv{
+    margin: 0;
+    padding: 0;
+    min-height: 90vh;
+    min-width: 100%;
 }
-.rdv{
+.page-rdv .container{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     text-align: center;
     flex-direction: column;
     align-items: center;
     width: 100%;
     padding: 1.5rem;
+    height: 80vh;
     box-shadow: 0 0 1px rgb(0, 0, 0);
     background-color: var(--box);
 }
