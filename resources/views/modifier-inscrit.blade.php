@@ -103,10 +103,7 @@
                     <option value="1">Choisir un accompagnateur</option>
                     @foreach($users as $ligne)
                     @if($ligne->id!=1)
-                    <option value={{$ligne->id}} @if($inscrit->user_id==$ligne->id)
-                        selected
-                        @endif
-                        >{{$ligne->name}}</option>
+                    <option value={{$ligne->id}}>{{$ligne->name}}</option>
                     @endif
                     @endforeach
                 </select>
@@ -140,10 +137,10 @@
                     <input type="date" name="dte_naissance" value="{{$inscrit->dte_naissance}}">
                 </div>
                 <div class="field">
-                    <div class="label">Nationalité</div>
+                    <div class="label">Nationalité | ({{$inscrit->nationalite}})</div>
                     <select name="nationalite">
-                        <option value="{{$inscrit->nationalite}}" selected>{{$inscrit->nationalite}}</option>
-                        @include('pays')
+                        <div class="label"></div>
+                        <option value="Aucune">Choisir une nationalité</option>
                     </select>
                 </div>
                 <div class="field">
@@ -423,19 +420,15 @@
                     <!--- Si non --->
                     <div id="div_cv_non">
                     <div class="field">
-                        <div class="label">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
+                        <div class="label" id="label_cv">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
                         <input type="date" name="dte_travailler">
                     </div>
                     </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                <div class="label">A le Permis</div>
-                <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis" @if ($inscrit->is_permis == 1) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="oui_permis">Oui</label>
-                <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis" @if ($inscrit->is_permis == 0) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="non_permis">Non</label>
                 
                 <!--- Si oui --->
+                    <div id="div_permis" class="hidden">
                     <!--- Si oui un/plusieurs --->
                     <div class="field">
                     <div class="label">Permis</div>

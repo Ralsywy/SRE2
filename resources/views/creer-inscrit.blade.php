@@ -416,18 +416,13 @@
                 <!--- Si non --->
                 <div id="div_cv_non">
                 <div class="field">
-                    <div class="label">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
+                    <div class="label" id="label_cv">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
                     <input type="date" name="dte_travailler">
                 </div>
                 </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                    <div class="label">A le Permis</div>
-                    <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis">
-                    <label class="label" for="oui_permis">Oui</label>
-                    <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis"checked>
-                    <label class="label" for="non_permis">Non</label>
-
+                <div id="div_permis" class="hidden">
                 <!--- Si oui un/plusieurs --->
                 <div class="field">
                 <div class="label">Permis</div>
