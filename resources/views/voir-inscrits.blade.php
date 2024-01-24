@@ -1,7 +1,11 @@
 @extends('base')
 @section('content')
 <div class="page-inscrit">
-    <input type="text" id="search" name="search" class="search-bar hidden" placeholder="Rechercher...">
+    <div class="header">
+        <h1>Liste des inscrits</h1>
+        <input type="text" id="search" name="search" class="search-bar hidden" placeholder="Rechercher...">
+    </div>
+    
     <table>
         <thead>
             <tr class="hidden">
@@ -18,11 +22,7 @@
                 <td>{{$ligne->nom}}</td>
                 <td>{{$ligne->prenom}}</td>
                 <td>{{$ligne->user->name}}</td>
-                <td>@if($ligne->nb_rdv>1 || $ligne->nb_rdv==null)
-                    {{0}}
-                @else
-                    {{$ligne->nb_rdv}}
-                @endif</td>
+                <td>{{$ligne->rdvs->count()}}</td>
                 <td>
                     <a href="{{ route('voir-rdv',[$ligne["id"]]) }}" class="a-rdv">Rendez-vous</a>
                     <a href="{{ route('modifier-inscrit',[$ligne["id"]]) }}" class="a-modif">Ajouter</a>

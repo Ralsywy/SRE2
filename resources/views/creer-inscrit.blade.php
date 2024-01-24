@@ -427,13 +427,7 @@
                     <label class="label" for="oui_permis">Oui</label>
                     <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis"checked>
                     <label class="label" for="non_permis">Non</label>
-                
-                <!--- Si oui --->
-                <div id="div_permis" class="hidden">
-                <div class="field">
-                    <div class="label">Combien de permis</div>
-                    <input type="number" name="nb_permis" class="nb_permis">
-                </div>
+
                 <!--- Si oui un/plusieurs --->
                 <div class="field">
                 <div class="label">Permis</div>
