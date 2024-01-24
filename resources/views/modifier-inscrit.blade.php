@@ -103,7 +103,10 @@
                     <option value="1">Choisir un accompagnateur</option>
                     @foreach($users as $ligne)
                     @if($ligne->id!=1)
-                    <option value={{$ligne->id}}>{{$ligne->name}}</option>
+                    <option value={{$ligne->id}} @if($inscrit->user_id==$ligne->id)
+                        selected
+                        @endif
+                        >{{$ligne->name}}</option>
                     @endif
                     @endforeach
                 </select>
@@ -138,9 +141,12 @@
                 </div>
                 <div class="field">
                     <div class="label">Nationalité | ({{$inscrit->nationalite}})</div>
+                    <div class="label">Nationalité</div>
                     <select name="nationalite">
                         <div class="label"></div>
                         <option value="Aucune">Choisir une nationalité</option>
+                        <option value="{{$inscrit->nationalite}}" selected>{{$inscrit->nationalite}}</option>
+                        @include('pays')
                     </select>
                 </div>
                 <div class="field">

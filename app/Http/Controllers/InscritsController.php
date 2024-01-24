@@ -282,8 +282,20 @@ class InscritsController extends Controller
                 //nb permis
                 if($request['is_permis']=1){
                     $permis=new Permis();
-                    $permis->categorie=$request['categorie'];
                     $permis->type=$request['type'];
+                    if($request['type']=="autos"){
+                        $permis->categorie=$request['autos_categorie'];
+                    }
+                    else{
+                        if($request['type']=="motos"){
+                            $permis->categorie=$request['motos_categorie'];
+                        }
+                        else{
+                            if($request['type']=="marchandises"){
+                                $permis->categorie=$request['marchandises_categorie'];
+                            }
+                        }
+                    }
                     $permis->autre=$request['autre'];
                     $permis->inscrit_id=$inscrit->id;
                     $permis->save();
