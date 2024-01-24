@@ -6,10 +6,10 @@
         <form method="POST" action="{{ route('register-acc') }}">
             @csrf
             <div class="input-box hidden">
-                <input type="text" id="name" name="name" placeholder="NOM">
+                <input type="text" id="name" name="name" placeholder="NOM" value="{{old('name')}}">
             </div>
             <div class="input-box hidden">
-                <input type="text" id="prenom" name="prenom" placeholder="Prénom" oninput="capitalizeFirstLetter()">
+                <input type="text" id="prenom" name="prenom" placeholder="Prénom" value="{{old('prenom')}}" oninput="capitalizeFirstLetter()">
             </div>
             <div class="input-box hidden">
                 <input id="password" type="password" name="password" placeholder="Mot de passe">

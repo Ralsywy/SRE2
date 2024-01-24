@@ -1,9 +1,10 @@
 :root {
     --text: #120524;
-    --background: #f9f5fe;
+    --background: #fff;
     --primary: #b474fc;
     --secondary: #ef84d9;
     --accent: #e95898;
+    --box:#e6e6e6;
 
 
 }
@@ -17,12 +18,13 @@ body{
     margin: 0;
     box-sizing: border-box;
     font-family:'Poppins';
-    background: url(../img/fond.png) no-repeat;
+    background: var(--background);
     background-size:cover;
 }
 
-button:hover.zoom{
-    transform: scale(1.1);
+button:hover{
+    background-color: var(--text);
+    color: var(--background);
 }
 
 .hidden{
@@ -42,27 +44,35 @@ button:hover.zoom{
 }
 /********* NAVBAR *********/
 .navbar{
-    background-color: #0000002a;
-    box-shadow: 0 0 10px rgba(92, 92, 92, 0.3);
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    padding: 0px 7rem;
+    height: 70px;
 }
 
 .nav-link{
     font-weight: 400;
-    color: var(--background);
+    color: var(--text);
     margin: 0 30px;
-    font-size: 18px;
+    font-size: 16px;
+    transition: .3s;
+}
+.nav-link:hover{
+    color: var(--accent);
 }
 
-.nav-link.active{
+.navbar-nav .nav-link.active{
     font-weight: 600;
+    color: var(--accent);
 }
 .navbar form{
     position: absolute;
-    right: 0;
 }
+
+
 /********* ACCOMPAGNATEURS *********/
 .page-acc{
-    padding: 3rem;
+    padding: 3rem 10%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -71,12 +81,13 @@ button:hover.zoom{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #ffffff;
+    align-items: center;
+    background-color: var(--box);
     padding: 1rem;
     border-radius: .5rem;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-    width: fit-content;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+    width: 100%;
 }
 
 .page-acc .container:nth-child(1){
@@ -84,8 +95,7 @@ button:hover.zoom{
 }
 
 .page-acc h1{
-    text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.7rem;
     margin: 1rem 4rem;
 }
@@ -124,6 +134,7 @@ button:hover.zoom{
     align-items: center;
     flex-direction: row;
     padding: 10px 1rem;
+    width: 50%;
 }
 
 .box_list{
@@ -158,6 +169,8 @@ button:hover.zoom{
     min-height: 100vh;
     padding: 3rem;
     color: var(--background);
+    background: url(../img/fond.png) no-repeat;
+    background-size:cover;
 }
 
 .page-login .container{
@@ -192,7 +205,7 @@ button:hover.zoom{
 
 .container {
     width: 430px;
-    background: #fff;
+    background: var(--box);
     border-radius: 5px;
     text-align: center;
     padding: 50px 35px 10px 35px;
@@ -698,14 +711,15 @@ form .page .btns button.next {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 10%;
 }
 table{
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     backdrop-filter: blur(7px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
     border-spacing: 0;
     border-radius: 10px;
-    width: 80%;
+    width: 100%;
 }
 
 table,th,td{
@@ -756,12 +770,10 @@ tbody tr:last-child td:last-child{
     outline: none;
     border: none;
     margin: 1.5rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
-.page-inscrit .btn_supp:hover{
-    background-color: var(--text);
-    color: var(--background);
-}
+
 .a-rdv{
     color: var(--text);
     outline: none;
@@ -785,20 +797,17 @@ tbody tr:last-child td:last-child{
     text-align: center;
     flex-direction: column;
     align-items: center;
-    padding: 3rem;
-    width: 100%;
+    padding: 2rem 10%;
 }
 .page-rdv table{
     margin: 1.5rem;
 }
 .page-rdv h1{
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 30px;
     color: var(--text);
 }
-.page-rdv button:hover{
-    background-color: var(--text);
-    color: var(--background);
-}
+
 .plan-actions{
     display: flex;
     justify-content: center;
@@ -806,6 +815,9 @@ tbody tr:last-child td:last-child{
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 1.5rem;
+    box-shadow: 0 0 1px rgb(0, 0, 0);
+    background-color: var(--box);
 }
 .rdv{
     display: flex;
@@ -814,4 +826,7 @@ tbody tr:last-child td:last-child{
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 1.5rem;
+    box-shadow: 0 0 1px rgb(0, 0, 0);
+    background-color: var(--box);
 }

@@ -1,6 +1,6 @@
 @extends('base')
 @section('content')
-<div class="page-rdv hidden">
+<div class="page-rdv">
     <div class="plan-actions">
         <h1>Plans d'action de {{$inscrit->nom}} {{$inscrit->prenom}}</h1>
         <table>
@@ -42,7 +42,7 @@
             </tbody>
         </table>
     </div>
-    <hr class="dashed">
+    <hr>
     <div class="rdv">
         <h1>Rendez-vous de {{$inscrit->nom}} {{$inscrit->prenom}}</h1>
         <table>

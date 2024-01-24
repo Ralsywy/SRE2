@@ -19,7 +19,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="img\rdc.png" alt="RDC" width="50" height="50">
+            <img src="https://logovectordl.com/wp-content/uploads/2020/09/les-restos-du-coeur-logo-vector.png" alt="RDC" height="50">
           </a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
@@ -44,7 +44,7 @@
                 <x-dropdown-link :href="route('logout')" class="nav-link"
                         onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                    Déconnexion
+                    <i class="fa-solid fa-right-from-bracket"></i>
                 </x-dropdown-link>
                 </form>
               </li>
@@ -55,7 +55,7 @@
       </nav>
       @endauth
       @if(Session::has('success'))
-      <div class="alert alert-success" role="alert">
+      <div class="alert alert-primary" role="alert">
         {{Session::get('success')}}
       </div>
       @endif

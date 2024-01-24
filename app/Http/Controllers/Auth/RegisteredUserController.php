@@ -53,12 +53,14 @@ class RegisteredUserController extends Controller
             'name' => 'required|min:2',
             'prenom' => 'required|min:2',
             'password' => 'required',
+            'password_confirmation' => 'required',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
         try {
+            if($request['password_confirmation']==$request['password']){
             //création du nom de login
             $nom = $request['name'];
             $prenom = $request['prenom'];
@@ -71,6 +73,10 @@ class RegisteredUserController extends Controller
             $user->pseudo= $pseudo;
             $user->save();
             return redirect()->route('voir-acc')->with("success","L'accompagnateur a été crée");
+            }
+            else{
+                return back()->withErrors("Le mot de passe de confirmation ne correspond pas au mot de passe")->withInput();
+            }
         } 
 		catch (\Exception $e) {
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
