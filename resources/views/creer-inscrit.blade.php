@@ -417,7 +417,7 @@
                 <div id="div_cv_non">
                 <div class="field">
                     <div class="label" id="label_cv">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
-                    <input type="date" name="dte_travailler">
+                    <input type="date" name="dte_travailler" id="dte_travailler">
                 </div>
                 </div>
                 <!--- Fin --->
