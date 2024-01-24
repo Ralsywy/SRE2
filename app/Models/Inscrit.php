@@ -38,9 +38,9 @@ class Inscrit extends Model
     {
         return $this->hasOne(FranceTravail::class);
     }
-    public function langue(): HasOne
+    public function langue(): HasMany
     {
-        return $this->hasOne(Langue::class);
+        return $this->HasMany(Langue::class);
     }
     public function metierSouhaite(): HasOne
     {

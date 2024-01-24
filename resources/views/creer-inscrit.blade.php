@@ -439,7 +439,6 @@
                 <div class="label">Permis</div>
                 <select name="type" onchange="hideshowpermischoix()" id="choix_permis">
                     <option value="aucun">Choisir un permis</option>
-                    <option value="aucun">aucun</option>
                     <option value="autos">Permis autos</option>
                     <option value="motos">Permis motos</option>
                     <option value="marchandises">Permis marchandises ou de personnes</option>

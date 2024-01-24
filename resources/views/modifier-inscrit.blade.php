@@ -433,17 +433,11 @@
                 <label class="label" for="non_permis">Non</label>
                 
                 <!--- Si oui --->
-                    <div id="div_permis" class="hidden">
-                    <div class="field">
-                        <div class="label">Combien de permis</div>
-                        <input type="number" name="nb_permis" value="{{$inscrit->nb_permis}}">
-                    </div>
                     <!--- Si oui un/plusieurs --->
                     <div class="field">
                     <div class="label">Permis</div>
                     <select name="type" onchange="hideshowpermischoix()" id="choix_permis">
                         <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'aucun')) @selected(true) @endif>Choisir un permis</option>
-                        <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'aucun')) @selected(true) @endif>aucun</option>
                         <option value="autos" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'autos')) @selected(true) @endif>Permis autos</option>
                         <option value="motos" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'motos')) @selected(true) @endif>Permis motos</option>
                         <option value="marchandises" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'marchandises')) @selected(true) @endif>Permis marchandises ou de personnes</option>
@@ -909,93 +903,93 @@
             <div class="page 5" id="page5">
                 <div class="title">Langues</div>
                 <div class="label">Inscrit aux ateliers de français</div>
-                <input type="radio" name="is_atelier" value="1" id="oui_fr">
+                <input type="radio" name="is_atelier" value="1" id="oui_fr" @if ($inscrit->langue->contains('is_atelier', 1)) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_fr">Oui</label>
-                <input type="radio" name="is_atelier" value="0" id="non_fr"checked>
+                <input type="radio" name="is_atelier" value="0" id="non_fr" @if ($inscrit->langue->contains('is_atelier', 0)) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_fr">Non</label>
                 <div class="field">
                     <div class="label">Connaissance en français écrit</div>
                     <select name="fr_ecrit">
-                       <option value="0">Choisir un niveau</option>
-                       <option value="1">A1</option>
-                       <option value="2">A2</option>
-                       <option value="3">B1</option>
-                       <option value="4">B2</option>
-                       <option value="5">C1</option>
-                       <option value="6">C2</option>
+                       <option value="0" @if ($inscrit->langue->where('fr_ecrit', '0')->count() > 0) @selected(true) @endif>Choisir un niveau</option>
+                       <option value="1" @if ($inscrit->langue->where('fr_ecrit', '1')->count() > 0) @selected(true) @endif>A1</option>
+                       <option value="2" @if ($inscrit->langue->where('fr_ecrit', '2')->count() > 0) @selected(true) @endif>A2</option>
+                       <option value="3" @if ($inscrit->langue->where('fr_ecrit', '3')->count() > 0) @selected(true) @endif>B1</option>
+                       <option value="4" @if ($inscrit->langue->where('fr_ecrit', '4')->count() > 0) @selected(true) @endif>B2</option>
+                       <option value="5" @if ($inscrit->langue->where('fr_ecrit', '5')->count() > 0) @selected(true) @endif>C1</option>
+                       <option value="6" @if ($inscrit->langue->where('fr_ecrit', '6')->count() > 0) @selected(true) @endif>C2</option>
                     </select>
                 </div>
                 <div class="field">
                     <div class="label">Connaissance en français parlé</div>
                     <select name="fr_parle">
-                       <option value="0">Choisir un niveau</option>
-                       <option value="1">A1</option>
-                       <option value="2">A2</option>
-                       <option value="3">B1</option>
-                       <option value="4">B2</option>
-                       <option value="5">C1</option>
-                       <option value="6">C2</option>
+                       <option value="0" @if ($inscrit->langue->where('fr_parle', '0')->count() > 0) @selected(true) @endif>Choisir un niveau</option>
+                       <option value="1" @if ($inscrit->langue->where('fr_parle', '1')->count() > 0) @selected(true) @endif>A1</option>
+                       <option value="2" @if ($inscrit->langue->where('fr_parle', '2')->count() > 0) @selected(true) @endif>A2</option>
+                       <option value="3" @if ($inscrit->langue->where('fr_parle', '3')->count() > 0) @selected(true) @endif>B1</option>
+                       <option value="4" @if ($inscrit->langue->where('fr_parle', '4')->count() > 0) @selected(true) @endif>B2</option>
+                       <option value="5" @if ($inscrit->langue->where('fr_parle', '5')->count() > 0) @selected(true) @endif>C1</option>
+                       <option value="6" @if ($inscrit->langue->where('fr_parle', '6')->count() > 0) @selected(true) @endif>C2</option>
                     </select>
                 </div>
                 <div class="field">
                     <div class="label">Connaissance en français lu</div>
                     <select name="fr_lu">
-                       <option value="0">Choisir un niveau</option>
-                       <option value="1">A1</option>
-                       <option value="2">A2</option>
-                       <option value="3">B1</option>
-                       <option value="4">B2</option>
-                       <option value="5">C1</option>
-                       <option value="6">C2</option>
+                       <option value="0" @if ($inscrit->langue->where('fr_lu', '0')->count() > 0) @selected(true) @endif>Choisir un niveau</option>
+                       <option value="1" @if ($inscrit->langue->where('fr_lu', '1')->count() > 0) @selected(true) @endif>A1</option>
+                       <option value="2" @if ($inscrit->langue->where('fr_lu', '2')->count() > 0) @selected(true) @endif>A2</option>
+                       <option value="3" @if ($inscrit->langue->where('fr_lu', '3')->count() > 0) @selected(true) @endif>B1</option>
+                       <option value="4" @if ($inscrit->langue->where('fr_lu', '4')->count() > 0) @selected(true) @endif>B2</option>
+                       <option value="5" @if ($inscrit->langue->where('fr_lu', '5')->count() > 0) @selected(true) @endif>C1</option>
+                       <option value="6" @if ($inscrit->langue->where('fr_lu', '6')->count() > 0) @selected(true) @endif>C2</option>
                     </select>
                 </div>
                 <div class="title">Anglais</div>
                 <div class="field">
                     <div class="label">Connaissance en anglais écrit</div>
                     <select name="en_ecrit">
-                       <option value="0">Choisir un niveau</option>
-                       <option value="1">A1</option>
-                       <option value="2">A2</option>
-                       <option value="3">B1</option>
-                       <option value="4">B2</option>
-                       <option value="5">C1</option>
-                       <option value="6">C2</option>
+                       <option value="0" @if ($inscrit->langue->where('en_ecrit', '0')->count() > 0) @selected(true) @endif>Choisir un niveau</option>
+                       <option value="1" @if ($inscrit->langue->where('en_ecrit', '1')->count() > 0) @selected(true) @endif>A1</option>
+                       <option value="2" @if ($inscrit->langue->where('en_ecrit', '2')->count() > 0) @selected(true) @endif>A2</option>
+                       <option value="3" @if ($inscrit->langue->where('en_ecrit', '3')->count() > 0) @selected(true) @endif>B1</option>
+                       <option value="4" @if ($inscrit->langue->where('en_ecrit', '4')->count() > 0) @selected(true) @endif>B2</option>
+                       <option value="5" @if ($inscrit->langue->where('en_ecrit', '5')->count() > 0) @selected(true) @endif>C1</option>
+                       <option value="6" @if ($inscrit->langue->where('en_ecrit', '6')->count() > 0) @selected(true) @endif>C2</option>
                     </select>
                 </div>
                 <div class="field">
                     <div class="label">Connaissance en anglais parlé</div>
                     <select name="en_parle">
-                       <option value="0">Choisir un niveau</option>
-                       <option value="1">A1</option>
-                       <option value="2">A2</option>
-                       <option value="3">B1</option>
-                       <option value="4">B2</option>
-                       <option value="5">C1</option>
-                       <option value="6">C2</option>
+                       <option value="0" @if ($inscrit->langue->where('en_parle', '0')->count() > 0) @selected(true) @endif>Choisir un niveau</option>
+                       <option value="1" @if ($inscrit->langue->where('en_parle', '1')->count() > 0) @selected(true) @endif>A1</option>
+                       <option value="2" @if ($inscrit->langue->where('en_parle', '2')->count() > 0) @selected(true) @endif>A2</option>
+                       <option value="3" @if ($inscrit->langue->where('en_parle', '3')->count() > 0) @selected(true) @endif>B1</option>
+                       <option value="4" @if ($inscrit->langue->where('en_parle', '4')->count() > 0) @selected(true) @endif>B2</option>
+                       <option value="5" @if ($inscrit->langue->where('en_parle', '5')->count() > 0) @selected(true) @endif>C1</option>
+                       <option value="6" @if ($inscrit->langue->where('en_parle', '6')->count() > 0) @selected(true) @endif>C2</option>
                     </select>
                 </div>
                 <div class="field">
                     <div class="label">Connaissance en anglais lu</div>
                     <select name="en_lu">
-                       <option value="0">Choisir un niveau</option>
-                       <option value="1">A1</option>
-                       <option value="2">A2</option>
-                       <option value="3">B1</option>
-                       <option value="4">B2</option>
-                       <option value="5">C1</option>
-                       <option value="6">C2</option>
+                       <option value="0" @if ($inscrit->langue->where('en_lu', '0')->count() > 0) @selected(true) @endif>Choisir un niveau</option>
+                       <option value="1" @if ($inscrit->langue->where('en_lu', '1')->count() > 0) @selected(true) @endif>A1</option>
+                       <option value="2" @if ($inscrit->langue->where('en_lu', '2')->count() > 0) @selected(true) @endif>A2</option>
+                       <option value="3" @if ($inscrit->langue->where('en_lu', '3')->count() > 0) @selected(true) @endif>B1</option>
+                       <option value="4" @if ($inscrit->langue->where('en_lu', '4')->count() > 0) @selected(true) @endif>B2</option>
+                       <option value="5" @if ($inscrit->langue->where('en_lu', '5')->count() > 0) @selected(true) @endif>C1</option>
+                       <option value="6" @if ($inscrit->langue->where('en_lu', '6')->count() > 0) @selected(true) @endif>C2</option>
                     </select>
                 </div>
                 <div class="label">Autre(s) langue(s) parlée(s)</div>
-                <input type="radio" name="is_autre" value="1" onclick="hideshowlangue(1)" id="oui_autre">
+                <input type="radio" name="is_autre" value="1" onclick="hideshowlangue(1)" id="oui_autre" @if ($inscrit->langue->contains('is_autre', 1)) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_autre">Oui</label>
-                <input type="radio" name="is_autre" value="0" onclick="hideshowlangue(2)" id="non_autre"checked>
+                <input type="radio" name="is_autre" value="0" onclick="hideshowlangue(2)" id="non_autre" @if ($inscrit->langue->contains('is_autre', 0)) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_autre">Non</label>
                 <!--- Si oui --->
                 <div id="div_langue" class="hidden">
                 <div class="field">
                     <div class="label">Langue(s)</div>
-                    <input type="text" name="autre_langue">
+                    <input type="text" name="autre_langue" value="{{ $inscrit->langue->first()->autre }}">
                 </div>
                 </div>
                 <!--- Fin --->
