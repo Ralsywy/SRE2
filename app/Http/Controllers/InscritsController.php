@@ -108,9 +108,9 @@ class InscritsController extends Controller
                 $inscrit->is_permis= $request['is_permis'];
 
                 $inscrit->vehicule_dispo= $request['vehicule_dispo'];
-                if($request['vehicule_dispo']=0){
+                if($request['vehicule_dispo']==0){
                     $inscrit->prevu_vehicule= $request['prevu_vehicule'];
-                    if($request['prevu_vehicule']=1){
+                    if($request['prevu_vehicule']==1){
                         $inscrit->dte_achat= $request['dte_achat'];
                     }
                 }
@@ -235,7 +235,7 @@ class InscritsController extends Controller
                 }
 
                 //formation pro
-                if($request['is_formation_pro']=1){
+                if($request['is_formation_pro']==1){
                     $formation_pro=new FormationPro();
                     $formation_pro->type= $request['type_formation_pro'];
                     if($request['type_formation_pro']="Qualifiante"){
@@ -248,17 +248,17 @@ class InscritsController extends Controller
                     $formation_pro->save();
                 }
                 //reprise
-                if($request['is_reprise_etudes']=1){
+                if($request['is_reprise_etudes']==1){
                     $reprise_etudes=new RepriseEtude();
                     $reprise_etudes->nom_diplome= $request['nom_diplome'];
                     $reprise_etudes->inscrit_id=$inscrit->id;
                     $reprise_etudes->save();
                 }
                 //reconv pro
-                if($request['is_reconv_pro']=1){
+                if($request['is_reconv_pro']==1){
                     $reconv_pro=new ReconvPro();
                     $reconv_pro->is_form_prevue= $request['is_form_prevue'];
-                    if($request['is_form_prevue']=1){
+                    if($request['is_form_prevue']==1){
                         $reconv_pro->nom= $request['reconv_nom'];
                         $reconv_pro->date= $request['reconv_date'];
                         $reconv_pro->duree= $request['reconv_duree'];
@@ -273,7 +273,7 @@ class InscritsController extends Controller
                     //
                 }
                 //nb permis
-                if($request['is_permis']=1){
+                if($request['is_permis']==1){
                     $permis=new Permis();
                     $permis->categorie=$request['categorie'];
                     $permis->type=$request['type'];
@@ -282,7 +282,7 @@ class InscritsController extends Controller
                     $permis->save();
                 }
                 //cv
-                if($request['is_cv']=1){
+                if($request['is_cv']==1){
                     $cv=new Cv();
                     /** @var UploadedFile|null $chemin */
                     $chemin = $request->file('cv_nom');
@@ -294,13 +294,15 @@ class InscritsController extends Controller
                     $cv->save();
                 }
                 else{
-                    $cv=new Cv();
-                    $cv->dte_travailler=$request['dte_travailler'];
-                    $cv->inscrit_id=$inscrit->id;
-                    $cv->save();
+                    if($request['is_cv']==0){
+                        $cv=new Cv();
+                        $cv->dte_travailler=$request['dte_travailler'];
+                        $cv->inscrit_id=$inscrit->id;
+                        $cv->save();
+                    }
                 }
                 //cap_emploi
-                if($request['is_cap_emploi']=1){
+                if($request['is_cap_emploi']==1){
                     $cap_emploi=new CapEmploi();
                     $cap_emploi->dte_inscription=$request['cap_dte_inscription'];
                     $cap_emploi->nom_ref=$request['cap_nom_ref'];
@@ -308,7 +310,7 @@ class InscritsController extends Controller
                     $cap_emploi->save();
                 }
                 //mission_locale
-                if($request['is_mission_locale']=1){
+                if($request['is_mission_locale']==1){
                     $mission_locale=new MissionLocale();
                     $mission_locale->dte_inscription=$request['mission_dte_inscription'];
                     $mission_locale->nom_ref=$request['mission_nom_ref'];
@@ -316,7 +318,7 @@ class InscritsController extends Controller
                     $mission_locale->save();
                 }
                 //cma
-                if($request['is_cma']=1){
+                if($request['is_cma']==1){
                     $cma=new Cma();
                     $cma->dte_inscription=$request['cma_dte_inscription'];
                     $cma->nom_ref=$request['cma_nom_ref'];
@@ -324,7 +326,7 @@ class InscritsController extends Controller
                     $cma->save();
                 }
                 //soelis
-                if($request['is_soelis']=1){
+                if($request['is_soelis']==1){
                     $soelis=new Soelis();
                     $soelis->dte_inscription=$request['soelis_dte_inscription'];
                     $soelis->nom_ref=$request['soelis_nom_ref'];
@@ -332,7 +334,7 @@ class InscritsController extends Controller
                     $soelis->save();
                 }
                 //france travail
-                if($request['is_france_travail']=1){
+                if($request['is_france_travail']==1){
                     $france=new FranceTravail();
                     $france->dte_inscription=$request['france_dte_inscription'];
                     $france->nom_ref=$request['france_nom_ref'];
@@ -340,7 +342,7 @@ class InscritsController extends Controller
                     $france->save();
                 }
                 //enfants
-                if($request['is_enfant']=1 && $request['nb_enfant']!=0){
+                if($request['is_enfant']==1 && $request['nb_enfant']!=0){
                     for($i = 1; $i <= $request['nb_enfant']; ++$i) {
                         $enfant=new Enfant();
                         $enfant->dte_naissance=$request['dte_naissance'.$i];
@@ -350,7 +352,7 @@ class InscritsController extends Controller
                     }
                 }
                 //rdc
-                if($request['is_rdc']=1){
+                if($request['is_rdc']==1){
                     $rdc=new Rdc();
                     $rdc->numero=$request['numero'];
                     $rdc->centre=$request['centre'];
@@ -420,5 +422,15 @@ class InscritsController extends Controller
         catch (\Exception $e) {
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
         }
+    }
+    public function modifier_store(Request $request,$id){
+        $inscrit = Inscrit::find($id);
+        //page 1
+        $inscrit->dte_contact= $request->get('dte_contact');
+        $inscrit->origine_contact= $request->get('origine_contact');
+        $inscrit->is_rdc= $request->get('is_rdc');
+        $inscrit->is_benevole= $request->get('is_benevole');
+        $inscrit->user_id= $request->get('user_id');
+        $inscrit->save();
     }
 }

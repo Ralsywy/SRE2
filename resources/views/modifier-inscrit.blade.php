@@ -55,7 +55,8 @@
         </div>
     </div>
 <div class="form-outer">
-    <form action="#">
+    <form method="POST" action="{{ route('modifier-store',[$inscrit->id]) }}" enctype="multipart/form-data">
+        @method('PUT')
             <!---  Page 1 : INFORMATIONS PERSONNELLES  --->
         <div class="page 1 slidepage" id="page1">
             <div class="title hidden">Informations personnelles :</div>
