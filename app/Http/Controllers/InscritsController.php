@@ -432,5 +432,6 @@ class InscritsController extends Controller
         $inscrit->is_benevole= $request->get('is_benevole');
         $inscrit->user_id= $request->get('user_id');
         $inscrit->save();
+        return redirect()->route('voir-inscrits')->with("success","L'inscrit ".$inscrit->nom." ".$inscrit->prenom." été modifié");
     }
 }
