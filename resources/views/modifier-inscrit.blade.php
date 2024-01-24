@@ -4,8 +4,12 @@
 @section('content')
 <div class="body hidden">
 <div class="container">
-    <Header>Modification d'un suivis</Header>
+    <Header>Modification d'un suivi</Header>
     <header>{{$inscrit->prenom}} {{$inscrit->nom}}</header>
+    <div class="div_warn">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Attention !</strong> Si une information ne s'affiche pas correctement appuyer sur le bouton (oui/non) correspondant
+    </div>
     <div class="progress-bar">
         <div class="step">
             <p>1</p>
@@ -259,7 +263,7 @@
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
-                        <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Choisir un revenus</option>
+                        <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Choisir un revenu</option>
                         <option value="salaire" @if ($inscrit->nature_revenus == "salaire") @selected(true) @endif>Salaire</option>
                         <option value="rsa" @if ($inscrit->nature_revenus == "rsa") @selected(true) @endif>RSA</option>
                         <option value="are" @if ($inscrit->nature_revenus == "are") @selected(true) @endif>ARE</option>
@@ -352,7 +356,7 @@
                 <!--- Si oui --->
                 <div id="div_cma" class="hidden">
                     <div class="field">
-                        <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
+                        <div class="label" id="label_cma">Date d'inscription la chambre des métiers et de l'artisanat</div>
                         <input type="date" name="cma_dte_inscription" value="{{$inscrit->cma->dte_inscription}}">
                     </div>
                     <div class="field">
@@ -409,7 +413,7 @@
                     <!--- Si oui --->
                     <div id="div_cv_oui">
                     <div class="field">
-                        <div class="label">Insérer le cv scanné (format PDF uniquement)</div>
+                        <div class="label" id="label_cv">Insérer le cv scanné (format PDF uniquement)</div>
                         <input type="file" name="cv_nom">
                     </div>
                     </div>
@@ -438,11 +442,11 @@
                     <div class="field">
                     <div class="label">Permis</div>
                     <select name="type" onchange="hideshowpermischoix()" id="choix_permis">
-                        <option value="aucun">Choisir un permis</option>
-                        <option value="aucun">aucun</option>
-                        <option value="autos">Permis autos</option>
-                        <option value="motos">Permis motos</option>
-                        <option value="marchandises">Permis marchandises ou de personnes</option>
+                        <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'aucun')) @selected(true) @endif>Choisir un permis</option>
+                        <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'aucun')) @selected(true) @endif>aucun</option>
+                        <option value="autos" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'autos')) @selected(true) @endif>Permis autos</option>
+                        <option value="motos" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'motos')) @selected(true) @endif>Permis motos</option>
+                        <option value="marchandises" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'marchandises')) @selected(true) @endif>Permis marchandises ou de personnes</option>
                     </select>
                     </div>
                     </div>
@@ -452,10 +456,10 @@
                     <div class="field">
                     <div class="label">Permis autos</div>
                     <select name="autos_categorie">
-                        <option value="aucun">Choisir une catégorie</option>
-                        <option value="B">B</option>
-                        <option value="B1">B1</option>
-                        <option value="BE">BE</option>
+                        <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'aucun')) @selected(true) @endif>Choisir une catégorie</option>
+                        <option value="B" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'B')) @selected(true) @endif>B</option>
+                        <option value="B1" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'B1')) @selected(true) @endif>B1</option>
+                        <option value="BE" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'BE')) @selected(true) @endif>BE</option>
                     </select>
                     </div>
                     </div>
@@ -464,10 +468,10 @@
                     <div class="field">
                     <div class="label">Permis motos</div>
                     <select name="motos_categorie">
-                        <option value="aucun">Choisir une catégorie</option>
-                        <option value="B">A</option>
-                        <option value="B1">A1</option>
-                        <option value="BE">A2</option>
+                        <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'aucun')) @selected(true) @endif>Choisir une catégorie</option>
+                        <option value="A" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'A')) @selected(true) @endif>A</option>
+                        <option value="A1" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'A1')) @selected(true) @endif>A1</option>
+                        <option value="A2" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'A2')) @selected(true) @endif>A2</option>
                     </select>
                     </div>
                     </div>
@@ -476,22 +480,22 @@
                     <div class="field">
                     <div class="label">Permis marchandises ou de personnes</div>
                     <select name="marchandises_categorie">
-                        <option value="aucun">Choisir une catégorie</option>
-                        <option value="C">C</option>
-                        <option value="CE">CE</option>
-                        <option value="C1">C1</option>
-                        <option value="C1E">C1E</option>
-                        <option value="D">D</option>
-                        <option value="DE">DE</option>
-                        <option value="D1">D1</option>
-                        <option value="D1E">D1E</option>
+                        <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'aucun')) @selected(true) @endif>Choisir une catégorie</option>
+                        <option value="C" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'C')) @selected(true) @endif>C</option>
+                        <option value="CE" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'CE')) @selected(true) @endif>CE</option>
+                        <option value="C1" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'C1')) @selected(true) @endif>C1</option>
+                        <option value="C1E" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'C1E')) @selected(true) @endif>C1E</option>
+                        <option value="D" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'D')) @selected(true) @endif>D</option>
+                        <option value="DE" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'DE')) @selected(true) @endif>DE</option>
+                        <option value="D1" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'D1')) @selected(true) @endif>D1</option>
+                        <option value="D1E" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'D1E')) @selected(true) @endif>D1E</option>
                     </select>
                     </div>
                     </div>
                     <!--- Autres permis --->
                 <div class="field hidden" id="autre_permis">
                     <div class="label">Autres permis</div>
-                    <input type="text" name="autre_permis">
+                    <input type="text" name="autre_permis" value="{{ $inscrit->permis->first()?->autre }}">
                 </div>
                 <!--- Fin --->
                 
@@ -764,7 +768,7 @@
                 <hr class="dashed">
                 <div class="label">La personne va-t-elle bénéficier d'une formation professionnelle</div>
                 <input type="radio" name="is_formation_pro" value="1" onclick="hideshowformpro(1)" id="oui_form_pro" @if ($inscrit->is_formation_pro == 1) @checked(true) @else @checked(false) @endif>
-                <label class="label" for="oui_form_pro">Oui</label>formation_pro
+                <label class="label" for="oui_form_pro">Oui</label>
                 <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro" @if ($inscrit->is_formation_pro == 0) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_form_pro">Non</label>
                 <!--- Si oui --->
@@ -795,15 +799,15 @@
                         <!--- Fin --->
                         <div class="field">
                             <div class="label">Métier souhaité</div>
-                            <input type="text" name="nom_metier" value="{{$inscrit->metierSouhaite->nom}}">
+                            <input type="text" name="nom_metier" value="{{$inscrit->metierSouhaite?->nom}}">
                         </div>
                         <div class="field">
                             <div class="label">Secteur d'activité</div>
-                            <input type="text" name="secteur_act" value="{{$inscrit->metierSouhaite->secteur_act}}">
+                            <input type="text" name="secteur_act" value="{{$inscrit->metierSouhaite?->secteur_act}}">
                         </div>
                         <div class="field">
                             <div class="label">Secteur géographique</div>
-                            <input type="text" name="secteur_geo" value="{{$inscrit->metierSouhaite->secteur_geo}}">
+                            <input type="text" name="secteur_geo" value="{{$inscrit->metierSouhaite?->secteur_geo}}">
                         </div>
                 <hr class="dashed">
                 <div class="label">Connaissance en bureautique ou logiciels</div>
@@ -821,35 +825,67 @@
                 <div class="label">Horaire de travail souhaité</div>
                 <div class="horaires">
                     <div class="horaire">
-                        <input type="checkbox" name="nb_horaire1" value="Travail de nuit" id="nuit">
+                        <input type="checkbox" name="nb_horaire1" value="Travail de nuit" id="nuit" @if ($inscrit->horaires->isNotEmpty() && $inscrit->horaires->first()->type == "Travail de nuit") 
+                        @checked(true) 
+                    @else 
+                        @checked(false) 
+                    @endif>
                         <label class="label" for="nuit">Travail de nuit</label>
                     </div>
                     <div class="horaire">
-                        <input type="checkbox" name="nb_horaire2" value="Travail la journee" id="journee">
+                        <input type="checkbox" name="nb_horaire2" value="Travail la journee" id="journee" @if ($inscrit->horaires->isNotEmpty() && $inscrit->horaires->contains('type', 'Travail la journee'))
+                        @checked(true)
+                    @else
+                        @checked(false)
+                    @endif>
                         <label class="label" for="journee">Travail la journée</label>
                     </div>
                     <div class="horaire">
-                        <input type="checkbox" name="nb_horaire3" value="Travail le matin" id="matin">
+                        <input type="checkbox" name="nb_horaire3" value="Travail le matin" id="matin" @if ($inscrit->horaires->isNotEmpty() && $inscrit->horaires->contains('type', 'Travail le matin'))
+                        @checked(true)
+                    @else
+                        @checked(false)
+                    @endif>
                         <label class="label" for="matin">Travail le matin</label>
                     </div>
                     <div class="horaire">
-                        <input type="checkbox" name="nb_horaire4" value="Travail en cyble 2x8" id="2x8">
+                        <input type="checkbox" name="nb_horaire4" value="Travail en cyble 2x8" id="2x8" @if ($inscrit->horaires->isNotEmpty() && $inscrit->horaires->contains('type', 'Travail en cyble 2x8'))
+                        @checked(true)
+                    @else
+                        @checked(false)
+                    @endif>
                         <label class="label" for="2x8">Travail en cycle 2x8</label>
                     </div>
                     <div class="horaire">
-                        <input type="checkbox" name="nb_horaire5" value="Travail en cycle 3x8" id="3x8">
+                        <input type="checkbox" name="nb_horaire5" value="Travail en cycle 3x8" id="3x8" @if ($inscrit->horaires->isNotEmpty() && $inscrit->horaires->contains('type', 'Travail en cycle 3x8'))
+                        @checked(true)
+                    @else
+                        @checked(false)
+                    @endif>
                         <label class="label" for="3x8">Travail en cycle 3x8</label>
                     </div>
                     <div class="horaire">
-                        <input type="checkbox" name="nb_horaire6" value="Travail en cycle 5x8" id="5x8">
+                        <input type="checkbox" name="nb_horaire6" value="Travail en cycle 5x8" id="5x8" @if ($inscrit->horaires->isNotEmpty() && $inscrit->horaires->contains('type', 'Travail en cycle 5x8'))
+                        @checked(true)
+                    @else
+                        @checked(false)
+                    @endif>
                         <label class="label" for="5x8">Travail en cycle 5x8</label>
                     </div>
                     <div class="horaire">
-                        <input type="checkbox" name="nb_horaire7" value="Travail en VSD" id="VSD">
+                        <input type="checkbox" name="nb_horaire7" value="Travail en VSD" id="VSD" @if ($inscrit->horaires->isNotEmpty() && $inscrit->horaires->contains('type', 'Travail en VSD'))
+                        @checked(true)
+                    @else
+                        @checked(false)
+                    @endif>
                         <label class="label" for="VSD">Travail en VSD</label>
                     </div>
                     <div class="horaire">
-                        <input type="checkbox" name="nb_horaire8" value="Travail en SD" id="SD">
+                        <input type="checkbox" name="nb_horaire8" value="Travail en SD" id="SD" @if ($inscrit->horaires->isNotEmpty() && $inscrit->horaires->contains('type', 'Travail en SD'))
+                        @checked(true)
+                    @else
+                        @checked(false)
+                    @endif>
                         <label class="label" for="journee">Travail en SD</label>
                     </div>
                 </div>

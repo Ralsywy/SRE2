@@ -4,7 +4,7 @@
 @section('content')
 <div class="body hidden">
 <div class="container">
-    <Header>Création d'un suivis</Header>
+    <Header>Création d'un suivi</Header>
     <div class="progress-bar">
         <div class="step">
             <p>1</p>
@@ -258,13 +258,13 @@
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
-                        <option value="Aucun">Choisir un revenus</option>
+                        <option value="Aucun">Choisir un revenu</option>
                         <option value="Salaire">Salaire</option>
                         <option value="RSA">RSA</option>
                         <option value="ARE">ARE</option>
                         <option value="AAH">AAH</option>
                         <option value="Pension de retraite">Pension de retraite</option>
-                        <option value="Autre">Autre</option>
+                        <option value="autre">Autre</option>
                         <option value="Aucun">Aucune</option>
                     </select>
                 </div>
@@ -352,7 +352,7 @@
                 <!--- Si oui --->
                 <div id="div_cma" class="hidden">
                 <div class="field">
-                    <div class="label">Date d'inscription la chambre des métiers et de l'artisanat</div>
+                    <div class="label" id="label_cma">Date d'inscription la chambre des métiers et de l'artisanat</div>
                     <input type="date" name="cma_dte_inscription">
                 </div>
                 <div class="field">
@@ -409,7 +409,7 @@
                 <!--- Si oui --->
                 <div id="div_cv_oui">
                 <div class="field">
-                    <div class="label">Insérer le cv scanné (format PDF uniquement)</div>
+                    <div class="label" id="label_cv">Insérer le cv scanné (format PDF uniquement)</div>
                     <input type="file" name="cv_nom" id="cv_nom">
                 </div>
                 </div>

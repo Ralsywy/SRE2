@@ -138,12 +138,12 @@ function hideshowpermischoix() {
   }
 
 function hideshowvehiculedispo(val) {
-    if (val == 2) {
-        document.getElementById('div_vehicule_dispo').style.display = 'block';
-    }
     if (val == 1) {
         document.getElementById('div_vehicule_prevu').style.display = 'none';
         document.getElementById('div_vehicule_dispo').style.display = 'none';
+    }
+    if (val == 2) {
+        document.getElementById('div_vehicule_dispo').style.display = 'block';
     }
 }
 
@@ -370,8 +370,10 @@ document.addEventListener("DOMContentLoaded", function() {
         hideshowcap(getValueByIdPrefix('oui_cap_emploi'));
         hideshowcv(getValueByIdPrefix('oui_cv'));
         hideshowpermis(getValueByIdPrefix('oui_permis'));
+        hideshowvehiculedispo(getValueByIdPrefix('non_vehicule'));
         hideshowvehiculedispo(getValueByIdPrefix('oui_vehicule'));
         hideshowvehiculeprevu(getValueByIdPrefix('oui_achat'));
+        hideshowvehiculeprevu(getValueByIdPrefix('non_achat'));
         hideshowdiplome();
         hideshowreconv(getValueByIdPrefix('oui_reconv'));
         hideshowformprevu(getValueByIdPrefix('oui_prevue'));

@@ -487,6 +487,35 @@ form .page .btns button.next {
     margin-bottom: 10px;
 }
 
+#label_cv {
+    margin-top: -20px;
+}
+
+#label_cma {
+    margin-top: -20px;
+}
+
+.div_warn {
+    padding: 20px;
+    background-color: #ff7b00;
+    color: #fff;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: #fff;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
 /*** Element invisible par défaut ***/
 
 #div_rdc {
