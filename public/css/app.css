@@ -582,6 +582,10 @@ form .page .btns button.next {
     display: none;
 }
 
+#div_permis {
+    display: none;
+}
+
 #autos {
     display: none;
 }

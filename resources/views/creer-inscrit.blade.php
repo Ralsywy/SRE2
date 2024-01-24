@@ -422,6 +422,13 @@
                 </div>
                 <!--- Fin --->
                 <hr class="dashed">
+                    <div class="label">A le Permis</div>
+                    <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis">
+                    <label class="label" for="oui_permis">Oui</label>
+                    <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis"checked>
+                    <label class="label" for="non_permis">Non</label>
+                
+                <!--- Si oui --->
                 <div id="div_permis" class="hidden">
                 <!--- Si oui un/plusieurs --->
                 <div class="field">

@@ -426,6 +426,11 @@
                     </div>
                 <!--- Fin --->
                 <hr class="dashed">
+                <div class="label">A le Permis</div>
+                <input type="radio" name="is_permis" value="1" onclick="hideshowpermis(1)" id="oui_permis" @if ($inscrit->is_permis == 1) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="oui_permis">Oui</label>
+                <input type="radio" name="is_permis" value="0" onclick="hideshowpermis(2)" id="non_permis" @if ($inscrit->is_permis == 0) @checked(true) @else @checked(false) @endif>
+                <label class="label" for="non_permis">Non</label>
                 
                 <!--- Si oui --->
                     <div id="div_permis" class="hidden">
@@ -434,6 +439,7 @@
                     <div class="label">Permis</div>
                     <select name="type" onchange="hideshowpermischoix()" id="choix_permis">
                         <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'aucun')) @selected(true) @endif>Choisir un permis</option>
+                        <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'aucun')) @selected(true) @endif>aucun</option>
                         <option value="autos" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'autos')) @selected(true) @endif>Permis autos</option>
                         <option value="motos" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'motos')) @selected(true) @endif>Permis motos</option>
                         <option value="marchandises" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'marchandises')) @selected(true) @endif>Permis marchandises ou de personnes</option>
