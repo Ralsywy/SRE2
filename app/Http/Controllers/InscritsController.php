@@ -23,6 +23,7 @@ use App\Models\RepriseEtude;
 use App\Models\Soelis;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class InscritsController extends Controller
 {
@@ -71,6 +72,13 @@ class InscritsController extends Controller
         }
     }
     public function creer_inscription (Request $request){
+        $validator = Validator::make($request->all(), [
+            'nom' => 'required',
+            'prenom' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
         try{
                 //page 1
                 $inscrit= new Inscrit();
