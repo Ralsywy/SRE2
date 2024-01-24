@@ -293,13 +293,6 @@
                 <label class="label" for="oui_demande_asile">Oui</label>
                 <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_demande_asile">Non</label>
-                <!--- Si oui --->
-                <div id="div_asile">
-                    <div class="field">
-                        <div class="label">Date d'arrivé en france</div>
-                        <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
-                    </div>
-                    </div>
                 <!--- Fin --->     
                 <div class="label">Réfugié politique</div>
                 <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique" @if ($inscrit->is_refugie_politique == 1) @checked(true) @else @checked(false) @endif>

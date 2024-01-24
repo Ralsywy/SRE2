@@ -282,13 +282,6 @@
                     <label class="label" for="oui_demande_asile">Oui</label>
                     <input type="radio" name="is_demande_asile" value="0" onclick="hideshowasile(2)" id="non_demande_asile"checked>
                     <label class="label" for="non_demande_asile">Non</label>
-                <!--- Si oui --->
-                <div id="div_asile">
-                <div class="field">
-                    <div class="label">Date d'arrivé en france</div>
-                    <input type="date" name="dte_arrivee_fr">
-                </div>
-                </div>
                 <!--- Fin --->     
                 <hr class="dashed">               
                     <div class="label">Réfugié politique</div>

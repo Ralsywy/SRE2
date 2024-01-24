@@ -37,19 +37,13 @@ function hideshowrevenus() {
 
 function hideshowasile(val) {
     if (val == 1) {
-        document.getElementById('div_asile').style.display = 'block';
-    }
-    if (val == 2) {
-        document.getElementById('div_asile').style.display = 'none';
+        document.getElementById('div_politique').style.display = 'block';
     }
 }
 
 function hideshowpolitique(val) {
     if (val == 1) {
         document.getElementById('div_politique').style.display = 'block';
-    }
-    if (val == 2) {
-        document.getElementById('div_politique').style.display = 'none';
     }
 }
 

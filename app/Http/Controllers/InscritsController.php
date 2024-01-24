@@ -421,5 +421,4 @@ class InscritsController extends Controller
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
         }
     }
-    public
 }

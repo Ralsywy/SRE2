@@ -465,10 +465,10 @@ form .page .btns button.next {
     padding: 0.5rem 1.5rem;
 }
 
-.field textarea {
+#info_compleme {
     width: 310px;
     height: 100px;
-    resize: none;
+    resize:both;
     margin-bottom: 10px;
 }
 
