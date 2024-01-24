@@ -23,7 +23,6 @@ use App\Models\RepriseEtude;
 use App\Models\Soelis;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class InscritsController extends Controller
 {
@@ -72,13 +71,6 @@ class InscritsController extends Controller
         }
     }
     public function creer_inscription (Request $request){
-        $validator = Validator::make($request->all(), [
-            'nom' => 'required',
-            'prenom' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
         try{
                 //page 1
                 $inscrit= new Inscrit();
@@ -283,20 +275,8 @@ class InscritsController extends Controller
                 //nb permis
                 if($request['is_permis']==1){
                     $permis=new Permis();
+                    $permis->categorie=$request['categorie'];
                     $permis->type=$request['type'];
-                    if($request['type']=="autos"){
-                        $permis->categorie=$request['autos_categorie'];
-                    }
-                    else{
-                        if($request['type']=="motos"){
-                            $permis->categorie=$request['motos_categorie'];
-                        }
-                        else{
-                            if($request['type']=="marchandises"){
-                                $permis->categorie=$request['marchandises_categorie'];
-                            }
-                        }
-                    }
                     $permis->autre=$request['autre'];
                     $permis->inscrit_id=$inscrit->id;
                     $permis->save();
