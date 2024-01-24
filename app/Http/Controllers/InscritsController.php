@@ -131,6 +131,7 @@ class InscritsController extends Controller
                 if($request['is_logiciel']==1){
                     $inscrit->logiciel= $request['logiciel'];
                 }
+                $inscrit->dte_arrivee_fr= $request['dte_arrivee_fr'];
                 $inscrit->infos_comp= $request['infos_comp'];
                 $inscrit->save();
                 //page 5
@@ -440,4 +441,5 @@ class InscritsController extends Controller
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
         }
     }
+    public
 }
