@@ -173,7 +173,7 @@
                 </div>
                 <div class="field">
                     <div class="label">Situation personnelle</div>
-                    <select name="statue">
+                    <select name="situation_perso">
                         <option value="Aucune" @if ($inscrit->situation_perso == "Aucune") @selected(true) @endif>Choisir une situation personnel</option>
                         <option value="celibataire" @if ($inscrit->situation_perso == "celibataire") @selected(true) @endif>Célibataire</option>
                         <option value="marie" @if ($inscrit->situation_perso == "marie") @selected(true) @endif>Marié(e)</option>
@@ -192,16 +192,16 @@
                 <div class="title">Situation personnelle :</div>
                 
                     <div class="label">Enfant à charge</div>
-                    <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant" @if ($inscrit->is_enfant == 1) @checked(true) @else @checked(false) @endif>
+                    <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant" @if ($inscrit->is_enfant == 1) @checked(true) @else @checked(false) @endif disabled>
                     <label class="label" for="oui_enfant">Oui</label>
-                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" @if ($inscrit->is_enfant == 0) @checked(true) @else @checked(false) @endif>
+                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" @if ($inscrit->is_enfant == 0) @checked(true) @else @checked(false) @endif disabled>
                     <label class="label" for="non_enfant">Non</label>
 
                 <!--- Si oui --->
                 <div id="div_enfant" class="hidden">
                 <div class="field">
                     <div class="label">Nombre d'enfants </div>
-                    <input type="number" name="nb_enfant" id="nombre_enfant" value="{{$inscrit->nb_enfant}}">
+                    <input type="number" name="nb_enfant" id="nombre_enfant" value="{{$inscrit->nb_enfant}}" disabled>
                 </div>
     <!--- Pour chaque enfant --->
     <div id="boite" class="field3"></div>
@@ -211,12 +211,12 @@
         @foreach($inscrit->enfants as $index => $enfant)
             <div>
                 <label for="nom_enfant{{ $index + 1 }}">Nom de l'enfant {{ $index + 1 }} :</label>
-                <input type="text" name="nom_enfant{{ $index + 1 }}" id="nom_enfant{{ $index + 1 }}" value="{{ $enfant->nom }}">
+                <input type="text" name="nom_enfant{{ $index + 1 }}" id="nom_enfant{{ $index + 1 }}" value="{{ $enfant->nom }}"disabled>
             </div>
 
             <div>
                 <label for="dte_naissance_enfant{{ $index + 1 }}">Date de naissance de l'enfant {{ $index + 1 }} :</label>
-                <input type="date" name="dte_naissance_enfant{{ $index + 1 }}" id="dte_naissance_enfant{{ $index + 1 }}" value="{{ $enfant->dte_naissance }}">
+                <input type="date" name="dte_naissance_enfant{{ $index + 1 }}" id="dte_naissance_enfant{{ $index + 1 }}" value="{{ $enfant->dte_naissance }}"disabled>
             </div>
         @endforeach
     </div>
@@ -243,9 +243,9 @@
                     </div>
                 <!--- Fin --->
                 <div class="label">Demandeur d'asile</div>
-                <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile" @if ($inscrit->is_demande_asile == 1) @checked(true) @else @checked(false) @endif>
+                <input type="radio" name="is_demande_asile" value="1" onclick="hideshowasile(1)" id="oui_demande_asile" @if ($inscrit->is_demande_asile == 1) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_demande_asile">Oui</label>
-                <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
+                <input type="radio" name="is_demande_asile" value="0" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_demande_asile">Non</label>
                 <!--- Fin --->     
                 <div class="label">Réfugié politique</div>

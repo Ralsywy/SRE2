@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-inscrit">
     <div class="header">
-        <h1>Liste des dossiers en cours</h1>
+        <h1>Liste des dossiers terminés</h1>
         <input type="text" id="search" name="search" class="search-bar hidden" placeholder="Rechercher...">
     </div>
     
@@ -13,6 +13,7 @@
                 <th>Prénom</th>
                 <th>Accompagnateur</th>
                 <th>Nombre de rendez-vous</th>
+                <th>Date de clôture</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,13 +24,12 @@
                 <td>{{$ligne->prenom}}</td>
                 <td>{{$ligne->user->name}}</td>
                 <td>{{$ligne->rdvs->count()}}</td>
+                <td></td>
                 <td>
-                    <a href="{{ route('voir-rdv',[$ligne["id"]]) }}" class="a-rdv">Rendez-vous</a>
-                    <a href="{{ route('modifier-inscrit',[$ligne["id"]]) }}" class="a-modif">Ajouter</a>
-                    <form method="post" action="{{ route('terminer',[$ligne->id])}}" style="display: inline;">
+                    <form method="post" action="{{ route('reprendre',[$ligne->id])}}" style="display: inline;">
                         @csrf
                         @method('PUT')
-                        <button type="submit" class="btn_terminer">Terminer</button>
+                        <button type="submit" class="btn_terminer">Reprendre</button>
                     </form>
                     <form method="post" action="{{ route('supp-inscrit',[$ligne->id])}}" style="display: inline;">
                         @csrf

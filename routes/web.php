@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::post('creer-rdv/{id}', [InscritsController::class, 'creer_rdv'])->name('creer-rdv');
     Route::delete('supp-rdv/{id}', [InscritsController::class, 'supp_rdv'])->name('supp-rdv');
     Route::put('modifier-store/{id}', [InscritsController::class, 'modifier_store'])->name('modifier-store');
+    Route::get('voir-inscrits-term', [InscritsController::class, 'voir_inscrits_term'])->name('voir-inscrits-term');
+    Route::put('reprendre/{id}', [InscritsController::class, 'reprendre'])->name('reprendre');
+    Route::put('terminer/{id}', [InscritsController::class, 'terminer'])->name('terminer');
     
     Route::get('voir-acc', [AccompagnateurController::class, 'voir_acc'])->name('voir-acc');
     Route::post('register-acc', [RegisteredUserController::class, 'register_acc'])->name('register-acc');

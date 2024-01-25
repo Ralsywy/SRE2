@@ -27,8 +27,14 @@
               <li class="nav-item">
                 <a class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link {{ (request()->is('voir-inscrits')) ? 'active' : '' }}" href="{{ route('voir-inscrits') }}">Liste des inscrits</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Liste des inscrits
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{ route('voir-inscrits') }}">En cours</a></li>
+                  <li><a class="dropdown-item" href="{{ route('voir-inscrits-term') }}">Terminés</a></li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link {{ (request()->is('creer-inscrit')) ? 'active' : '' }}" href="{{ route('creer-inscrit') }}">Créer un inscrit</a>
@@ -69,6 +75,7 @@
       </div>
       @endif
       @yield('content')
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       <script src="{{asset('javascript/script.js')}}"></script>
     </body>
 </html>

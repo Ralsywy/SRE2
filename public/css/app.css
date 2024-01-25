@@ -844,3 +844,13 @@ section#plans-action, section#rdv{
     box-shadow: 0 0 1px rgb(0, 0, 0);
     background-color: var(--box);
 }
+
+.btn_terminer{
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff8851;
+    padding: 10px 20px;
+    margin-top: 10px;
+    transition: .3s;
+}

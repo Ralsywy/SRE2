@@ -41,13 +41,46 @@ class InscritsController extends Controller
     public function voir_inscrits() {
         
         try {
-            $inscrits=Inscrit::with("user")->get();
+            $inscrits=Inscrit::where('statut','LIKE',1)->with("user")->get();
             return view('voir-inscrits',compact('inscrits'));
         } 
         catch (\Exception $e) {
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
         }
     
+    }
+    public function voir_inscrits_term() {
+        
+        try {
+            $inscrits=Inscrit::where('statut','LIKE',0)->with("user")->get();
+            return view('voir-inscrits-term',compact('inscrits'));
+        } 
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+    
+    }
+    public function reprendre($id){
+        try{
+        $inscrit = Inscrit::find($id);
+        $inscrit->statut= 1;
+        $inscrit->save();
+        return back()->with("success","Le dossier de l'inscrit a été repris");
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+    }
+    public function terminer($id){
+        try{
+        $inscrit = Inscrit::find($id);
+        $inscrit->statut= 0;
+        $inscrit->save();
+        return back()->with("success","Le dossier de l'inscrit a été cloturé");
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
     }
     public function modifier_inscrit($id){
         try{
@@ -84,7 +117,7 @@ class InscritsController extends Controller
                 $inscrit->nom= $request['nom'];
                 $inscrit->prenom= $request['prenom'];
                 $inscrit->dte_naissance= $request['dte_naissance'];
-                $inscrit->nationalite= $request['nationalite'];
+                $inscrit->nationalite= ucfirst($request['nationalite']);
                 $inscrit->adresse= $request['adresse'];
                 $inscrit->code_postal= $request['code_postal'];
                 $inscrit->ville= $request['ville'];
@@ -431,7 +464,48 @@ class InscritsController extends Controller
         $inscrit->is_rdc= $request->get('is_rdc');
         $inscrit->is_benevole= $request->get('is_benevole');
         $inscrit->user_id= $request->get('user_id');
+        //page 2
+        $inscrit->civilite= $request->get('civilite');
+        $inscrit->nom= $request->get('nom');
+        $inscrit->prenom= $request->get('prenom');
+        $inscrit->dte_naissance= $request->get('dte_naissance');
+        $inscrit->nationalite= ucfirst($request->get('nationalite'));
+        $inscrit->adresse= $request->get('adresse');
+        $inscrit->code_postal= $request->get('code_postal');
+        $inscrit->ville= $request->get('ville');
+        $inscrit->telephone= $request->get('telephone');
+        $inscrit->email= $request->get('email');
+        $inscrit->situation_perso= $request->get('situation_perso');
+        //page 3
+        $inscrit->nature_revenus= $request->get('nature_revenus');
+        $inscrit->is_demande_asile= $request->get('is_demande_asile');
+        $inscrit->is_refugie_politique= $request->get('is_refugie_politique');
+        if($request->get('is_demande_asile')==1||$request->get('is_refugie_politique')==1){
+            $inscrit->dte_arrivee_fr= $request->get('dte_arrivee_fr');
+        }
+        $inscrit->is_france_travail= $request->get('is_france_travail');
+        $inscrit->is_soelis= $request->get('is_soelis');
+        $inscrit->is_cma= $request->get('is_cma');
+        $inscrit->is_mission_locale= $request->get('is_mission_locale');
+        $inscrit->is_cap_emploi= $request->get('is_cap_emploi');
+        $inscrit->is_cv= $request->get('is_cv');
+        $inscrit->is_permis= $request->get('is_permis');
         $inscrit->save();
+
+        //rdc
+        $rdc = Rdc::where('inscrit_id','LIKE',$id);
+        if($request->get('is_rdc')==1){
+            $rdc=Rdc::firstOrCreate(['inscrit_id' => $id]);
+            $rdc->numero=$request->get('numero');
+            $rdc->centre=$request->get('centre');
+            $rdc->jour=$request->get('jour');
+            $rdc->save();
+        }
+        else{
+            if($rdc){
+                $rdc->delete();
+            }
+        }
         return redirect()->route('voir-inscrits')->with("success","L'inscrit ".$inscrit->nom." ".$inscrit->prenom." été modifié");
     }
 }
