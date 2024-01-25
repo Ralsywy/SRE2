@@ -93,6 +93,17 @@ class InscritsController extends Controller
         }
     }
 
+    public function voir_inscrit($id){
+        try{
+        $users=User::all();
+        $inscrit = Inscrit::find($id);
+        return view('voir-inscrit',compact('inscrit'),compact('users'));
+        }
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+    }
+
     public function supp_inscrit($id){
         try{
         $inscrit = Inscrit::find($id);

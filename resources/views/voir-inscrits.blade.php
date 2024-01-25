@@ -24,6 +24,7 @@
                 <td>{{$ligne->user->name}}</td>
                 <td>{{$ligne->rdvs->count()}}</td>
                 <td>
+                    <a href="{{ route('voir-inscrit',[$ligne["id"]]) }}" class="a-rdv">VWAR</a>
                     <a href="{{ route('voir-rdv',[$ligne["id"]]) }}" class="a-rdv">Rendez-vous</a>
                     <a href="{{ route('modifier-inscrit',[$ligne["id"]]) }}" class="a-modif">Ajouter</a>
                     <form method="post" action="{{ route('terminer',[$ligne->id])}}" style="display: inline;">
