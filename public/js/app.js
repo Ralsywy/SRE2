@@ -341,8 +341,14 @@ function hideshowtypeform() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Appel initial pour configurer l'état basé sur les radio/checkbox cochés
+    // Appel initial pour configurer l'état basé sur les valeurs des champs
     initialSetup();
+
+    // Fonction pour extraire la valeur d'un champ (select ou input) par son id
+    function getValueById(id) {
+        const element = document.getElementById(id);
+        return element ? element.value : null;
+    }
 
     // Fonction pour extraire la valeur du champ radio/checkbox avec un id commencant par "oui_" ou "non_"
     function getValueByIdPrefix(prefix) {
@@ -350,9 +356,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return element ? element.value : null;
     }
 
-    // Fonction pour effectuer l'initialisation basée sur les valeurs actuelles des radio/checkbox
+    // Fonction pour effectuer l'initialisation basée sur les valeurs actuelles des champs
     function initialSetup() {
-        // Appeler chaque fonction avec les valeurs initiales des radio/checkbox
+        // Appeler chaque fonction avec les valeurs initiales des champs
         hideshowrdc(getValueByIdPrefix('oui_rdc'));
         hideshowenfant(getValueByIdPrefix('oui_enfant'));
         hideshowasile(getValueByIdPrefix('oui_demande_asile'));
@@ -362,7 +368,8 @@ document.addEventListener("DOMContentLoaded", function() {
         hideshowcma(getValueByIdPrefix('oui_cma'));
         hideshowmission(getValueByIdPrefix('oui_mission_locale'));
         hideshowcap(getValueByIdPrefix('oui_cap_emploi'));
-        hideshowcv(getValueByIdPrefix('oui_cv'));
+        hideshowcv(getValueByIdPrefix('oui_cv'));  // Ajout de cette ligne
+        hideshowcv(getValueByIdPrefix('non_cv'));  // Ajout de cette ligne
         hideshowpermis(getValueByIdPrefix('oui_permis'));
         hideshowvehiculedispo(getValueByIdPrefix('non_vehicule'));
         hideshowvehiculedispo(getValueByIdPrefix('oui_vehicule'));
@@ -372,7 +379,12 @@ document.addEventListener("DOMContentLoaded", function() {
         hideshowreconv(getValueByIdPrefix('oui_reconv'));
         hideshowformprevu(getValueByIdPrefix('oui_prevue'));
         // ... (le reste de votre code)
+    
+        // Appeler chaque fonction avec les valeurs initiales des champs select
+        hideshowtypeform(getValueById('type_form'));
+        hideshowpermischoix(getValueById('choix_permis'));
     }
+    
 
     // Vous pouvez également attacher la fonction initialSetup à des événements de changement
     // des radio/checkbox au cas où l'utilisateur cocherait/décocherait ultérieurement.
@@ -381,4 +393,17 @@ document.addEventListener("DOMContentLoaded", function() {
     toggleOptions.forEach(function(option) {
         option.addEventListener('change', initialSetup);
     });
+
+    // Attacher la fonction initialSetup à des événements de changement pour les champs select
+    const selectElements = document.querySelectorAll('select');
+    selectElements.forEach(function(select) {
+        select.addEventListener('change', initialSetup);
+    });
+
+    // Attacher la fonction initialSetup à des événements de changement pour les champs input
+    const inputElements = document.querySelectorAll('input');
+    inputElements.forEach(function(input) {
+        input.addEventListener('input', initialSetup);
+    });
 });
+

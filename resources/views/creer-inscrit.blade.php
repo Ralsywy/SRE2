@@ -487,9 +487,9 @@
                 <!--- Fin --->
                 
                     <div class="label">Véhicule disponible</div>
-                    <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(2)" id="oui_vehicule">
+                    <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(1)" id="oui_vehicule">
                     <label class="label" for="oui_vehicule">Oui</label>
-                    <input type="radio" name="vehicule_dispo" value="0" onclick="hideshowvehiculedispo(1)" id="non_vehicule"checked>
+                    <input type="radio" name="vehicule_dispo" value="0" onclick="hideshowvehiculedispo(2)" id="non_vehicule"checked>
                     <label class="label" for="non_vehicule">Non</label>
                 
                 <!--- Si oui (rien) --->
