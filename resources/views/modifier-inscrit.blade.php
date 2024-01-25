@@ -957,7 +957,7 @@
                 <div class="title">Informations complémentaires</div>
                 <div class="field">
                     <div class="label">Notes</div>
-                    <textarea type="text" name="infos_comp" value="">{{$inscrit->infos_comp}}</textarea>
+                    <textarea type="text" name="infos_comp" id="info_compleme" value="">{{$inscrit->infos_comp}}</textarea>
                 </div>
                 <br>
                 <div class="field btns">

@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('voir-inscrit/{id}', [InscritsController::class, 'voir_inscrit'])->name('voir-inscrit');
     Route::get('creer-inscrit', [InscritsController::class, 'creer_inscrit'])->name('creer-inscrit');
     Route::get('voir-inscrits', [InscritsController::class, 'voir_inscrits'])->name('voir-inscrits');
     Route::get('modifier-inscrit/{id}', [InscritsController::class, 'modifier_inscrit'])->name('modifier-inscrit');
