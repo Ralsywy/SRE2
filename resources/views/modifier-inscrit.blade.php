@@ -80,15 +80,15 @@
             <div id="div_rdc" class="hidden">
             <div class="field">
                 <div class="label">N°</div>
-                <input type="text" name="numero" value="{{$inscrit->rdc->numero}}">
+                <input type="text" name="numero" value="{{$inscrit->rdc?->numero}}">
             </div>
             <div class="field">
                 <div class="label">Centre</div>
-                <input type="text" name="centre" value="{{$inscrit->rdc->centre}}">
+                <input type="text" name="centre" value="{{$inscrit->rdc?->centre}}">
             </div>
             <div class="field">
                 <div class="label">Jour</div>
-                <input type="text" name="jour" value="{{$inscrit->rdc->jour}}">
+                <input type="text" name="jour" value="{{$inscrit->rdc?->jour}}">
             </div>
             </div>
             <!--- Fin --->
@@ -207,66 +207,19 @@
     <div id="boite" class="field3"></div>
 </div>
 
-<script>
-    // Récupérer la référence de l'input nombre_enfant
-    const inputNombreEnfant = document.getElementById('nombre_enfant');
-    
-    // Écouter l'événement de modification de l'input
-    inputNombreEnfant.addEventListener('change', () => {
-      // Récupérer le nombre d'enfants à partir de la valeur de l'input
-      const nombreEnfant = parseInt(inputNombreEnfant.value);
-    
-      // Référence à l'élément parent où les divs doivent être ajoutés
-      const parentElement = document.getElementById('boite');
-    
-      // Vider le contenu précédent
-      parentElement.innerHTML = '';
-    
-      // Créer et ajouter les divs en fonction du nombre d'enfants
-      for (let i = 0; i < nombreEnfant; i++) {
-        // Créer un élément div
-        const div = document.createElement('div');
-        div.id = 'boite';
-        const div2 = document.createElement('div');
-        div2.id = 'boite2';
-    
-        // Créer un élément label pour le nom de l'enfant
-        const labelNomEnfant = document.createElement('label');
-        labelNomEnfant.htmlFor = `nom_enfant`;
-        labelNomEnfant.textContent = `Nom prénom de l'enfant ${i + 1} : `;
-    
-        // Créer un élément input pour le nom de l'enfant
-        const inputNomEnfant = document.createElement('input');
-        inputNomEnfant.type = 'text';
-        inputNomEnfant.name = `nom_enfant${i + 1}`; // Ajout d'un name différent
-        inputNomEnfant.classList.add('nom_enfant');
-    
-        // Créer un élément label pour la date de naissance de l'enfant
-        const labelDateNaissance = document.createElement('label');
-        labelDateNaissance.htmlFor = 'dte_naissance_enfant';
-        labelDateNaissance.textContent = `Date de naissance de l'enfant ${i + 1} : `;
-        labelDateNaissance.classList.add('dte_naissance_enfant');
-    
-    
-        // Créer un élément input pour la date de naissance de l'enfant
-        const inputDateNaissance = document.createElement('input');
-        inputDateNaissance.type = 'date';
-        inputDateNaissance.name = `dte_naissance${i + 1}`; // Ajout d'un name différent
-        inputDateNaissance.classList.add('dte_naissance_enfant');
-    
-        // Ajouter les éléments créés au div parent
-        div.appendChild(labelNomEnfant);
-        div.appendChild(inputNomEnfant);
-        div2.appendChild(labelDateNaissance);
-        div2.appendChild(inputDateNaissance);
-    
-        // Ajouter le div parent à l'élément parent
-        parentElement.appendChild(div);
-        parentElement.appendChild(div2);
-      }
-    });
-    
-            </script>
+                <div id="boite" class="field3">
+        @foreach($inscrit->enfants as $index => $enfant)
+            <div>
+                <label for="nom_enfant{{ $index + 1 }}">Nom de l'enfant {{ $index + 1 }} :</label>
+                <input type="text" name="nom_enfant{{ $index + 1 }}" id="nom_enfant{{ $index + 1 }}" value="{{ $enfant->nom }}">
+            </div>
+
+            <div>
+                <label for="dte_naissance_enfant{{ $index + 1 }}">Date de naissance de l'enfant {{ $index + 1 }} :</label>
+                <input type="date" name="dte_naissance_enfant{{ $index + 1 }}" id="dte_naissance_enfant{{ $index + 1 }}" value="{{ $enfant->dte_naissance }}">
+            </div>
+        @endforeach
+    </div>
                 <!--- Fin --->
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>
@@ -289,19 +242,11 @@
                     </div>
                     </div>
                 <!--- Fin --->
-
                 <div class="label">Demandeur d'asile</div>
                 <input type="radio" name="is_demande_asile" value="oui" onclick="hideshowasile(1)" id="oui_demande_asile" @if ($inscrit->is_demande_asile == 1) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_demande_asile">Oui</label>
                 <input type="radio" name="is_demande_asile" value="non" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_demande_asile">Non</label>
-                <!--- Si oui --->
-                <div id="div_asile">
-                    <div class="field">
-                        <div class="label">Date d'arrivé en france</div>
-                        <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
-                    </div>
-                    </div>
                 <!--- Fin --->     
                 <div class="label">Réfugié politique</div>
                 <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique" @if ($inscrit->is_refugie_politique == 1) @checked(true) @else @checked(false) @endif>
@@ -327,11 +272,11 @@
                 <div id="div_france" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription à France travail</div>
-                        <input type="date" name="france_dte_inscription" value="{{$inscrit->franceTravail->dte_inscription}}">
+                        <input type="date" name="france_dte_inscription" value="{{$inscrit->franceTravail?->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="france_nom_ref" value="{{$inscrit->franceTravail->nom_ref}}">
+                        <input type="text" name="france_nom_ref" value="{{$inscrit->franceTravail?->nom_ref}}">
                     </div>
                     </div>
                 <!--- Fin --->
@@ -346,11 +291,11 @@
                 <div id="div_soelis" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription à Soélis</div>
-                        <input type="date" name="soelis_dte_inscription" value="{{$inscrit->soelis->dte_inscription}}">
+                        <input type="date" name="soelis_dte_inscription" value="{{$inscrit->soelis?->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="soelis_nom_ref" value="{{$inscrit->soelis->nom_ref}}">
+                        <input type="text" name="soelis_nom_ref" value="{{$inscrit->soelis?->nom_ref}}">
                     </div>
                     </div>
                 <!--- Fin --->
@@ -365,11 +310,11 @@
                 <div id="div_cma" class="hidden">
                     <div class="field">
                         <div class="label" id="label_cma">Date d'inscription la chambre des métiers et de l'artisanat</div>
-                        <input type="date" name="cma_dte_inscription" value="{{$inscrit->cma->dte_inscription}}">
+                        <input type="date" name="cma_dte_inscription" value="{{$inscrit->cma?->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="cma_nom_ref" value="{{$inscrit->cma->nom_ref}}">
+                        <input type="text" name="cma_nom_ref" value="{{$inscrit->cma?->nom_ref}}">
                     </div>
                     </div>
                 <!--- Fin --->
@@ -384,11 +329,11 @@
                 <div id="div_mission" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription à la Mission locale</div>
-                        <input type="date" name="mission_dte_inscription" value="{{$inscrit->missionLocale->dte_inscription}}">
+                        <input type="date" name="mission_dte_inscription" value="{{$inscrit->missionLocale?->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="mission_nom_ref" value="{{$inscrit->missionLocale->nom_ref}}">
+                        <input type="text" name="mission_nom_ref" value="{{$inscrit->missionLocale?->nom_ref}}">
                     </div>
                     </div>
                 <!--- Fin --->
@@ -403,11 +348,11 @@
                 <div id="div_cap" class="hidden">
                     <div class="field">
                         <div class="label">Date d'inscription CAP emplois</div>
-                        <input type="date" name="cap_dte_inscription" value="{{$inscrit->capEmploi->dte_inscription}}">
+                        <input type="date" name="cap_dte_inscription" value="{{$inscrit->capEmploi?->dte_inscription}}">
                     </div>
                     <div class="field">
                         <div class="label">Nom référent</div>
-                        <input type="text" name="cap_nom_ref" value="{{$inscrit->capEmploi->nom_ref}}">
+                        <input type="text" name="cap_nom_ref" value="{{$inscrit->capEmploi?->nom_ref}}">
                     </div>
                     </div>
                 <!--- Fin --->
@@ -429,7 +374,7 @@
                     <div id="div_cv_non">
                     <div class="field">
                         <div class="label" id="label_cv">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
-                        <input type="date" name="dte_travailler">
+                        <input type="date" name="dte_travailler" value="{{$inscrit->cv?->dte_travailler}}">
                     </div>
                     </div>
                 <!--- Fin --->
@@ -732,9 +677,9 @@
             <!--- Si oui --->
             <div id="div_reconv" class="hidden">
             <div class="label">Formations prévues</div>
-            <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue" @if ($inscrit->reconvPro->is_form_prevue == 1) @checked(true) @else @checked(false) @endif>
+            <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue" @if ($inscrit->reconvPro && $inscrit->reconvPro->is_form_prevue == 1) @checked(true) @else @checked(false) @endif>     
             <label class="label" for="oui_prevue">Oui</label>
-            <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue" @if ($inscrit->reconvPro->is_form_prevue == 0) @checked(true) @else @checked(false) @endif>
+            <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue" @if ($inscrit->reconvPro && $inscrit->reconvPro->is_form_prevue == 0) @checked(true) @else @checked(false) @endif>
             <label class="label" for="non_prevue">Non</label>
             </div>
                 <!--- Si non (rien) --->
@@ -742,15 +687,15 @@
                 <div id="div_form_prevu">
                     <div class="field">
                         <div class="label">Renseigner le nom : </div>
-                        <input type="text" name="reconv_nom" value="{{$inscrit->reconvPro->nom}}">
+                        <input type="text" name="reconv_nom" value="{{$inscrit->reconvPro?->nom}}">
                     </div>
                     <div class="field">
                         <div class="label">Renseigner la date : </div>
-                        <input type="date" name="reconv_date" value="{{$inscrit->reconvPro->date}}">
+                        <input type="date" name="reconv_date" value="{{$inscrit->reconvPro?->date}}">
                     </div>
                     <div class="field">
                         <div class="label">Renseigner la durée : </div>
-                        <input type="text" name="reconv_duree" value="{{$inscrit->reconvPro->duree}}">
+                        <input type="text" name="reconv_duree" value="{{$inscrit->reconvPro?->duree}}">
                     </div>
                     </div>
                <!--- Fin --->
@@ -765,7 +710,7 @@
                <div id="div_reprise" class="hidden">
                <div class="field">
                    <div class="label">Diplôme préparé</div>
-                   <input type="text" name="nom_diplome_reprise" value="{{$inscrit->repriseEtude->nom_diplome}}">
+                   <input type="text" name="nom_diplome_reprise" value="{{$inscrit->repriseEtude?->nom_diplome}}">
                </div>
                </div>
                 <!--- Si fin --->
@@ -780,9 +725,9 @@
                 <div class="field">
                     <div class="label">Type de formation</div>
                     <select name="type_formation_pro" onchange="hideshowtypeform()" id="type_form">
-                        <option value="aucun" @if ($inscrit->formationPro->type == "aucun") @selected(true) @endif>Choisir un type de formation</option>
-                        <option value="qualifiante" @if ($inscrit->formationPro->type == "qualifiante") @selected(true) @endif>Qualifiante</option>
-                        <option value="diplomante" @if ($inscrit->formationPro->type == "diplomante") @selected(true) @endif>Diplômante</option>
+                        <option value="aucun" @if (!$inscrit->formationPro || $inscrit->formationPro->type == "aucun") @selected(true) @endif>Choisir un type de formation</option>
+                        <option value="qualifiante" @if (!$inscrit->formationPro || $inscrit->formationPro->type == "qualifiante") @selected(true) @endif>Qualifiante</option>
+                        <option value="diplomante" @if (!$inscrit->formationPro || $inscrit->formationPro->type == "diplomante") @selected(true) @endif>Diplômante</option>
                     </select>
                 </div>
                 </div>
@@ -790,14 +735,14 @@
                     <div id="diplomante">
                         <div class="field">
                             <div class="label">Nom de la formation diplômante</div>
-                            <input type="text" name="diplome_formation_pro" value="{{$inscrit->formationPro->nom}}">
+                            <input type="text" name="diplome_formation_pro" value="{{$inscrit->formationPro?->nom}}">
                         </div>
                         </div>
                         <!--- Si qualifiante --->
                         <div id="qualifiante">
                         <div class="field">
                             <div class="label">Nom de la formation qualifiante</div>
-                            <input type="text" name="qualifiante_formation_pro" value="{{$inscrit->formationPro->nom}}">
+                            <input type="text" name="qualifiante_formation_pro" value="{{$inscrit->formationPro?->nom}}">
                         </div>
                         </div>
                         <!--- Fin --->
@@ -998,8 +943,7 @@
                 <!--- Si oui --->
                 <div id="div_langue" class="hidden">
                 <div class="field">
-                    <div class="label">Langue(s)</div>
-                    <input type="text" name="autre_langue" value="{{ $inscrit->langue->first()->autre }}">
+                    <input type="text" name="autre_langue" value="{{ optional($inscrit->langue->first())->autre }}">
                 </div>
                 </div>
                 <!--- Fin --->
@@ -1026,6 +970,45 @@
 </div>
 </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Appel initial pour configurer l'état basé sur les valeurs des champs
+        initialSetup();
+    
+        // Fonction pour extraire la valeur d'un champ (select ou input) par son id
+        function getValueById(id) {
+            const element = document.getElementById(id);
+            return element ? element.value : null;
+        }
+    
+        // Fonction pour extraire la valeur du champ radio/checkbox avec un id commencant par "oui_" ou "non_"
+        function getValueByIdPrefix(prefix) {
+            const element = document.querySelector(`input[id^="${prefix}"]:checked`);
+            return element ? element.value : null;
+        }
+    
+        // Fonction pour effectuer l'initialisation basée sur les valeurs actuelles des champs
+        function initialSetup() {
+            // Appeler chaque fonction avec les valeurs initiales des champs
+            hideshowrdc(getValueByIdPrefix('oui_rdc'));
+            hideshowenfant(getValueByIdPrefix('oui_enfant'));
+            hideshowcv(getValueByIdPrefix('non_cv'));
+            hideshowrevenus(getValueById('revenus'));
+            // ... (le reste de votre code)
+    
+            // Appeler chaque fonction avec les valeurs initiales des champs select
+            hideshowtypeform(getValueById('type_form'));
+            hideshowpermischoix(getValueById('choix_permis'));
+            
+            // Afficher les données des enfants au chargement de la page
+            showChildrenData();
+        }
+    });
+        // Fonction pour afficher les données des enfants
+
+    </script>
+
 <script>
     const slidePage = document.querySelector('.slidepage');
     const firstNextBtn = document.querySelector('.nextBtn');
