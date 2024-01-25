@@ -844,7 +844,7 @@ section#plans-action, section#rdv{
     align-items: center;
     width: 100%;
     padding: 1.5rem;
-    height: 80vh;
+    min-height: 80vh;
     box-shadow: 0 0 1px rgb(0, 0, 0);
     background-color: var(--box);
 }
