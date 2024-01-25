@@ -20,8 +20,8 @@
         <tbody id="tbody">
             @foreach($inscrits as $ligne)
             <tr class="hidden">
-                <td>{{$ligne->nom}}</td>
-                <td>{{$ligne->prenom}}</td>
+                <td><a class="a-nom" href="{{ route('voir-inscrit',[$ligne["id"]]) }}">{{$ligne->nom}}</a></td>
+                <td><a class="a-nom" href="{{ route('voir-inscrit',[$ligne["id"]]) }}">{{$ligne->prenom}}</a></td>
                 <td>{{$ligne->user->name}}</td>
                 <td>{{$ligne->rdvs->count()}}</td>
                 <td></td>
@@ -29,7 +29,7 @@
                     <form method="post" action="{{ route('reprendre',[$ligne->id])}}" style="display: inline;">
                         @csrf
                         @method('PUT')
-                        <button type="submit" class="btn_terminer">Reprendre</button>
+                        <button type="submit" class="btn_terminer"><i class="fa-solid fa-lock-open"></i></button>
                     </form>
                     <form method="post" action="{{ route('supp-inscrit',[$ligne->id])}}" style="display: inline;">
                         @csrf

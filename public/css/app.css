@@ -155,7 +155,7 @@ button:hover{
     border: none;
     border-radius: 30px;
     background-color: #ff3f3f;
-    padding: 10px 20px;
+    padding: 10px 15px;
     transition: .3s;
 }
 .un_acc .btn_supp{
@@ -730,7 +730,6 @@ form .page .btns button.next {
 }
 table{
     background-color: #fff;
-    backdrop-filter: blur(7px);
     box-shadow: 0 0 2px rgba(0, 0, 0, .3);
     border-spacing: 0;
     border-radius: 10px;
@@ -807,6 +806,11 @@ tbody tr:last-child td:last-child{
     background-color: var(--text);
     color: var(--background);
 }
+.a-nom{
+    text-decoration: none;
+    color: var(--text);
+    /**<css ( boka chan ga oshiete kureta ) = beau site**/
+}
 /************ PAGE RDV *************/
 .page-rdv{
     display: flex;
@@ -850,7 +854,22 @@ section#plans-action, section#rdv{
     border: none;
     border-radius: 30px;
     background-color: #ff8851;
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin-top: 10px;
     transition: .3s;
+}
+.a-voir{
+    color: var(--text);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #ffb3f2;
+    padding: 10px 15px;
+    margin-top: 10px;
+    transition: .2s;
+    text-decoration: none;
+}
+.a-voir:hover{
+    background-color: #000;
+    color: white;
 }
