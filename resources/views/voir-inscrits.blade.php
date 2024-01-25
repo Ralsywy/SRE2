@@ -1,12 +1,12 @@
 @extends('base')
 @section('content')
 <div class="page-inscrit">
-    <div class="header">
-        <h1>Liste des dossiers en cours</h1>
-        <input type="text" id="search" name="search" class="search-bar hidden" placeholder="Rechercher...">
+    <div class="header hidden">
+        <h1 >Liste des dossiers en cours</h1>
+        <input type="text" id="search" name="search" class="search-bar" placeholder="Rechercher...">
     </div>
     
-    <table>
+    <table class="hidden">
         <thead>
             <tr class="hidden">
                 <th>Nom</th>
