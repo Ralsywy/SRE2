@@ -185,75 +185,63 @@
                     <label class="label" for="non_enfant">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_enfant" class="hidden">
-                <div class="field">
-                    <div class="label">Nombre d'enfants </div>
-                    <input type="number" name="nb_enfant" id="nombre_enfant">
+                <div id="div_enfant" class="btn-enfant hidden">
+                        <a href="#" id="genererEnfant" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
+                        <a href="#" id="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
+                    <hr class="dashed">
+                    <!--- Pour chaque enfant --->
+                    <div id="inputContainer" class="field3"></div>
                 </div>
-    <!--- Pour chaque enfant --->
-    <div id="boite" class="field3"></div>
-</div>
-
-<script>
-    // Récupérer la référence de l'input nombre_enfant
-    const inputNombreEnfant = document.getElementById('nombre_enfant');
-    
-    // Écouter l'événement de modification de l'input
-    inputNombreEnfant.addEventListener('change', () => {
-      // Récupérer le nombre d'enfants à partir de la valeur de l'input
-      const nombreEnfant = parseInt(inputNombreEnfant.value);
-    
-      // Référence à l'élément parent où les divs doivent être ajoutés
-      const parentElement = document.getElementById('boite');
-    
-      // Vider le contenu précédent
-      parentElement.innerHTML = '';
-    
-      // Créer et ajouter les divs en fonction du nombre d'enfants
-      for (let i = 0; i < nombreEnfant; i++) {
-        // Créer un élément div
-        const div = document.createElement('div');
-        div.id = 'boite';
-        const div2 = document.createElement('div');
-        div2.id = 'boite2';
-    
-        // Créer un élément label pour le nom de l'enfant
-        const labelNomEnfant = document.createElement('label');
-        labelNomEnfant.htmlFor = `nom_enfant`;
-        labelNomEnfant.textContent = `Nom prénom de l'enfant ${i + 1} : `;
-    
-        // Créer un élément input pour le nom de l'enfant
-        const inputNomEnfant = document.createElement('input');
-        inputNomEnfant.type = 'text';
-        inputNomEnfant.name = `nom_enfant${i + 1}`; // Ajout d'un name différent
-        inputNomEnfant.classList.add('nom_enfant');
-    
-        // Créer un élément label pour la date de naissance de l'enfant
-        const labelDateNaissance = document.createElement('label');
-        labelDateNaissance.htmlFor = 'dte_naissance_enfant';
-        labelDateNaissance.textContent = `Date de naissance de l'enfant ${i + 1} : `;
-        labelDateNaissance.classList.add('dte_naissance_enfant');
-    
-    
-        // Créer un élément input pour la date de naissance de l'enfant
-        const inputDateNaissance = document.createElement('input');
-        inputDateNaissance.type = 'date';
-        inputDateNaissance.name = `dte_naissance${i + 1}`; // Ajout d'un name différent
-        inputDateNaissance.classList.add('dte_naissance_enfant');
-    
-        // Ajouter les éléments créés au div parent
-        div.appendChild(labelNomEnfant);
-        div.appendChild(inputNomEnfant);
-        div2.appendChild(labelDateNaissance);
-        div2.appendChild(inputDateNaissance);
-    
-        // Ajouter le div parent à l'élément parent
-        parentElement.appendChild(div);
-        parentElement.appendChild(div2);
-      }
-    });
-    
-            </script>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var nb_enfant = 1; // Compteur pour suivre le nombre de clics
+                        var inputContainer = document.getElementById("inputContainer");
+                    
+                        document.getElementById("genererEnfant").addEventListener("click", function(event) {
+                            event.preventDefault();
+                            generateInputs();
+                        });
+                    
+                        function generateInputs() {
+                            // Créez un label et un input pour chaque champ
+                            var labelNom = document.createElement("label");
+                            var inputNom = document.createElement("input");
+                    
+                            var labelDate = document.createElement("label");
+                            var inputDate = document.createElement("input");
+                            inputDate.type = 'date';
+                    
+                            // Affectez des attributs et des valeurs aux labels
+                            labelNom.textContent = "Nom Prénom de l'enfant " + nb_enfant + " : ";
+                            labelNom.setAttribute("for", "input" + nb_enfant);
+                    
+                            labelDate.textContent = "Date de naissance de l'enfant " + nb_enfant + " : ";
+                            labelDate.setAttribute("for", "input" + nb_enfant);
+                    
+                            // Affectez des attributs et des valeurs aux inputs
+                            inputNom.setAttribute("type", "text");
+                            inputNom.setAttribute("name", "nom_enfant" + nb_enfant);
+                    
+                            inputDate.setAttribute("type", "text");
+                            inputDate.setAttribute("name", "dte_naissance_enfant" + nb_enfant);
+                    
+                            // Ajoutez les labels et les inputs au conteneur
+                            inputContainer.appendChild(labelNom);
+                            inputContainer.appendChild(inputNom);
+                            inputContainer.appendChild(document.createElement("br")); // Ajoute une rupture de ligne pour la mise en forme
+                    
+                            inputContainer.appendChild(labelDate);
+                            inputContainer.appendChild(inputDate);
+                            inputContainer.appendChild(document.createElement("br"));
+                    
+                            nb_enfant += 1; // Incrémente le compteur pour les prochains clics
+                            // Créez une ligne horizontale avec la classe "dashed"
+                            var hr = document.createElement("hr");
+                            hr.setAttribute("class", "dashed");
+                            inputContainer.appendChild(hr);
+                        }
+                    });
+                    </script>
                 <!--- Fin --->
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>

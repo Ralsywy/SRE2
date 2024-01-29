@@ -70,6 +70,7 @@ button:hover{
 }
 .navbar form{
     position: absolute;
+    right: 7rem;
 }
 
 
@@ -541,6 +542,7 @@ form .page .btns button.next {
 
 #div_enfant {
     display: none;
+    margin: 1rem;
 }
 
 #preciser {
@@ -870,6 +872,22 @@ section#plans-action, section#rdv{
     text-decoration: none;
 }
 .a-voir:hover{
+    background-color: #000;
+    color: white;
+}
+.genererEnfant{
+    color: var(--text);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #ffb3f2;
+    padding: 10px 15px;
+    margin-top: 10px;
+    transition: .2s;
+    text-decoration: none;
+    margin: 2rem;
+}
+.genererEnfant:hover{
     background-color: #000;
     color: white;
 }

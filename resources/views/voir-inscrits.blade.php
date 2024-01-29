@@ -32,11 +32,13 @@
                         @method('PUT')
                         <button type="submit" class="btn_terminer"><i class="fa-solid fa-lock"></i></button>
                     </form>
+                    @if(auth()->user()->is_admin == 1)
                     <form method="post" action="{{ route('supp-inscrit',[$ligne->id])}}" style="display: inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn_supp" onclick='return check_del()'><i class="fa-solid fa-trash"></i></button>
                     </form>
+                    @endif
                 </td>
             </tr>
             @endforeach
