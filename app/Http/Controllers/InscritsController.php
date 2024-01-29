@@ -22,6 +22,7 @@ use App\Models\ReconvPro;
 use App\Models\RepriseEtude;
 use App\Models\Soelis;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 
 class InscritsController extends Controller
@@ -75,6 +76,7 @@ class InscritsController extends Controller
         try{
         $inscrit = Inscrit::find($id);
         $inscrit->statut= 0;
+        $inscrit->dte_cloture= date('Y-m-d');
         $inscrit->save();
         return back()->with("success","Le dossier de l'inscrit a été cloturé");
         }
@@ -319,9 +321,21 @@ class InscritsController extends Controller
                 //nb permis
                 if($request['is_permis']==1){
                     $permis=new Permis();
-                    $permis->categorie=$request['categorie'];
                     $permis->type=$request['type'];
-                    $permis->autre=$request['autre'];
+                    if($request['type']=="autos"){
+                        $permis->categorie=$request['autos_categorie'];
+                    }
+                    else{
+                        if($request['type']=="motos"){
+                            $permis->categorie=$request['motos_categorie'];
+                        }
+                        else{
+                            if($request['type']=="marchandises"){
+                                $permis->categorie=$request['marchandises_categorie'];
+                            }
+                        }
+                    }
+                    $permis->autre=$request['autre_permis'];
                     $permis->inscrit_id=$inscrit->id;
                     $permis->save();
                 }
@@ -501,8 +515,159 @@ class InscritsController extends Controller
         $inscrit->is_cap_emploi= $request->get('is_cap_emploi');
         $inscrit->is_cv= $request->get('is_cv');
         $inscrit->is_permis= $request->get('is_permis');
+        $inscrit->vehicule_dispo= $request->get('vehicule_dispo');
+        if($request->get('vehicule_dispo')==0){
+            $inscrit->prevu_vehicule= $request->get('prevu_vehicule');
+            if($request->get('prevu_vehicule')==1){
+                $inscrit->dte_achat= $request->get('dte_achat');
+            }
+        }
+        //page 4
+        $inscrit->is_reconv_pro= $request->get('is_reconv_pro');
+        $inscrit->is_reprise_etudes= $request->get('is_reprise_etudes');
         $inscrit->save();
 
+        //reprise etudes
+        $reprise_etudes=RepriseEtude::where('inscrit_id','LIKE',$id);
+        if($request->get('is_reprise_etudes')==1){
+            $reprise_etudes=RepriseEtude::firstOrCreate(['inscrit_id' => $id]);
+            $reprise_etudes->nom_diplome= $request->get('nom_diplome_reprise');
+            $reprise_etudes->save();
+        }
+        else{
+            if($reprise_etudes){
+                $reprise_etudes->delete();
+            }
+        }
+        //reconv pro
+        $reconv_pro=ReconvPro::where('inscrit_id','LIKE',$id);
+        if($request->get('is_reconv_pro')==1){
+            $reconv_pro=ReconvPro::firstOrCreate(['inscrit_id' => $id]);
+            $reconv_pro->is_form_prevue= $request->get('is_form_prevue');
+            if($request->get('is_form_prevue')==1){
+                $reconv_pro->nom= $request->get('reconv_nom');
+                $reconv_pro->date= $request->get('reconv_date');
+                $reconv_pro->duree= $request->get('reconv_duree');
+            }
+            $reconv_pro->save();
+        }
+        else{
+            if($reconv_pro){
+                $reconv_pro->delete();
+            }
+        }
+        //permis
+        $permis=Permis::where('inscrit_id','LIKE',$id);
+        if($request['is_permis']==1){
+            $permis=Permis::firstOrCreate(['inscrit_id' => $id]);
+            $permis->type=$request->get('type');
+            if($request->get('type')=="autos"){
+                $permis->categorie=$request->get('autos_categorie');
+            }
+            else{
+                if($request->get('type')=="motos"){
+                    $permis->categorie=$request->get('motos_categorie');
+                }
+                else{
+                    if($request->get('type')=="marchandises"){
+                        $permis->categorie=$request->get('marchandises_categorie');
+                    }
+                }
+            }
+            $permis->autre=$request->get('autre_permis');
+            $permis->save();
+        }
+        else{
+            if($permis){
+                $permis->delete();
+            }
+        }
+        
+        //cv
+        $cv=Cv::where('inscrit_id','LIKE',$id);
+        $cv=Cv::firstOrCreate(['inscrit_id' => $id]);
+        if($request->get('is_cv')==1){
+            /** @var UploadedFile|null $chemin */
+            $chemin = $request->file('cv_nom');
+            if($chemin!=null){
+                $cvPath = $chemin->store('cv', 'public');
+                $cv->nom= $cvPath;
+                $cv->dte_travailler=null;
+            }
+            $cv->save();
+        }
+        else{
+            if($request->get('is_cv')==0){
+                $cv->nom= null;
+                $cv->dte_travailler=$request->get('dte_travailler');
+                $cv->save();
+            }
+        }
+        //CapEmploi
+        $CapEmploi = CapEmploi::where('inscrit_id','LIKE',$id);
+        if($request->get('is_cap_emploi')==1){
+            $CapEmploi=CapEmploi::firstOrCreate(['inscrit_id' => $id]);
+            $CapEmploi->dte_inscription=$request->get('cap_dte_inscription');
+            $CapEmploi->nom_ref=$request->get('cap_nom_ref');
+            $CapEmploi->save();
+        }
+        else{
+            if($CapEmploi){
+                $CapEmploi->delete();
+            }
+        }
+        //MissionLocale
+        $MissionLocale = MissionLocale::where('inscrit_id','LIKE',$id);
+        if($request->get('is_mission_locale')==1){
+            $MissionLocale=MissionLocale::firstOrCreate(['inscrit_id' => $id]);
+            $MissionLocale->dte_inscription=$request->get('mission_dte_inscription');
+            $MissionLocale->nom_ref=$request->get('mission_nom_ref');
+            $MissionLocale->save();
+        }
+        else{
+            if($MissionLocale){
+                $MissionLocale->delete();
+            }
+        }
+        //Cma
+        $Cma = Cma::where('inscrit_id','LIKE',$id);
+        if($request->get('is_cma')==1){
+            $Cma=Cma::firstOrCreate(['inscrit_id' => $id]);
+            $Cma->dte_inscription=$request->get('cma_dte_inscription');
+            $Cma->nom_ref=$request->get('cma_nom_ref');
+            $Cma->save();
+        }
+        else{
+            if($Cma){
+                $Cma->delete();
+            }
+        }
+        //soelis
+        $Soelis = Soelis::where('inscrit_id','LIKE',$id);
+        if($request->get('is_soelis')==1){
+            $Soelis=Soelis::firstOrCreate(['inscrit_id' => $id]);
+            $Soelis->dte_inscription=$request->get('soelis_dte_inscription');
+            $Soelis->nom_ref=$request->get('soelis_nom_ref');
+            $Soelis->save();
+        }
+        else{
+            if($Soelis){
+                $Soelis->delete();
+            }
+        }
+        //france travail
+        $franceTravail = FranceTravail::where('inscrit_id','LIKE',$id);
+        if($request->get('is_france_travail')==1){
+            $franceTravail=FranceTravail::firstOrCreate(['inscrit_id' => $id]);
+            $franceTravail->dte_inscription=$request->get('france_dte_inscription');
+            $franceTravail->nom_ref=$request->get('france_nom_ref');
+            $franceTravail->save();
+        }
+        else{
+            if($franceTravail){
+                $franceTravail->delete();
+            }
+        }
         //rdc
         $rdc = Rdc::where('inscrit_id','LIKE',$id);
         if($request->get('is_rdc')==1){

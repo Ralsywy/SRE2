@@ -456,9 +456,9 @@
                 <div class="label">Permis motos</div>
                 <select name="motos_categorie">
                     <option value="aucun">Choisir une catégorie</option>
-                    <option value="B">A</option>
-                    <option value="B1">A1</option>
-                    <option value="BE">A2</option>
+                    <option value="A">A</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
                 </select>
                 </div>
                 </div>
