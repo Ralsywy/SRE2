@@ -171,6 +171,7 @@
     </div>
 </div>
 @endforeach
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>Nature des revenus</strong></div>
@@ -181,6 +182,7 @@
         @endif
     </div>
 </div>
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>Demandeur d'asile</strong></div>
@@ -235,6 +237,7 @@
         </div>
     @endif
 </div>
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>Inscrit à France travail</strong></div>
@@ -267,6 +270,7 @@
             </div>
         @endif
 </div>
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>Inscrit à Soélis</strong></div>
@@ -299,6 +303,7 @@
             </div>
         @endif
 </div>
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>Inscrit à la chambre des métiers et de l'artisanat</strong></div>
@@ -331,6 +336,7 @@
             </div>
         @endif
 </div>
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>Inscrit à la Mission locale</strong></div>
@@ -363,6 +369,7 @@
             </div>
         @endif
 </div>
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>Inscrit à CAP emplois</strong></div>
@@ -395,6 +402,7 @@
             </div>
         @endif
 </div>
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>CV disponible</strong></div>
@@ -423,6 +431,7 @@
             </div>
         @endif
 </div>
+<hr class="dashed">
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>A le permis</strong></div>
