@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Horaire extends Model
 {
+    protected $fillable = ['inscrit_id'];
     use HasFactory;
     public function inscrit(): BelongsTo
     {

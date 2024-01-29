@@ -367,14 +367,14 @@
                     <div id="div_cv_oui">
                     <div class="field">
                         <div class="label" id="label_cv">Insérer le cv scanné (format PDF uniquement)</div>
-                        <input type="file" name="cv_nom">
+                        <input type="file" name="cv_nom" value="{{$inscrit->cv->nom}}">
                     </div>
                     </div>
                     <!--- Si non --->
                     <div id="div_cv_non">
                     <div class="field">
                         <div class="label" id="label_cv">Date programmé pour travailler le CV (laisser vide si pas de date)</div>
-                        <input type="date" name="dte_travailler" value="{{$inscrit->cv?->dte_travailler}}">
+                        <input type="date" name="dte_travailler" value="{{$inscrit->cv?->dte_travailler}}" value="{{$inscrit->cv?->dte_travailler}}">
                     </div>
                     </div>
                 <!--- Fin --->
@@ -429,15 +429,15 @@
                     <div class="field">
                     <div class="label">Permis marchandises ou de personnes</div>
                     <select name="marchandises_categorie">
-                        <option value="aucun" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'aucun')) @selected(true) @endif>Choisir une catégorie</option>
-                        <option value="C" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'C')) @selected(true) @endif>C</option>
-                        <option value="CE" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'CE')) @selected(true) @endif>CE</option>
-                        <option value="C1" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'C1')) @selected(true) @endif>C1</option>
-                        <option value="C1E" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'C1E')) @selected(true) @endif>C1E</option>
-                        <option value="D" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'D')) @selected(true) @endif>D</option>
-                        <option value="DE" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'DE')) @selected(true) @endif>DE</option>
-                        <option value="D1" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'D1')) @selected(true) @endif>D1</option>
-                        <option value="D1E" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('categorie', 'D1E')) @selected(true) @endif>D1E</option>
+                        <option value="aucun" @if ($inscrit->permis->contains('categorie', 'aucun')) @selected(true) @endif>Aucun</option>
+                        <option value="C" @if ($inscrit->permis->contains('categorie', 'C')) @selected(true) @endif>C</option>
+                        <option value="CE" @if ($inscrit->permis->contains('categorie', 'CE')) @selected(true) @endif>CE</option>
+                        <option value="C1" @if ($inscrit->permis->contains('categorie', 'C1')) @selected(true) @endif>C1</option>
+                        <option value="C1E" @if ($inscrit->permis->contains('categorie', 'C1E')) @selected(true) @endif>C1E</option>
+                        <option value="D" @if ($inscrit->permis->contains('categorie', 'D')) @selected(true) @endif>D</option>
+                        <option value="DE" @if ($inscrit->permis->contains('categorie', 'DE')) @selected(true) @endif>DE</option>
+                        <option value="D1" @if ($inscrit->permis->contains('categorie', 'D1')) @selected(true) @endif>D1</option>
+                        <option value="D1E" @if ($inscrit->permis->contains('categorie', 'D1E')) @selected(true) @endif>D1E</option>
                     </select>
                     </div>
                     </div>

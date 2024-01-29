@@ -24,7 +24,7 @@
                 <td><a class="a-nom" href="{{ route('voir-inscrit',[$ligne["id"]]) }}">{{$ligne->prenom}}</a></td>
                 <td>{{$ligne->user->name}}</td>
                 <td>{{$ligne->rdvs->count()}}</td>
-                <td></td>
+                <td>{{$ligne->dte_cloture}}</td>
                 <td>
                     <form method="post" action="{{ route('reprendre',[$ligne->id])}}" style="display: inline;">
                         @csrf
