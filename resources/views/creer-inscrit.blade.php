@@ -187,7 +187,7 @@
                 <!--- Si oui --->
                 <div id="div_enfant" class="btn-enfant hidden">
                         <a href="#" id="genererEnfant" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
-                        <a href="#" id="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
+                        <input type="text" id="inputnb_enfant" name="nb_enfant" readonly>
                     <hr class="dashed">
                     <!--- Pour chaque enfant --->
                     <div id="inputContainer" class="field3"></div>
@@ -196,7 +196,7 @@
                     document.addEventListener("DOMContentLoaded", function() {
                         var nb_enfant = 1; // Compteur pour suivre le nombre de clics
                         var inputContainer = document.getElementById("inputContainer");
-                    
+
                         document.getElementById("genererEnfant").addEventListener("click", function(event) {
                             event.preventDefault();
                             generateInputs();
@@ -209,7 +209,6 @@
                     
                             var labelDate = document.createElement("label");
                             var inputDate = document.createElement("input");
-                            inputDate.type = 'date';
                     
                             // Affectez des attributs et des valeurs aux labels
                             labelNom.textContent = "Nom Prénom de l'enfant " + nb_enfant + " : ";
@@ -222,7 +221,7 @@
                             inputNom.setAttribute("type", "text");
                             inputNom.setAttribute("name", "nom_enfant" + nb_enfant);
                     
-                            inputDate.setAttribute("type", "text");
+                            inputDate.setAttribute("type", "date");
                             inputDate.setAttribute("name", "dte_naissance_enfant" + nb_enfant);
                     
                             // Ajoutez les labels et les inputs au conteneur
@@ -233,12 +232,13 @@
                             inputContainer.appendChild(labelDate);
                             inputContainer.appendChild(inputDate);
                             inputContainer.appendChild(document.createElement("br"));
-                    
+                            inputnb_enfant.value = nb_enfant;
                             nb_enfant += 1; // Incrémente le compteur pour les prochains clics
                             // Créez une ligne horizontale avec la classe "dashed"
                             var hr = document.createElement("hr");
                             hr.setAttribute("class", "dashed");
                             inputContainer.appendChild(hr);
+                            
                         }
                     });
                     </script>

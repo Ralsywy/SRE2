@@ -400,10 +400,10 @@ class InscritsController extends Controller
                     $france->save();
                 }
                 //enfants
-                if($request['is_enfant']==1 && $request['nb_enfant']!=0){
+                if($request['is_enfant']==1){
                     for($i = 1; $i <= $request['nb_enfant']; ++$i) {
                         $enfant=new Enfant();
-                        $enfant->dte_naissance=$request['dte_naissance'.$i];
+                        $enfant->dte_naissance=$request['dte_naissance_enfant'.$i];
                         $enfant->nom=$request['nom_enfant'.$i];
                         $enfant->inscrit_id=$inscrit->id;
                         $enfant->save();

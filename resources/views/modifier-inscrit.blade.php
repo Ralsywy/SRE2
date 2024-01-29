@@ -192,34 +192,85 @@
                 <div class="title">Situation personnelle :</div>
                 
                     <div class="label">Enfant à charge</div>
-                    <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant" @if ($inscrit->is_enfant == 1) @checked(true) @else @checked(false) @endif disabled>
+                    <input type="radio" name="is_enfant" value="1" onclick="hideshowenfant(1)" id="oui_enfant" @if ($inscrit->is_enfant == 1) @checked(true) @else @checked(false) @endif >
                     <label class="label" for="oui_enfant">Oui</label>
-                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" @if ($inscrit->is_enfant == 0) @checked(true) @else @checked(false) @endif disabled>
+                    <input type="radio" name="is_enfant" value="0" onclick="hideshowenfant(2)" id="non_enfant" @if ($inscrit->is_enfant == 0) @checked(true) @else @checked(false) @endif>
                     <label class="label" for="non_enfant">Non</label>
 
                 <!--- Si oui --->
-                <div id="div_enfant" class="hidden">
-                <div class="field">
-                    <div class="label">Nombre d'enfants </div>
-                    <input type="number" name="nb_enfant" id="nombre_enfant" value="{{$inscrit->nb_enfant}}" disabled>
+                <div id="div_enfant" class="btn-enfant hidden">
+                    <a href="#" id="genererEnfant" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
+                    <input type="text" id="inputnb_enfant" name="nb_enfant" value="{{$inscrit->nb_enfant}}" readonly>
+                <hr class="dashed">
+                <!--- Pour chaque enfant --->
+                <div id="inputContainer" class="field3">
+                    @php
+                    $i=1
+                    @endphp
+                    @foreach($inscrit->enfants as $enfant)
+                        <label>Nom de l'enfant {{$i}}</label>
+                        <input type="text" value="{{$enfant->nom}}" name="nom_enfant"{{$i}}>
+                        <label>Date de naissance de l'enfant {{$i}}</label>
+                        <input type="date" value="{{$enfant->dte_naissance}}" name="dte_naissance_enfant"{{$i}}>
+                        @php
+                        $i=$i+1
+                        @endphp
+                    @endforeach
                 </div>
-    <!--- Pour chaque enfant --->
-    <div id="boite" class="field3"></div>
-</div>
-
-                <div id="boite" class="field3">
-        @foreach($inscrit->enfants as $index => $enfant)
-            <div>
-                <label for="nom_enfant{{ $index + 1 }}">Nom de l'enfant {{ $index + 1 }} :</label>
-                <input type="text" name="nom_enfant{{ $index + 1 }}" id="nom_enfant{{ $index + 1 }}" value="{{ $enfant->nom }}"disabled>
             </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var nb_enfant = document.getElementById("inputnb_enfant"); // Compteur pour suivre le nombre de clics
+                    nb_enfant = nb_enfant.value;
+                    nb_enfant = parseInt(nb_enfant,10);
+                    nb_enfant = nb_enfant+1;
+                    var inputContainer = document.getElementById("inputContainer");
 
-            <div>
-                <label for="dte_naissance_enfant{{ $index + 1 }}">Date de naissance de l'enfant {{ $index + 1 }} :</label>
-                <input type="date" name="dte_naissance_enfant{{ $index + 1 }}" id="dte_naissance_enfant{{ $index + 1 }}" value="{{ $enfant->dte_naissance }}"disabled>
-            </div>
-        @endforeach
-    </div>
+                    document.getElementById("genererEnfant").addEventListener("click", function(event) {
+                        event.preventDefault();
+                        generateInputs();
+                    });
+                
+                    function generateInputs() {
+                        // Créez un label et un input pour chaque champ
+                        var labelNom = document.createElement("label");
+                        var inputNom = document.createElement("input");
+                
+                        var labelDate = document.createElement("label");
+                        var inputDate = document.createElement("input");
+                
+                        // Affectez des attributs et des valeurs aux labels
+                        labelNom.textContent = "Nom Prénom de l'enfant " + nb_enfant + " : ";
+                        labelNom.setAttribute("for", "input" + nb_enfant);
+                
+                        labelDate.textContent = "Date de naissance de l'enfant " + nb_enfant + " : ";
+                        labelDate.setAttribute("for", "input" + nb_enfant);
+                
+                        // Affectez des attributs et des valeurs aux inputs
+                        inputNom.setAttribute("type", "text");
+                        inputNom.setAttribute("name", "nom_enfant" + nb_enfant);
+                
+                        inputDate.setAttribute("type", "date");
+                        inputDate.setAttribute("name", "dte_naissance_enfant" + nb_enfant);
+                
+                        // Ajoutez les labels et les inputs au conteneur
+                        inputContainer.appendChild(labelNom);
+                        inputContainer.appendChild(inputNom);
+                        inputContainer.appendChild(document.createElement("br")); // Ajoute une rupture de ligne pour la mise en forme
+                
+                        inputContainer.appendChild(labelDate);
+                        inputContainer.appendChild(inputDate);
+                        inputContainer.appendChild(document.createElement("br"));
+                        inputnb_enfant.value = nb_enfant;
+                        nb_enfant += 1; // Incrémente le compteur pour les prochains clics
+                        // Créez une ligne horizontale avec la classe "dashed"
+                        var hr = document.createElement("hr");
+                        hr.setAttribute("class", "dashed");
+                        inputContainer.appendChild(hr);
+                        
+                    }
+                });
+                </script>
                 <!--- Fin --->
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>
