@@ -284,7 +284,7 @@ class InscritsController extends Controller
                 if($request['is_formation_pro']==1){
                     $formation_pro=new FormationPro();
                     $formation_pro->type= $request['type_formation_pro'];
-                    if($request['type_formation_pro']="Qualifiante"){
+                    if($request['type_formation_pro']=="qualifiante"){
                         $formation_pro->nom= $request['qualifiante_formation_pro'];
                     }
                     else{
@@ -525,8 +525,77 @@ class InscritsController extends Controller
         //page 4
         $inscrit->is_reconv_pro= $request->get('is_reconv_pro');
         $inscrit->is_reprise_etudes= $request->get('is_reprise_etudes');
+        $inscrit->is_formation_pro= $request->get('is_formation_pro');
+        $inscrit->is_logiciel= $request->get('is_logiciel');
+        if($request->get('is_logiciel')==1){
+            $inscrit->logiciel= $request->get('logiciel');
+        }
+        //page 5
+        $langue=Langue::where('inscrit_id','LIKE',$id);
+        $langue=Langue::firstOrCreate(['inscrit_id' => $id]);
+        $langue->is_atelier= $request->get('is_atelier');
+        $langue->fr_ecrit= $request->get('fr_ecrit');
+        $langue->fr_parle= $request->get('fr_parle');
+        $langue->fr_lu= $request->get('fr_lu');
+        $langue->en_ecrit= $request->get('en_ecrit');
+        $langue->en_parle= $request->get('en_parle');
+        $langue->en_lu= $request->get('en_lu');
+        $langue->is_autre= $request->get('is_autre');
+        if($request->get('is_autre')==1){
+            $langue->autre= $request->get('autre_langue');
+        }
+        else{
+            $langue->autre= null;
+        }
+        $langue->save();
+        //page 6
+        $inscrit->infos_comp= $request->get('infos_comp');
         $inscrit->save();
-
+        
+        //horaires
+        Horaire::where('inscrit_id', $inscrit->id)
+                ->delete();
+        for($i = 1; $i <= 8; ++$i) {
+            if(isset($request['nb_horaire'.$i])){
+                $horaire=new Horaire();
+                $horaire->type= $request['nb_horaire'.$i];
+                $horaire->inscrit_id=$inscrit->id;
+                $horaire->save();
+            }
+        }
+        
+        //metier souhaite
+        $metier_souhaite=MetierSouhaite::where('inscrit_id','LIKE',$id);
+        if($request->get('nom_metier')!=null || $request->get('secteur_act')!=null || $request->get('secteur_geo')!=null){
+            $metier_souhaite=MetierSouhaite::firstOrCreate(['inscrit_id' => $id]);
+            $metier_souhaite->nom= $request->get('nom_metier');
+            $metier_souhaite->secteur_act= $request->get('secteur_act');
+            $metier_souhaite->secteur_geo= $request->get('secteur_geo');
+            $metier_souhaite->save();
+        }
+        else{
+            if($request->get('nom_metier')==null && $request->get('secteur_act')==null && $request->get('secteur_geo')==null){
+                $metier_souhaite->delete();
+            }
+        }
+        //formation pro
+        $formation_pro=FormationPro::where('inscrit_id','LIKE',$id);
+        if($request->get('is_formation_pro')==1){
+            $formation_pro=FormationPro::firstOrCreate(['inscrit_id' => $id]);
+            $formation_pro->type= $request->get('type_formation_pro');
+            if($request->get('type_formation_pro')=="qualifiante"){
+                $formation_pro->nom= $request->get('qualifiante_formation_pro');
+            }
+            else{
+                $formation_pro->nom= $request->get('diplome_formation_pro');
+            }
+            $formation_pro->save();
+        }
+        else{
+            if($formation_pro){
+                $formation_pro->delete();
+            }
+        }
         //reprise etudes
         $reprise_etudes=RepriseEtude::where('inscrit_id','LIKE',$id);
         if($request->get('is_reprise_etudes')==1){
