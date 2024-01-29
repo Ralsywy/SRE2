@@ -746,6 +746,7 @@
                         </div>
                         </div>
                         <!--- Fin --->
+                        <hr class="dashed">
                         <div class="field">
                             <div class="label">Métier souhaité</div>
                             <input type="text" name="nom_metier" value="{{$inscrit->metierSouhaite?->nom}}">
