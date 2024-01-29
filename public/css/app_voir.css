@@ -265,8 +265,11 @@ button:hover{
     padding-left: 15px;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .jaaj {
-    width: 700px;
     display: flex;
 }
 
