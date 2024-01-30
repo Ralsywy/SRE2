@@ -502,6 +502,8 @@ class InscritsController extends Controller
         $inscrit->email= $request->get('email');
         $inscrit->situation_perso= $request->get('situation_perso');
         //page 3
+        $inscrit->is_enfant= $request->get('is_enfant');
+        $inscrit->nb_enfant= $request->get('nb_enfant');
         $inscrit->nature_revenus= $request->get('nature_revenus');
         $inscrit->is_demande_asile= $request->get('is_demande_asile');
         $inscrit->is_refugie_politique= $request->get('is_refugie_politique');
@@ -551,6 +553,24 @@ class InscritsController extends Controller
         //page 6
         $inscrit->infos_comp= $request->get('infos_comp');
         $inscrit->save();
+
+        //enfants
+        Enfant::where('inscrit_id',$inscrit->id)->delete();
+        if($request->get('is_enfant')==1){
+            for($i = 1; $i <= $request->get('nb_enfant'); ++$i) {
+                if($request['nom_enfant'.$i]!=null){
+                    $enfant=new Enfant();
+                    $enfant->dte_naissance=$request['dte_naissance_enfant'.$i];
+                    $enfant->nom=$request['nom_enfant'.$i];
+                    $enfant->inscrit_id=$inscrit->id;
+                    $enfant->save();
+                }
+                else{
+                    //
+                }
+                
+            }
+        }
         
         //horaires
         Horaire::where('inscrit_id', $inscrit->id)

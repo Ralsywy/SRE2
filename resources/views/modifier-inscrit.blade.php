@@ -198,9 +198,17 @@
                     <label class="label" for="non_enfant">Non</label>
 
                 <!--- Si oui --->
+                <!--- Si oui --->
                 <div id="div_enfant" class="btn-enfant hidden">
+                    <div class="div_warn">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        Si vous souhaitez supprimer un enfant déjà existant, il faut laisser la case de son prénom vide
+                    </div>
+                    <p></p>
                     <a href="#" id="genererEnfant" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
-                    <input type="text" id="inputnb_enfant" name="nb_enfant" value="{{$inscrit->nb_enfant}}" readonly>
+                    <a href="#" id="supprimerEnfant" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
+                    <p></p>
+                    <input type="text" id="inputnb_enfant" name="nb_enfant" value="{{$inscrit->enfants->count()}}" readonly>
                 <hr class="dashed">
                 <!--- Pour chaque enfant --->
                 <div id="inputContainer" class="field3">
@@ -209,9 +217,9 @@
                     @endphp
                     @foreach($inscrit->enfants as $enfant)
                         <label>Nom de l'enfant {{$i}}</label>
-                        <input type="text" value="{{$enfant->nom}}" name="nom_enfant"{{$i}}>
+                        <input type="text" value="{{$enfant->nom}}" name="nom_enfant{{$i}}">
                         <label>Date de naissance de l'enfant {{$i}}</label>
-                        <input type="date" value="{{$enfant->dte_naissance}}" name="dte_naissance_enfant"{{$i}}>
+                        <input type="date" value="{{$enfant->dte_naissance}}" name="dte_naissance_enfant{{$i}}">
                         @php
                         $i=$i+1
                         @endphp
@@ -220,31 +228,37 @@
             </div>
             <script>
                 document.addEventListener("DOMContentLoaded", function() {
-                    var nb_enfant = document.getElementById("inputnb_enfant"); // Compteur pour suivre le nombre de clics
-                    nb_enfant = nb_enfant.value;
-                    nb_enfant = parseInt(nb_enfant,10);
-                    nb_enfant = nb_enfant+1;
+                    var nb_enfant = parseInt(document.getElementById("inputnb_enfant").value); // Compteur pour suivre le nombre de clics
                     var inputContainer = document.getElementById("inputContainer");
 
                     document.getElementById("genererEnfant").addEventListener("click", function(event) {
                         event.preventDefault();
                         generateInputs();
                     });
+
+                    document.getElementById("supprimerEnfant").addEventListener("click", function(event) {
+                        event.preventDefault();
+                        deleteEnfant();
+                    });
                 
                     function generateInputs() {
+                        nb_enfant += 1; // Incrémente le compteur
                         // Créez un label et un input pour chaque champ
                         var labelNom = document.createElement("label");
                         var inputNom = document.createElement("input");
                 
                         var labelDate = document.createElement("label");
                         var inputDate = document.createElement("input");
+
+                        var divEnfant = document.createElement("div");
+                        var hr = document.createElement("hr");
                 
                         // Affectez des attributs et des valeurs aux labels
                         labelNom.textContent = "Nom Prénom de l'enfant " + nb_enfant + " : ";
-                        labelNom.setAttribute("for", "input" + nb_enfant);
+                        labelNom.setAttribute("for", "nom_enfant" + nb_enfant);
                 
                         labelDate.textContent = "Date de naissance de l'enfant " + nb_enfant + " : ";
-                        labelDate.setAttribute("for", "input" + nb_enfant);
+                        labelDate.setAttribute("for", "dte_naissance_enfant" + nb_enfant);
                 
                         // Affectez des attributs et des valeurs aux inputs
                         inputNom.setAttribute("type", "text");
@@ -252,26 +266,35 @@
                 
                         inputDate.setAttribute("type", "date");
                         inputDate.setAttribute("name", "dte_naissance_enfant" + nb_enfant);
+
+                        divEnfant.setAttribute("name", "div_enfant"+ nb_enfant);
+                        divEnfant.setAttribute("id", "div_enfant"+ nb_enfant);
                 
                         // Ajoutez les labels et les inputs au conteneur
-                        inputContainer.appendChild(labelNom);
-                        inputContainer.appendChild(inputNom);
-                        inputContainer.appendChild(document.createElement("br")); // Ajoute une rupture de ligne pour la mise en forme
+                        divEnfant.appendChild(labelNom);
+                        divEnfant.appendChild(inputNom);
                 
-                        inputContainer.appendChild(labelDate);
-                        inputContainer.appendChild(inputDate);
-                        inputContainer.appendChild(document.createElement("br"));
-                        inputnb_enfant.value = nb_enfant;
-                        nb_enfant += 1; // Incrémente le compteur pour les prochains clics
+                        divEnfant.appendChild(labelDate);
+                        divEnfant.appendChild(inputDate);
+
                         // Créez une ligne horizontale avec la classe "dashed"
-                        var hr = document.createElement("hr");
                         hr.setAttribute("class", "dashed");
-                        inputContainer.appendChild(hr);
-                        
+                        divEnfant.appendChild(hr);
+
+                        inputContainer.appendChild(divEnfant);
+                        inputnb_enfant.value = nb_enfant;
+                    }
+                    function deleteEnfant(){
+                        // Récupérer la div à supprimer par son nom
+                        var divEnfant = document.getElementById("div_enfant"+ nb_enfant);
+                        // Supprimer la div
+                        divEnfant.remove();
+                        nb_enfant -= 1; // Incrémente le compteur pour les prochains clics
+                        inputnb_enfant.value = nb_enfant;
                     }
                 });
                 </script>
-                <!--- Fin --->
+            <!--- Fin --->
                 <div class="field hidden">
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">

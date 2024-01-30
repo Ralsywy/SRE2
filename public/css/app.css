@@ -881,13 +881,28 @@ section#plans-action, section#rdv{
     border: none;
     border-radius: 30px;
     background-color: #ffb3f2;
-    padding: 10px 15px;
+    padding: 4px 8px;
+    margin-top: 10px;
+    transition: .2s;
+    text-decoration: none;
+}
+.genererEnfant:hover{
+    background-color: #000;
+    color: white;
+}
+.supprimerEnfant{
+    color: var(--text);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #ffb3f2;
+    padding: 4px 8px;
     margin-top: 10px;
     transition: .2s;
     text-decoration: none;
     margin: 2rem;
 }
-.genererEnfant:hover{
+.supprimerEnfant:hover{
     background-color: #000;
     color: white;
 }
