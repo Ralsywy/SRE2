@@ -188,6 +188,7 @@
                 <div id="div_enfant" class="btn-enfant hidden">
                         <a href="#" id="genererEnfant" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
                         <a href="#" id="supprimerEnfant" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
+                        <p></p>
                         <input type="text" id="inputnb_enfant" name="nb_enfant" value="0" readonly>
                     <hr class="dashed">
                     <!--- Pour chaque enfant --->
