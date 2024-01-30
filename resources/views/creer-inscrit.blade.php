@@ -86,7 +86,7 @@
             </div>
             </div>
             <!--- Fin --->
-            
+            <hr class="dashed">
                 <div class="label">Bénévole aux restos du coeur</div>
                 <input type="radio" name="is_benevole" value="1" id="oui_benevole">
                 <label class="label" for="oui_benevole">Oui</label>
@@ -299,6 +299,7 @@
                     <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">
+                    <hr class="dashed">
                     <div class="field">
                         <div class="label">Date d'arrivé en france</div>
                         <input type="date" name="dte_arrivee_fr">
@@ -493,7 +494,7 @@
                     <input type="text" name="autre_permis">
                 </div>
                 <!--- Fin --->
-                
+                    <p></p>
                     <div class="label">Véhicule disponible</div>
                     <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(1)" id="oui_vehicule">
                     <label class="label" for="oui_vehicule">Oui</label>

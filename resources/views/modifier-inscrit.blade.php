@@ -92,7 +92,7 @@
             </div>
             </div>
             <!--- Fin --->
-            
+            <hr class="dashed">
                 <div class="label">Bénévole aux restos du coeur</div>
                 <input type="radio" name="is_benevole" value="1" id="oui_benevole" @if ($inscrit->is_benevole == 1) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_benevole">Oui</label>
@@ -322,6 +322,7 @@
                 <input type="radio" name="is_demande_asile" value="0" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_demande_asile">Non</label>
                 <!--- Fin --->     
+                <hr class="dashed">
                 <div class="label">Réfugié politique</div>
                 <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique" @if ($inscrit->is_refugie_politique == 1) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_refugie_politique">Oui</label>
@@ -329,6 +330,7 @@
                 <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">
+                    <hr class="dashed">
                     <div class="field">
                         <div class="label">Date d'arrivé en france</div>
                         <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
