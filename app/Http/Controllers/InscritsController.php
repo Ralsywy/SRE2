@@ -197,7 +197,7 @@ class InscritsController extends Controller
                 }
                 else{
                     if($request['nb_diplome']>0){
-                        for($i=0;$i < $request['nb_diplome']; ++$i){
+                        for($i=1;$i <= $request['nb_diplome']; ++$i){
                             $diplome=new Diplome();
                             if($request['nom_diplome_'.$i]=="brevet"){
                                 $diplome->type= $request['nom_diplome_'.$i];

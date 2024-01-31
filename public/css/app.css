@@ -545,6 +545,9 @@ form .page .btns button.next {
     margin: 1rem;
 }
 
+#diplomes_container{
+    display: none;
+}
 #preciser {
     display: none;
 }

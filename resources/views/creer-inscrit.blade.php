@@ -526,73 +526,84 @@
             <!---  Page 4 : FORMATION  --->
         <div class="page 4" id="page4">
                 <div class="title">Formations :</div>
-                <div class="field">
                 <div class="label">Diplôme(s) obtenus</div>
-                <input type="number" name="nb_diplome" class="nb_diplome">
+                <input type="radio" name="is_diplome" value="1" onclick="hideshowdiplome(1)" id="oui_diplome">
+                    <label class="label" for="oui_diplome">Oui</label>
+                    <input type="radio" name="is_diplome" value="0" onclick="hideshowdiplome(2)" id="non_diplome" checked>
+                    <label class="label" for="non_diplome">Non</label>
+                    <hr class="dashed" id="hr_diplome">
+                    <p></p>
+                <div id="diplomes_non">
+
                 </div>
                 <div id="diplomes_container" class="field2">
+                    <a href="#" id="genererDiplome" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
+                    <a href="#" id="supprimerDiplome" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
+                    <p></p>
+                    <input type="text" id="inputnb_diplome" name="nb_diplome" value="0" readonly>
+                    <hr class="dashed">
+                    <div id="responses_container"></div>
+                    <div id="other_fields_container"></div>
                 </div>
-                <div id="responses_container"></div>
-                <div id="other_fields_container"></div>
                 <script>
-                                    // Écouter les changements dans le nombre de diplômes obtenus
-                document.querySelector('input[name="nb_diplome"]').addEventListener('change', function () {
-                    var nbDiplomes = parseInt(this.value, 10);
-                    var otherFieldsContainer = document.getElementById("other_fields_container");
-
-                    // Réinitialiser les champs à chaque changement du nombre de diplômes
-                    otherFieldsContainer.innerHTML = '';
-
-                    // Afficher les champs de texte pour nb_annee et type lorsque nb_diplome atteint 0
-                    if (nbDiplomes === 0) {
-                        // Champ de texte pour le nombre d'années d'étude
-                        createTextField(otherFieldsContainer, 'Nombre d\'années d\'étude', 'nb_annee');
-
-                        // Champ de texte pour le niveau
-                        createTextField(otherFieldsContainer, 'Renseigner le niveau', 'diplome_type');
+                    function hideshowdiplome(val) {
+                        if (val == 1) {
+                            document.getElementById('diplomes_container').style.display = 'block';
+                            document.getElementById('hr_diplome').style.display = 'none';
+                        }
+                        if (val == 2) {
+                            document.getElementById('diplomes_container').style.display = 'none';
+                            document.getElementById('hr_diplome').style.display = 'block';
+                        }
                     }
-                });
 
-                // Fonction pour créer un champ de texte
-                function createTextField(container, label, name) {
-                    var fieldDiv = document.createElement('div');
-                    fieldDiv.className = 'field';
-
-                    var labelDiv = document.createElement('div');
-                    labelDiv.className = 'label';
-                    labelDiv.innerHTML = label;
-                    fieldDiv.appendChild(labelDiv);
-
-                    var input = document.createElement('input');
-                    input.type = 'text';
-                    input.name = name;
-                    fieldDiv.appendChild(input);
-
-                    container.appendChild(fieldDiv);
-                }
-
-                </script>
-                <script>// Écouter les changements dans le nombre de diplômes obtenus
-                    document.querySelector('.nb_diplome').addEventListener('change', function () {
-                        var nbDiplomes = parseInt(this.value, 10);
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var nb_diplome = 0; // Compteur pour suivre le nombre de clics
                         var diplomesContainer = document.getElementById("diplomes_container");
-                    
-                        // Réinitialiser les champs à chaque changement du nombre de diplômes
-                        diplomesContainer.innerHTML = '';
-                    
-                        // Créer les champs "Type de diplôme" en fonction du nombre de diplômes
-                        for (var i = 0; i < nbDiplomes; i++) {
+
+                        document.getElementById("genererDiplome").addEventListener("click", function(event) {
+                            event.preventDefault();
+                            generateDiplome();
+                        });
+
+                        document.getElementById("supprimerDiplome").addEventListener("click", function(event) {
+                            event.preventDefault();
+                            deleteDiplome();
+                        });
+
+                        function createTextField(container, label, name) {
+                            var fieldDiv = document.createElement('div');
+                            fieldDiv.className = 'field';
+
+                            var labelDiv = document.createElement('div');
+                            labelDiv.className = 'label';
+                            labelDiv.innerHTML = label;
+                            fieldDiv.appendChild(labelDiv);
+
+                            var input = document.createElement('input');
+                            input.type = 'text';
+                            input.name = name;
+                            fieldDiv.appendChild(input);
+
+                            container.appendChild(fieldDiv);
+                        }
+                        
+                        function generateDiplome() {
+                            nb_diplome += 1; // Incrémente le compteur
+                            
                             var newDiplomeDiv = document.createElement('div');
                             newDiplomeDiv.className = 'diplome';
+                            newDiplomeDiv.setAttribute("name", "div_diplome"+ nb_diplome);
+                            newDiplomeDiv.setAttribute("id", "div_diplome"+ nb_diplome);
                     
                             var label = document.createElement('div');
                             label.className = 'label';
-                            label.innerHTML = 'Type de Diplôme ' + (i + 1);
+                            label.innerHTML = 'Type de Diplôme ' + nb_diplome;
                             newDiplomeDiv.appendChild(label);
                     
                             var select = document.createElement('select');
-                            select.name = 'nom_diplome_' + i;
-                            select.id = 'diplome_' + i;
+                            select.name = 'nom_diplome_' + nb_diplome;
+                            select.id = 'diplome_' + nb_diplome;
                             
                             // Ajouter les options au select
                             var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
@@ -605,12 +616,29 @@
                     
                             newDiplomeDiv.appendChild(select);
                             diplomesContainer.appendChild(newDiplomeDiv);
+                            inputnb_diplome.value = nb_diplome;
+                            // Créer le conteneur pour les réponses
+                            var responseContainer = document.createElement('div');
+                                responseContainer.id = 'responses_container_' + nb_diplome;
+                                newDiplomeDiv.appendChild(responseContainer);
+
+                                // Ajouter un écouteur d'événements sur le changement de type de diplôme
+                                select.addEventListener('change', function () {
+                                    var diplomeIndex = parseInt(this.id.split('_')[1], 10);
+                                    var selectedDiplome = this.value;
+                                    createResponseFields(diplomeIndex, selectedDiplome);
+                                });
+                        }
+                        function deleteDiplome(){
+                            // Récupérer la div à supprimer par son nom
+                            var divDiplome = document.getElementById("div_diplome"+ nb_diplome);
+                            // Supprimer la div
+                            divDiplome.remove();
+                            nb_diplome -= 1; // Incrémente le compteur pour les prochains clics
+                            inputnb_diplome.value = nb_diplome;
                         }
                     });
-                    </script>
-
-                    
-
+                </script>
                     <script>// Fonction pour créer les champs de réponse en fonction du type de diplôme sélectionné
                         function createResponseFields(diplomeIndex, selectedDiplome) {
                             var responseContainer = document.getElementById("responses_container_" + diplomeIndex);
@@ -662,59 +690,8 @@
                         
                             container.appendChild(fieldDiv);
                         }
-                        
-                        // Écouter les changements dans le nombre de diplômes obtenus
-                        document.querySelector('input[name="nb_diplome"]').addEventListener('change', function () {
-                            var nbDiplomes = parseInt(this.value, 10);
-                            var diplomesContainer = document.getElementById("diplomes_container");
-                        
-                            // Réinitialiser les champs à chaque changement du nombre de diplômes
-                            diplomesContainer.innerHTML = '';
-                        
-                            // Créer les champs "Type de diplôme" en fonction du nombre de diplômes
-                            for (var i = 0; i < nbDiplomes; i++) {
-                                var newDiplomeDiv = document.createElement('div');
-                                newDiplomeDiv.className = 'diplome';
-                        
-                                var label = document.createElement('div');
-                                label.className = 'label';
-                                label.innerHTML = 'Diplôme ' + (i + 1);
-                                newDiplomeDiv.appendChild(label);
-                        
-                                var select = document.createElement('select');
-                                select.name = 'nom_diplome_' + i;
-                                select.id = 'diplome_' + i;
-                        
-                                // Ajouter les options au select
-                                var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
-                                for (var j = 0; j < options.length; j++) {
-                                    var option = document.createElement('option');
-                                    option.value = options[j].toLowerCase();
-                                    option.text = options[j];
-                                    select.appendChild(option);
-                                }
-                        
-                                newDiplomeDiv.appendChild(select);
-                        
-                                // Créer le conteneur pour les réponses
-                                var responseContainer = document.createElement('div');
-                                responseContainer.id = 'responses_container_' + i;
-                                newDiplomeDiv.appendChild(responseContainer);
-                        
-                                diplomesContainer.appendChild(newDiplomeDiv);
-                        
-                                // Ajouter un écouteur d'événements sur le changement de type de diplôme
-                                select.addEventListener('change', function () {
-                                    var diplomeIndex = parseInt(this.id.split('_')[1], 10);
-                                    var selectedDiplome = this.value;
-                                    createResponseFields(diplomeIndex, selectedDiplome);
-                                });
-                            }
-                        });
-                        
                         </script>
                 <!--- Si Formation continue --->
-                <hr class="dashed">
                     <div class="label">Reconversion professionnelle</div>
                     <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv">
                     <label class="label" for="oui_reconv">Oui</label>
