@@ -906,3 +906,54 @@ section#plans-action, section#rdv{
     background-color: #000;
     color: white;
 }
+/********* VOIR INSCRITS *********/
+
+.dash-box-progress {
+    display: flex;
+    background-color: #f7a63d;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+    margin: 100px;
+    width: 280px;
+    height: 120px;
+}
+
+.dash-box-finish {
+    display: flex;
+    background-color: #40e630;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+    margin: 100px;
+    width: 280px;
+    height: 120px;
+}
+
+.a {
+    height: 20px;
+    position: relative;
+    display: flex;
+    top: 5px;
+    right: -10px;
+    font-weight: bold;
+}
+
+.b {
+    height: 20px;
+    position: relative;
+    display: flex;
+    left: -35px;
+    top: 50px;
+}
+
+.all-dash {
+    display: flex;
+    justify-content: space-between;
+}
+
+#donutchart {
+    justify-content: center;
+    display: flex;
+    position: relative;
+    top: -350px;
+
+}
