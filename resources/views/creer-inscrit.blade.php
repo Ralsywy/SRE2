@@ -541,7 +541,6 @@
                     <a href="#" id="supprimerDiplome" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
                     <p></p>
                     <input type="text" id="inputnb_diplome" name="nb_diplome" value="0" readonly>
-                    <hr class="dashed">
                     <div id="responses_container"></div>
                     <div id="other_fields_container"></div>
                 </div>
