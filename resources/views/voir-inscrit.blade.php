@@ -683,18 +683,19 @@
     </div>
     <div class="field">
         <div class="label"><strong>Type de formation</strong></div>
-        <p>{{$inscrit->formationPro->type}}</p>
+        <p>{{$inscrit->formationPro?->type}}</p>
     </div>
-    @if ($inscrit->formationPro->type == "qualifiante")
+    @if ($inscrit->formationPro?->type == "qualifiante")
         <div class="field">
             <div class="label"><strong>Nom de la formation qualifiante</strong></div>
             <p>{{$inscrit->formationPro?->nom}}</p>
         </div>
-    @else
+    @elseif ($inscrit->formationPro?->type == "diplomante")
         <div class="field">
             <div class="label"><strong>Nom de la formation diplômante</strong></div>
             <p>{{$inscrit->formationPro?->nom}}</p>
         </div>
+    @else
     @endif
 </div>
 <hr class="dashed">
@@ -842,10 +843,12 @@
             </div>
         </label>
     </div>
+    @if ($inscrit->langue->contains('is_autre', 1))
     <div class="field">
-        <div class="label"><strong>Autre(s) langue(s) parlée(s)</strong></div>
+        <div class="label"><strong>Langue(s)</strong></div>
         <p>{{ optional($inscrit->langue->first())->autre }}</p>
-    </div>
+    </div>        
+    @endif
 </div>
 <hr class="dashed">
 <div class="jaaj">
