@@ -361,6 +361,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Appeler chaque fonction avec les valeurs initiales des champs
         hideshowrdc(getValueByIdPrefix('oui_rdc'));
         hideshowenfant(getValueByIdPrefix('oui_enfant'));
+        hideshowdiplome(getValueByIdPrefix('oui_diplome'));
         hideshowasile(getValueByIdPrefix('oui_demande_asile'));
         hideshowpolitique(getValueByIdPrefix('oui_refugie_politique'));
         hideshowfrance(getValueByIdPrefix('oui_pole_emplois'));
