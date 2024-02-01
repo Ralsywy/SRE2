@@ -5,6 +5,9 @@
 <div class="body hidden">
 <div class="container">
     <header>Suivi de {{$inscrit->prenom}} {{$inscrit->nom}}</header>
+    <a class="print" href="#" onclick="window.print(); return false;"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 7h-1V2H6v5H5a3 3 0 0 0-3 3v7a2 2 0 0 0 2 2h2v3h12v-3h2a2 2 0 0 0 2-2v-7a3 3 0 0 0-3-3zM8 4h8v3H8V4zm0 16v-4h8v4H8zm11-8h-4v-2h4v2z"></path></svg></a>
+    <p class="print" data-tooltip-content="https://i.ibb.co/wgjsF7z/image-2024-02-01-113057067.png">(Lors de l'impression mettre la mise en page au format paysage)</p>
+
     <hr class="dashed">
 <div class="form-outer">
 </div>

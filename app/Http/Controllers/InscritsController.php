@@ -61,6 +61,34 @@ class InscritsController extends Controller
         }
     
     }
+
+    public function dashboard() {
+
+        try {
+            
+            $finish = Inscrit::where('statut', 0)->count();
+            $progress = Inscrit::where('statut', 1)->count();
+            $total = Inscrit::count();
+
+            if ($total > 0) {
+                $finishpourc = ($finish / $total) * 100;
+                $finishpourc = number_format($finishpourc, 1);
+
+                $progresspourc = ($progress / $total) * 100;
+                $progresspourc = number_format($progresspourc, 1);
+            } else {
+                $finishpourc = 0;
+                $progresspourc = 0;
+            }
+
+            return view('dash', compact('finish', 'progress', 'finishpourc', 'progresspourc'));
+        } 
+        catch (\Exception $e) {
+            return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+        }
+
+    }
+
     public function reprendre($id){
         try{
         $inscrit = Inscrit::find($id);

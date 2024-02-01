@@ -999,3 +999,33 @@ section#plans-action, section#rdv{
     box-shadow: 0 0 1px rgb(0, 0, 0);
     background-color: var(--box);
 }
+
+
+
+@media print {
+    body > *:not(main) {
+        display: none;
+      }
+
+    .navbar {
+        display: none;
+    }
+
+    .body .container {
+        width: 2000px;
+        page-break-inside: avoid;
+        overflow-wrap: break-word;
+    }
+
+    .print {
+        display: none;
+    }
+}
+
+@media print and (orientation: portrait) {
+    .body .container {
+        width: 2000px;
+        page-break-inside: avoid;
+        overflow-wrap: break-word;
+    }
+}

@@ -5,11 +5,11 @@
 <div class="all-dash">
 <div class="dash-box-progress">
     <div class="dash-item a">Suivis en cours</div>
-    <div class="dash-item b">24 suivis (50%)</div>
+    <div class="dash-item b">{{$progress}} suivis ({{$progresspourc}}%)</div>
 </div>
 <div class="dash-box-finish">
     <div class="dash-item a">Suivis terminés</div>
-    <div class="dash-item b">24 suivis (54%)</div>
+    <div class="dash-item b">{{$finish}} suivis ({{$finishpourc}}%)</div>
 </div>
 </div>
 
@@ -19,8 +19,8 @@
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Suivis', 'En cours/Terminés'],
-        ['Suivis terminés',     24],
-        ['Suivis en cours',      24]
+        ['Suivis terminés',     {{$finish}}],
+        ['Suivis en cours',      {{$progress}}]
       ]);
 
       var options = {
