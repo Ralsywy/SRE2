@@ -531,165 +531,22 @@
                     <label class="label" for="oui_diplome">Oui</label>
                     <input type="radio" name="is_diplome" value="0" onclick="hideshowdiplome(2)" id="non_diplome" checked>
                     <label class="label" for="non_diplome">Non</label>
-                    <hr class="dashed" id="hr_diplome">
                     <p></p>
-                <div id="diplomes_non">
-
+                <div id="diplome_non">
+                    <label for="nb_annee">Nombre d'années d'études</label>
+                    <input type="text" name="nb_annee" id="nb_annee">
+                    <label for="diplome_type">Renseigner le niveau</label>
+                    <input type="text" name="diplome_type" id="diplome_type">
                 </div>
+                <hr class="dashed" id="hr_diplome">
                 <div id="diplomes_container" class="field2">
                     <a href="#" id="genererDiplome" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
                     <a href="#" id="supprimerDiplome" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
                     <p></p>
                     <input type="text" id="inputnb_diplome" name="nb_diplome" value="0" readonly>
-                    <div id="responses_container"></div>
-                    <div id="other_fields_container"></div>
+                    <hr class="dashed">
                 </div>
-                <script>
-                    function hideshowdiplome(val) {
-                        if (val == 1) {
-                            document.getElementById('diplomes_container').style.display = 'block';
-                            document.getElementById('hr_diplome').style.display = 'none';
-                        }
-                        if (val == 2) {
-                            document.getElementById('diplomes_container').style.display = 'none';
-                            document.getElementById('hr_diplome').style.display = 'block';
-                        }
-                    }
-
-                    document.addEventListener("DOMContentLoaded", function() {
-                        var nb_diplome = 0; // Compteur pour suivre le nombre de clics
-                        var diplomesContainer = document.getElementById("diplomes_container");
-
-                        document.getElementById("genererDiplome").addEventListener("click", function(event) {
-                            event.preventDefault();
-                            generateDiplome();
-                        });
-
-                        document.getElementById("supprimerDiplome").addEventListener("click", function(event) {
-                            event.preventDefault();
-                            deleteDiplome();
-                        });
-
-                        function createTextField(container, label, name) {
-                            var fieldDiv = document.createElement('div');
-                            fieldDiv.className = 'field';
-
-                            var labelDiv = document.createElement('div');
-                            labelDiv.className = 'label';
-                            labelDiv.innerHTML = label;
-                            fieldDiv.appendChild(labelDiv);
-
-                            var input = document.createElement('input');
-                            input.type = 'text';
-                            input.name = name;
-                            fieldDiv.appendChild(input);
-
-                            container.appendChild(fieldDiv);
-                        }
-                        
-                        function generateDiplome() {
-                            nb_diplome += 1; // Incrémente le compteur
-                            
-                            var newDiplomeDiv = document.createElement('div');
-                            newDiplomeDiv.className = 'diplome';
-                            newDiplomeDiv.setAttribute("name", "div_diplome"+ nb_diplome);
-                            newDiplomeDiv.setAttribute("id", "div_diplome"+ nb_diplome);
-                    
-                            var label = document.createElement('div');
-                            label.className = 'label';
-                            label.innerHTML = 'Type de Diplôme ' + nb_diplome;
-                            newDiplomeDiv.appendChild(label);
-                    
-                            var select = document.createElement('select');
-                            select.name = 'nom_diplome_' + nb_diplome;
-                            select.id = 'diplome_' + nb_diplome;
-                            
-                            // Ajouter les options au select
-                            var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
-                            for (var j = 0; j < options.length; j++) {
-                                var option = document.createElement('option');
-                                option.value = options[j].toLowerCase();
-                                option.text = options[j];
-                                select.appendChild(option);
-                            }
-                    
-                            newDiplomeDiv.appendChild(select);
-                            diplomesContainer.appendChild(newDiplomeDiv);
-                            inputnb_diplome.value = nb_diplome;
-                            // Créer le conteneur pour les réponses
-                            var responseContainer = document.createElement('div');
-                                responseContainer.id = 'responses_container_' + nb_diplome;
-                                newDiplomeDiv.appendChild(responseContainer);
-
-                                // Ajouter un écouteur d'événements sur le changement de type de diplôme
-                                select.addEventListener('change', function () {
-                                    var diplomeIndex = parseInt(this.id.split('_')[1], 10);
-                                    var selectedDiplome = this.value;
-                                    createResponseFields(diplomeIndex, selectedDiplome);
-                                });
-                        }
-                        function deleteDiplome(){
-                            // Récupérer la div à supprimer par son nom
-                            var divDiplome = document.getElementById("div_diplome"+ nb_diplome);
-                            // Supprimer la div
-                            divDiplome.remove();
-                            nb_diplome -= 1; // Incrémente le compteur pour les prochains clics
-                            inputnb_diplome.value = nb_diplome;
-                        }
-                    });
-                </script>
-                    <script>// Fonction pour créer les champs de réponse en fonction du type de diplôme sélectionné
-                        function createResponseFields(diplomeIndex, selectedDiplome) {
-                            var responseContainer = document.getElementById("responses_container_" + diplomeIndex);
-                            
-                            // Supprimer les champs existants
-                            responseContainer.innerHTML = '';
-                        
-                            // Créer les champs en fonction du type de diplôme
-                            switch (selectedDiplome) {
-                                case 'cap':
-                                    createTextField(responseContainer, 'Renseigner le type de métier', 'niveau_cap_' + diplomeIndex);
-                                    break;
-                                case 'bep':
-                                    createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_bep_' + diplomeIndex);
-                                    break;
-                                case 'bac':
-                                case 'bac+2':
-                                case 'licence':
-                                case 'master1':
-                                case 'master2':
-                                    createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_' + selectedDiplome + '_' + diplomeIndex);
-                                    break;
-                                case 'formation continue':
-                                    createTextField(responseContainer, 'Renseigner la formation', 'niveau_formation_continue_' + diplomeIndex);
-                                    break;
-                                case 'autre':
-                                    createTextField(responseContainer, 'Renseigner le diplôme', 'niveau_autre_' + diplomeIndex);
-                                    break;
-                                default:
-                                    // Aucune action pour les autres cas
-                                    break;
-                            }
-                        }
-                        
-                        // Fonction pour créer un champ de texte
-                        function createTextField(container, label, name) {
-                            var fieldDiv = document.createElement('div');
-                            fieldDiv.className = 'field';
-                        
-                            var labelDiv = document.createElement('div');
-                            labelDiv.className = 'label';
-                            labelDiv.innerHTML = label;
-                            fieldDiv.appendChild(labelDiv);
-                        
-                            var input = document.createElement('input');
-                            input.type = 'text';
-                            input.name = name;
-                            fieldDiv.appendChild(input);
-                        
-                            container.appendChild(fieldDiv);
-                        }
-                        </script>
+                
                 <!--- Si Formation continue --->
                     <div class="label">Reconversion professionnelle</div>
                     <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv">

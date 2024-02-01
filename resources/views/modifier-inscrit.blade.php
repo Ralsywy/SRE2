@@ -555,195 +555,104 @@
             <!---  Page 4 : FORMATION  --->
         <div class="page 4" id="page4">
                 <div class="title">Formations :</div>
-                <div class="field">
                 <div class="label">Diplôme(s) obtenus</div>
-                <input type="number" name="nb_diplome" class="nb_diplome" value="{{$inscrit->nb_diplome}}">
-                </div>
+                <input type="radio" name="is_diplome" value="1" onclick="hideshowdiplome(1)" id="oui_diplome" @if ($inscrit->is_diplome == 1) @checked(true) @else @checked(false) @endif>
+                    <label class="label" for="oui_diplome">Oui</label>
+                    <input type="radio" name="is_diplome" value="0" onclick="hideshowdiplome(2)" id="non_diplome" @if ($inscrit->is_diplome == 0) @checked(true) @else @checked(false) @endif>
+                    <label class="label" for="non_diplome">Non</label>
+                    <p></p>
+                @if($inscrit->is_diplome==0)
+                    @foreach($inscrit->diplomes as $diplome)
+                        <div id="diplome_non">
+                            <label for="nb_annee">Nombre d'années d'études</label>
+                            <input type="text" name="nb_annee" id="nb_annee" value="{{$diplome->nb_annee}}">
+                            <label for="diplome_type">Renseigner le niveau</label>
+                            <input type="text" name="diplome_type" id="diplome_type" value="{{$diplome->type}}">
+                        </div>
+                    @endforeach
+                @endif
+                <hr class="dashed" id="hr_diplome">
                 <div id="diplomes_container" class="field2">
+                    <div class="div_warn">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        Si vous souhaitez supprimer un diplome déjà existant, il faut laisser la case de son prénom vide
+                    </div>
+                    <p></p>
+                    <a href="#" id="genererDiplome" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
+                    <a href="#" id="supprimerDiplome" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
+                    <p></p>
+                    <input type="text" id="inputnb_diplome" name="nb_diplome" value="{{$inscrit->diplomes->count()}}" readonly>
+                    <hr class="dashed">
+                    @php
+                    $i=1
+                    @endphp
+                    @foreach($inscrit->diplomes as $diplome)
+                    <div class="diplome" name="div_diplome{{$i}}" id="div_diplome{{$i}}">
+                        <label class="label">Type de diplôme {{$i}}</label>
+                        <select name="nom_diplome_{{$i}}" id="diplome_{{$i}}" onchange="hideshowdiplomechoix()">
+                            <option value="choisir un diplôme"@if($diplome->type == "choisir un diplôme") @selected(true) @endif>Choisir un diplôme</option>
+                            <option value="brevet" @if($diplome->type == "brevet") @selected(true) @endif>Brevet</option>
+                            <option value="cap" @if($diplome->type == "cap") @selected(true) @endif>Cap</option>
+                            <option value="bep" @if($diplome->type == "bep") @selected(true) @endif>BEP</option>
+                            <option value="bac" @if($diplome->type == "bac") @selected(true) @endif>BAC</option>
+                            <option value="bac+2" @if($diplome->type == "bac+2") @selected(true) @endif>BAC+2</option>
+                            <option value="licence" @if($diplome->type == "licence") @selected(true) @endif>Licence</option>
+                            <option value="master1" @if($diplome->type == "master1") @selected(true) @endif>Master1</option>
+                            <option value="master2" @if($diplome->type == "master2") @selected(true) @endif>Master2</option>
+                            <option value="autre" @if($diplome->type == "autre") @selected(true) @endif>Autre</option>
+                            <option value="formation continue"@if ($diplome->type == "formation continue") @selected(true) @endif>Formation continue</option>
+                        </select>
+                        <div id="responses_container_{{$i}}">
+                            <div class="field">
+                                @if($diplome->type == "brevet")
+                                @endif
+                                @if($diplome->type == "cap")
+                                <div class="label">Renseigner le type de métier</div>
+                                <input type="text" name="niveau_cap_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                                @if($diplome->type == "bep")
+                                <div class="label">Renseigner la spécialité</div>
+                                <input type="text" name="niveau_bep_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                                @if($diplome->type == "bac")
+                                <div class="label">Renseigner la spécialité</div>
+                                <input type="text" name="niveau_bac_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                                @if($diplome->type == "bac+2")
+                                <div class="label">Renseigner la spécialité</div>
+                                <input type="text" name="niveau_bac+2_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                                @if($diplome->type == "licence")
+                                <div class="label">Renseigner la spécialité</div>
+                                <input type="text" name="niveau_licence_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                                @if($diplome->type == "master1")
+                                <div class="label">Renseigner la spécialité</div>
+                                <input type="text" name="niveau_master1_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                                @if($diplome->type == "master2")
+                                <div class="label">Renseigner la spécialité</div>
+                                <input type="text" name="niveau_master2_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                                @if($diplome->type == "autre")
+                                <div class="label">Renseigner le diplôme</div>
+                                <input type="text" name="niveau_autre_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                                @if($diplome->type == "formation continue")
+                                <div class="label">Renseigner la formation</div>
+                                <input type="text" name="niveau_formation_continue_{{$i}}" value="{{$diplome->specialite}}">
+                                @endif
+                            </div>
+                        </div>
+                        <hr class="dashed">
+                    </div>
+                        @php
+                        $i=$i+1
+                        @endphp
+                    @endforeach
                 </div>
-                <div id="responses_container"></div>
-                <div id="other_fields_container"></div>
-                <script>
-                                    // Écouter les changements dans le nombre de diplômes obtenus
-                document.querySelector('input[name="nb_diplome"]').addEventListener('change', function () {
-                    var nbDiplomes = parseInt(this.value, 10);
-                    var otherFieldsContainer = document.getElementById("other_fields_container");
 
-                    // Réinitialiser les champs à chaque changement du nombre de diplômes
-                    otherFieldsContainer.innerHTML = '';
-
-                    // Afficher les champs de texte pour nb_annee et type lorsque nb_diplome atteint 0
-                    if (nbDiplomes === 0) {
-                        // Champ de texte pour le nombre d'années d'étude
-                        createTextField(otherFieldsContainer, 'Nombre d\'années d\'étude', 'nb_annee');
-
-                        // Champ de texte pour le niveau
-                        createTextField(otherFieldsContainer, 'Renseigner le niveau', 'diplome_type');
-                    }
-                });
-
-                // Fonction pour créer un champ de texte
-                function createTextField(container, label, name) {
-                    var fieldDiv = document.createElement('div');
-                    fieldDiv.className = 'field';
-
-                    var labelDiv = document.createElement('div');
-                    labelDiv.className = 'label';
-                    labelDiv.innerHTML = label;
-                    fieldDiv.appendChild(labelDiv);
-
-                    var input = document.createElement('input');
-                    input.type = 'text';
-                    input.name = name;
-                    fieldDiv.appendChild(input);
-
-                    container.appendChild(fieldDiv);
-                }
-
-                </script>
-                <script>// Écouter les changements dans le nombre de diplômes obtenus
-                    document.querySelector('.nb_diplome').addEventListener('change', function () {
-                        var nbDiplomes = parseInt(this.value, 10);
-                        var diplomesContainer = document.getElementById("diplomes_container");
-                    
-                        // Réinitialiser les champs à chaque changement du nombre de diplômes
-                        diplomesContainer.innerHTML = '';
-                    
-                        // Créer les champs "Type de diplôme" en fonction du nombre de diplômes
-                        for (var i = 0; i < nbDiplomes; i++) {
-                            var newDiplomeDiv = document.createElement('div');
-                            newDiplomeDiv.className = 'diplome';
-                    
-                            var label = document.createElement('div');
-                            label.className = 'label';
-                            label.innerHTML = 'Type de Diplôme ' + (i + 1);
-                            newDiplomeDiv.appendChild(label);
-                    
-                            var select = document.createElement('select');
-                            select.name = 'nom_diplome_' + i;
-                            select.id = 'diplome_' + i;
-                            
-                            // Ajouter les options au select
-                            var options = ["Modifier le diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
-                            for (var j = 0; j < options.length; j++) {
-                                var option = document.createElement('option');
-                                option.value = options[j].toLowerCase();
-                                option.text = options[j];
-                                select.appendChild(option);
-                            }
-                    
-                            newDiplomeDiv.appendChild(select);
-                            diplomesContainer.appendChild(newDiplomeDiv);
-                        }
-                    });
-                    </script>
-
-                    
-
-                    <script>// Fonction pour créer les champs de réponse en fonction du type de diplôme sélectionné
-                        function createResponseFields(diplomeIndex, selectedDiplome) {
-                            var responseContainer = document.getElementById("responses_container_" + diplomeIndex);
-                            
-                            // Supprimer les champs existants
-                            responseContainer.innerHTML = '';
-                        
-                            // Créer les champs en fonction du type de diplôme
-                            switch (selectedDiplome) {
-                                case 'cap':
-                                    createTextField(responseContainer, 'Modifier le type de métier', 'niveau_cap_' + diplomeIndex);
-                                    break;
-                                case 'bep':
-                                    createTextField(responseContainer, 'Modifier la spécialité', 'niveau_bep_' + diplomeIndex);
-                                    break;
-                                case 'bac':
-                                case 'bac+2':
-                                case 'licence':
-                                case 'master1':
-                                case 'master2':
-                                    createTextField(responseContainer, 'Modifier la spécialité', 'niveau_' + selectedDiplome + '_' + diplomeIndex);
-                                    break;
-                                case 'formation continue':
-                                    createTextField(responseContainer, 'Modifier la formation', 'niveau_formation_continue_' + diplomeIndex);
-                                    break;
-                                case 'autre':
-                                    createTextField(responseContainer, 'Modifier le diplôme', 'niveau_autre_' + diplomeIndex);
-                                    break;
-                                default:
-                                    // Aucune action pour les autres cas
-                                    break;
-                            }
-                        }
-                        
-                        // Fonction pour créer un champ de texte
-                        function createTextField(container, label, name) {
-                            var fieldDiv = document.createElement('div');
-                            fieldDiv.className = 'field';
-                        
-                            var labelDiv = document.createElement('div');
-                            labelDiv.className = 'label';
-                            labelDiv.innerHTML = label;
-                            fieldDiv.appendChild(labelDiv);
-                        
-                            var input = document.createElement('input');
-                            input.type = 'text';
-                            input.name = name;
-                            fieldDiv.appendChild(input);
-                        
-                            container.appendChild(fieldDiv);
-                        }
-                        
-                        // Écouter les changements dans le nombre de diplômes obtenus
-                        document.querySelector('input[name="nb_diplome"]').addEventListener('change', function () {
-                            var nbDiplomes = parseInt(this.value, 10);
-                            var diplomesContainer = document.getElementById("diplomes_container");
-                        
-                            // Réinitialiser les champs à chaque changement du nombre de diplômes
-                            diplomesContainer.innerHTML = '';
-                        
-                            // Créer les champs "Type de diplôme" en fonction du nombre de diplômes
-                            for (var i = 0; i < nbDiplomes; i++) {
-                                var newDiplomeDiv = document.createElement('div');
-                                newDiplomeDiv.className = 'diplome';
-                        
-                                var label = document.createElement('div');
-                                label.className = 'label';
-                                label.innerHTML = 'Diplôme ' + (i + 1);
-                                newDiplomeDiv.appendChild(label);
-                        
-                                var select = document.createElement('select');
-                                select.name = 'nom_diplome_' + i;
-                                select.id = 'diplome_' + i;
-                        
-                                // Ajouter les options au select
-                                var options = ["Modifier le diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
-                                for (var j = 0; j < options.length; j++) {
-                                    var option = document.createElement('option');
-                                    option.value = options[j].toLowerCase();
-                                    option.text = options[j];
-                                    select.appendChild(option);
-                                }
-                        
-                                newDiplomeDiv.appendChild(select);
-                        
-                                // Créer le conteneur pour les réponses
-                                var responseContainer = document.createElement('div');
-                                responseContainer.id = 'responses_container_' + i;
-                                newDiplomeDiv.appendChild(responseContainer);
-                        
-                                diplomesContainer.appendChild(newDiplomeDiv);
-                        
-                                // Ajouter un écouteur d'événements sur le changement de type de diplôme
-                                select.addEventListener('change', function () {
-                                    var diplomeIndex = parseInt(this.id.split('_')[1], 10);
-                                    var selectedDiplome = this.value;
-                                    createResponseFields(diplomeIndex, selectedDiplome);
-                                });
-                            }
-                        });
-                        
-                        </script>
                 <!--- Si Formation continue --->
-                <hr class="dashed">
                 <div class="label">Reconversion professionnelle</div>
                 <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv" @if ($inscrit->is_reconv_pro == 1) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_reconv">Oui</label>
@@ -930,7 +839,7 @@
                 document.getElementById('div_logiciel').style.display = 'none';
             }
         }</script>
-
+        
             <!---  Page 5 : LANGUES  --->
             <div class="page 5" id="page5">
                 <div class="title">Langues</div>
