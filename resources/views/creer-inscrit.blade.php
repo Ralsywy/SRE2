@@ -517,7 +517,6 @@
                     <input type="date" name="dte_achat">
                 </div>
                 </div>
-                </div>
                 <!--- Si non (rien) --->
                 <div class="field btns">
                     <a class="prev-2 prev" onclick="redirigerVersHaut2()">Précédent</a>
