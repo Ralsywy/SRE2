@@ -565,4 +565,7 @@ function createTextField(container, label, name) {
 
     container.appendChild(fieldDiv);
 }
-                       
+function redirigerVersHaut() {
+    // Utilisation de window.scrollTo pour déplacer la vue vers le haut de la page
+    window.scrollTo(0, 0);
+}

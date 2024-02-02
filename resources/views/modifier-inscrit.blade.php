@@ -114,7 +114,7 @@
                 </select>
             </div>
             <div class="field nextBtn">
-                <a>Suivant</a>
+                <a onclick="redirigerVersHaut()">Suivant</a>
             </div>
         </div>
             <!---  Page 2 : COORDONNEES  --->
@@ -183,8 +183,8 @@
                     </select>
                 </div>
                 <div class="field btns">
-                    <a class="prev-1 prev">Précédent</a>
-                    <a class="next-1 next">Suivant</a>
+                    <a class="prev-1 prev" onclick="redirigerVersHaut()">Précédent</a>
+                    <a class="next-1 next" onclick="redirigerVersHaut()">Suivant</a>
                 </div>
             </div>
             <!---  Page 3 : SITUATION PERSONNELLE  --->
@@ -548,8 +548,8 @@
                     </div>
                 <!--- Si non (rien) --->
                 <div class="field btns">
-                    <a class="prev-2 prev">Précédent</a>
-                    <a class="next-2 next">Suivant</a>
+                    <a class="prev-2 prev" onclick="redirigerVersHaut()">Précédent</a>
+                    <a class="next-2 next" onclick="redirigerVersHaut()">Suivant</a>
                 </div>
             </div>
             <!---  Page 4 : FORMATION  --->
@@ -826,8 +826,8 @@
                 </div>
 
                 <div class="field btns">
-                    <a class="prev-3 prev">Précédent</a>
-                    <a class="next-3 next">Suivant</a>
+                    <a class="prev-3 prev" onclick="redirigerVersHaut()">Précédent</a>
+                    <a class="next-3 next" onclick="redirigerVersHaut()">Suivant</a>
                 </div>
         </div>
 
@@ -934,8 +934,8 @@
                 </div>
                 <!--- Fin --->
                 <div class="field btns">
-                    <a class="prev-4 prev">Précédent</a>
-                    <a class="next-4 next">Suivant</a>
+                    <a class="prev-4 prev" onclick="redirigerVersHaut()">Précédent</a>
+                    <a class="next-4 next" onclick="redirigerVersHaut()">Suivant</a>
                 </div>
             </div>
             <!---  Page 6 : INFORMATIONS COMPLEMENTAIRES  --->
@@ -947,7 +947,7 @@
                 </div>
                 <br>
                 <div class="field btns">
-                    <a class="prev-5 prev">Précédent</a>
+                    <a class="prev-5 prev" onclick="redirigerVersHaut()">Précédent</a>
                     <button class="submit next">Confirmer</button>
 
                 </div>
