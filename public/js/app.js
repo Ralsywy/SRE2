@@ -569,3 +569,7 @@ function redirigerVersHaut() {
     // Utilisation de window.scrollTo pour déplacer la vue vers le haut de la page
     window.scrollTo(0, 390);
 }
+function redirigerVersHaut2() {
+    // Utilisation de window.scrollTo pour déplacer la vue vers le haut de la page
+    window.scrollTo(0, 250);
+}
