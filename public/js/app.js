@@ -35,15 +35,16 @@ function hideshowrevenus() {
     }
 }
 
-function hideshowasile(val) {
-    if (val == 1) {
+function hideshowasile() {
+    var oui_asile = document.getElementById('oui_demande_asile').checked;
+    var non_asile = document.getElementById('non_demande_asile').checked;
+    var oui_refugie = document.getElementById('oui_refugie_politique').checked;
+    var non_refugie = document.getElementById('non_refugie_politique').checked;
+    if (oui_asile || oui_refugie) {
         document.getElementById('div_politique').style.display = 'block';
     }
-}
-
-function hideshowpolitique(val) {
-    if (val == 1) {
-        document.getElementById('div_politique').style.display = 'block';
+    else{
+        document.getElementById('div_politique').style.display = 'none';
     }
 }
 

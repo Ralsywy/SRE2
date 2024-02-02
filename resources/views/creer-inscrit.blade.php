@@ -293,9 +293,9 @@
                 <!--- Fin --->     
                 <hr class="dashed">               
                     <div class="label">Réfugié politique</div>
-                    <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
+                    <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowasile(1)" id="oui_refugie_politique">
                     <label class="label" for="oui_refugie_politique">Oui</label>
-                    <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique"checked>
+                    <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowasile(2)" id="non_refugie_politique"checked>
                     <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">

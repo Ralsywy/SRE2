@@ -299,11 +299,11 @@
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
                         <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Choisir un revenu</option>
-                        <option value="salaire" @if ($inscrit->nature_revenus == "salaire") @selected(true) @endif>Salaire</option>
-                        <option value="rsa" @if ($inscrit->nature_revenus == "rsa") @selected(true) @endif>RSA</option>
-                        <option value="are" @if ($inscrit->nature_revenus == "are") @selected(true) @endif>ARE</option>
-                        <option value="aah" @if ($inscrit->nature_revenus == "aah") @selected(true) @endif>AAH</option>
-                        <option value="retraite" @if ($inscrit->nature_revenus == "retraite") @selected(true) @endif>Pension de retraite</option>
+                        <option value="Salaire" @if ($inscrit->nature_revenus == "Salaire") @selected(true) @endif>Salaire</option>
+                        <option value="RSA" @if ($inscrit->nature_revenus == "RSA") @selected(true) @endif>RSA</option>
+                        <option value="ARE" @if ($inscrit->nature_revenus == "ARE") @selected(true) @endif>ARE</option>
+                        <option value="AAH" @if ($inscrit->nature_revenus == "AAH") @selected(true) @endif>AAH</option>
+                        <option value="Pension de retraite" @if ($inscrit->nature_revenus == "Pension de retraite") @selected(true) @endif>Pension de retraite</option>
                         <option value="autre" @if ($inscrit->nature_revenus == "autre") @selected(true) @endif>Autre</option>
                         <option value="Aucun" @if ($inscrit->nature_revenus == "Aucun") @selected(true) @endif>Aucune</option>
                     </select>
@@ -317,16 +317,16 @@
                     </div>
                 <!--- Fin --->
                 <div class="label">Demandeur d'asile</div>
-                <input type="radio" name="is_demande_asile" value="1" onclick="hideshowasile(1)" id="oui_demande_asile" @if ($inscrit->is_demande_asile == 1) @checked(true) @else @checked(false) @endif>
+                <input type="radio" name="is_demande_asile" value="1" onclick="hideshowasile()" id="oui_demande_asile" @if ($inscrit->is_demande_asile == 1) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_demande_asile">Oui</label>
-                <input type="radio" name="is_demande_asile" value="0" onclick="hideshowasile(2)" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
+                <input type="radio" name="is_demande_asile" value="0" onclick="hideshowasile()" id="non_demande_asile" @if ($inscrit->is_demande_asile == 0) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_demande_asile">Non</label>
                 <!--- Fin --->     
                 <hr class="dashed">
                 <div class="label">Réfugié politique</div>
-                <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique" @if ($inscrit->is_refugie_politique == 1) @checked(true) @else @checked(false) @endif>
+                <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowasile()" id="oui_refugie_politique" @if ($inscrit->is_refugie_politique == 1) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_refugie_politique">Oui</label>
-                <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique" @if ($inscrit->is_refugie_politique == 0) @checked(true) @else @checked(false) @endif>
+                <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowasile()" id="non_refugie_politique" @if ($inscrit->is_refugie_politique == 0) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">
