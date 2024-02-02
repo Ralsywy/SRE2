@@ -2,13 +2,14 @@
 
 
 @section('content')
+<script type="text/javascript" src="{{ asset('js/radiobutton.js') }}"></script>
 <div class="body hidden">
 <div class="container">
     <Header>Modification d'un suivi</Header>
     <header>{{$inscrit->prenom}} {{$inscrit->nom}}</header>
     <div class="div_warn">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Attention !</strong> Si une information ne s'affiche pas correctement appuyer sur le bouton (oui/non) correspondant
+        <strong>Attention !</strong> Si une information ne s'affiche pas correctement appuyez sur le bouton (oui/non) correspondant
     </div>
     <div class="progress-bar">
         <div class="step">
@@ -200,10 +201,6 @@
                 <!--- Si oui --->
                 <!--- Si oui --->
                 <div id="div_enfant" class="btn-enfant">
-                    <div class="div_warn">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                        Si vous souhaitez supprimer un enfant déjà existant, il faut laisser la case de son prénom vide
-                    </div>
                     <p></p>
                     <a href="#" id="genererEnfant" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
                     <a href="#" id="supprimerEnfant" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
@@ -216,6 +213,7 @@
                     $i=1
                     @endphp
                     @foreach($inscrit->enfants as $enfant)
+                    <div name="div_enfant{{$i}}" id="div_enfant{{$i}}">
                         <label>Nom de l'enfant {{$i}}</label>
                         <input type="text" value="{{$enfant->nom}}" name="nom_enfant{{$i}}">
                         <label>Date de naissance de l'enfant {{$i}}</label>
@@ -223,6 +221,7 @@
                         @php
                         $i=$i+1
                         @endphp
+                    </div>
                     @endforeach
                 </div>
             </div>
@@ -332,17 +331,17 @@
                 <div id="div_politique">
                     <hr class="dashed">
                     <div class="field">
-                        <div class="label">Date d'arrivé en france</div>
+                        <div class="label">Date d'arrivée en france</div>
                         <input type="date" name="dte_arrivee_fr" value="{{$inscrit->dte_arrivee_fr}}">
                     </div>
                     </div>
                     <!--- Fin --->  
                     <hr class="dashed">
                     <div class="label">Inscrit à France travail</div>
-                    <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_pole_emplois" @if ($inscrit->is_france_travail == 1) @checked(true) @else @checked(false) @endif>
-                    <label class="label" for="oui_pole_emplois">Oui</label>
-                    <input type="radio" name="is_france_travail" value="0" onclick="hideshowfrance(2)" id="non_pole_emplois" @if ($inscrit->is_france_travail == 0) @checked(true) @else @checked(false) @endif>
-                    <label class="label" for="non_pole_emplois">Non</label>
+                    <input type="radio" name="is_france_travail" value="1" onclick="hideshowfrance(1)" id="oui_france_travail" @if ($inscrit->is_france_travail == 1) @checked(true) @else @checked(false) @endif>
+                    <label class="label" for="oui_france_travail">Oui</label>
+                    <input type="radio" name="is_france_travail" value="0" onclick="hideshowfrance(2)" id="non_france_travail" @if ($inscrit->is_france_travail == 0) @checked(true) @else @checked(false) @endif>
+                    <label class="label" for="non_france_travail">Non</label>
                 
                 <!--- Si oui --->
                 <div id="div_france">
@@ -354,7 +353,7 @@
                         <div class="label">Nom référent</div>
                         <input type="text" name="france_nom_ref" value="{{$inscrit->franceTravail?->nom_ref}}">
                     </div>
-                    </div>
+                </div>
                 <!--- Fin --->
                 <hr class="dashed">
                         <div class="label">Inscrit à Soélis</div>
@@ -414,7 +413,7 @@
                     </div>
                 <!--- Fin --->
                 <hr class="dashed">
-                <div class="label">Inscrit à CAP emplois</div>
+                <div class="label">Inscrit à CAP emploi</div>
                 <input type="radio" name="is_cap_emploi" value="1" onclick="hideshowcap(1)" id="oui_cap_emploi" @if ($inscrit->is_cap_emploi == 1) @checked(true) @else @checked(false) @endif>
                 <label class="label" for="oui_cap_emploi">Oui</label>
                 <input type="radio" name="is_cap_emploi" value="0" onclick="hideshowcap(2)" id="non_cap_emploi" @if ($inscrit->is_cap_emploi == 0) @checked(true) @else @checked(false) @endif>
@@ -423,7 +422,7 @@
                 <!--- Si oui --->
                 <div id="div_cap">
                     <div class="field">
-                        <div class="label">Date d'inscription CAP emplois</div>
+                        <div class="label">Date d'inscription CAP emploi</div>
                         <input type="date" name="cap_dte_inscription" value="{{$inscrit->capEmploi?->dte_inscription}}">
                     </div>
                     <div class="field">
@@ -442,8 +441,13 @@
                     <!--- Si oui --->
                     <div id="div_cv_oui">
                     <div class="field">
+                        @if($inscrit->cv->nom!=null)
+                        <div class="label" id="label_cv">Un cv est déjà inséré mais vous pouvez le remplacer (format PDF uniquement)</div>
+                        <input type="file" name="cv_nom" value="{{$inscrit->cv->nom}}">
+                        @else
                         <div class="label" id="label_cv">Insérer le cv scanné (format PDF uniquement)</div>
                         <input type="file" name="cv_nom" value="{{$inscrit->cv->nom}}">
+                        @endif
                     </div>
                     </div>
                     <!--- Si non --->
@@ -573,10 +577,6 @@
                 @endif
                 <hr class="dashed" id="hr_diplome">
                 <div id="diplomes_container" class="field2">
-                    <div class="div_warn">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                        Si vous souhaitez supprimer un diplome déjà existant, il faut laisser la case de son prénom vide
-                    </div>
                     <p></p>
                     <a href="#" id="genererDiplome" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
                     <a href="#" id="supprimerDiplome" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
@@ -661,7 +661,7 @@
             <!--- Si non (rien) --->
             <!--- Si oui --->
             <div id="div_reconv">
-            <div class="label">Formations prévues</div>
+            <div class="label">Formation prévue</div>
             <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue" @if ($inscrit->reconvPro && $inscrit->reconvPro->is_form_prevue == 1) @checked(true) @else @checked(false) @endif>     
             <label class="label" for="oui_prevue">Oui</label>
             <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue" @if ($inscrit->reconvPro && $inscrit->reconvPro->is_form_prevue == 0) @checked(true) @else @checked(false) @endif>

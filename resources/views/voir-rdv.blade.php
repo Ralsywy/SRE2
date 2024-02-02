@@ -7,11 +7,11 @@
             <table>
                 <thead>
                     <tr class="hidden">
-                        <th>Actions à mener</th>
-                        <th>Objectifs</th>
-                        <th>Moyens mis en oeuvre</th>
-                        <th>Échéances</th>
-                        <th>Actions</th>
+                        <th>Action à mener</th>
+                        <th>Objectif</th>
+                        <th>Moyen mis en oeuvre</th>
+                        <th>Échéance</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -54,7 +54,7 @@
                     <tr class="hidden">
                         <th>Contexte</th>
                         <th>Date</th>
-                        <th>Action</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="tbody">

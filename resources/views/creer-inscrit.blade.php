@@ -94,7 +94,7 @@
                 <label class="label" for="non_benevole">Non</label>
             
             <div class="field">
-                <div class="label">Accompagnateur SRE</div>
+                <div class="label">Accompagnateur SRE *</div>
                 <select name="user_id">
                     <option value="1">Choisir un accompagnateur</option>
                     @foreach($accompagnateurs as $ligne)
@@ -121,11 +121,11 @@
                     </select>
                 </div>
                 <div class="field">
-                    <div class="label">Nom</div>
+                    <div class="label">Nom *</div>
                     <input type="text" name="nom" id="name">
                 </div>
                 <div class="field">
-                    <div class="label">Prénom</div>
+                    <div class="label">Prénom *</div>
                     <input type="text" name="prenom" oninput="capitalizeFirstLetter()" id="prenom">
                 </div>
                 <div class="field">
@@ -301,7 +301,7 @@
                 <div id="div_politique">
                     <hr class="dashed">
                     <div class="field">
-                        <div class="label">Date d'arrivé en france</div>
+                        <div class="label">Date d'arrivée en france</div>
                         <input type="date" name="dte_arrivee_fr">
                     </div>
                     </div>
@@ -392,7 +392,7 @@
                 <!--- Si oui --->
                 <div id="div_cap">
                 <div class="field">
-                    <div class="label">Date d'inscription CAP emplois</div>
+                    <div class="label">Date d'inscription CAP emploi</div>
                     <input type="date" name="cap_dte_inscription">
                 </div>
                 <div class="field">
@@ -517,6 +517,7 @@
                     <input type="date" name="dte_achat">
                 </div>
                 </div>
+                </div>
                 <!--- Si non (rien) --->
                 <div class="field btns">
                     <a class="prev-2 prev" onclick="redirigerVersHaut2()">Précédent</a>
@@ -556,7 +557,7 @@
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
                 <div id="div_reconv">
-                <div class="label">Formations prévues</div>
+                <div class="label">Formation prévue</div>
                 <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue">
                 <label class="label" for="oui_prevue">Oui</label>
                 <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue"checked>

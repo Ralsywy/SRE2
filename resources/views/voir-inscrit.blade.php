@@ -376,7 +376,7 @@
 <hr class="dashed">
 <div class="jaaj">
     <div class="field">
-        <div class="label"><strong>Inscrit à CAP emplois</strong></div>
+        <div class="label"><strong>Inscrit à CAP emploi</strong></div>
         <label class="switch">
             <input type="checkbox" @if ($inscrit->is_cap_emploi == 1) @checked(true) @else @checked(false) @endif @disabled(true)>
             <div class="slider">
@@ -397,11 +397,11 @@
     </div>
         @if ($inscrit->is_cap_emploi == 1)
             <div class="field">
-                <div class="label"><strong>Date d'inscription à CAP emplois</strong></div>
+                <div class="label"><strong>Date d'inscription à CAP emploi</strong></div>
                 <p>{{$inscrit->capEmploi?->dte_inscription}}</p>
             </div>
             <div class="field">
-                <div class="label"><strong>Référent à CAP emplois</strong></div>
+                <div class="label"><strong>Référent à CAP emploi</strong></div>
                 <p>{{$inscrit->capEmploi?->nom_ref}}</p>
             </div>
         @endif
@@ -753,7 +753,7 @@
     </div>
 </div>
 <hr class="dashed">
-<div class="jaaj"><p>0 -> 6 | du moins bon au meilleur (corresponds au niveau de langue CECRL)</p></div>
+<div class="jaaj"><p>0 -> 6 | du niveau le plus faible au plus élevé (corresponds au niveau de langue CECRL)</p></div>
 <div class="jaaj">
     <div class="field">
         <div class="label"><strong>Inscrit aux ateliers de français</strong></div>
