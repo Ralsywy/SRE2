@@ -54,7 +54,7 @@
         @csrf
             <!---  Page 1 : INFORMATIONS PERSONNELLES  --->
         <div class="page 1 slidepage" id="page1">
-            <div class="title hidden">Informations personnelles :</div>
+            <div class="title">Informations personnelles :</div>
             <div class="field">
                 <div class="label">Date de contact</div>
                 <input type="date" name="dte_contact">
@@ -71,7 +71,7 @@
                 <label class="label" for="non_rdc">Non</label>
             
             <!--- Si oui --->
-            <div id="div_rdc" class="hidden">
+            <div id="div_rdc">
             <div class="field">
                 <div class="label">N°</div>
                 <input type="text" name="numero">
@@ -185,7 +185,7 @@
                     <label class="label" for="non_enfant">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_enfant" class="btn-enfant hidden">
+                <div id="div_enfant" class="btn-enfant">
                         <a href="#" id="genererEnfant" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
                         <a href="#" id="supprimerEnfant" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
                         <p></p>
@@ -263,7 +263,7 @@
                     });
                     </script>
                 <!--- Fin --->
-                <div class="field hidden">
+                <div class="field">
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
                         <option value="Aucun">Choisir un revenu</option>
@@ -314,7 +314,7 @@
                     <label class="label" for="non_pole_emplois">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_france" class="hidden">
+                <div id="div_france">
                 <div class="field">
                     <div class="label">Date d'inscription à France travail</div>
                     <input type="date" name="france_dte_inscription">
@@ -333,7 +333,7 @@
                     <label class="label" for="non_soelis">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_soelis" class="hidden">
+                <div id="div_soelis">
                 <div class="field">
                     <div class="label">Date d'inscription à Soélis</div>
                     <input type="date" name="soelis_dte_inscription">
@@ -352,7 +352,7 @@
                     <label class="label" for="non_cma">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_cma" class="hidden">
+                <div id="div_cma">
                 <div class="field">
                     <div class="label" id="label_cma">Date d'inscription la chambre des métiers et de l'artisanat</div>
                     <input type="date" name="cma_dte_inscription">
@@ -371,7 +371,7 @@
                     <label class="label" for="non_mission_locale">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_mission" class="hidden">
+                <div id="div_mission">
                 <div class="field">
                     <div class="label">Date d'inscription à la Mission locale</div>
                     <input type="date" name="mission_dte_inscription">
@@ -390,7 +390,7 @@
                     <label class="label" for="non_cap_emploi">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_cap" class="hidden">
+                <div id="div_cap">
                 <div class="field">
                     <div class="label">Date d'inscription CAP emplois</div>
                     <input type="date" name="cap_dte_inscription">
@@ -431,7 +431,7 @@
                     <label class="label" for="non_permis">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_permis" class="hidden">
+                <div id="div_permis">
                 <!--- Si oui un/plusieurs --->
                 <div class="field">
                 <div class="label">Permis</div>
@@ -448,7 +448,7 @@
 
                 <!--- Si non (rien) --->
                 <!--- Si autos --->
-                <div id="autos" class="hidden">
+                <div id="autos">
                 <div class="field">
                 <div class="label">Permis autos</div>
                 <select name="autos_categorie">
@@ -460,7 +460,7 @@
                 </div>
                 </div>
                 <!--- Si motos --->
-                <div id="motos" class="hidden">
+                <div id="motos">
                 <div class="field">
                 <div class="label">Permis motos</div>
                 <select name="motos_categorie">
@@ -472,7 +472,7 @@
                 </div>
                 </div>
                 <!--- Si marchandises ou personnes --->
-                <div id="marchandises" class="hidden">
+                <div id="marchandises">
                 <div class="field">
                 <div class="label">Permis marchandises ou de personnes</div>
                 <select name="marchandises_categorie">
@@ -489,7 +489,7 @@
                 </div>
                 </div>
                 <!--- Autres permis --->
-                <div class="field hidden" id="autre_permis">
+                <div class="field" id="autre_permis">
                     <div class="label">Autres permis</div>
                     <input type="text" name="autre_permis">
                 </div>
@@ -503,7 +503,7 @@
                 
                 <!--- Si oui (rien) --->
                 <!--- Si non --->
-                <div id="div_vehicule_dispo" class="hidden">
+                <div id="div_vehicule_dispo">
                     <div class="label">Achat prévu d'un véhicule</div>
                     <input type="radio" name="prevu_vehicule" value="1" onclick="hideshowvehiculeprevu(1)" id="oui_achat">
                     <label class="label" for="oui_achat">Oui</label>
@@ -511,7 +511,7 @@
                     <label class="label" for="non_achat">Non</label>
                 </div>
                 <!--- Si oui --->
-                <div id="div_vehicule_prevu" class="hidden">
+                <div id="div_vehicule_prevu">
                 <div class="field">
                     <div class="label">Date d'achat prévue</div>
                     <input type="date" name="dte_achat">
@@ -555,7 +555,7 @@
                     <label class="label" for="non_reconv">Non</label>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
-                <div id="div_reconv" class="hidden">
+                <div id="div_reconv">
                 <div class="label">Formations prévues</div>
                 <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue">
                 <label class="label" for="oui_prevue">Oui</label>
@@ -587,7 +587,7 @@
                 <label class="label" for="non_reprise">Non</label>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
-                <div id="div_reprise" class="hidden">
+                <div id="div_reprise">
                 <div class="field">
                     <div class="label">Diplôme préparé</div>
                     <input type="text" name="nom_diplome">
@@ -601,7 +601,7 @@
                 <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro"checked>
                 <label class="label" for="non_form_pro">Non</label>
                 <!--- Si oui --->
-                <div id="div_form_pro" class="hidden">
+                <div id="div_form_pro">
                 <div class="field">
                     <div class="label">Type de formation</div>
                     <select name="type_formation_pro" onchange="hideshowtypeform()" id="type_form">
@@ -790,7 +790,7 @@
                 <input type="radio" name="is_autre" value="0" onclick="hideshowlangue(2)" id="non_autre"checked>
                 <label class="label" for="non_autre">Non</label>
                 <!--- Si oui --->
-                <div id="div_langue" class="hidden">
+                <div id="div_langue">
                 <div class="field">
                     <div class="label">Langue(s)</div>
                     <input type="text" name="autre_langue">

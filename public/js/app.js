@@ -567,5 +567,5 @@ function createTextField(container, label, name) {
 }
 function redirigerVersHaut() {
     // Utilisation de window.scrollTo pour déplacer la vue vers le haut de la page
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 390);
 }
