@@ -992,3 +992,13 @@ section#plans-action, section#rdv{
 #inputnb_diplome{
     margin: 0.5rem;
 }
+.div_id {
+    padding: 20px;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    border: 2px solid rgba(255,255,255,.2);
+    width: fit-content;
+    backdrop-filter: blur(20px);
+}

@@ -1029,3 +1029,19 @@ section#plans-action, section#rdv{
         overflow-wrap: break-word;
     }
 }
+
+.voir-cv{
+    color: var(--text);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(0, 218, 80);
+    padding: 10px 15px;
+    margin-top: 10px;
+    transition: .2s;
+    text-decoration: none;
+}
+.voir-cv:hover{
+    background-color: #000;
+    color: rgb(255, 255, 255);
+}

@@ -428,12 +428,15 @@
             </div>
         </label>
     </div>
-        @if ($inscrit->is_cv == 0)
-            <div class="field">
-                <div class="label"><strong>Date programmé pour travailler le CV</strong></div>
-                <p>{{$inscrit->cv?->dte_travailler}}</p>
-            </div>
-        @endif
+    @if($inscrit->is_cv == 1 && $inscrit->cv->nom != null)
+        <a href="{{ asset('storage/'.$inscrit->cv->nom)}}" target="_blank" class="voir-cv"><i class="fa-regular fa-file"></i></a>
+    @endif
+    @if ($inscrit->is_cv == 0)
+        <div class="field">
+            <div class="label"><strong>Date programmé pour travailler le CV</strong></div>
+            <p>{{$inscrit->cv?->dte_travailler}}</p>
+        </div>
+    @endif
 </div>
 <hr class="dashed">
 <div class="jaaj">

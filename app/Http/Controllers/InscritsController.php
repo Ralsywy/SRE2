@@ -24,6 +24,7 @@ use App\Models\Soelis;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class InscritsController extends Controller
 {

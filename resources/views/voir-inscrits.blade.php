@@ -26,17 +26,20 @@
                 <td>
                     <a href="{{ route('voir-rdv',[$ligne["id"]]) }}" class="a-rdv">Rendez-vous</a>
                     <a href="{{ route('modifier-inscrit',[$ligne["id"]]) }}" class="a-modif">Ajouter des infos</a>
-                    <a href="{{ route('voir-inscrit',[$ligne["id"]]) }}" class="a-voir"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{{ route('voir-inscrit',[$ligne["id"]]) }}" title="Voir" class="a-voir"><i class="fa-solid fa-eye"></i></a>
+                    @if($ligne->cv->nom != null)
+                    <a href="{{ asset('storage/'.$ligne->cv->nom)}}" target="_blank" class="a-voir" title="Voir CV"><b>CV</b></a>
+                    @endif
                     <form method="post" action="{{ route('terminer',[$ligne->id])}}" style="display: inline;">
                         @csrf
                         @method('PUT')
-                        <button type="submit" class="btn_terminer"><i class="fa-solid fa-lock"></i></button>
+                        <button type="submit" class="btn_terminer" title="Clôturer le dossier"><i class="fa-solid fa-lock"></i></button>
                     </form>
                     @if(auth()->user()->is_admin == 1)
                     <form method="post" action="{{ route('supp-inscrit',[$ligne->id])}}" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn_supp" onclick='return check_del()'><i class="fa-solid fa-trash"></i></button>
+                        <button type="submit" class="btn_supp" onclick='return check_del()' title="Supprimer"><i class="fa-solid fa-trash"></i></button>
                     </form>
                     @endif
                 </td>

@@ -4,6 +4,10 @@
     <!-- Session Status -->
     <x-auth-session-status class="" :status="session('status')" />
     <div class="page-login">
+        <div class="div_id">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Identifiant</strong> : Première lettre du prénom + nom complet, tout attaché et en minuscule. (EX : Jean-Luc Dubois = jdubois)
+        </div>
         <div class="container hidden">
             <h1>Connexion</h1>
             <form method="POST" action="{{ route('login') }}">
@@ -11,7 +15,7 @@
 
                 <!-- pseudo Address -->
                 <div class="input-box">
-                    <x-text-input id="pseudo" class="pseudo" name="pseudo" placeholder="Identifiant" :value="old('pseudo')" required autofocus autocomplete="pseudo" />
+                    <x-text-input id="pseudo" class="pseudo" name="pseudo" placeholder="Identifiant" :value="old('pseudo')" required autofocus autocomplete="pseudo"/>
                     <x-input-error :messages="$errors->get('pseudo')" class="" />
                         <i class="bx bxs-user"></i>
                 </div>

@@ -64,9 +64,13 @@ class RegisteredUserController extends Controller
             //création du nom de login
             $nom = $request['name'];
             $prenom = $request['prenom'];
-            $pseudo=strtolower($prenom[0].$nom);
             $fullName = $nom . " " . $prenom;
-
+            $nom = str_replace(' ', '', $nom);
+            $prenom = str_replace(' ', '', $prenom);
+            $nom = str_replace('-', '', $nom);
+            $prenom = str_replace('-', '', $prenom);
+            $pseudo=strtolower($prenom[0].$nom);
+            
             $user= new User();
             $user->name= $fullName;
             $user->password= $request['password'];
