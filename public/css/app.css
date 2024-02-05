@@ -981,4 +981,14 @@ section#plans-action, section#rdv{
     top: -200px;
 
 }
-
+#diplome_non input{
+    height: 45px;
+    width: 330px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 0.5rem;
+}
+#inputnb_diplome{
+    margin: 0.5rem;
+}

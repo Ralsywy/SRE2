@@ -14,7 +14,7 @@
                 <th>Accompagnateur</th>
                 <th>Nombre de rendez-vous</th>
                 <th>Date de clôture</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -26,6 +26,7 @@
                 <td>{{$ligne->rdvs->count()}}</td>
                 <td>{{$ligne->dte_cloture}}</td>
                 <td>
+                    <a href="{{ route('voir-inscrit',[$ligne["id"]]) }}" class="a-voir"><i class="fa-solid fa-eye"></i></a>
                     <form method="post" action="{{ route('reprendre',[$ligne->id])}}" style="display: inline;">
                         @csrf
                         @method('PUT')

@@ -54,7 +54,7 @@
         @csrf
             <!---  Page 1 : INFORMATIONS PERSONNELLES  --->
         <div class="page 1 slidepage" id="page1">
-            <div class="title hidden">Informations personnelles :</div>
+            <div class="title">Informations personnelles :</div>
             <div class="field">
                 <div class="label">Date de contact</div>
                 <input type="date" name="dte_contact">
@@ -71,7 +71,7 @@
                 <label class="label" for="non_rdc">Non</label>
             
             <!--- Si oui --->
-            <div id="div_rdc" class="hidden">
+            <div id="div_rdc">
             <div class="field">
                 <div class="label">N°</div>
                 <input type="text" name="numero">
@@ -94,7 +94,7 @@
                 <label class="label" for="non_benevole">Non</label>
             
             <div class="field">
-                <div class="label">Accompagnateur SRE</div>
+                <div class="label">Accompagnateur SRE *</div>
                 <select name="user_id">
                     <option value="1">Choisir un accompagnateur</option>
                     @foreach($accompagnateurs as $ligne)
@@ -105,7 +105,7 @@
                 </select>
             </div>
             <div class="field nextBtn">
-                <a>Suivant</a>
+                <a onclick="redirigerVersHaut2()">Suivant</a>
             </div>
         </div>
             <!---  Page 2 : COORDONNEES  --->
@@ -121,11 +121,11 @@
                     </select>
                 </div>
                 <div class="field">
-                    <div class="label">Nom</div>
+                    <div class="label">Nom *</div>
                     <input type="text" name="nom" id="name">
                 </div>
                 <div class="field">
-                    <div class="label">Prénom</div>
+                    <div class="label">Prénom *</div>
                     <input type="text" name="prenom" oninput="capitalizeFirstLetter()" id="prenom">
                 </div>
                 <div class="field">
@@ -170,8 +170,8 @@
                     </select>
                 </div>
                 <div class="field btns">
-                    <a class="prev-1 prev">Précédent</a>
-                    <a class="next-1 next">Suivant</a>
+                    <a class="prev-1 prev" onclick="redirigerVersHaut2()">Précédent</a>
+                    <a class="next-1 next" onclick="redirigerVersHaut2()">Suivant</a>
                 </div>
             </div>
             <!---  Page 3 : SITUATION PERSONNELLE  --->
@@ -185,7 +185,7 @@
                     <label class="label" for="non_enfant">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_enfant" class="btn-enfant hidden">
+                <div id="div_enfant" class="btn-enfant">
                         <a href="#" id="genererEnfant" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
                         <a href="#" id="supprimerEnfant" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
                         <p></p>
@@ -263,7 +263,7 @@
                     });
                     </script>
                 <!--- Fin --->
-                <div class="field hidden">
+                <div class="field">
                     <div class="label">Nature des revenus</div>
                     <select name="nature_revenus" onchange="hideshowrevenus()" id="revenus">
                         <option value="Aucun">Choisir un revenu</option>
@@ -293,15 +293,15 @@
                 <!--- Fin --->     
                 <hr class="dashed">               
                     <div class="label">Réfugié politique</div>
-                    <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowpolitique(1)" id="oui_refugie_politique">
+                    <input type="radio" name="is_refugie_politique" value="1" onclick="hideshowasile(1)" id="oui_refugie_politique">
                     <label class="label" for="oui_refugie_politique">Oui</label>
-                    <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowpolitique(2)" id="non_refugie_politique"checked>
+                    <input type="radio" name="is_refugie_politique" value="0" onclick="hideshowasile(2)" id="non_refugie_politique"checked>
                     <label class="label" for="non_refugie_politique">Non</label>
                 <!--- Si oui --->
                 <div id="div_politique">
                     <hr class="dashed">
                     <div class="field">
-                        <div class="label">Date d'arrivé en france</div>
+                        <div class="label">Date d'arrivée en france</div>
                         <input type="date" name="dte_arrivee_fr">
                     </div>
                     </div>
@@ -314,7 +314,7 @@
                     <label class="label" for="non_pole_emplois">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_france" class="hidden">
+                <div id="div_france">
                 <div class="field">
                     <div class="label">Date d'inscription à France travail</div>
                     <input type="date" name="france_dte_inscription">
@@ -333,7 +333,7 @@
                     <label class="label" for="non_soelis">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_soelis" class="hidden">
+                <div id="div_soelis">
                 <div class="field">
                     <div class="label">Date d'inscription à Soélis</div>
                     <input type="date" name="soelis_dte_inscription">
@@ -352,7 +352,7 @@
                     <label class="label" for="non_cma">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_cma" class="hidden">
+                <div id="div_cma">
                 <div class="field">
                     <div class="label" id="label_cma">Date d'inscription la chambre des métiers et de l'artisanat</div>
                     <input type="date" name="cma_dte_inscription">
@@ -371,7 +371,7 @@
                     <label class="label" for="non_mission_locale">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_mission" class="hidden">
+                <div id="div_mission">
                 <div class="field">
                     <div class="label">Date d'inscription à la Mission locale</div>
                     <input type="date" name="mission_dte_inscription">
@@ -390,9 +390,9 @@
                     <label class="label" for="non_cap_emploi">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_cap" class="hidden">
+                <div id="div_cap">
                 <div class="field">
-                    <div class="label">Date d'inscription CAP emplois</div>
+                    <div class="label">Date d'inscription CAP emploi</div>
                     <input type="date" name="cap_dte_inscription">
                 </div>
                 <div class="field">
@@ -431,7 +431,7 @@
                     <label class="label" for="non_permis">Non</label>
                 
                 <!--- Si oui --->
-                <div id="div_permis" class="hidden">
+                <div id="div_permis">
                 <!--- Si oui un/plusieurs --->
                 <div class="field">
                 <div class="label">Permis</div>
@@ -448,7 +448,7 @@
 
                 <!--- Si non (rien) --->
                 <!--- Si autos --->
-                <div id="autos" class="hidden">
+                <div id="autos">
                 <div class="field">
                 <div class="label">Permis autos</div>
                 <select name="autos_categorie">
@@ -460,7 +460,7 @@
                 </div>
                 </div>
                 <!--- Si motos --->
-                <div id="motos" class="hidden">
+                <div id="motos">
                 <div class="field">
                 <div class="label">Permis motos</div>
                 <select name="motos_categorie">
@@ -472,7 +472,7 @@
                 </div>
                 </div>
                 <!--- Si marchandises ou personnes --->
-                <div id="marchandises" class="hidden">
+                <div id="marchandises">
                 <div class="field">
                 <div class="label">Permis marchandises ou de personnes</div>
                 <select name="marchandises_categorie">
@@ -489,7 +489,7 @@
                 </div>
                 </div>
                 <!--- Autres permis --->
-                <div class="field hidden" id="autre_permis">
+                <div class="field" id="autre_permis">
                     <div class="label">Autres permis</div>
                     <input type="text" name="autre_permis">
                 </div>
@@ -503,7 +503,7 @@
                 
                 <!--- Si oui (rien) --->
                 <!--- Si non --->
-                <div id="div_vehicule_dispo" class="hidden">
+                <div id="div_vehicule_dispo">
                     <div class="label">Achat prévu d'un véhicule</div>
                     <input type="radio" name="prevu_vehicule" value="1" onclick="hideshowvehiculeprevu(1)" id="oui_achat">
                     <label class="label" for="oui_achat">Oui</label>
@@ -511,7 +511,7 @@
                     <label class="label" for="non_achat">Non</label>
                 </div>
                 <!--- Si oui --->
-                <div id="div_vehicule_prevu" class="hidden">
+                <div id="div_vehicule_prevu">
                 <div class="field">
                     <div class="label">Date d'achat prévue</div>
                     <input type="date" name="dte_achat">
@@ -519,8 +519,8 @@
                 </div>
                 <!--- Si non (rien) --->
                 <div class="field btns">
-                    <a class="prev-2 prev">Précédent</a>
-                    <a class="next-2 next">Suivant</a>
+                    <a class="prev-2 prev" onclick="redirigerVersHaut2()">Précédent</a>
+                    <a class="next-2 next" onclick="redirigerVersHaut2()">Suivant</a>
                 </div>
             </div>
             <!---  Page 4 : FORMATION  --->
@@ -531,165 +531,22 @@
                     <label class="label" for="oui_diplome">Oui</label>
                     <input type="radio" name="is_diplome" value="0" onclick="hideshowdiplome(2)" id="non_diplome" checked>
                     <label class="label" for="non_diplome">Non</label>
-                    <hr class="dashed" id="hr_diplome">
                     <p></p>
-                <div id="diplomes_non">
-
+                <div id="diplome_non">
+                    <label for="nb_annee">Nombre d'années d'études</label>
+                    <input type="text" name="nb_annee" id="nb_annee">
+                    <label for="diplome_type">Renseigner le niveau</label>
+                    <input type="text" name="diplome_type" id="diplome_type">
                 </div>
+                <hr class="dashed" id="hr_diplome">
                 <div id="diplomes_container" class="field2">
                     <a href="#" id="genererDiplome" class="genererEnfant"><i class="fa-solid fa-plus"></i></a>
                     <a href="#" id="supprimerDiplome" class="supprimerEnfant"><i class="fa-solid fa-minus"></i></a>
                     <p></p>
                     <input type="text" id="inputnb_diplome" name="nb_diplome" value="0" readonly>
-                    <div id="responses_container"></div>
-                    <div id="other_fields_container"></div>
+                    <hr class="dashed">
                 </div>
-                <script>
-                    function hideshowdiplome(val) {
-                        if (val == 1) {
-                            document.getElementById('diplomes_container').style.display = 'block';
-                            document.getElementById('hr_diplome').style.display = 'none';
-                        }
-                        if (val == 2) {
-                            document.getElementById('diplomes_container').style.display = 'none';
-                            document.getElementById('hr_diplome').style.display = 'block';
-                        }
-                    }
-
-                    document.addEventListener("DOMContentLoaded", function() {
-                        var nb_diplome = 0; // Compteur pour suivre le nombre de clics
-                        var diplomesContainer = document.getElementById("diplomes_container");
-
-                        document.getElementById("genererDiplome").addEventListener("click", function(event) {
-                            event.preventDefault();
-                            generateDiplome();
-                        });
-
-                        document.getElementById("supprimerDiplome").addEventListener("click", function(event) {
-                            event.preventDefault();
-                            deleteDiplome();
-                        });
-
-                        function createTextField(container, label, name) {
-                            var fieldDiv = document.createElement('div');
-                            fieldDiv.className = 'field';
-
-                            var labelDiv = document.createElement('div');
-                            labelDiv.className = 'label';
-                            labelDiv.innerHTML = label;
-                            fieldDiv.appendChild(labelDiv);
-
-                            var input = document.createElement('input');
-                            input.type = 'text';
-                            input.name = name;
-                            fieldDiv.appendChild(input);
-
-                            container.appendChild(fieldDiv);
-                        }
-                        
-                        function generateDiplome() {
-                            nb_diplome += 1; // Incrémente le compteur
-                            
-                            var newDiplomeDiv = document.createElement('div');
-                            newDiplomeDiv.className = 'diplome';
-                            newDiplomeDiv.setAttribute("name", "div_diplome"+ nb_diplome);
-                            newDiplomeDiv.setAttribute("id", "div_diplome"+ nb_diplome);
-                    
-                            var label = document.createElement('div');
-                            label.className = 'label';
-                            label.innerHTML = 'Type de Diplôme ' + nb_diplome;
-                            newDiplomeDiv.appendChild(label);
-                    
-                            var select = document.createElement('select');
-                            select.name = 'nom_diplome_' + nb_diplome;
-                            select.id = 'diplome_' + nb_diplome;
-                            
-                            // Ajouter les options au select
-                            var options = ["Choisir un diplôme", "Brevet", "CAP", "BEP", "BAC", "BAC+2", "Licence", "Master1", "Master2", "Autre", "Formation continue"];
-                            for (var j = 0; j < options.length; j++) {
-                                var option = document.createElement('option');
-                                option.value = options[j].toLowerCase();
-                                option.text = options[j];
-                                select.appendChild(option);
-                            }
-                    
-                            newDiplomeDiv.appendChild(select);
-                            diplomesContainer.appendChild(newDiplomeDiv);
-                            inputnb_diplome.value = nb_diplome;
-                            // Créer le conteneur pour les réponses
-                            var responseContainer = document.createElement('div');
-                                responseContainer.id = 'responses_container_' + nb_diplome;
-                                newDiplomeDiv.appendChild(responseContainer);
-
-                                // Ajouter un écouteur d'événements sur le changement de type de diplôme
-                                select.addEventListener('change', function () {
-                                    var diplomeIndex = parseInt(this.id.split('_')[1], 10);
-                                    var selectedDiplome = this.value;
-                                    createResponseFields(diplomeIndex, selectedDiplome);
-                                });
-                        }
-                        function deleteDiplome(){
-                            // Récupérer la div à supprimer par son nom
-                            var divDiplome = document.getElementById("div_diplome"+ nb_diplome);
-                            // Supprimer la div
-                            divDiplome.remove();
-                            nb_diplome -= 1; // Incrémente le compteur pour les prochains clics
-                            inputnb_diplome.value = nb_diplome;
-                        }
-                    });
-                </script>
-                    <script>// Fonction pour créer les champs de réponse en fonction du type de diplôme sélectionné
-                        function createResponseFields(diplomeIndex, selectedDiplome) {
-                            var responseContainer = document.getElementById("responses_container_" + diplomeIndex);
-                            
-                            // Supprimer les champs existants
-                            responseContainer.innerHTML = '';
-                        
-                            // Créer les champs en fonction du type de diplôme
-                            switch (selectedDiplome) {
-                                case 'cap':
-                                    createTextField(responseContainer, 'Renseigner le type de métier', 'niveau_cap_' + diplomeIndex);
-                                    break;
-                                case 'bep':
-                                    createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_bep_' + diplomeIndex);
-                                    break;
-                                case 'bac':
-                                case 'bac+2':
-                                case 'licence':
-                                case 'master1':
-                                case 'master2':
-                                    createTextField(responseContainer, 'Renseigner la spécialité', 'niveau_' + selectedDiplome + '_' + diplomeIndex);
-                                    break;
-                                case 'formation continue':
-                                    createTextField(responseContainer, 'Renseigner la formation', 'niveau_formation_continue_' + diplomeIndex);
-                                    break;
-                                case 'autre':
-                                    createTextField(responseContainer, 'Renseigner le diplôme', 'niveau_autre_' + diplomeIndex);
-                                    break;
-                                default:
-                                    // Aucune action pour les autres cas
-                                    break;
-                            }
-                        }
-                        
-                        // Fonction pour créer un champ de texte
-                        function createTextField(container, label, name) {
-                            var fieldDiv = document.createElement('div');
-                            fieldDiv.className = 'field';
-                        
-                            var labelDiv = document.createElement('div');
-                            labelDiv.className = 'label';
-                            labelDiv.innerHTML = label;
-                            fieldDiv.appendChild(labelDiv);
-                        
-                            var input = document.createElement('input');
-                            input.type = 'text';
-                            input.name = name;
-                            fieldDiv.appendChild(input);
-                        
-                            container.appendChild(fieldDiv);
-                        }
-                        </script>
+                
                 <!--- Si Formation continue --->
                     <div class="label">Reconversion professionnelle</div>
                     <input type="radio" name="is_reconv_pro" value="1" onclick="hideshowreconv(1)" id="oui_reconv">
@@ -698,8 +555,8 @@
                     <label class="label" for="non_reconv">Non</label>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
-                <div id="div_reconv" class="hidden">
-                <div class="label">Formations prévues</div>
+                <div id="div_reconv">
+                <div class="label">Formation prévue</div>
                 <input type="radio" name="is_form_prevue" value="1" onclick="hideshowformprevu(1)" id="oui_prevue">
                 <label class="label" for="oui_prevue">Oui</label>
                 <input type="radio" name="is_form_prevue" value="0" onclick="hideshowformprevu(2)" id="non_prevue"checked>
@@ -730,7 +587,7 @@
                 <label class="label" for="non_reprise">Non</label>
                 <!--- Si non (rien) --->
                 <!--- Si oui --->
-                <div id="div_reprise" class="hidden">
+                <div id="div_reprise">
                 <div class="field">
                     <div class="label">Diplôme préparé</div>
                     <input type="text" name="nom_diplome">
@@ -744,7 +601,7 @@
                 <input type="radio" name="is_formation_pro" value="0" onclick="hideshowformpro(2)" id="non_form_pro"checked>
                 <label class="label" for="non_form_pro">Non</label>
                 <!--- Si oui --->
-                <div id="div_form_pro" class="hidden">
+                <div id="div_form_pro">
                 <div class="field">
                     <div class="label">Type de formation</div>
                     <select name="type_formation_pro" onchange="hideshowtypeform()" id="type_form">
@@ -832,8 +689,8 @@
                 </div>
 
                 <div class="field btns">
-                    <a class="prev-3 prev">Précédent</a>
-                    <a class="next-3 next">Suivant</a>
+                    <a class="prev-3 prev" onclick="redirigerVersHaut2()">Précédent</a>
+                    <a class="next-3 next" onclick="redirigerVersHaut2()">Suivant</a>
                 </div>
         </div>
 
@@ -933,7 +790,7 @@
                 <input type="radio" name="is_autre" value="0" onclick="hideshowlangue(2)" id="non_autre"checked>
                 <label class="label" for="non_autre">Non</label>
                 <!--- Si oui --->
-                <div id="div_langue" class="hidden">
+                <div id="div_langue">
                 <div class="field">
                     <div class="label">Langue(s)</div>
                     <input type="text" name="autre_langue">
@@ -941,8 +798,8 @@
                 </div>
                 <!--- Fin --->
                 <div class="field btns">
-                    <a class="prev-4 prev">Précédent</a>
-                    <a class="next-4 next">Suivant</a>
+                    <a class="prev-4 prev" onclick="redirigerVersHaut2()">Précédent</a>
+                    <a class="next-4 next" onclick="redirigerVersHaut2()">Suivant</a>
                 </div>
             </div>
             <!---  Page 6 : INFORMATIONS COMPLEMENTAIRES  --->
@@ -954,7 +811,7 @@
                 </div>
                 <br>
                 <div class="field btns">
-                    <a class="prev-5 prev">Précédent</a>
+                    <a class="prev-5 prev" onclick="redirigerVersHaut2()">Précédent</a>
                     <button class="submit next">Confirmer</button>
 
                 </div>

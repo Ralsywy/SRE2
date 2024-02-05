@@ -13,7 +13,7 @@
                 <th>Prénom</th>
                 <th>Accompagnateur</th>
                 <th>Nombre de rendez-vous</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="tbody">
