@@ -68,6 +68,11 @@ class InscritsController extends Controller
             
             $finish = Inscrit::where('statut', 0)->count();
             $progress = Inscrit::where('statut', 1)->count();
+            $france = Inscrit::where('is_france_travail', 1)->count();
+            $soelis = Inscrit::where('is_soelis', 1)->count();
+            $cma = Inscrit::where('is_cma', 1)->count();
+            $mission_locale = Inscrit::where('is_mission_locale', 1)->count();
+            $cap = Inscrit::where('is_cap_emploi', 1)->count();
             $total = Inscrit::count();
 
             if ($total > 0) {
@@ -76,12 +81,32 @@ class InscritsController extends Controller
 
                 $progresspourc = ($progress / $total) * 100;
                 $progresspourc = number_format($progresspourc, 1);
+
+                $francepourc = ($france / $total) * 100;
+                $francepourc = number_format($francepourc, 1);
+
+                $soelispourc = ($soelis / $total) * 100;
+                $soelispourc = number_format($soelispourc, 1);
+
+                $cmapourc = ($cma / $total) * 100;
+                $cmapourc = number_format($cmapourc, 1);
+
+                $mission_localepourc = ($mission_locale / $total) * 100;
+                $mission_localepourc = number_format($mission_localepourc, 1);
+
+                $cappourc = ($cap / $total) * 100;
+                $cappourc = number_format($cappourc, 1);
             } else {
                 $finishpourc = 0;
                 $progresspourc = 0;
+                $francepourc = 0;
+                $soelispourc = 0;
+                $cmapourc = 0;
+                $mission_localepourc = 0;
+                $cappourc = 0;
             }
 
-            return view('dash', compact('finish', 'progress', 'finishpourc', 'progresspourc'));
+            return view('dash', compact('finish', 'progress', 'finishpourc', 'progresspourc', 'francepourc', 'soelispourc', 'cmapourc', 'mission_localepourc', 'cappourc'));
         } 
         catch (\Exception $e) {
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();

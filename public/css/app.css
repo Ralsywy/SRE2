@@ -931,6 +931,26 @@ section#plans-action, section#rdv{
     height: 120px;
 }
 
+.dash-box-progress2 {
+    display: flex;
+    background-color: #f7a63d;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+    margin: 100px;
+    width: 280px;
+    height: 120px;
+}
+
+.dash-box-finish2 {
+    display: flex;
+    background-color: #40e630;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+    margin: 100px;
+    width: 280px;
+    height: 120px;
+}
+
 .a {
     height: 20px;
     position: relative;
@@ -953,11 +973,12 @@ section#plans-action, section#rdv{
     justify-content: space-between;
 }
 
+
 #donutchart {
     justify-content: center;
     display: flex;
     position: relative;
-    top: -350px;
+    top: -200px;
 
 }
 
