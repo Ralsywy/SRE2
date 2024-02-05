@@ -494,7 +494,7 @@
                     <input type="text" name="autre_permis">
                 </div>
                 <!--- Fin --->
-                    <p></p>
+                <hr class="dashed">
                     <div class="label">Véhicule disponible</div>
                     <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(1)" id="oui_vehicule">
                     <label class="label" for="oui_vehicule">Oui</label>
@@ -503,6 +503,7 @@
                 
                 <!--- Si oui (rien) --->
                 <!--- Si non --->
+                <hr class="dashed">
                 <div id="div_vehicule_dispo">
                     <div class="label">Achat prévu d'un véhicule</div>
                     <input type="radio" name="prevu_vehicule" value="1" onclick="hideshowvehiculeprevu(1)" id="oui_achat">

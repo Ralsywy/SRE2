@@ -478,7 +478,7 @@
                         <option value="marchandises" @if ($inscrit->permis->isEmpty() || $inscrit->permis->contains('type', 'marchandises')) @selected(true) @endif>Permis marchandises ou de personnes</option>
                     </select>
                     </div>
-                    </div>
+                    
                     <!--- Si non (rien) --->
                     <!--- Si autos --->
                     <div id="autos">
@@ -526,7 +526,9 @@
                     <div class="label">Autres permis</div>
                     <input type="text" name="autre_permis" value="{{ $inscrit->permis->first()?->autre }}">
                 </div>
+            </div>
                 <!--- Fin --->
+                <hr class="dashed">
                 
                 <div class="label">Véhicule disponible</div>
                 <input type="radio" name="vehicule_dispo" value="1" onclick="hideshowvehiculedispo(1)" id="oui_vehicule" @if ($inscrit->vehicule_dispo == 1) @checked(true) @else @checked(false) @endif>
@@ -536,6 +538,7 @@
                 
                 <!--- Si oui (rien) --->
                 <!--- Si non --->
+                <hr class="dashed">
                 <div id="div_vehicule_dispo">
                     <div class="label">Achat prévu d'un véhicule</div>
                     <input type="radio" name="prevu_vehicule" value="1" onclick="hideshowvehiculeprevu(1)" id="oui_achat" @if ($inscrit->prevu_vehicule == 1) @checked(true) @else @checked(false) @endif>

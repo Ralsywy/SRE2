@@ -5,8 +5,6 @@
     --secondary: #ef84d9;
     --accent: #e95898;
     --box:#ffffff;
-
-
 }
 
 html{
@@ -911,46 +909,6 @@ section#plans-action, section#rdv{
 }
 /********* VOIR INSCRITS *********/
 
-.dash-box-progress {
-    display: flex;
-    background-color: #f7a63d;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
-    border-radius: 5px;
-    margin: 100px;
-    width: 280px;
-    height: 120px;
-}
-
-.dash-box-finish {
-    display: flex;
-    background-color: #40e630;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
-    border-radius: 5px;
-    margin: 100px;
-    width: 280px;
-    height: 120px;
-}
-
-.dash-box-progress2 {
-    display: flex;
-    background-color: #f7a63d;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
-    border-radius: 5px;
-    margin: 100px;
-    width: 280px;
-    height: 120px;
-}
-
-.dash-box-finish2 {
-    display: flex;
-    background-color: #40e630;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
-    border-radius: 5px;
-    margin: 100px;
-    width: 280px;
-    height: 120px;
-}
-
 .a {
     height: 20px;
     position: relative;
@@ -968,19 +926,6 @@ section#plans-action, section#rdv{
     top: 50px;
 }
 
-.all-dash {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-#donutchart {
-    justify-content: center;
-    display: flex;
-    position: relative;
-    top: -100px;
-
-}
 #diplome_non input{
     height: 45px;
     width: 330px;
@@ -1001,4 +946,36 @@ section#plans-action, section#rdv{
     border: 2px solid rgba(255,255,255,.2);
     width: fit-content;
     backdrop-filter: blur(20px);
+}
+
+/* dash */
+.all-dash{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+.all-dash .dash{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 30%;
+    height: 50vh;
+    background-color: var(--box);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+    border-radius: 1rem;
+    padding-top: 2rem;
+    margin: 1rem;
+}
+.chart{
+    height: 100%;
+    width: 100%;
+}
+
+.all-dash .dash h1{
+    font-size: 20px;
 }
