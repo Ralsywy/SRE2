@@ -511,6 +511,7 @@ class InscritsController extends Controller
         }
     }
     public function modifier_store(Request $request,$id){
+        try{
         $inscrit = Inscrit::find($id);
         //page 1
         $inscrit->dte_contact= $request->get('dte_contact');
@@ -881,5 +882,9 @@ class InscritsController extends Controller
             }
         }
         return redirect()->route('voir-inscrits')->with("success","L'inscrit ".$inscrit->nom." ".$inscrit->prenom." été modifié");
+    }
+    catch (\Exception $e) {
+        return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();
+    }
     }
 }
