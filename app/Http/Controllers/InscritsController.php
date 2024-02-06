@@ -80,8 +80,15 @@ class InscritsController extends Controller
             $monsieur = Inscrit::where('civilite', 'Monsieur')->count();
             $inscritfr = Langue::where('is_atelier', 1)->count();
             $asile = Inscrit::where('is_demande_asile', 1)->count();
+            $refugie = Inscrit::where('is_refugie_politique', 1)->count();
+            $accompagnateurs = User::count();
+            $france = Inscrit::where('is_france_travail', 1)->count();
+            $cma = Inscrit::where('is_cma', 1)->count();
+            $soelis = Inscrit::where('is_soelis', 1)->count();
+            $mission = Inscrit::where('is_mission_locale', 1)->count();
+            $cap = Inscrit::where('is_cap_emploi', 1)->count();
 
-            return view('dash', compact('asile','inscritfr','monsieur','benevole','finish', 'progress', 'finish', 'progress', 'france', 'soelis', 'cma', 'mission_locale', 'cap','rdc','total'));
+            return view('dash', compact('cap','mission','soelis','cma','france','accompagnateurs','refugie','asile','inscritfr','monsieur','benevole','finish', 'progress', 'finish', 'progress', 'france', 'soelis', 'cma', 'mission_locale', 'cap','rdc','total'));
         } 
         catch (\Exception $e) {
             return back()->withErrors("Erreur avec la connexion à la base de données")->withInput();

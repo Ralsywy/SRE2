@@ -26,7 +26,7 @@
             <ul class="navbar-nav mx-auto">
               
               <li class="nav-item">
-                <a class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Accueil</a>
+                <a class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Statistiques</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
