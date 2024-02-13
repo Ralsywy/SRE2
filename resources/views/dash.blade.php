@@ -106,7 +106,7 @@
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Suivis', 'Inscription'],
-        ['Bénévoles',     {{$rdc}}],
+        ['Bénévoles',     {{$benevole}}],
         ['Non bénévoles',     {{$total-$benevole}}],
       ]);
 
